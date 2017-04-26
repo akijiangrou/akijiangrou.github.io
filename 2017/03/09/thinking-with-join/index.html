@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          thinking-with-join - MissSweety的博客 | MissSweety&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://misssweety.github.io/2017/03/09/thinking-with-join/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">MissSweety&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/index.html">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://misssweety.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/post-bg-2015.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#d3" title="d3">d3</a>
+                        
+                          <a class="tag" href="/tags/#translate" title="translate">translate</a>
+                        
+                    </div>
+                    <h1>thinking-with-join</h1>
+                    <h2 class="subheading"> new post </h2>
+                    <span class="meta">
+                        Posted by Jessica on
+                        2017-03-09
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>下面这段代码是我们最常用的，为每个数据生成一个circle，调用数据里的x，y来定位。但是我们selectAll的元素，此时并不存在，那d3是如何工作的呢?</p>
+<blockquote>
+<p>svg.selectAll(“circle”)<br>  .data(data)<br>  .enter().append(“circle”)<br>    .attr(“cx”, function(d) { return d.x; })<br>    .attr(“cy”, function(d) { return d.y; })<br>    .attr(“r”, 2.5);</p>
+</blockquote>
+<p>在d3中，告诉d3你想要什么，而不是告诉d3怎样做什么。对于上面这个需求，我们要做的就是，我想要circle对应于数据，每个circle对应于一个数据，而不是告诉d3，你应该给我创造一个circle，然后告诉d3选择的circle应该和数据对应好。<br>这个原则就叫做<strong>data join</strong></p>
+<svg width="720" height="240" version="1.1" xmlns="http://www.w3.org/2000/svg"><br/>  <g transform="translate(0,128)"><br/>    <g transform="translate(300)"><br/>      <circle r="110" style="fill: rgba(49, 130, 189,.2);" stroke="black"/><br/>      <text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Data</text><br/>      <text x="-50" dy=".35em" text-anchor="middle">Enter</text><br/>    </g><br/>    <text x="360" dy=".35em" text-anchor="middle">Update</text><br/>    <g transform="translate(420)"><br/>      <circle r="110" style="fill: rgba(230, 85, 13,.2);" stroke="black"/><br/>      <text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Elements</text><br/>      <text x="50" dy=".35em" text-anchor="middle">Exit</text><br/>    </g><br/>  </g><br/></svg>
+
+<p>连接到现有元素的数据点生成update（内部）选择。剩余未绑定数据生成enter选择（左），表示缺少的元素。同样，任何剩余的未绑定元素会生成exit选择（右），表示要删除的元素。</p>
+<p>现在，我们可以通过data join 来揭开enter-append序列的谜团了</p>
+<ol>
+<li><code>svg.selectAll(&quot;circle&quot;)</code> 返回一个新的空<code>selection</code>，因为SVG容器是空的，所以该<code>selection</code>的父节点是SVG容器</li>
+<li>然后此<code>selection</code>连接到数据数组，生成三个新<code>selection</code>分别表示三种可能的状态：<code>enter</code>，<code>update</code>和<code>exit</code>。由于<code>selection</code>为空，所以<code>update</code>和<code>exit</code>选择为空，而<code>enter selection</code>包含每个新数据的占位符。</li>
+<li><code>update selection</code>通过<a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_data" target="_blank" rel="external">selection.data</a>返回,而<code>enter</code>和<code>exit selection</code>挂起<code>update selection</code>; <a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_enter" target="_blank" rel="external">selection.enter</a>返回<code>enter selection</code>。</li>
+<li>通过在<code>enter selection</code>上调用<a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_append" target="_blank" rel="external">selection.append</a>，将缺少的元素添加到SVG容器。这会为每个数据点向SVG容器添加一个新圆。</li>
+</ol>
+<p><em>Thinking with joins</em> 意味着在一个selection和数据集中声明一种关系，然后通过<code>enter</code>, <code>update</code>, <code>exit</code>实现这个关系.</p>
+<p>但是为什么会这么麻烦呢？为什么不一开始就创建多个元素呢？data join的美丽在于它的泛化。虽然上述代码只处理<code>enter selection</code>,这就可以处理静态可视化了，但是你可以将其扩展为支持动态可视化，只需对<code>update</code>和<code>exit</code>进行少量修改。这意味着您可以对<a href="https://bost.ocks.org/mike/path/" target="_blank" rel="external">实时数据</a>进行可视化，允许<a href="http://bl.ocks.org/mbostock/4063663" target="_blank" rel="external">交互式探索</a>，以及在数据集之间<a href="http://bl.ocks.org/mbostock/1256572" target="_blank" rel="external">平滑过渡</a>！</p>
+<p>看下包含三个状态的例子：</p>
+<blockquote>
+<p>var circle = svg.selectAll(“circle”)<br>  .data(data);<br>circle.exit().remove();<br>circle.enter().append(“circle”)<br>  .attr(“r”, 2.5)<br>  .merge(circle)<br>  .attr(“cx”, function(d) { return d.x; })<br>  .attr(“cy”, function(d) { return d.y; });</p>
+</blockquote>
+<p>无论何时运行此代码，它都会重新计算数据连接并保持元素和数据之间的所需对应关系。如果新数据集小于旧数据集，则剩余元素将在退出选择中结束并被删除。如果新数据集较大，剩余数据将在输入选择中结束，并添加新节点。如果新数据集的大小完全相同，那么所有元素都将使用新位置进行更新，并且不会添加或删除任何元素。</p>
+<p><code>thinking with join</code>用连接来思考意味着你的代码更具声明性：你处理这三个状态没有任何分支（if）或迭代（for）。而是描述元素应如何对应数据。如果给定的<code>enter</code>，<code>update</code>或<code>exit selection</code>恰好是空的，则相应的代码是无操作</p>
+<p>连接还允许将操作定向到特定状态（如果需要）。例如，你可以在enter而不是update上设置常量属性（例如由“r”属性定义的圆的半径）。通过重新选择元素和最小化DOM更改，您大大提高了渲染性能！同样，您可以将动画过渡指定为特定状态。例如，在entering状态，加入动画<a href="https://jsbin.com/vubibuvaqo/1/edit?html,output" target="_blank" rel="external">圆圈展开</a></p>
+<p>大致翻译自：<a href="https://bost.ocks.org/mike/join/" target="_blank" rel="external">thinking with join</a></p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/10/27/blog-publish/" data-toggle="tooltip" data-placement="top" title="博客搭建">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/04/17/Visual-Formatting-Model/" data-toggle="tooltip" data-placement="top" title="Visual-Formatting-Model">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#d3" title="d3">d3</a>
+                        
+                          <a class="tag" href="/tags/#translate" title="translate">translate</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "/";
+    var disqus_identifier = "https://misssweety.github.io/2017/03/09/thinking-with-join/";
+    var disqus_url = "https://misssweety.github.io/2017/03/09/thinking-with-join/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/test">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/test">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/MissSweety">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; MissSweety&#39;s Blog 2017 
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://misssweety.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="https://misssweety.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
