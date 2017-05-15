@@ -13,11 +13,11 @@
 
     <title>
         
-          MissSweety的博客 | MissSweety&#39;s Blog
+          linux 目录结构 - MissSweety的博客 | MissSweety&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://misssweety.github.io/">
+    <link rel="canonical" href="https://misssweety.github.io/2017/05/08/linux文件目录/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -147,372 +147,247 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/./img/home-bg.jpg')">
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://misssweety.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/./img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>MissSweety&#39;s Blog</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">never say never</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#linux" title="linux">linux</a>
+                        
+                    </div>
+                    <h1>linux 目录结构</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Jessica on
+                        2017-05-08
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>原来学linux的时候，不上心，现在后悔莫及，开始补基础。<br>首先是最基本的目录结构。<br>linux是树状结构  </p>
+<p><strong>标橘色为重要目录</strong></p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>／</td>
+<td>根目录，整个文件系统层次结构的根目录，一般只放目录</td>
+</tr>
+<tr>
+<td>/bin/</td>
+<td>类似 <code>/usr/bin</code> 可执行的二进制文件的目录，常用的ls，tar，mv， cat等</td>
+</tr>
+<tr>
+<td>/boot/</td>
+<td>引导程序文件，放置linux系统启动时用到的一些文件</td>
+</tr>
+<tr>
+<td><font color="orange">/dev/</font></td>
+<td>存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备</td>
+</tr>
+<tr>
+<td><font color="orange">/etc/</font></td>
+<td>系统配置文件存放的目录,不建议在此目录下存放可执行文件，重要的配置文件</td>
+</tr>
+<tr>
+<td><font color="orange">/home/</font></td>
+<td>系统默认的用户家目录，新增用户账号时，用户的家目录都存放在此目录下, 建议单独分区，并设置较大的磁盘空间</td>
+</tr>
+<tr>
+<td>/lib/,/usr/lib/, /usr/local/lib/</td>
+<td>系统使用的函数库的目录，程序在执行过程中，需要调用一些额外的参数时需要函数库的协助，比较重要的目录为/lib/modules</td>
+</tr>
+<tr>
+<td>/lost+fount/</td>
+<td>系统异常产生错误时，会将一些遗失的片段放置于此目录下，通常这个目录会自动出现在装置目录下。</td>
+</tr>
+<tr>
+<td>/mnt/</td>
+<td>临时挂载的文件系统。比如cdrom,u盘等，直接插入光驱无法使用，要先挂载后使用</td>
+</tr>
+<tr>
+<td>/opt/</td>
+<td>给主机额外安装软件所摆放的目录, 可选应用软件包。</td>
+</tr>
+<tr>
+<td><font color="orange">/proc/</font></td>
+<td>此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间.比较重要的目录有/proc/cpuinfo、/proc/interrupts、/proc/dma、/proc/ioports、/proc/net/*等</td>
+</tr>
+<tr>
+<td>/root/</td>
+<td>超级权限用户的家目录</td>
+</tr>
+<tr>
+<td><font color="orange">/sbin:/usr/sbin:/usr/local/sbin</font></td>
+<td>放置系统管理员使用的可执行命令，如fdisk、shutdown、mount等。sbin目录下的命令，普通用户都执行不了。</td>
+</tr>
+<tr>
+<td>/tmp/</td>
+<td>一般用户或正在执行的程序临时存放文件的目录,任何人都可以访问,重要数据不可放置在此目录下,在系统重启时目录中文件不会被保留。</td>
+</tr>
+<tr>
+<td>/srv/</td>
+<td>服务启动之后需要访问的数据目录，如www服务需要访问的网页数据存放在/srv/www内</td>
+</tr>
+<tr>
+<td><font color="orange">/usr/</font></td>
+<td>默认软件都会存于该目录下。用于存储只读用户数据的第二层次；包含绝大多数的(多)用户工具和应用程序。</td>
+</tr>
+<tr>
+<td><font color="orange">/var/</font></td>
+<td>变量文件——在正常运行的系统中其内容不断变化的文件，如随时更改的日志文件 /var/log，/var/log/message： 所有的登录文件存放目录，/var/spool/mail： 邮件存放的目录， /var/run: 程序或服务启动</td>
+</tr>
+</tbody>
+</table>
+<h3 id="etc-目录"><a href="#etc-目录" class="headerlink" title="/etc/目录"></a>/etc/目录</h3><p>未完待续。。。<br><a href="http://yangrong.blog.51cto.com/6945369/1288072" target="_blank" rel="external">参考</a><br><a href="http://www.iteye.com/topic/1125162" target="_blank" rel="external">参考二</a></p>
 
 
-<div class="post-preview">
+                <hr>
 
-    <a href="/2017/05/15/css3实现3d效果/">
-        <h2 class="post-title">
-            css3实现3d效果
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            css3实现3D效果相关属性
-transform: rotateX(…)
-transfrom-origin: left center;
-transform-style: preserve-3d;
-perspective: 200px;
-perpective-origin: left center;
-backface-visibility: true;
+                
 
-3d效果基础知识一般是在旋转后才能表现......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2017-05-15
-    </p>
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/04/18/exports/" data-toggle="tooltip" data-placement="top" title="export相关">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/05/08/读书笔记-闭包/" data-toggle="tooltip" data-placement="top" title="读书笔记-闭包">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
-</div>
-<hr>
+                
 
-<div class="post-preview">
-
-    <a href="/2017/05/08/读书笔记-闭包/">
-        <h2 class="post-title">
-            读书笔记-闭包
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            经典闭包闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。参考
-function foo () {
-  const a = 9;
-  const bar = () =&gt; {return a;}
-  return bar;
-}
-
-const aa = foo();
-console.log(aa());
-返回9；  
-解析在......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2017-05-08
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/05/08/linux文件目录/">
-        <h2 class="post-title">
-            linux 目录结构
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            原来学linux的时候，不上心，现在后悔莫及，开始补基础。首先是最基本的目录结构。linux是树状结构  
-标橘色为重要目录
-
-
-
-目录
-描述
-
-
-
-
-／
-根目录，整个文件系统层次结构的根目录，一般只放目录
-
-
-/bin/
-类似 /usr/bin 可执行的二进制文件的目录，常用的ls，tar，mv， cat等
-
-
-/boot/
-引导程序文件，放置linux系统启动时用到的一些文件
-
-
-/de......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2017-05-08
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/04/18/exports/">
-        <h2 class="post-title">
-            export相关
-        </h2>
-        <h3 class="post-subtitle">
-             exports | module.exports | export default
-        </h3>
-        <div class="post-content-preview">
-            exports 和 module.exports 的区别exports 是引用 module.exports 的值。module.exports 被改变的时候，exports不会被改变，而模块导出的时候，真正导出的执行是module.exports，而不是exports。
-有以几点需要记住：
-module.exports 初始值为一个空对象 {}exports 是指向的 module.exp......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2017-04-18
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/04/17/Visual-Formatting-Model/">
-        <h2 class="post-title">
-            Visual-Formatting-Model
-        </h2>
-        <h3 class="post-subtitle">
-             new post 
-        </h3>
-        <div class="post-content-preview">
-            1.视觉格式化模型 introduction视觉格式化模型：User Agent 如何在 Visual Media下处理文档树。
-视觉格式化模型中，文档树中的每一个元素根据盒模型 Box Model 产生零个或多个盒。这些盒的布局由以下内容控制：
-
-盒的尺寸和类型
-定位体系 Positioning Scheme （常规流，浮动和绝对定位）
-文档树中元素之间的关系
-外部信息（如：视口大小，图片......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2017-04-17
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/03/09/thinking-with-join/">
-        <h2 class="post-title">
-            thinking-with-join
-        </h2>
-        <h3 class="post-subtitle">
-             new post 
-        </h3>
-        <div class="post-content-preview">
-            下面这段代码是我们最常用的，为每个数据生成一个circle，调用数据里的x，y来定位。但是我们selectAll的元素，此时并不存在，那d3是如何工作的呢?
-
-svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr(“cx”, function(d) { return d.x; })    .attr(......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2017-03-09
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2016/10/27/blog-publish/">
-        <h2 class="post-title">
-            博客搭建
-        </h2>
-        <h3 class="post-subtitle">
-             new post 
-        </h3>
-        <div class="post-content-preview">
-            适用于macOS
-###1.需要安装git，npm，node升级本地npm
-npm install npm@latest -g
-如果有权限问题，前面加上sudo就可以了
-###2.安装hexo
-sudo npm install -g hexo
-全局安装了
-###3.hexo管理一个网站
-hexo init blog
-名字随自己喜欢，这里起的事blog
-###4.进入该文件，进行管理
-cd b......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2016-10-27
-    </p>
-
-</div>
-<hr>
-
-
-
-<!-- Pager -->
-
-<ul class="pager">
-    
-    
-</ul>
-
-
-
-                <!-- 如果开启评论功能 -->
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
                 
 
             </div>
+    <!-- Side Catalog Container -->
+        
+
     <!-- Sidebar Container -->
+
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                            <a href="/tags/#javascript" title="javascript" rel="2">javascript</a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
+                       
+                          <a class="tag" href="/tags/#linux" title="linux">linux</a>
                         
                     </div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="/./img/avatar.jpg" />
-                        
-
-                        
-                            <p>我要成为魔法师!</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/test">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.facebook.com/test">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank"  href="https://github.com/MissSweety">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                            
-                            
-                        </ul>
-                    </div>
-                </section>
-                
                 <!-- Friends Blog -->
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "/";
+    var disqus_identifier = "https://misssweety.github.io/2017/05/08/linux文件目录/";
+    var disqus_url = "https://misssweety.github.io/2017/05/08/linux文件目录/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->

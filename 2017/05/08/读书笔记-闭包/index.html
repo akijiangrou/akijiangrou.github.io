@@ -13,11 +13,11 @@
 
     <title>
         
-          MissSweety的博客 | MissSweety&#39;s Blog
+          读书笔记-闭包 - MissSweety的博客 | MissSweety&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://misssweety.github.io/">
+    <link rel="canonical" href="https://misssweety.github.io/2017/05/08/读书笔记-闭包/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -147,82 +147,54 @@
 
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/./img/home-bg.jpg')">
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://misssweety.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/./img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>MissSweety&#39;s Blog</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">never say never</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
+                        
+                          <a class="tag" href="/tags/#闭包" title="闭包">闭包</a>
+                        
+                    </div>
+                    <h1>读书笔记-闭包</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Jessica on
+                        2017-05-08
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
-
-<!-- USE SIDEBAR -->
     <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                <!-- Main Content -->
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-
-<div class="post-preview">
-
-    <a href="/2017/05/15/css3实现3d效果/">
-        <h2 class="post-title">
-            css3实现3d效果
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            css3实现3D效果相关属性
-transform: rotateX(…)
-transfrom-origin: left center;
-transform-style: preserve-3d;
-perspective: 200px;
-perpective-origin: left center;
-backface-visibility: true;
-
-3d效果基础知识一般是在旋转后才能表现......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2017-05-15
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/05/08/读书笔记-闭包/">
-        <h2 class="post-title">
-            读书笔记-闭包
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            经典闭包闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。参考
-function foo () {
+                <h2 id="经典闭包"><a href="#经典闭包" class="headerlink" title="经典闭包"></a>经典闭包</h2><p>闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。<br><a href="https://jsbin.com/duyotivalu/1/edit?js,console,output" target="_blank" rel="external">参考</a></p>
+<pre><code>function foo () {
   const a = 9;
   const bar = () =&gt; {return a;}
   return bar;
@@ -230,289 +202,167 @@ function foo () {
 
 const aa = foo();
 console.log(aa());
-返回9；  
-解析在......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2017-05-08
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/05/08/linux文件目录/">
-        <h2 class="post-title">
-            linux 目录结构
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            原来学linux的时候，不上心，现在后悔莫及，开始补基础。首先是最基本的目录结构。linux是树状结构  
-标橘色为重要目录
-
-
-
-目录
-描述
-
-
-
-
-／
-根目录，整个文件系统层次结构的根目录，一般只放目录
-
-
-/bin/
-类似 /usr/bin 可执行的二进制文件的目录，常用的ls，tar，mv， cat等
-
-
-/boot/
-引导程序文件，放置linux系统启动时用到的一些文件
-
-
-/de......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2017-05-08
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/04/18/exports/">
-        <h2 class="post-title">
-            export相关
-        </h2>
-        <h3 class="post-subtitle">
-             exports | module.exports | export default
-        </h3>
-        <div class="post-content-preview">
-            exports 和 module.exports 的区别exports 是引用 module.exports 的值。module.exports 被改变的时候，exports不会被改变，而模块导出的时候，真正导出的执行是module.exports，而不是exports。
-有以几点需要记住：
-module.exports 初始值为一个空对象 {}exports 是指向的 module.exp......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2017-04-18
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/04/17/Visual-Formatting-Model/">
-        <h2 class="post-title">
-            Visual-Formatting-Model
-        </h2>
-        <h3 class="post-subtitle">
-             new post 
-        </h3>
-        <div class="post-content-preview">
-            1.视觉格式化模型 introduction视觉格式化模型：User Agent 如何在 Visual Media下处理文档树。
-视觉格式化模型中，文档树中的每一个元素根据盒模型 Box Model 产生零个或多个盒。这些盒的布局由以下内容控制：
-
-盒的尺寸和类型
-定位体系 Positioning Scheme （常规流，浮动和绝对定位）
-文档树中元素之间的关系
-外部信息（如：视口大小，图片......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2017-04-17
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/03/09/thinking-with-join/">
-        <h2 class="post-title">
-            thinking-with-join
-        </h2>
-        <h3 class="post-subtitle">
-             new post 
-        </h3>
-        <div class="post-content-preview">
-            下面这段代码是我们最常用的，为每个数据生成一个circle，调用数据里的x，y来定位。但是我们selectAll的元素，此时并不存在，那d3是如何工作的呢?
-
-svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr(“cx”, function(d) { return d.x; })    .attr(......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2017-03-09
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2016/10/27/blog-publish/">
-        <h2 class="post-title">
-            博客搭建
-        </h2>
-        <h3 class="post-subtitle">
-             new post 
-        </h3>
-        <div class="post-content-preview">
-            适用于macOS
-###1.需要安装git，npm，node升级本地npm
-npm install npm@latest -g
-如果有权限问题，前面加上sudo就可以了
-###2.安装hexo
-sudo npm install -g hexo
-全局安装了
-###3.hexo管理一个网站
-hexo init blog
-名字随自己喜欢，这里起的事blog
-###4.进入该文件，进行管理
-cd b......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Jessica on
-        2016-10-27
-    </p>
-
-</div>
-<hr>
+</code></pre><p>返回9；  </p>
+<p><strong>解析</strong><br>在<code>foo()</code>执行后，其返回值赋值给变量aa，并执行<code>aa()</code>，其实是通过不同的标识符引用调用了内部函数<code>bar()</code>。bar在其词法作用域外被正常执行了。而且foo函数执行后，通常整个foo内部作用域都被销毁，但是由于bar的存在，是的内部作用域依然存在，组织了垃圾回收。<br><code>bar()</code> 拥有涵盖<code>foo()</code>内部作用域的闭包，使得该作用域能一直存活。<code>bar()</code>依然持有对该作用域的饮用，这个引用就叫做<strong>闭包</strong>。  </p>
+<p>如果将函数当作第一级的值类型进行传递，其实就会有闭包的存在。<br>一些异步或者同步操作中，使用了回调函数，也是在使用闭包。  </p>
+<p><em>无处不在</em></p>
+<p>本质上无论何时何地，如果将函数(访问它们各自的词法作用域)当作第一 级的值类型并到处传递，你就会看到闭包在这些函数中的应用。在<code>定时器</code>、<code>事件监听器</code>、 <code>Ajax请求</code>、<code>跨窗口通信</code>、<code>Web Workers</code>或者<code>任何其他的异步(或者同步)任务</code>中，只要使用了<code>回调函数</code>，实际上就是在使用闭包.  </p>
+<p>最常见的考题</p>
+<pre><code>for (var i = 1; i&lt;= 5; i++) {
+  setTimeout(() =&gt;console.log(i), 1000*i);
+}
+</code></pre><p>输出是：五个6</p>
+<p>原因：i是全局变量，setTimeout是等待执行。延迟函数的回调会在循环结束时才执行,执行的时候i已经跳出循环，第一个满足的值就是6.所以输出5个6.</p>
+<p>修改：将var 改为let。只在当时的循环中生效。可以每秒输出12345</p>
+<p>另外一个应用：<br>模块</p>
+<p>从方便观察的角度看，一个从函数调用 所返回的，只有数据属性而没有闭包函数的对象并不是真正的模块。</p>
+<p>实例：</p>
+<pre><code>function CoolModule() {
+  var something = &quot;cool&quot;;
+  var another = [1, 2, 3];
+   function doSomething() { console.log( something ); }
+  function doAnother() {
+    console.log( another.join( &quot; ! &quot; ) );
+  }         
+  return {
+    doSomething: doSomething, doAnother: doAnother
+  };
+}
+var foo = CoolModule(); foo.doSomething(); // cool
+foo.doAnother(); // 1 ! 2 ! 3
+</code></pre><p>上一个示例代码中有一个叫作 CoolModule() 的独立的模块创建器，可以被调用任意多次， 每次调用都会创建一个新的模块实例。<br>如果想实现单例模式：<br>就是将coolmodule 转换为iife，并赋予一个标识符：</p>
+<pre><code>var foo = (...)();
+foo.doSomething();
+foo.doAnother(); 结果同上
+</code></pre><p>  模块有两个主要特征:(1)为创建内部作用域而调用了一个包装函数;(2)包装函数的返回值必须至少包括一个对内部函数的引用，这样就会创建涵盖整个包装函数内部作用域的闭包。   </p>
+<h4 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h4><pre><code>function foo() {
+  console.log( a ); // 2
+}
+function bar() {
+  var a = 3;
+  foo();
+}
+var a = 2;
+bar();
+</code></pre><p>输出结果：2。词法作用域，运行bar，到foo的时候，这里的a是全局变量的a，所以为2.</p>
 
 
+                <hr>
 
-<!-- Pager -->
+                
 
-<ul class="pager">
-    
-    
-</ul>
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/05/08/linux文件目录/" data-toggle="tooltip" data-placement="top" title="linux 目录结构">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/05/15/css3实现3d效果/" data-toggle="tooltip" data-placement="top" title="css3实现3d效果">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
+                
 
-
-                <!-- 如果开启评论功能 -->
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
                 
 
             </div>
+    <!-- Side Catalog Container -->
+        
+
     <!-- Sidebar Container -->
+
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
                     <!-- no hr -->
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
+                       
+                          <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                            <a href="/tags/#javascript" title="javascript" rel="2">javascript</a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
+                          <a class="tag" href="/tags/#闭包" title="闭包">闭包</a>
                         
                     </div>
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-
-                        
-                            <img src="/./img/avatar.jpg" />
-                        
-
-                        
-                            <p>我要成为魔法师!</p>
-                        
-
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                                <li>
-                                    <a target="_blank" href="https://twitter.com/test">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-
-                            
-
-                            
-                                <li>
-                                    <a target="_blank" href="https://www.facebook.com/test">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-
-                            
-                                <li>
-                                    <a target="_blank"  href="https://github.com/MissSweety">
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            
-                            
-                            
-                            
-                        </ul>
-                    </div>
-                </section>
-                
                 <!-- Friends Blog -->
                 
             </div>
-        
+
+        </div>
     </div>
-</div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "/";
+    var disqus_identifier = "https://misssweety.github.io/2017/05/08/读书笔记-闭包/";
+    var disqus_url = "https://misssweety.github.io/2017/05/08/读书笔记-闭包/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
 
 
     <!-- Footer -->
