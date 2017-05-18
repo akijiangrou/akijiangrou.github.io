@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          高德地图api使用总结 - MissSweety的博客 | MissSweety&#39;s Blog
+        
+    </title>
+
+    <link rel="canonical" href="https://misssweety.github.io/2017/05/18/高德地图api使用总结/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">MissSweety&#39;s Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/index.html">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://misssweety.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/./img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#js" title="js">js</a>
+                        
+                          <a class="tag" href="/tags/#地图api" title="地图api">地图api</a>
+                        
+                          <a class="tag" href="/tags/#总结" title="总结">总结</a>
+                        
+                    </div>
+                    <h1>高德地图api使用总结</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Jessica on
+                        2017-05-18
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="常用的高德地图api"><a href="#常用的高德地图api" class="headerlink" title="常用的高德地图api"></a>常用的高德地图api</h1><p>关于appkey，分为两种，一个是api调用的key，一个是地图服务的key，例如，获取门店信息，search功能等等。</p>
+<h2 id="脚本加载"><a href="#脚本加载" class="headerlink" title="脚本加载"></a>脚本加载</h2><pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://webapi.amap.com/maps?v=1.3&amp;key=您申请的key值&quot;&gt;&lt;/script&gt;
+</code></pre><p>需要把这个脚本加载完成后，才能使用AMap。</p>
+<p>可以使用<code>map-div</code>这个组件。</p>
+<p>如果搭配react，需要在componentDidMount阶段，调用<code>map-div</code> 中的createMap函数。配套的，最好将该地图实例保存在一个对象中，并设置一个flag作为地图加载完成的标志位，以便react使用。</p>
+<p>示例：  </p>
+<pre><code>mapInstance.js
+
+let __value = null;
+export default {
+  getter: () =&gt; __value,
+  setter: (val) =&gt; { __value = val; },
+};
+---------------------------------------
+
+const mapConfig = {
+  name: &apos;AMap&apos;,
+  initOpts: {
+    zoom: MAP_CONFIG.zoom,
+    zooms: MAP_CONFIG.zooms,
+  },
+  query: {
+    plugin: &apos;AMap.Geocoder,AMap.CitySearch&apos;,
+  },
+};
+
+componentDidMount() {
+  (async () =&gt; {
+    const mapIns = await createMap(mapConfig, &apos;mapComponent&apos;);
+    mapInstance.setter(mapIns);
+    this.props.setMapInstanceFlag(true);
+    // 一些事件监听
+    mapEventHandler(mapIns, &apos;dragend&apos;, &apos;on&apos;, throttle(this.handleMapScale, 800));
+    mapEventHandler(mapIns, &apos;click&apos;, &apos;on&apos;, throttle(this.handleMapClick, 800));
+
+    ...
+  })();
+
+  ...
+}
+</code></pre><h2 id="创建地图对象"><a href="#创建地图对象" class="headerlink" title="创建地图对象"></a>创建地图对象</h2><p>需要给出一个div作为地图的容器。</p>
+<pre><code>&lt;div id=&quot;container&quot; style=&quot;width:800px; height:500px&quot;&gt;&lt;/div&gt;
+
+var map = new AMap.Map(&apos;container&apos;,{ config })
+</code></pre><p><strong>注意：</strong> 如果不加center，地图默认显示用户当前城市范围</p>
+<h3 id="config常用基本配置"><a href="#config常用基本配置" class="headerlink" title="config常用基本配置"></a>config常用基本配置</h3><table>
+<thead>
+<tr>
+<th>options</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zoom</td>
+<td>缩放级别</td>
+</tr>
+<tr>
+<td>center</td>
+<td>地图中心点坐标[lon, lat]</td>
+</tr>
+<tr>
+<td>zooms</td>
+<td>地图可以缩放的范围 ，数组格式[max, min]</td>
+</tr>
+<tr>
+<td>zoomEnable</td>
+<td>是否可缩放，默认为true</td>
+</tr>
+<tr>
+<td>dragEnable</td>
+<td>是否可拖拽，默认为true</td>
+</tr>
+<tr>
+<td>mapStyle</td>
+<td>地图显示样式，normal（默认样式）、dark（深色样式）、light（浅色样式）、fresh(osm清新风格样式)、blue_night</td>
+</tr>
+<tr>
+<td>features</td>
+<td>地图上显示的元素种类， 默认都显示，支持’bg’（地图背景）、’point’（POI点）、’road’（道路）、’building’（建筑物）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常用的地图实例方法"><a href="#常用的地图实例方法" class="headerlink" title="常用的地图实例方法"></a>常用的地图实例方法</h2><h3 id="地图常用方法"><a href="#地图常用方法" class="headerlink" title="地图常用方法"></a>地图常用方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getZoom()， setZoom()</td>
+<td>缩放级别</td>
+</tr>
+<tr>
+<td>getCenter(), setCenter()</td>
+<td>获取地图中心点坐标[lon, lat]</td>
+</tr>
+<tr>
+<td>setZoomAndCenter</td>
+<td>同时设定缩放级别和中心点坐标</td>
+</tr>
+<tr>
+<td>setCity(city:String，callback:Functon)</td>
+<td>通过设置城市名称来设置地图显示的中心点</td>
+</tr>
+<tr>
+<td>zoomIn</td>
+<td>地图放大一级</td>
+</tr>
+<tr>
+<td>zoomOut</td>
+<td>地图缩小一级</td>
+</tr>
+</tbody>
+</table>
+<h3 id="地图常用事件类型"><a href="#地图常用事件类型" class="headerlink" title="地图常用事件类型"></a>地图常用事件类型</h3><ul>
+<li>click: 鼠标左键单击  </li>
+<li>mapmove: 地图平移时触发</li>
+<li>movestart: 地图平移开始时触发</li>
+<li>moveend: 地图移动结束后触发，包括平移和缩放(经试验，缩放并没有触发moveend)。</li>
+<li>zoomchange: 地图缩放级别更改后触发</li>
+<li>zoomstart: 缩放开始时触发</li>
+<li>zoomend: 缩放停止时触发</li>
+<li>dragstart: 开始拖拽地图时触发</li>
+<li>dragend: 停止拖拽地图时触发</li>
+<li>dragging: 拖拽地图过程中触发</li>
+</ul>
+<p>如果地图操作后会有其他操作，一般监听  XXXend 方法。<br>注意：setCity，setCenter等操作不会触发drag相关内容。</p>
+<h3 id="关于amap的事件绑定"><a href="#关于amap的事件绑定" class="headerlink" title="关于amap的事件绑定"></a>关于amap的事件绑定</h3><p>有两种方法：  </p>
+<ul>
+<li><p>针对Map、覆盖物等常用类<br>直接使用on， off 方法来实现事件的简单绑定和移除</p>
+</li>
+<li><p>使用AMap.event命名空间<br>addDomListener(domobj, eventName, handler, context(没用过，不清楚))<br>addListener(obj, eventName, handler, context(没用过，不清楚))<br>removeListener(listener): 可以移除dom和非dom事件。</p>
+<p><a href="http://lbs.amap.com/api/javascript-api/example/event/dom-event/" target="_blank" rel="external">参考</a></p>
+</li>
+</ul>
+<h3 id="事件event中的内容"><a href="#事件event中的内容" class="headerlink" title="事件event中的内容"></a>事件event中的内容</h3><ul>
+<li>所有的CLICK事件<br>点击位置的经纬度，对应在画布上的横纵坐标，事件target， 事件type<br><img src="./pic2.png"></li>
+<li>其他类型事件，如moveend，zoom<br>event中只有事件类型type</li>
+</ul>
+<p>针对以上，我们可以对地图事件进行封装，一般需要的是事件发生的zoom，地图范围，点击位置的经纬度。<br>🌰如下:</p>
+<pre><code>const eventInjector = (ev, mapINS, cb) =&gt; {
+    const bounds = mapINS.getBounds();
+    const param = {
+        sw: bounds.getSouthWest(),
+        ne: bounds.getNorthEast(),
+        zoom: mapINS.getZoom(),
+        type: ev.type,
+        lng: ev.lnglat ? ev.lnglat.getLng() : &apos;&apos;,
+        lat: ev.lnglat ? ev.lnglat.getLat() : &apos;&apos;,
+    };
+      if (cb) cb(param);
+};
+
+const mapEventHandler = (mapINS, type, opt, cb) =&gt; mapINS[opt](type, (ev) =&gt; eventInjector(ev, mapINS, cb));
+
+//使用
+mapEventHandler(mapIns, &apos;dragend&apos;, &apos;on&apos;, this.handleMapScale);
+mapEventHandler(mapIns, &apos;dragend&apos;, &apos;off&apos;,this.handleMapScale);
+
+//handleMapScale
+ handleMapScale(ev) {
+   console.log(ev);
+   const { ne, sw, zoom, type } = ev;
+   ...
+ }
+</code></pre><p>之后，如果在地图上发生dragend，event的结果如下：<br><img src="./pic1.png"></p>
+<h2 id="常用地图基本类型"><a href="#常用地图基本类型" class="headerlink" title="常用地图基本类型"></a>常用地图基本类型</h2><h3 id="LngLat-：-经纬度坐标，确定地图上的一个点"><a href="#LngLat-：-经纬度坐标，确定地图上的一个点" class="headerlink" title="LngLat ： 经纬度坐标，确定地图上的一个点"></a>LngLat ： 经纬度坐标，确定地图上的一个点</h3><p>构造函数： AMap.LngLat(lng: 119.78, lat: 39.99);<br>生成一个经纬度为[119.78, 39.99]的地理坐标对象。<br>常用方法：  </p>
+<pre><code>- getLng()    获取经度
+- getLat()    获取纬度
+- offset(w:2,s:-3)   w经度，s纬度，参数为数字。将当前经纬度坐标值变化。经度是越向右越大，所以向右为正。同理，纬度越向上越大，所以向上为正。    
+- distance(lnglat: LngLat | [lng, lat])  当前经纬度与传入的经纬度的连线的地面距离
+- equals(lnglat:LngLat)
+</code></pre><h3 id="Bounds：经纬度范围矩形框"><a href="#Bounds：经纬度范围矩形框" class="headerlink" title="Bounds：经纬度范围矩形框"></a>Bounds：经纬度范围矩形框</h3><p>AMap.Bounds(southWest:LngLat1, northEast:LngLat2);<br>生成一个东北角是LngLat2，西南角是LngLat1  的矩形地物框。<br>常用方法：    </p>
+<pre><code>- contains(point: LngLat)   给出的经纬度点是否包含在矩形范围内
+- getCenter()
+- getSouthWest()
+- getNorthEast()
+</code></pre><h2 id="常用覆盖物"><a href="#常用覆盖物" class="headerlink" title="常用覆盖物"></a>常用覆盖物</h2><h3 id="AMap-Marker"><a href="#AMap-Marker" class="headerlink" title="AMap.Marker"></a>AMap.Marker</h3><ul>
+<li>构造：AMap.Marker({ markeroptions })  </li>
+<li>常用选项<br><strong>map</strong>:marker所在的地图<br><strong>position</strong>: LngLat类型，点在地图上的位置<br><strong>offset</strong>: 像素类型(-75，-75)，marker距离左上角的偏移<br><strong>content</strong>: string/object  这里可以自定义marker显示的内容，图片，svg等都可以。<br><strong>bubble</strong>: 将覆盖物的事件冒泡到地图上，默认false<br><strong>zIndex</strong>: 叠加顺序<br><strong>title</strong>: 鼠标滑过时，点标记的文字提示。<br><strong>extData</strong>: 用户自定义属性<br><strong>draggable</strong>: 标记点是否可以拖拽移动</li>
+<li>方法略多，这里就不写了，基本对应每个选项都会有个get，set方法。hide，show控制点标记的隐藏，还在map中。setMap比较有用，如果设为null，则在地图上移除当前Marker相关的div。还有一些移动类的应用，目前还没使用过，这里就不详述了，主要有：<code>moveAlong</code>, <code>moveTo</code>, <code>stopMove</code>, <code>pauseMove</code>, <code>resumeMove</code>。</li>
+<li>事件与地图对象基本一致，少了个ready。多了一些move的行为，<a href="http://lbs.amap.com/api/javascript-api/reference/overlay#Marker" target="_blank" rel="external">具体可参考</a></li>
+</ul>
+<h3 id="AMap-Polygon"><a href="#AMap-Polygon" class="headerlink" title="AMap.Polygon"></a>AMap.Polygon</h3><ul>
+<li>构造：AMap.Polygon({ options })  </li>
+<li><p>常用选项<br><strong>map</strong>:marker所在的地图<br><strong>path</strong>: 参数为，包含经纬度数组的数组.  </p>
+<pre><code>eg：[
+         [116.368904, 39.913423],
+        [116.382122, 39.901176],
+        [116.387271, 39.912501],
+        [116.398258, 39.904600]
+    ] 
+</code></pre></li>
+</ul>
+<p>  <strong>bubble</strong>: 将覆盖物的事件冒泡到地图上，默认false。<br>  <strong>zIndex</strong>: 叠加顺序, 默认比marker低。<br>  <strong>类似svg的多边形属性</strong>: strokeColor，strokeOpacity， strokeWeight， fillColor， fillOpacity， strokeStyle， strokeDasharray。<br>  <strong>extData</strong>: 自定义属性</p>
+<ul>
+<li>方法。对应path，extData， options都会有个get，set方法。hide，show控制多边形的隐藏，多边形还在map中。setMap比较有用，如果设为null，则在地图上移除当前polygon相关的div。getBounds,矩形范围对象，返回Bounds类型。getArea,获取多边形面积。contains(point:LngLat)，点是否在polygon内。</li>
+<li>事件很多，常用的又mouseover， click等。<a href="http://lbs.amap.com/api/javascript-api/reference/overlay#Polygon" target="_blank" rel="external">具体可参考</a>  </li>
+</ul>
+<h3 id="AMap-Circle"><a href="#AMap-Circle" class="headerlink" title="AMap.Circle"></a>AMap.Circle</h3><ul>
+<li>构造：AMap.Circle({ options })  </li>
+<li><p>常用选项<br><strong>map</strong>:marker所在的地图<br><strong>center</strong>: LngLat类型，圆心在地图上的位置<br><strong>radius</strong>: 半径，number类型，单位是米<br><strong>bubble</strong>: 将覆盖物的事件冒泡到地图上，默认false<br><strong>zIndex</strong>: 叠加顺序, 默认比marker低。<br><strong>extData</strong>: 用户自定义属性<br><strong>类似svg的多边形属性</strong>： 同上polygon</p>
+</li>
+<li><p>方法。对应center，extData， radius，options都会有个get，set方法。hide，show控制隐藏，还在map中。setMap同上。getBounds，圆外切矩形范围对象，返回Bounds类型。contains(point:LngLat)，点是否在圆内。</p>
+</li>
+<li>事件类型类似polygon  <a href="http://lbs.amap.com/api/javascript-api/reference/overlay#Circle" target="_blank" rel="external">具体可参考</a></li>
+</ul>
+<h3 id="AMap-Polyline"><a href="#AMap-Polyline" class="headerlink" title="AMap.Polyline"></a>AMap.Polyline</h3><ul>
+<li>构造：AMap.Marker({ markeroptions })  </li>
+<li>常用选项，与polygon差不多。多一些线条相关的内容，<a href="http://lbs.amap.com/api/javascript-api/reference/overlay#Polyline" target="_blank" rel="external">具体可参考</a></li>
+<li>方法和事件与polygon差不多</li>
+</ul>
+<h2 id="常用图层"><a href="#常用图层" class="headerlink" title="常用图层"></a>常用图层</h2><p>图层是位于最底层的模块，他可能在地图上的其他物件还没加载完就已经生成了。图层都需要地图以plugin的形式引进。  </p>
+<h3 id="AMap-Heatmap"><a href="#AMap-Heatmap" class="headerlink" title="AMap.Heatmap"></a>AMap.Heatmap</h3><p>heatmap是个plugin，需要添加plugin，在回调函数中生成AMap.Heatmap实例。</p>
+<pre><code>const heatmap;
+map.plugin([&quot;AMap.Heatmap&quot;], function() {
+  heatmap = new AMap.Heatmap(map, {
+        radius: 25, //给定半径
+        opacity: [0, 0.8]
+    });
+});
+</code></pre><p>上面的config，包含<code>radius``gradient``opacity``zooms</code>(支持的缩放级别，不在范围内，就不显示热力图了)<br>渐变可以按照如下设置  </p>
+<pre><code>gradient: { 0.4: &apos;red&apos;, 0.8: &apos;yellow&apos;, 1: &apos;blue&apos;}
+</code></pre><p><strong>方法</strong><br>与覆盖物的差不多，除了，  </p>
+<pre><code>addDataPoint(lng: Lng, lat: Lat, count: number)  
+setDataSet(data: obj, url:jsonp格式数据的服务地址，urlDataParser:可以传递函数进行数据转化) 
+// 这两个可以配合zoom，不同的zoom，热力图对应的数据集不同。 
+</code></pre><p>其中，data格式为：</p>
+<pre><code>{ max: number,
+  data: [
+  { lng: 116.7, lat: 39.9, count: 10 }, 
+  { lng: 116.7, lat: 39.9, count: 10 }],
+}
+</code></pre><h3 id="AMap-CustomLayer"><a href="#AMap-CustomLayer" class="headerlink" title="AMap.CustomLayer"></a>AMap.CustomLayer</h3><p>同样需要plugin来引入。</p>
+<p>给出的属性和方法很少，但是功能强大，需要自己开发，<a href="http://lbs.amap.com/api/javascript-api/example/layers/custom-layer/" target="_blank" rel="external">参考实例</a>  </p>
+<p>一般是自己做一些canvas，然后挂载在map上即可。<br>自定义图层有个render属性？使其等于绘制函数，就可以在地图上绘制出来。</p>
+<h2 id="搜索服务"><a href="#搜索服务" class="headerlink" title="搜索服务"></a>搜索服务</h2><p>支持搜索服务脱离地图使用，即使用搜索服务不再需要先实例化地图。通过AMap.plugin方法，加载需要的服务</p>
+<h3 id="AMap-Autocomplete"><a href="#AMap-Autocomplete" class="headerlink" title="AMap.Autocomplete"></a>AMap.Autocomplete</h3><ul>
+<li><p>常用选项：<br><strong>city:</strong>输入提示被限定的城市<br><strong>citylimit:</strong> 是否强制限制在设置的城市内搜索<br><strong>input:</strong>指定一个输入框，内容则作为input的id，在input输入文字后，会自动生成一个下拉选择列表。</p>
+</li>
+<li><p>search方法，可以结合他的search方法，获取数据，然后自己render样式~~</p>
+<p>AutocompleteResult对象： </p>
+<pre><code>{ info： 状态说明,
+  count: 输入提示条数,
+  tips: [
+    { name: 名称, district: 所属区域, ,adcode: 区域编码},
+    { name: 名称, district: 所属区域, ,adcode: 区域编码}...
+  ]
+}
+</code></pre></li>
+</ul>
+<p>通常autocomplete配合placeSearch进行使用的</p>
+<h3 id="AMap-PlaceSearch"><a href="#AMap-PlaceSearch" class="headerlink" title="AMap.PlaceSearch"></a>AMap.PlaceSearch</h3><ul>
+<li><p>常用选项：<br><strong>city:</strong>输入提示被限定的城市<br><strong>citylimit:</strong> 是否强制限制在设置的城市内搜索<br><strong>type:</strong>兴趣点类别，可以通过setType设置<br><strong>pageSize:</strong>单页显示结果条数<br><strong>extensions:</strong> ‘all’ 返回基本+详细信息<br><strong>panel&amp;renderStyle</strong>结果列表的html容器id，或者容器元素，结果列表将在给出的容器中进行展示，自己可以render样式。</p>
+</li>
+<li><p>可用方法见<a href="http://lbs.amap.com/api/javascript-api/reference/search#m_AMap.PlaceSearch" target="_blank" rel="external">参考</a>吧</p>
+</li>
+</ul>
+<p>上个search使用示例：  </p>
+<pre><code>html： 
+&lt;img
+  className={styles.searchIcon}
+  src={searchIcon}
+  alt=&quot;search&quot;
+  onClick={() =&gt; this.handleSearch()}
+/&gt;
+
+js:
+handleSearch() {
+// this.state.placeSearch是个AMap.Autocomplete实例
+    this.state.placeSearch.search(this.refs.searchInput.value,             this.handleSearchSelect);
+ }
+
+ handleSearchSelect(search, result) {
+    if (result.info === &apos;OK&apos;) {
+      // mapInstance是个封装了AMap的对象。
+      const mapIns = mapInstance.getter();
+      // 自定义搜索结果的marker样式。并绘制在地图上
+      this.generateSearchMarkers(result.poiList);
+      if (result.poiList.pois.length &gt; 0) {
+        const { lng, lat } = result.poiList.pois[0].location;
+        // 将map的中心定位到获取到的第一个poi的位置上。
+        mapIns.setCenter([lng, lat]);
+        mapIns.zoomIn();
+      }
+    }
+  }
+</code></pre><p> 如果查到结果searchResult有以下内容：<br> <img src="/Users/zcx/Desktop/屏幕快照 2017-05-18 下午2.38.49.png"></p>
+<p>其他还有好多具体的搜索的服务。由于没有用到，就没看。。。</p>
+<h2 id="信息窗体"><a href="#信息窗体" class="headerlink" title="信息窗体"></a>信息窗体</h2><h3 id="AMap-InfoWindow"><a href="#AMap-InfoWindow" class="headerlink" title="AMap.InfoWindow"></a>AMap.InfoWindow</h3><p>用于在地图上弹出一个详细信息展示窗体，地图上只允许同时展示1个信息窗体  </p>
+<ul>
+<li>属性<br><strong>isCustom：</strong> 是否自定义窗体，true 则完全按照content中的规定来显示<br><strong>autoMove：</strong> 将窗体完全展现在视图中。<br><strong>closeWhenClickMap: </strong>鼠标点击地图后是否关闭信息窗体<br><strong>position: </strong>信息窗体显示位置，类型为经纬度对象  </li>
+<li>方法事件类似polygon，有一些属性的get，set方法，open，close方法。</li>
+</ul>
+<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><h3 id="AMap-CitySearch"><a href="#AMap-CitySearch" class="headerlink" title="AMap.CitySearch"></a>AMap.CitySearch</h3><p>项目中用到这个api。它主要是根据ip返回对应的城市信息，根据输入ip或自动获取ip来获取城市信息。<br>该api也是个plugin，可以在初始loader地图的时候，就将其配置进去，将脚本加载时的代码。  </p>
+<p>两个方法：<br>getLocalCity((status, citySearchResult) =&gt; {…})<br>getCityById(ip, (status, citySearchResult) =&gt; {})</p>
+<p>例子：   </p>
+<pre><code>// citysearch部分代码，省略地图实例了，用mapIns代替
+citysearch.getLocalCity((status, result) =&gt; {
+    if (status === &apos;complete&apos; &amp;&amp; result.info === &apos;OK&apos;) {
+      if (result &amp;&amp; result.city &amp;&amp; result.bounds) {
+        const city = R.slice(0, -1, result.city);
+        const cindex = R.indexOf(city, R.pluck(&apos;cityName&apos;, cityList));
+        const ccode = R.pluck(&apos;cityCode&apos;, cityList);
+        if (cindex !== -1 &amp;&amp; city !== &apos;北京&apos;) {
+          mapIns.setCity(city);
+          mapIns.setZoom(11);
+        }
+      }
+    }
+});
+</code></pre><p>citySearchResult 的属性：city， bounds</p>
+<h2 id="位置解析"><a href="#位置解析" class="headerlink" title="位置解析"></a>位置解析</h2><h3 id="AMap-Geocoder"><a href="#AMap-Geocoder" class="headerlink" title="AMap.Geocoder"></a>AMap.Geocoder</h3><p>Geocoder是进行地址描述与地理坐标间的相互转换。也就是，给出一个地址名称，转换为地理坐标的经纬度等信息。或者给出一个经纬度，确定这个点的地址名称信息。  </p>
+<p>相关方法：</p>
+<ul>
+<li><p>获取地理编码：<br>getLocation(address:String, (status:String,result:info/GeocodeResult) =&gt; {})</p>
+</li>
+<li><p>逆地理编码：<br>getAddress(location:LngLat|Array.<lnglat>,<br>(status:String,result:info/ReGeocodeResult) =&gt; {})<br>// 最多20个地址数组。</lnglat></p>
+</li>
+</ul>
+<p>s<br>用的比较多的是逆地理编码，比如自己做一个在地图上点击，然后找出该位置的相关信息。<br>逆地理编码的返回结果属性：想展示什么，就从以下选择吧<br><img src="./pic3.png"></p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2017/05/15/css3实现3d效果/" data-toggle="tooltip" data-placement="top" title="css3实现3d效果">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                </ul>
+
+                
+
+                
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#js" title="js">js</a>
+                        
+                          <a class="tag" href="/tags/#地图api" title="地图api">地图api</a>
+                        
+                          <a class="tag" href="/tags/#总结" title="总结">总结</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "/";
+    var disqus_identifier = "https://misssweety.github.io/2017/05/18/高德地图api使用总结/";
+    var disqus_url = "https://misssweety.github.io/2017/05/18/高德地图api使用总结/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/test">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/test">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/MissSweety">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; MissSweety&#39;s Blog 2017 
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://misssweety.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="https://misssweety.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
