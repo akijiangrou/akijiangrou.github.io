@@ -13,11 +13,11 @@
 
     <title>
         
-          前端页面-网络性能 - MissSweety的博客 | MissSweety&#39;s Blog
+          git实用指令 - MissSweety的博客 | MissSweety&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://misssweety.github.io/2017/05/25/网络优化/">
+    <link rel="canonical" href="https://misssweety.github.io/2017/06/02/git实用指令/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -165,14 +165,14 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                          <a class="tag" href="/tags/#timing" title="timing">timing</a>
+                          <a class="tag" href="/tags/#git" title="git">git</a>
                         
                     </div>
-                    <h1>前端页面-网络性能</h1>
+                    <h1>git实用指令</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by Jessica on
-                        2017-05-25
+                        2017-06-02
                     </span>
                 </div>
             </div>
@@ -191,90 +191,39 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="前端页面-网络性能"><a href="#前端页面-网络性能" class="headerlink" title="前端页面-网络性能"></a>前端页面-网络性能</h1><p>一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。  </p>
-<p>前一段时间，自己项目的网站在加载和渲染的时候表现很奇怪，遂仔细用起chrome的network以及timeline面板，期待找到问题的根源。用的时候发现很多自己缺失的知识，于是就有这篇文章记录查缺补漏的内容。</p>
-<p>这里先从网络性能角度来看，它将从初始阶段影响网站的性能。<br>下面会以chrome中的network面板出发，从三点介绍网络性能相关内容，分别包括：<strong>主要网络属性</strong>，<strong>如何在chrome devtool中查看网络性能</strong>，<strong>如何优化</strong>  </p>
-<h2 id="主要网络属性"><a href="#主要网络属性" class="headerlink" title="主要网络属性"></a>主要网络属性</h2><p>这里主要关注timing这个属性。某个请求的timing如下：<br><img src="./屏幕快照 2017-05-23 下午8.33.48.png"></p>
-<p>在network页面点击具体的请求url即可进入上述页面。</p>
-<p>可以看到一条资源从列队、停滞、代理协议、初始化连接、SSL协议、发送request、等待及内容下载所耗的时间。 </p>
-<h3 id="主要属性"><a href="#主要属性" class="headerlink" title="主要属性"></a>主要属性</h3><ul>
-<li>Queueing时间：请求排队的时间，出现原因有：更高优先级的请求，或者在HTTP/1.0和HTTP/1.1中，已经有6个同源请求在进行中</li>
-<li>Stalled阻塞时间：原因如上queueing</li>
-<li>DNS Lookup. 浏览器解析请求的ip地址需要的时间</li>
-<li>Proxy negotiation. 与代理服务器通信需要的时间</li>
-<li>Initial Connection / connecting: 建立连接的过程，包含TCP握手/重试，商定SSL</li>
-<li>SSL: 完成SSL握手阶段</li>
-<li>Request sent：发送请求耗时，通常只要不到1ms的时间</li>
-<li>ServiceWorker Preparation.浏览器启动服务worker的时间</li>
-<li>Request to ServiceWorker.The request is being sent to the service worker.</li>
-<li>Waiting (TTFB). 收到首字节的时间。</li>
-<li>Content Download. 浏览器接收响应数据的时间。</li>
-</ul>
-<h3 id="performance-api"><a href="#performance-api" class="headerlink" title="performance api"></a>performance api</h3><p>上面这些资源数据是根据js的性能api计算的。<br><strong>window.performance.getEntries()</strong> 获取资源加载时间列表。每个performanceResourceTiming大概如下：<br><img src="./屏幕快照 2017-05-23 下午8.34.34.png"> </p>
-<ul>
-<li>connectEnd：浏览器与服务器完成建立用以检索资源的网络连接的时间戳  </li>
-<li>connectStart：浏览器与服务器开始建立用以检索资源的网络连接的时间戳</li>
-<li>damainLookupEnd：浏览器完成资源的域名解析的时间戳</li>
-<li>damainLookupStart：浏览器开始进行资源的域名解析的时间戳</li>
-<li>duration：资源请求从开始到结束的时间差</li>
-<li>entryType：PerformanceEntry对象的类型，该对象封装一个单一的性能指标作为性能表的一部分，此类型是<code>frame</code>, <code>mark</code>, <code>measure</code>, <code>navigation</code>, <code>resource</code>,<code>server</code>的其中一个。</li>
-<li>fetchStart：浏览器开始获取资源的时间戳</li>
-<li>initiatorType：资源文件的类型</li>
-<li>name：资源的url</li>
-<li>redirectEnd：接收到重定向资源的最后一个响应字节的时间戳</li>
-<li>redirectStart：启动重定向以获取资源的开始时间戳</li>
-<li>requestStart：浏览器从服务器请求资源的开始时间戳</li>
-<li>responseEnd：浏览器接收到资源最后一个字节的时间戳，或者关闭传输连接的时间戳</li>
-<li>responseStart：浏览器接收到服务器的响应的第一个字节的时间戳</li>
-<li>secureConnectionStart：浏览器开始握手协议，以保护当前连接的安全性，握手开始的时间</li>
-<li>startTime：浏览器开始获取资源前的时间戳(整个过程的开始时间)</li>
-<li>workerStart：如果当前上下文是”worker”，返回开始获取资源的时间戳，否则返回0(应该是应用于双工通信的)</li>
-</ul>
-<p>下面这张图定义了PerformanceResourceTiming 接口的各个时间属性：</p>
-<p><img src="./resource-timing-overview-1.png"></p>
-<p><strong>performance.timing()</strong> 获取页面整体的时间参数<br><img src="./屏幕快照 2017-05-24 上午11.56.02.png"></p>
-<p>这个api可以参考这个非正式的标准规范<a href="https://www.w3.org/TR/resource-timing/" target="_blank" rel="external">Resouce timing - w3c</a>   <a href="https://www.w3.org/TR/performance-timeline/#sec-PerformanceEntry-interface" target="_blank" rel="external">old one</a></p>
-<p>该规范定义了一个用于Web应用程序的接口，这个接口可以访问文档需要的资源的完整时序信息。 接口的详细说明这里就不一一介绍了，细节了解需要自己去读标准。 下面只挑和我们相关的内容。 </p>
-<p>由上面这个图，我们可以获取到chrome网络面板中，timing的相关信息，举个例子：   </p>
-<p>页面整体的时间参数 （mta应该有用到以下参数） </p>
-<pre><code>pageloadtime = t.loadEventStart - t.navigationStart,  
-dns = t.domainLookupEnd - t.domainLookupStart,  
-tcp = t.connectEnd - t.connectStart,  
-ttfb = t.responseStart - t.navigationStart; 
-</code></pre><p>某个资源的时间参数 </p>
-<pre><code>var r0 = performance.getEntriesByType(&quot;resource&quot;)[0],
-    loadtime = r0.duration,
-    dns = r0.domainLookupEnd - r0.domainLookupStart,
-    tcp = r0.connectEnd - r0.connectStart,
-    ttfb = r0.responseStart - r0.startTime;
-</code></pre><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>还有一些其他的测量时间的问题，请参考<a href="http://mutongwu.iteye.com/blog/2164917?utm_source=tuicool" target="_blank" rel="external">performance的资源计时统计</a><br>其他方法使用，参考<a href="http://www.alloyteam.com/2015/09/explore-performance/" target="_blank" rel="external">初探performance-监控网页与程序性能</a>  </p>
-<h2 id="如何在chrome-devtool中查看网络性能"><a href="#如何在chrome-devtool中查看网络性能" class="headerlink" title="如何在chrome devtool中查看网络性能"></a>如何在chrome devtool中查看网络性能</h2><p>在chrome devtool中，我们可以模拟各种网络环境，可以过滤请求，查看http请求信息，了解dom加载时间，cookie信息，资源的上下游等等。</p>
-<p>内容略多，参考这里，chrome developers 官网<a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/" target="_blank" rel="external">测量网络性能</a><br>英文不好的可以看这个：<a href="http://www.jianshu.com/p/471950517b07" target="_blank" rel="external">Chrome DevTools 之 Network，网络加载分析利器</a></p>
-<h2 id="如何优化"><a href="#如何优化" class="headerlink" title="如何优化"></a>如何优化</h2><p>网站加载时间对用户的影响：<br>0.1秒：秒开<br>100-300 ：比较小的可察觉的延迟<br>300-1s：Machine is working<br>1秒：还能接受，但是已经不开心了<br>10秒：什么破玩意，不想看了<br>chrome developer里提到，目标是250ms</p>
-<p>优化主要从四个属性入手，以下基本翻译自chrome devtool </p>
-<h3 id="Queued-or-stalled-requests"><a href="#Queued-or-stalled-requests" class="headerlink" title="Queued or stalled requests"></a>Queued or stalled requests</h3><p>这两个指标如果时间很长，说明很多资源等待<br><strong>造成的原因</strong>：访问同一个域名的请求太多，对于http1.1来说，每个host最多同时支持6个tcp连接。</p>
-<p><strong>解决</strong>：</p>
-<ul>
-<li>域名分片：将资源放在不同的域名中，用来克服浏览器对同一个域名访问的限制，但是不能过多因为dns解析也需要时间  </li>
-</ul>
-<p><strong>[备注]</strong>domain sharding (域名分片)（<a href="https://wp-rocket.me/blog/difference-cdn-and-domain-sharding/" target="_blank" rel="external">和cdn的不同</a>域名分片是一种分布方式，是将资源分布在不同的域名中达到克服浏览器访问限制的目的；cdn则是在不同的服务器上托管世界各地的网站资源。<br>）</p>
-<ul>
-<li>使用http2.0<br>让重要的请求先发起，不重要的remove或者推迟。</li>
-</ul>
-<h3 id="Slow-Time-To-First-Byte-TTFB"><a href="#Slow-Time-To-First-Byte-TTFB" class="headerlink" title="Slow Time To First Byte (TTFB)"></a>Slow Time To First Byte (TTFB)</h3><p><strong>起因：</strong> client与server的连接慢；server响应太慢</p>
-<p><strong>解决：</strong></p>
-<ul>
-<li>连接慢， 使用cdn，或者换个服务商</li>
-<li>如果server慢，优化数据库查询，用缓存，修改server配置等。</li>
-</ul>
-<h3 id="Slow-content-download"><a href="#Slow-content-download" class="headerlink" title="Slow content download"></a>Slow content download</h3><p><strong>原因：</strong>网络不好；内容过大</p>
-<p><strong>解决：</strong></p>
-<ul>
-<li>连接慢， 使用cdn，或者换个服务商；</li>
-<li>优化请求使数据更少。</li>
-</ul>
-<p><hr><br>以上是关于网络层面的网站优化内容，与前端人员开发技术能力相关性不大，需要一些网络层面以及后台来支持。当我们发现网页加载过慢的时候，可以先从网络这边入手，把网络和连接的基础问题排查后，再从优化自己写的代码入手。</p>
-
+                <h1 id="实用指令"><a href="#实用指令" class="headerlink" title="实用指令"></a>实用指令</h1><h2 id="回滚相关"><a href="#回滚相关" class="headerlink" title="回滚相关"></a>回滚相关</h2><p>最近又好好复习了下reset指令。<br>一般这些回滚的操作最好不要用，尤其是在多人开发的时候，但是偶尔想用，还有点模糊了，这次在记录一下。</p>
+<h3 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h3><p>步骤：<br>readme中分别添加  </p>
+<p>test1<br>tess2<br>test3  </p>
+<p>每一句添加一个commit<br>先看下log</p>
+<pre><code>git log
+</code></pre><p><img src="./reset-1.png" width="400px"></p>
+<p>暂存区有其他修改，但没有add。</p>
+<p>此时，<strong>我改错了</strong>，想<strong>回退到test1</strong>的状态。用</p>
+<pre><code>git reset --hard 46670a
+</code></pre><p>执行后，暂存区的内容也清空了，readme中，只有test1 了。<br>查看git log前两个提交也不见了。</p>
+<p><img src="./reset-2.png" width="400px"></p>
+<p>假如我后悔了，我又不想回退了，我还想在test3的情况下修改。</p>
+<p>git reflog<br><img src="./reset-3.png" width="400px"><br>可以看到指令的log，从这里可以找回之前回退的相关commit<br>这里会记录着还未被回收的commit号。<br>此次，我把内容添加到暂存区了，也就是add过了，<br>再次使用reset，回滚到原来的test3的状态</p>
+<pre><code>git reset --hard 9d91688
+</code></pre><p>内容回到test3 处的commit，并且，之前add到暂存区的都没了</p>
+<p>真想回滚，用<code>reset</code>就够了。</p>
+<h3 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h3><p>其实是取消某个提交的意思。<br>revert  功能：revert是撤销某一次的提交，并不是回滚到这次提交时的状态！！！  </p>
+<p>revert 的历史保留在commit中</p>
+<h3 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h3><p>用来合并多个commits<br>场景，我们自己在本地改了好多乱七八糟的，但是并不想让所有的commit信息，比如fix之类的都提交，这个时候可以用rebase 配合 squash ，合并commit。</p>
+<p>过程如下：<br>先</p>
+<pre><code>git log：
+</code></pre><p><img src="./rebase-1.png" width="400px"></p>
+<p>我们想将0fad78ccc3到现在的commit都合并, 那么先rebase到那个不变动的commit</p>
+<pre><code>git rebase -i 4c9bc3a7
+</code></pre><p>如下：<br><img src="./rebase-2.png" width="400px"></p>
+<p>需要留一个pick，其他都改成squash, 如下<br><img src="./rebase-3.png" width="400px"></p>
+<p><code>esc</code> <code>:wq</code><br>保存后，这样就把其他的提交都合并了。自动跳到如下界面(这里可以重写合并的commit内容了)<br><img src="./rebase-4.png" width="400px"></p>
+<p>修改完毕，<code>esc</code>  <code>:wq</code> 保存<br><img src="./rebase-5.png" width="400px"></p>
+<p>最后，看下git log，干净了！！！！</p>
+<h3 id="远端分支回滚"><a href="#远端分支回滚" class="headerlink" title="远端分支回滚"></a>远端分支回滚</h3><p>如果远端对应的分支也想修改，必须要—force</p>
+<pre><code>git push --force origin branch-name
+</code></pre><h3 id="刪除远端分支"><a href="#刪除远端分支" class="headerlink" title="刪除远端分支"></a>刪除远端分支</h3><pre><code>git push origin --delete target_branch
+</code></pre>
 
                 <hr>
 
@@ -283,13 +232,9 @@ ttfb = t.responseStart - t.navigationStart;
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2017/05/18/高德地图api使用总结/" data-toggle="tooltip" data-placement="top" title="高德地图api使用总结">&larr; Previous Post</a>
+                            <a href="/2017/05/25/网络优化/" data-toggle="tooltip" data-placement="top" title="前端页面-网络性能">&larr; Previous Post</a>
                         </li>
                     
-                    
-                        <li class="next">
-                            <a href="/2017/06/02/git实用指令/" data-toggle="tooltip" data-placement="top" title="git实用指令">Next Post &rarr;</a>
-                        </li>
                     
                 </ul>
 
@@ -321,7 +266,7 @@ ttfb = t.responseStart - t.navigationStart;
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#timing" title="timing">timing</a>
+                          <a class="tag" href="/tags/#git" title="git">git</a>
                         
                     </div>
                 </section>
@@ -342,8 +287,8 @@ ttfb = t.responseStart - t.navigationStart;
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "/";
-    var disqus_identifier = "https://misssweety.github.io/2017/05/25/网络优化/";
-    var disqus_url = "https://misssweety.github.io/2017/05/25/网络优化/";
+    var disqus_identifier = "https://misssweety.github.io/2017/06/02/git实用指令/";
+    var disqus_url = "https://misssweety.github.io/2017/06/02/git实用指令/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
