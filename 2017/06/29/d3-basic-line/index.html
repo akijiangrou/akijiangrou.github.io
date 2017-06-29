@@ -13,11 +13,11 @@
 
     <title>
         
-          git实用指令 - MissSweety的博客 | MissSweety&#39;s Blog
+          d3-basic-line - MissSweety的博客 | MissSweety&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://misssweety.github.io/2017/06/02/git实用指令/">
+    <link rel="canonical" href="https://misssweety.github.io/2017/06/29/d3-basic-line/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -165,14 +165,18 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                          <a class="tag" href="/tags/#git" title="git">git</a>
+                          <a class="tag" href="/tags/#d3" title="d3">d3</a>
+                        
+                          <a class="tag" href="/tags/#line" title="line">line</a>
+                        
+                          <a class="tag" href="/tags/#可视化" title="可视化">可视化</a>
                         
                     </div>
-                    <h1>git实用指令</h1>
+                    <h1>d3-basic-line</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by Jessica on
-                        2017-06-02
+                        2017-06-29
                     </span>
                 </div>
             </div>
@@ -191,39 +195,76 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="实用指令"><a href="#实用指令" class="headerlink" title="实用指令"></a>实用指令</h1><h2 id="回滚相关"><a href="#回滚相关" class="headerlink" title="回滚相关"></a>回滚相关</h2><p>最近又好好复习了下reset指令。<br>一般这些回滚的操作最好不要用，尤其是在多人开发的时候，但是偶尔想用，还有点模糊了，这次在记录一下。</p>
-<h3 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h3><p>步骤：<br>readme中分别添加  </p>
-<p>test1<br>tess2<br>test3  </p>
-<p>每一句添加一个commit<br>先看下log</p>
-<pre><code>git log
-</code></pre><p><img src="./reset-1.png" width="400px"></p>
-<p>暂存区有其他修改，但没有add。</p>
-<p>此时，<strong>我改错了</strong>，想<strong>回退到test1</strong>的状态。用</p>
-<pre><code>git reset --hard 46670a
-</code></pre><p>执行后，暂存区的内容也清空了，readme中，只有test1 了。<br>查看git log前两个提交也不见了。</p>
-<p><img src="./reset-2.png" width="400px"></p>
-<p>假如我后悔了，我又不想回退了，我还想在test3的情况下修改。</p>
-<p>git reflog<br><img src="./reset-3.png" width="400px"><br>可以看到指令的log，从这里可以找回之前回退的相关commit<br>这里会记录着还未被回收的commit号。<br>此次，我把内容添加到暂存区了，也就是add过了，<br>再次使用reset，回滚到原来的test3的状态</p>
-<pre><code>git reset --hard 9d91688
-</code></pre><p>内容回到test3 处的commit，并且，之前add到暂存区的都没了</p>
-<p>真想回滚，用<code>reset</code>就够了。</p>
-<h3 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h3><p>其实是取消某个提交的意思。<br>revert  功能：revert是撤销某一次的提交，并不是回滚到这次提交时的状态！！！  </p>
-<p>revert 的历史保留在commit中</p>
-<h3 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h3><p>用来合并多个commits<br>场景，我们自己在本地改了好多乱七八糟的，但是并不想让所有的commit信息，比如fix之类的都提交，这个时候可以用rebase 配合 squash ，合并commit。</p>
-<p>过程如下：<br>先</p>
-<pre><code>git log：
-</code></pre><p><img src="./rebase-1.png" width="400px"></p>
-<p>我们想将0fad78ccc3到现在的commit都合并, 那么先rebase到那个不变动的commit</p>
-<pre><code>git rebase -i 4c9bc3a7
-</code></pre><p>如下：<br><img src="./rebase-2.png" width="400px"></p>
-<p>需要留一个pick，其他都改成squash, 如下<br><img src="./rebase-3.png" width="400px"></p>
-<p><code>esc</code> <code>:wq</code><br>保存后，这样就把其他的提交都合并了。自动跳到如下界面(这里可以重写合并的commit内容了)<br><img src="./rebase-4.png" width="400px"></p>
-<p>修改完毕，<code>esc</code>  <code>:wq</code> 保存<br><img src="./rebase-5.png" width="400px"></p>
-<p>最后，看下git log，干净了！！！！</p>
-<h3 id="远端分支回滚"><a href="#远端分支回滚" class="headerlink" title="远端分支回滚"></a>远端分支回滚</h3><p>如果远端对应的分支也想修改，必须要—force</p>
-<pre><code>git push --force origin branch-name
-</code></pre><h3 id="刪除远端分支"><a href="#刪除远端分支" class="headerlink" title="刪除远端分支"></a>刪除远端分支</h3><pre><code>git push origin --delete target_branch
-</code></pre>
+                <h1 id="d3-折线图"><a href="#d3-折线图" class="headerlink" title="d3-折线图"></a>d3-折线图</h1><p>从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识</p>
+<h2 id="需要的知识"><a href="#需要的知识" class="headerlink" title="需要的知识"></a>需要的知识</h2><ul>
+<li><a href="https://github.com/d3/d3-scale" target="_blank" rel="external">scale</a></li>
+<li><a href="https://github.com/d3/d3-array/blob/master/README.md#extent" target="_blank" rel="external">extent</a></li>
+<li><a href="https://github.com/d3/d3/blob/master/API.md#transitions-d3-transition" target="_blank" rel="external">transition</a></li>
+<li><a href="https://github.com/d3/d3-shape/blob/master/README.md#lines" target="_blank" rel="external">line</a></li>
+<li><a href="https://github.com/d3/d3-shape/blob/master/README.md#curves" target="_blank" rel="external">curve</a></li>
+<li><a href="https://github.com/d3/d3-axis" target="_blank" rel="external">axis</a></li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>获取svg容器</p>
+<pre><code>&lt;svg width=&quot;500&quot; height=&quot;270&quot; class=&quot;testline&quot;&gt;&lt;/svg&gt;
+
+const svg = d3.select(&apos;.testline&apos;);
+const margin = {top: 20, right: 20, bottom: 20, left: 20};
+const width = +svg.attr(&quot;width&quot;) - margin.left - margin.right;
+const height = +svg.attr(&quot;height&quot;) - margin.top - margin.bottom;
+const g = svg.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(${margin.left},${margin.top})`);
+</code></pre></li>
+</ol>
+<ol>
+<li><p>x，y轴缩放<br>这里，如果x轴是与时间有关的，可以直接使用d3提供的scaleTime()来实现时间的转换。关于scale还有好多内容，待总结。这里需要确定两个轴，缩放的类型，以及xy轴图像在屏幕中的实际宽高值。<br>这里的<code>x</code>, <code>y</code> 其实是函数（根据给出的数据，得出该数据的x，y坐标值）。</p>
+<pre><code>const x = d3.scaleTime().range([0, width]);
+const y = d3.scaleLinear().range([height, 0]);
+</code></pre></li>
+<li><p>line<br>line的生成就需要上面的轴缩放函数。 这里是因为date函数可以接受ms的unix时间戳，所以乘以1000.这里也可以加一些点与点之间的连接方式。 <code>curveMonotoneX</code>平滑, <code>curveLinear</code>线性。需要两步，line函数生成。line呈现。<br>关于line的展示，需要把数据绑定到path标签上，将line函数运用到path的d属性上。就可以绘制出线了，transition这里是为了实现简单的动画效果。<br>注意，line展示的时候，data([data]) 也可应用datum(data)，前者删了数组标记是不可以的。不知道为什么</p>
+<pre><code>const line = d3.line()
+  .x((d, i) =&gt; x(d.ts * 1000))
+  .y(d =&gt; y(d.y))
+  .curve(d3.curveMonotoneX);
+
+// line 的展示。
+g.append(&apos;path&apos;)
+      .data([data]).attr(&apos;fill&apos;, &apos;none&apos;).attr(&apos;d&apos;, line).attr(&apos;stroke&apos;, &apos;#f33155&apos;)
+      .transition(500)
+      .attr(&apos;stroke-width&apos;, 3);
+</code></pre></li>
+<li><p>x坐标轴，y坐标轴<br>domain是将坐标轴对应的真实数据连接起来，一般就是将坐标轴要展示的数据的最大最小值放进来。<code>d3.extent</code>可以自动的算出数组内的最小，最大值，很方便。如下x轴的计算。<br>v4支持axisBottom，axisTop，axisRight，axisLeft等快捷操作，就是说明坐标轴的展现方式。<br>规定好domain后，可以将轴展示在图像中了。给出selector然后调用call(如果是x轴，记得把上面x轴函数传进来，y轴同理)，同时，这里可以规定轴线样式和<a href="https://github.com/d3/d3-axis" target="_blank" rel="external">刻度</a>的相关内容。下面的例子是规定了，最大最小值中间还可以有多少个刻度。</p>
+<pre><code>x.domain(d3.extent(data, d =&gt; d.ts * 1000));
+y.domain([0, d3.max(data, d =&gt; d.y * 1.1 )]);
+// Add the X Axis
+g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,${height})`)
+  .call(d3.axisBottom(x).ticks(5));
+// Add the Y Axis
+g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
+  .call(d3.axisLeft(y).ticks(8));
+</code></pre></li>
+<li><p>线上打点<br>线上打点，主要是通过line函数，获取点的center位置。需要将data绑定到circle标签上，最后根据line函数绘制出来。</p>
+<pre><code>g.selectAll(&quot;.dot&quot;)
+.data(data).enter().append(&quot;circle&quot;).attr(&apos;class&apos;, &apos;.dot&apos;)
+.attr(&quot;cx&quot;, line.x()).attr(&quot;cy&quot;, line.y())
+.transition(500)
+.attr(&quot;r&quot;, 3.5).attr(&apos;fill&apos;, &apos;white&apos;).attr(&apos;stroke&apos;, &apos;#f33155&apos;);
+</code></pre></li>
+</ol>
+<ol>
+<li><p>数据label<br>类似的，label也是根据line函数获取位置，然后将要现实的值，用text属性显示出来。</p>
+<pre><code>g.selectAll(&quot;.text&quot;)
+    .data(this.data).enter().append(&quot;text&quot;)
+    .attr(&apos;class&apos;, &apos;.text&apos;).attr(&apos;font-size&apos;, 12)
+    .attr(&quot;x&quot;, line.x()).attr(&quot;y&quot;, line.y())
+    .attr(&apos;dx&apos;, -15).attr(&apos;dy&apos;, 7)
+    .text(function(d) { return d.y})
+    .transition(500)
+    .attr(&apos;fill&apos;, &apos;#333&apos;).attr(&apos;stroke&apos;, &apos;#333&apos;);
+</code></pre></li>
+</ol>
+<p>当绑定了data数据后，x函数，y函数，会自动按顺序获取数据。</p>
+<p>最后结果：<br><a href="https://codepen.io/akixiao/pen/eRyBdY" target="_blank" rel="external">参考</a><br><img src="./line.png"></p>
+
 
                 <hr>
 
@@ -232,13 +273,9 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2017/05/25/网络优化/" data-toggle="tooltip" data-placement="top" title="前端页面-网络性能">&larr; Previous Post</a>
+                            <a href="/2017/06/02/git实用指令/" data-toggle="tooltip" data-placement="top" title="git实用指令">&larr; Previous Post</a>
                         </li>
                     
-                    
-                        <li class="next">
-                            <a href="/2017/06/29/d3-basic-line/" data-toggle="tooltip" data-placement="top" title="d3-basic-line">Next Post &rarr;</a>
-                        </li>
                     
                 </ul>
 
@@ -270,7 +307,11 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#git" title="git">git</a>
+                          <a class="tag" href="/tags/#d3" title="d3">d3</a>
+                        
+                          <a class="tag" href="/tags/#line" title="line">line</a>
+                        
+                          <a class="tag" href="/tags/#可视化" title="可视化">可视化</a>
                         
                     </div>
                 </section>
@@ -291,8 +332,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "/";
-    var disqus_identifier = "https://misssweety.github.io/2017/06/02/git实用指令/";
-    var disqus_url = "https://misssweety.github.io/2017/06/02/git实用指令/";
+    var disqus_identifier = "https://misssweety.github.io/2017/06/29/d3-basic-line/";
+    var disqus_url = "https://misssweety.github.io/2017/06/29/d3-basic-line/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
