@@ -1,197 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<html>
 <head>
+    
+
+    
+
+    
+
+
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keyword"  content="">
-    <link rel="shortcut icon" href="/img/favicon.ico">
+    
+    
+    
+    <title>前端页面-网络性能 | MissSweety&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="timing">
+    <meta name="description" content="前端页面-网络性能一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。   前一段时间，自己项目的网站在加载和渲染的时候表现很奇怪，遂仔细用起chrome的network以及timeline面板，期待找到问题的根源。用的时候发现很多自己缺失的知识，于是就有这篇文章记录查缺补漏的内容。 这里先从网络性能角度来看，它将从初始阶段影响网站的性能。下面会以chrom">
+<meta name="keywords" content="timing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端页面-网络性能">
+<meta property="og:url" content="https://misssweety.github.io/2017/05/25/网络优化/index.html">
+<meta property="og:site_name" content="MissSweety's Blog">
+<meta property="og:description" content="前端页面-网络性能一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。   前一段时间，自己项目的网站在加载和渲染的时候表现很奇怪，遂仔细用起chrome的network以及timeline面板，期待找到问题的根源。用的时候发现很多自己缺失的知识，于是就有这篇文章记录查缺补漏的内容。 这里先从网络性能角度来看，它将从初始阶段影响网站的性能。下面会以chrom">
+<meta property="og:image" content="https://misssweety.github.io/2017/05/25/网络优化/屏幕快照%202017-05-23%20下午8.33.48.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/05/25/网络优化/屏幕快照%202017-05-23%20下午8.34.34.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/05/25/网络优化/resource-timing-overview-1.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/05/25/网络优化/屏幕快照%202017-05-24%20上午11.56.02.png">
+<meta property="og:updated_time" content="2017-05-25T03:02:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端页面-网络性能">
+<meta name="twitter:description" content="前端页面-网络性能一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。   前一段时间，自己项目的网站在加载和渲染的时候表现很奇怪，遂仔细用起chrome的network以及timeline面板，期待找到问题的根源。用的时候发现很多自己缺失的知识，于是就有这篇文章记录查缺补漏的内容。 这里先从网络性能角度来看，它将从初始阶段影响网站的性能。下面会以chrom">
+<meta name="twitter:image" content="https://misssweety.github.io/2017/05/25/网络优化/屏幕快照%202017-05-23%20下午8.33.48.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
 
-    <title>
-        
-          前端页面-网络性能 - MissSweety的博客 | MissSweety&#39;s Blog
-        
-    </title>
+    <!-- custom head -->
+    
 
-    <link rel="canonical" href="https://misssweety.github.io/2017/05/25/网络优化/">
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    <!-- Pygments Highlight CSS -->
-    <link rel="stylesheet" href="/css/highlight.css">
-
-    <!-- Custom Fonts -->
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- ga & ba script hoook -->
-    <script></script>
 </head>
 
+<body>
+    <div id="loading" class="active"></div>
 
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="">
-
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">MissSweety&#39;s Blog</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/index.html">Home</a>
-                    </li>
-
-                    
-
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/archives/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-                    
-                </ul>
-            </div>
-        </div>
-        <!-- /.navbar-collapse -->
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:zcx900308@qq.com" title="zcx900308@qq.com" class="mail">zcx900308@qq.com</a>
+        </hgroup>
+      </div>
     </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MissSweety" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
 
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-</script>
-
-
-    <!-- Main Content -->
-    
-<!-- Image to hack wechat -->
-<!-- <img src="https://misssweety.github.io/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
-
-<!-- Post Header -->
-<style type="text/css">
-    header.intro-header{
-        background-image: url('/./img/home-bg.jpg')
-    }
-</style>
-<header class="intro-header" >
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="tags">
-                        
-                          <a class="tag" href="/tags/#timing" title="timing">timing</a>
-                        
-                    </div>
-                    <h1>前端页面-网络性能</h1>
-                    <h2 class="subheading"></h2>
-                    <span class="meta">
-                        Posted by Jessica on
-                        2017-05-25
-                    </span>
-                </div>
-            </div>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">前端页面-网络性能</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
         </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
 </header>
+<header class="content-header post-header">
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
+    <div class="container fade-scale">
+        <h1 class="title">前端页面-网络性能</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-25T02:48:54.000Z" itemprop="datePublished" class="page-time">
+  2017-05-25
+</time>
 
-    <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
 
-                <h1 id="前端页面-网络性能"><a href="#前端页面-网络性能" class="headerlink" title="前端页面-网络性能"></a>前端页面-网络性能</h1><p>一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。  </p>
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前端页面-网络性能"><span class="post-toc-number">1.</span> <span class="post-toc-text">前端页面-网络性能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主要网络属性"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">主要网络属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主要属性"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">主要属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#performance-api"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">performance api</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">参考</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何在chrome-devtool中查看网络性能"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">如何在chrome devtool中查看网络性能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何优化"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">如何优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Queued-or-stalled-requests"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">Queued or stalled requests</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Slow-Time-To-First-Byte-TTFB"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">Slow Time To First Byte (TTFB)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Slow-content-download"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">Slow content download</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-网络优化"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">前端页面-网络性能</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-25 10:48:54" datetime="2017-05-25T02:48:54.000Z"  itemprop="datePublished">2017-05-25</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前端页面-网络性能"><a href="#前端页面-网络性能" class="headerlink" title="前端页面-网络性能"></a>前端页面-网络性能</h1><p>一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。  </p>
 <p>前一段时间，自己项目的网站在加载和渲染的时候表现很奇怪，遂仔细用起chrome的network以及timeline面板，期待找到问题的根源。用的时候发现很多自己缺失的知识，于是就有这篇文章记录查缺补漏的内容。</p>
 <p>这里先从网络性能角度来看，它将从初始阶段影响网站的性能。<br>下面会以chrome中的network面板出发，从三点介绍网络性能相关内容，分别包括：<strong>主要网络属性</strong>，<strong>如何在chrome devtool中查看网络性能</strong>，<strong>如何优化</strong>  </p>
 <h2 id="主要网络属性"><a href="#主要网络属性" class="headerlink" title="主要网络属性"></a>主要网络属性</h2><p>这里主要关注timing这个属性。某个请求的timing如下：<br><img src="./屏幕快照 2017-05-23 下午8.33.48.png"></p>
@@ -275,261 +271,257 @@ ttfb = t.responseStart - t.navigationStart;
 </ul>
 <p><hr><br>以上是关于网络层面的网站优化内容，与前端人员开发技术能力相关性不大，需要一些网络层面以及后台来支持。当我们发现网页加载过慢的时候，可以先从网络这边入手，把网络和连接的基础问题排查后，再从优化自己写的代码入手。</p>
 
+        </div>
 
-                <hr>
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-05-25T03:02:09.000Z" itemprop="dateUpdated">2017-05-25 11:02:09</time>
+</span><br>
 
-                
 
-                <ul class="pager">
-                    
-                        <li class="previous">
-                            <a href="/2017/05/18/高德地图api使用总结/" data-toggle="tooltip" data-placement="top" title="高德地图api使用总结">&larr; Previous Post</a>
-                        </li>
-                    
-                    
-                        <li class="next">
-                            <a href="/2017/06/02/git实用指令/" data-toggle="tooltip" data-placement="top" title="git实用指令">Next Post &rarr;</a>
-                        </li>
-                    
-                </ul>
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/05/25/网络优化/" target="_blank" rel="external">https://misssweety.github.io/2017/05/25/网络优化/</a>
+        
+    </div>
+    <footer>
+        <a href="https://misssweety.github.io">
+            <img src="/img/avatar.jpg" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
 
-                
-
-                
-                <!-- disqus 评论框 start -->
-                <div class="comment">
-                    <div id="disqus_thread" class="disqus-thread"></div>
-                </div>
-                <!-- disqus 评论框 end -->
-                
-
-            </div>
-    <!-- Side Catalog Container -->
         
 
-    <!-- Sidebar Container -->
 
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/timing/">timing</a></li></ul>
 
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                       
-                          <a class="tag" href="/tags/#timing" title="timing">timing</a>
-                        
-                    </div>
-                </section>
-                
 
-                <!-- Friends Blog -->
-                
-            </div>
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/05/25/网络优化/&title=《前端页面-网络性能》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/05/25/网络优化/&title=《前端页面-网络性能》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/05/25/网络优化/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端页面-网络性能》 — MissSweety's Blog&url=https://misssweety.github.io/2017/05/25/网络优化/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/05/25/网络优化/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
 
         </div>
     </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/18/高德地图api使用总结/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">高德地图api使用总结</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/02/git实用指令/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">git实用指令</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
 
 
 
+</div>
 
-<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = "/";
-    var disqus_identifier = "https://misssweety.github.io/2017/05/25/网络优化/";
-    var disqus_url = "https://misssweety.github.io/2017/05/25/网络优化/";
+        <footer class="footer">
+    <div class="top">
+        
 
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<!-- disqus 公共JS代码 end -->
-
-
-
-
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'always',
-          placement: 'right',
-          icon: '#'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
-
-
-
-    <!-- Footer -->
-    <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2017</span>
+            <span>
                 
-                
-                    <li>
-                        <a target="_blank" href="https://twitter.com/test">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
-                
-
-                
-
-                
-                    <li>
-                        <a target="_blank" href="https://www.facebook.com/test">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
-
-                
-                    <li>
-                        <a target="_blank"  href="https://github.com/MissSweety">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                
-
-                
-
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; MissSweety&#39;s Blog 2017 
-                    <br>
-                </p>
-            </div>
-        </div>
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
     </div>
 </footer>
 
-<!-- jQuery -->
-<script src="/js/jquery.min.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js"></script>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-<!-- async load function -->
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/05/25/网络优化/&title=《前端页面-网络性能》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/05/25/网络优化/&title=《前端页面-网络性能》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/05/25/网络优化/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端页面-网络性能》 — MissSweety's Blog&url=https://misssweety.github.io/2017/05/25/网络优化/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/05/25/网络优化/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aQXbDIAwFwNz/0ummOz/TL0TaGoZVnuMYxgtFSLxe8XjfjOs91/uv346vXK8vGxgYGI9lvIdjvKyE13lCYRYMDIwDGHcT58Fx/LkKzteGgYGBUSV1ksgkocTAwMCYC7h5AB3P+Mf/GxgYGP+ekQe+fLM6F4g/vhfHwMB4ICOvuv/+54/0NzAwMB7FWBUc5zai/fV8PxkDA2NrRj5Npw2Ql9XytA8DAwMj31h2DnglTy4U7DAwMLZmjJOzZFtbTfv6L+uHFWJgYGzH6B//KrynBmyyIoiBgfFwxlxKlwTofFub33/7KwwMjAMYSdG/uuldFb6jBicGBsbWjOomdq6Un7+IPKH84X4MDIyNGJ3g2A+vy5oTGBgYWzOq7cbOlWqRrlyGw8DAOIAxThCTIv5cq2DusEW5PYCBgfFYxqogu2qh1ULebX8DAwNjI0a+Ec23oNVmZPV42e1rxcDA2Jox9+jxEYocUG2XRg0JDAyMrRn9sn6+6E80GDAwMHZlzE1TDaPVgxTVtBUDA+NkRpL29Q+QzTU1MTAwTmO8lo65zW21xIaBgXEC410c1YXmyLyQF1X+MDAwNmLMBdD82FZ+OCxviLbanxgYGI9lJEE2d1eDaeeoGQYGxmmMucCX37/qH+AWiYGBgRGng3nwXfxbDAwMjLipOTdj5xgrBgbGOYxkE1st91ePULQSSgwMjK0Zq0JkNX3Ml7WsqYmBgfE8xhds0VWDm5g2qwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
 </script>
 
-<!-- 
-     Because of the native support for backtick-style fenced code blocks 
-     right within the Markdown is landed in Github Pages, 
-     From V1.6, There is no need for Highlight.js, 
-     so Huxblog drops it officially.
-
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
--->
-<!--
-    <script>
-        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
-            hljs.initHighlightingOnLoad();
-        })
-    </script>
-    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
--->
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
-<!-- jquery.tagcloud.js -->
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
 <script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("https://misssweety.github.io/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'ah-oh！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MissSweety';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
 </script>
 
-<!--fastClick.js -->
-<script>
-    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
 
-
-<!-- Google Analytics -->
-
-
-
-
-<!-- Baidu Tongji -->
-
-
-<!-- Side Catalog -->
-
-
-
-
-
-<!-- Image to hack wechat -->
-<img src="https://misssweety.github.io/img/icon_wechat.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
-
 </html>

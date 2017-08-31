@@ -1,0 +1,1197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>MissSweety&#39;s Blog</title>
+  <subtitle>never say never</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://misssweety.github.io/"/>
+  <updated>2017-06-29T04:27:31.000Z</updated>
+  <id>https://misssweety.github.io/</id>
+  
+  <author>
+    <name>Jessica</name>
+    <email>zcx900308@163.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>d3-basic-line</title>
+    <link href="https://misssweety.github.io/2017/06/29/d3-basic-line/"/>
+    <id>https://misssweety.github.io/2017/06/29/d3-basic-line/</id>
+    <published>2017-06-29T04:19:49.000Z</published>
+    <updated>2017-06-29T04:27:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="d3-折线图"><a href="#d3-折线图" class="headerlink" title="d3-折线图"></a>d3-折线图</h1><p>从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识</p>
+<h2 id="需要的知识"><a href="#需要的知识" class="headerlink" title="需要的知识"></a>需要的知识</h2><ul>
+<li><a href="https://github.com/d3/d3-scale" target="_blank" rel="external">scale</a></li>
+<li><a href="https://github.com/d3/d3-array/blob/master/README.md#extent" target="_blank" rel="external">extent</a></li>
+<li><a href="https://github.com/d3/d3/blob/master/API.md#transitions-d3-transition" target="_blank" rel="external">transition</a></li>
+<li><a href="https://github.com/d3/d3-shape/blob/master/README.md#lines" target="_blank" rel="external">line</a></li>
+<li><a href="https://github.com/d3/d3-shape/blob/master/README.md#curves" target="_blank" rel="external">curve</a></li>
+<li><a href="https://github.com/d3/d3-axis" target="_blank" rel="external">axis</a></li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>获取svg容器</p>
+<pre><code>&lt;svg width=&quot;500&quot; height=&quot;270&quot; class=&quot;testline&quot;&gt;&lt;/svg&gt;
+
+const svg = d3.select(&apos;.testline&apos;);
+const margin = {top: 20, right: 20, bottom: 20, left: 20};
+const width = +svg.attr(&quot;width&quot;) - margin.left - margin.right;
+const height = +svg.attr(&quot;height&quot;) - margin.top - margin.bottom;
+const g = svg.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(${margin.left},${margin.top})`);
+</code></pre></li>
+</ol>
+<ol>
+<li><p>x，y轴缩放<br>这里，如果x轴是与时间有关的，可以直接使用d3提供的scaleTime()来实现时间的转换。关于scale还有好多内容，待总结。这里需要确定两个轴，缩放的类型，以及xy轴图像在屏幕中的实际宽高值。<br>这里的<code>x</code>, <code>y</code> 其实是函数（根据给出的数据，得出该数据的x，y坐标值）。</p>
+<pre><code>const x = d3.scaleTime().range([0, width]);
+const y = d3.scaleLinear().range([height, 0]);
+</code></pre></li>
+<li><p>line<br>line的生成就需要上面的轴缩放函数。 这里是因为date函数可以接受ms的unix时间戳，所以乘以1000.这里也可以加一些点与点之间的连接方式。 <code>curveMonotoneX</code>平滑, <code>curveLinear</code>线性。需要两步，line函数生成。line呈现。<br>关于line的展示，需要把数据绑定到path标签上，将line函数运用到path的d属性上。就可以绘制出线了，transition这里是为了实现简单的动画效果。<br>注意，line展示的时候，data([data]) 也可应用datum(data)，前者删了数组标记是不可以的。不知道为什么</p>
+<pre><code>const line = d3.line()
+  .x((d, i) =&gt; x(d.ts * 1000))
+  .y(d =&gt; y(d.y))
+  .curve(d3.curveMonotoneX);
+
+// line 的展示。
+g.append(&apos;path&apos;)
+      .data([data]).attr(&apos;fill&apos;, &apos;none&apos;).attr(&apos;d&apos;, line).attr(&apos;stroke&apos;, &apos;#f33155&apos;)
+      .transition(500)
+      .attr(&apos;stroke-width&apos;, 3);
+</code></pre></li>
+<li><p>x坐标轴，y坐标轴<br>domain是将坐标轴对应的真实数据连接起来，一般就是将坐标轴要展示的数据的最大最小值放进来。<code>d3.extent</code>可以自动的算出数组内的最小，最大值，很方便。如下x轴的计算。<br>v4支持axisBottom，axisTop，axisRight，axisLeft等快捷操作，就是说明坐标轴的展现方式。<br>规定好domain后，可以将轴展示在图像中了。给出selector然后调用call(如果是x轴，记得把上面x轴函数传进来，y轴同理)，同时，这里可以规定轴线样式和<a href="https://github.com/d3/d3-axis" target="_blank" rel="external">刻度</a>的相关内容。下面的例子是规定了，最大最小值中间还可以有多少个刻度。</p>
+<pre><code>x.domain(d3.extent(data, d =&gt; d.ts * 1000));
+y.domain([0, d3.max(data, d =&gt; d.y * 1.1 )]);
+// Add the X Axis
+g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,${height})`)
+  .call(d3.axisBottom(x).ticks(5));
+// Add the Y Axis
+g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
+  .call(d3.axisLeft(y).ticks(8));
+</code></pre></li>
+<li><p>线上打点<br>线上打点，主要是通过line函数，获取点的center位置。需要将data绑定到circle标签上，最后根据line函数绘制出来。</p>
+<pre><code>g.selectAll(&quot;.dot&quot;)
+.data(data).enter().append(&quot;circle&quot;).attr(&apos;class&apos;, &apos;.dot&apos;)
+.attr(&quot;cx&quot;, line.x()).attr(&quot;cy&quot;, line.y())
+.transition(500)
+.attr(&quot;r&quot;, 3.5).attr(&apos;fill&apos;, &apos;white&apos;).attr(&apos;stroke&apos;, &apos;#f33155&apos;);
+</code></pre></li>
+</ol>
+<ol>
+<li><p>数据label<br>类似的，label也是根据line函数获取位置，然后将要现实的值，用text属性显示出来。</p>
+<pre><code>g.selectAll(&quot;.text&quot;)
+    .data(this.data).enter().append(&quot;text&quot;)
+    .attr(&apos;class&apos;, &apos;.text&apos;).attr(&apos;font-size&apos;, 12)
+    .attr(&quot;x&quot;, line.x()).attr(&quot;y&quot;, line.y())
+    .attr(&apos;dx&apos;, -15).attr(&apos;dy&apos;, 7)
+    .text(function(d) { return d.y})
+    .transition(500)
+    .attr(&apos;fill&apos;, &apos;#333&apos;).attr(&apos;stroke&apos;, &apos;#333&apos;);
+</code></pre></li>
+</ol>
+<p>当绑定了data数据后，x函数，y函数，会自动按顺序获取数据。</p>
+<p>最后结果：<br><a href="https://codepen.io/akixiao/pen/eRyBdY" target="_blank" rel="external">参考</a><br><img src="./line.png"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;d3-折线图&quot;&gt;&lt;a href=&quot;#d3-折线图&quot; class=&quot;headerlink&quot; title=&quot;d3-折线图&quot;&gt;&lt;/a&gt;d3-折线图&lt;/h1&gt;&lt;p&gt;从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识&lt;/p&gt;
+&lt;h2 id=&quot;需要的知识&quot;&gt;&lt;a
+    
+    </summary>
+    
+    
+      <category term="d3" scheme="https://misssweety.github.io/tags/d3/"/>
+    
+      <category term="line" scheme="https://misssweety.github.io/tags/line/"/>
+    
+      <category term="可视化" scheme="https://misssweety.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git实用指令</title>
+    <link href="https://misssweety.github.io/2017/06/02/git%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+    <id>https://misssweety.github.io/2017/06/02/git实用指令/</id>
+    <published>2017-06-02T02:51:14.000Z</published>
+    <updated>2017-06-02T03:23:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="实用指令"><a href="#实用指令" class="headerlink" title="实用指令"></a>实用指令</h1><h2 id="回滚相关"><a href="#回滚相关" class="headerlink" title="回滚相关"></a>回滚相关</h2><p>最近又好好复习了下reset指令。<br>一般这些回滚的操作最好不要用，尤其是在多人开发的时候，但是偶尔想用，还有点模糊了，这次在记录一下。</p>
+<h3 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h3><p>步骤：<br>readme中分别添加  </p>
+<p>test1<br>tess2<br>test3  </p>
+<p>每一句添加一个commit<br>先看下log</p>
+<pre><code>git log
+</code></pre><p><img src="./reset-1.png" width="400px"></p>
+<p>暂存区有其他修改，但没有add。</p>
+<p>此时，<strong>我改错了</strong>，想<strong>回退到test1</strong>的状态。用</p>
+<pre><code>git reset --hard 46670a
+</code></pre><p>执行后，暂存区的内容也清空了，readme中，只有test1 了。<br>查看git log前两个提交也不见了。</p>
+<p><img src="./reset-2.png" width="400px"></p>
+<p>假如我后悔了，我又不想回退了，我还想在test3的情况下修改。</p>
+<p>git reflog<br><img src="./reset-3.png" width="400px"><br>可以看到指令的log，从这里可以找回之前回退的相关commit<br>这里会记录着还未被回收的commit号。<br>此次，我把内容添加到暂存区了，也就是add过了，<br>再次使用reset，回滚到原来的test3的状态</p>
+<pre><code>git reset --hard 9d91688
+</code></pre><p>内容回到test3 处的commit，并且，之前add到暂存区的都没了</p>
+<p>真想回滚，用<code>reset</code>就够了。</p>
+<h3 id="revert"><a href="#revert" class="headerlink" title="revert"></a>revert</h3><p>其实是取消某个提交的意思。<br>revert  功能：revert是撤销某一次的提交，并不是回滚到这次提交时的状态！！！  </p>
+<p>revert 的历史保留在commit中</p>
+<h3 id="rebase"><a href="#rebase" class="headerlink" title="rebase"></a>rebase</h3><p>用来合并多个commits<br>场景，我们自己在本地改了好多乱七八糟的，但是并不想让所有的commit信息，比如fix之类的都提交，这个时候可以用rebase 配合 squash ，合并commit。</p>
+<p>过程如下：<br>先</p>
+<pre><code>git log：
+</code></pre><p><img src="./rebase-1.png" width="400px"></p>
+<p>我们想将0fad78ccc3到现在的commit都合并, 那么先rebase到那个不变动的commit</p>
+<pre><code>git rebase -i 4c9bc3a7
+</code></pre><p>如下：<br><img src="./rebase-2.png" width="400px"></p>
+<p>需要留一个pick，其他都改成squash, 如下<br><img src="./rebase-3.png" width="400px"></p>
+<p><code>esc</code> <code>:wq</code><br>保存后，这样就把其他的提交都合并了。自动跳到如下界面(这里可以重写合并的commit内容了)<br><img src="./rebase-4.png" width="400px"></p>
+<p>修改完毕，<code>esc</code>  <code>:wq</code> 保存<br><img src="./rebase-5.png" width="400px"></p>
+<p>最后，看下git log，干净了！！！！</p>
+<h3 id="远端分支回滚"><a href="#远端分支回滚" class="headerlink" title="远端分支回滚"></a>远端分支回滚</h3><p>如果远端对应的分支也想修改，必须要—force</p>
+<pre><code>git push --force origin branch-name
+</code></pre><h3 id="刪除远端分支"><a href="#刪除远端分支" class="headerlink" title="刪除远端分支"></a>刪除远端分支</h3><pre><code>git push origin --delete target_branch
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;实用指令&quot;&gt;&lt;a href=&quot;#实用指令&quot; class=&quot;headerlink&quot; title=&quot;实用指令&quot;&gt;&lt;/a&gt;实用指令&lt;/h1&gt;&lt;h2 id=&quot;回滚相关&quot;&gt;&lt;a href=&quot;#回滚相关&quot; class=&quot;headerlink&quot; title=&quot;回滚相关&quot;&gt;&lt;/a
+    
+    </summary>
+    
+    
+      <category term="git" scheme="https://misssweety.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端页面-网络性能</title>
+    <link href="https://misssweety.github.io/2017/05/25/%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/"/>
+    <id>https://misssweety.github.io/2017/05/25/网络优化/</id>
+    <published>2017-05-25T02:48:54.000Z</published>
+    <updated>2017-05-25T03:02:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前端页面-网络性能"><a href="#前端页面-网络性能" class="headerlink" title="前端页面-网络性能"></a>前端页面-网络性能</h1><p>一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。  </p>
+<p>前一段时间，自己项目的网站在加载和渲染的时候表现很奇怪，遂仔细用起chrome的network以及timeline面板，期待找到问题的根源。用的时候发现很多自己缺失的知识，于是就有这篇文章记录查缺补漏的内容。</p>
+<p>这里先从网络性能角度来看，它将从初始阶段影响网站的性能。<br>下面会以chrome中的network面板出发，从三点介绍网络性能相关内容，分别包括：<strong>主要网络属性</strong>，<strong>如何在chrome devtool中查看网络性能</strong>，<strong>如何优化</strong>  </p>
+<h2 id="主要网络属性"><a href="#主要网络属性" class="headerlink" title="主要网络属性"></a>主要网络属性</h2><p>这里主要关注timing这个属性。某个请求的timing如下：<br><img src="./屏幕快照 2017-05-23 下午8.33.48.png"></p>
+<p>在network页面点击具体的请求url即可进入上述页面。</p>
+<p>可以看到一条资源从列队、停滞、代理协议、初始化连接、SSL协议、发送request、等待及内容下载所耗的时间。 </p>
+<h3 id="主要属性"><a href="#主要属性" class="headerlink" title="主要属性"></a>主要属性</h3><ul>
+<li>Queueing时间：请求排队的时间，出现原因有：更高优先级的请求，或者在HTTP/1.0和HTTP/1.1中，已经有6个同源请求在进行中</li>
+<li>Stalled阻塞时间：原因如上queueing</li>
+<li>DNS Lookup. 浏览器解析请求的ip地址需要的时间</li>
+<li>Proxy negotiation. 与代理服务器通信需要的时间</li>
+<li>Initial Connection / connecting: 建立连接的过程，包含TCP握手/重试，商定SSL</li>
+<li>SSL: 完成SSL握手阶段</li>
+<li>Request sent：发送请求耗时，通常只要不到1ms的时间</li>
+<li>ServiceWorker Preparation.浏览器启动服务worker的时间</li>
+<li>Request to ServiceWorker.The request is being sent to the service worker.</li>
+<li>Waiting (TTFB). 收到首字节的时间。</li>
+<li>Content Download. 浏览器接收响应数据的时间。</li>
+</ul>
+<h3 id="performance-api"><a href="#performance-api" class="headerlink" title="performance api"></a>performance api</h3><p>上面这些资源数据是根据js的性能api计算的。<br><strong>window.performance.getEntries()</strong> 获取资源加载时间列表。每个performanceResourceTiming大概如下：<br><img src="./屏幕快照 2017-05-23 下午8.34.34.png"> </p>
+<ul>
+<li>connectEnd：浏览器与服务器完成建立用以检索资源的网络连接的时间戳  </li>
+<li>connectStart：浏览器与服务器开始建立用以检索资源的网络连接的时间戳</li>
+<li>damainLookupEnd：浏览器完成资源的域名解析的时间戳</li>
+<li>damainLookupStart：浏览器开始进行资源的域名解析的时间戳</li>
+<li>duration：资源请求从开始到结束的时间差</li>
+<li>entryType：PerformanceEntry对象的类型，该对象封装一个单一的性能指标作为性能表的一部分，此类型是<code>frame</code>, <code>mark</code>, <code>measure</code>, <code>navigation</code>, <code>resource</code>,<code>server</code>的其中一个。</li>
+<li>fetchStart：浏览器开始获取资源的时间戳</li>
+<li>initiatorType：资源文件的类型</li>
+<li>name：资源的url</li>
+<li>redirectEnd：接收到重定向资源的最后一个响应字节的时间戳</li>
+<li>redirectStart：启动重定向以获取资源的开始时间戳</li>
+<li>requestStart：浏览器从服务器请求资源的开始时间戳</li>
+<li>responseEnd：浏览器接收到资源最后一个字节的时间戳，或者关闭传输连接的时间戳</li>
+<li>responseStart：浏览器接收到服务器的响应的第一个字节的时间戳</li>
+<li>secureConnectionStart：浏览器开始握手协议，以保护当前连接的安全性，握手开始的时间</li>
+<li>startTime：浏览器开始获取资源前的时间戳(整个过程的开始时间)</li>
+<li>workerStart：如果当前上下文是”worker”，返回开始获取资源的时间戳，否则返回0(应该是应用于双工通信的)</li>
+</ul>
+<p>下面这张图定义了PerformanceResourceTiming 接口的各个时间属性：</p>
+<p><img src="./resource-timing-overview-1.png"></p>
+<p><strong>performance.timing()</strong> 获取页面整体的时间参数<br><img src="./屏幕快照 2017-05-24 上午11.56.02.png"></p>
+<p>这个api可以参考这个非正式的标准规范<a href="https://www.w3.org/TR/resource-timing/" target="_blank" rel="external">Resouce timing - w3c</a>   <a href="https://www.w3.org/TR/performance-timeline/#sec-PerformanceEntry-interface" target="_blank" rel="external">old one</a></p>
+<p>该规范定义了一个用于Web应用程序的接口，这个接口可以访问文档需要的资源的完整时序信息。 接口的详细说明这里就不一一介绍了，细节了解需要自己去读标准。 下面只挑和我们相关的内容。 </p>
+<p>由上面这个图，我们可以获取到chrome网络面板中，timing的相关信息，举个例子：   </p>
+<p>页面整体的时间参数 （mta应该有用到以下参数） </p>
+<pre><code>pageloadtime = t.loadEventStart - t.navigationStart,  
+dns = t.domainLookupEnd - t.domainLookupStart,  
+tcp = t.connectEnd - t.connectStart,  
+ttfb = t.responseStart - t.navigationStart; 
+</code></pre><p>某个资源的时间参数 </p>
+<pre><code>var r0 = performance.getEntriesByType(&quot;resource&quot;)[0],
+    loadtime = r0.duration,
+    dns = r0.domainLookupEnd - r0.domainLookupStart,
+    tcp = r0.connectEnd - r0.connectStart,
+    ttfb = r0.responseStart - r0.startTime;
+</code></pre><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>还有一些其他的测量时间的问题，请参考<a href="http://mutongwu.iteye.com/blog/2164917?utm_source=tuicool" target="_blank" rel="external">performance的资源计时统计</a><br>其他方法使用，参考<a href="http://www.alloyteam.com/2015/09/explore-performance/" target="_blank" rel="external">初探performance-监控网页与程序性能</a>  </p>
+<h2 id="如何在chrome-devtool中查看网络性能"><a href="#如何在chrome-devtool中查看网络性能" class="headerlink" title="如何在chrome devtool中查看网络性能"></a>如何在chrome devtool中查看网络性能</h2><p>在chrome devtool中，我们可以模拟各种网络环境，可以过滤请求，查看http请求信息，了解dom加载时间，cookie信息，资源的上下游等等。</p>
+<p>内容略多，参考这里，chrome developers 官网<a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/" target="_blank" rel="external">测量网络性能</a><br>英文不好的可以看这个：<a href="http://www.jianshu.com/p/471950517b07" target="_blank" rel="external">Chrome DevTools 之 Network，网络加载分析利器</a></p>
+<h2 id="如何优化"><a href="#如何优化" class="headerlink" title="如何优化"></a>如何优化</h2><p>网站加载时间对用户的影响：<br>0.1秒：秒开<br>100-300 ：比较小的可察觉的延迟<br>300-1s：Machine is working<br>1秒：还能接受，但是已经不开心了<br>10秒：什么破玩意，不想看了<br>chrome developer里提到，目标是250ms</p>
+<p>优化主要从四个属性入手，以下基本翻译自chrome devtool </p>
+<h3 id="Queued-or-stalled-requests"><a href="#Queued-or-stalled-requests" class="headerlink" title="Queued or stalled requests"></a>Queued or stalled requests</h3><p>这两个指标如果时间很长，说明很多资源等待<br><strong>造成的原因</strong>：访问同一个域名的请求太多，对于http1.1来说，每个host最多同时支持6个tcp连接。</p>
+<p><strong>解决</strong>：</p>
+<ul>
+<li>域名分片：将资源放在不同的域名中，用来克服浏览器对同一个域名访问的限制，但是不能过多因为dns解析也需要时间  </li>
+</ul>
+<p><strong>[备注]</strong>domain sharding (域名分片)（<a href="https://wp-rocket.me/blog/difference-cdn-and-domain-sharding/" target="_blank" rel="external">和cdn的不同</a>域名分片是一种分布方式，是将资源分布在不同的域名中达到克服浏览器访问限制的目的；cdn则是在不同的服务器上托管世界各地的网站资源。<br>）</p>
+<ul>
+<li>使用http2.0<br>让重要的请求先发起，不重要的remove或者推迟。</li>
+</ul>
+<h3 id="Slow-Time-To-First-Byte-TTFB"><a href="#Slow-Time-To-First-Byte-TTFB" class="headerlink" title="Slow Time To First Byte (TTFB)"></a>Slow Time To First Byte (TTFB)</h3><p><strong>起因：</strong> client与server的连接慢；server响应太慢</p>
+<p><strong>解决：</strong></p>
+<ul>
+<li>连接慢， 使用cdn，或者换个服务商</li>
+<li>如果server慢，优化数据库查询，用缓存，修改server配置等。</li>
+</ul>
+<h3 id="Slow-content-download"><a href="#Slow-content-download" class="headerlink" title="Slow content download"></a>Slow content download</h3><p><strong>原因：</strong>网络不好；内容过大</p>
+<p><strong>解决：</strong></p>
+<ul>
+<li>连接慢， 使用cdn，或者换个服务商；</li>
+<li>优化请求使数据更少。</li>
+</ul>
+<p><hr><br>以上是关于网络层面的网站优化内容，与前端人员开发技术能力相关性不大，需要一些网络层面以及后台来支持。当我们发现网页加载过慢的时候，可以先从网络这边入手，把网络和连接的基础问题排查后，再从优化自己写的代码入手。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前端页面-网络性能&quot;&gt;&lt;a href=&quot;#前端页面-网络性能&quot; class=&quot;headerlink&quot; title=&quot;前端页面-网络性能&quot;&gt;&lt;/a&gt;前端页面-网络性能&lt;/h1&gt;&lt;p&gt;一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的
+    
+    </summary>
+    
+    
+      <category term="timing" scheme="https://misssweety.github.io/tags/timing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>高德地图api使用总结</title>
+    <link href="https://misssweety.github.io/2017/05/18/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BEapi%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
+    <id>https://misssweety.github.io/2017/05/18/高德地图api使用总结/</id>
+    <published>2017-05-18T04:28:44.000Z</published>
+    <updated>2017-05-18T07:11:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="常用的高德地图api"><a href="#常用的高德地图api" class="headerlink" title="常用的高德地图api"></a>常用的高德地图api</h1><p>关于appkey，分为两种，一个是api调用的key，一个是地图服务的key，例如，获取门店信息，search功能等等。</p>
+<h2 id="脚本加载"><a href="#脚本加载" class="headerlink" title="脚本加载"></a>脚本加载</h2><pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://webapi.amap.com/maps?v=1.3&amp;key=您申请的key值&quot;&gt;&lt;/script&gt;
+</code></pre><p>需要把这个脚本加载完成后，才能使用AMap。</p>
+<p>可以使用<code>map-div</code>这个组件。</p>
+<p>如果搭配react，需要在componentDidMount阶段，调用<code>map-div</code> 中的createMap函数。配套的，最好将该地图实例保存在一个对象中，并设置一个flag作为地图加载完成的标志位，以便react使用。</p>
+<p>示例：  </p>
+<pre><code>mapInstance.js
+
+let __value = null;
+export default {
+  getter: () =&gt; __value,
+  setter: (val) =&gt; { __value = val; },
+};
+---------------------------------------
+
+const mapConfig = {
+  name: &apos;AMap&apos;,
+  initOpts: {
+    zoom: MAP_CONFIG.zoom,
+    zooms: MAP_CONFIG.zooms,
+  },
+  query: {
+    plugin: &apos;AMap.Geocoder,AMap.CitySearch&apos;,
+  },
+};
+
+componentDidMount() {
+  (async () =&gt; {
+    const mapIns = await createMap(mapConfig, &apos;mapComponent&apos;);
+    mapInstance.setter(mapIns);
+    this.props.setMapInstanceFlag(true);
+    // 一些事件监听
+    mapEventHandler(mapIns, &apos;dragend&apos;, &apos;on&apos;, throttle(this.handleMapScale, 800));
+    mapEventHandler(mapIns, &apos;click&apos;, &apos;on&apos;, throttle(this.handleMapClick, 800));
+
+    ...
+  })();
+
+  ...
+}
+</code></pre><h2 id="创建地图对象"><a href="#创建地图对象" class="headerlink" title="创建地图对象"></a>创建地图对象</h2><p>需要给出一个div作为地图的容器。</p>
+<pre><code>&lt;div id=&quot;container&quot; style=&quot;width:800px; height:500px&quot;&gt;&lt;/div&gt;
+
+var map = new AMap.Map(&apos;container&apos;,{ config })
+</code></pre><p><strong>注意：</strong> 如果不加center，地图默认显示用户当前城市范围</p>
+<h3 id="config常用基本配置"><a href="#config常用基本配置" class="headerlink" title="config常用基本配置"></a>config常用基本配置</h3><table>
+<thead>
+<tr>
+<th>options</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zoom</td>
+<td>缩放级别</td>
+</tr>
+<tr>
+<td>center</td>
+<td>地图中心点坐标[lon, lat]</td>
+</tr>
+<tr>
+<td>zooms</td>
+<td>地图可以缩放的范围 ，数组格式[max, min]</td>
+</tr>
+<tr>
+<td>zoomEnable</td>
+<td>是否可缩放，默认为true</td>
+</tr>
+<tr>
+<td>dragEnable</td>
+<td>是否可拖拽，默认为true</td>
+</tr>
+<tr>
+<td>mapStyle</td>
+<td>地图显示样式，normal（默认样式）、dark（深色样式）、light（浅色样式）、fresh(osm清新风格样式)、blue_night</td>
+</tr>
+<tr>
+<td>features</td>
+<td>地图上显示的元素种类， 默认都显示，支持’bg’（地图背景）、’point’（POI点）、’road’（道路）、’building’（建筑物）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常用的地图实例方法"><a href="#常用的地图实例方法" class="headerlink" title="常用的地图实例方法"></a>常用的地图实例方法</h2><h3 id="地图常用方法"><a href="#地图常用方法" class="headerlink" title="地图常用方法"></a>地图常用方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getZoom()， setZoom()</td>
+<td>缩放级别</td>
+</tr>
+<tr>
+<td>getCenter(), setCenter()</td>
+<td>获取地图中心点坐标[lon, lat]</td>
+</tr>
+<tr>
+<td>setZoomAndCenter</td>
+<td>同时设定缩放级别和中心点坐标</td>
+</tr>
+<tr>
+<td>setCity(city:String，callback:Functon)</td>
+<td>通过设置城市名称来设置地图显示的中心点</td>
+</tr>
+<tr>
+<td>zoomIn</td>
+<td>地图放大一级</td>
+</tr>
+<tr>
+<td>zoomOut</td>
+<td>地图缩小一级</td>
+</tr>
+</tbody>
+</table>
+<h3 id="地图常用事件类型"><a href="#地图常用事件类型" class="headerlink" title="地图常用事件类型"></a>地图常用事件类型</h3><ul>
+<li>click: 鼠标左键单击  </li>
+<li>mapmove: 地图平移时触发</li>
+<li>movestart: 地图平移开始时触发</li>
+<li>moveend: 地图移动结束后触发，包括平移和缩放(经试验，缩放并没有触发moveend)。</li>
+<li>zoomchange: 地图缩放级别更改后触发</li>
+<li>zoomstart: 缩放开始时触发</li>
+<li>zoomend: 缩放停止时触发</li>
+<li>dragstart: 开始拖拽地图时触发</li>
+<li>dragend: 停止拖拽地图时触发</li>
+<li>dragging: 拖拽地图过程中触发</li>
+</ul>
+<p>如果地图操作后会有其他操作，一般监听  XXXend 方法。<br>注意：setCity，setCenter等操作不会触发drag相关内容。</p>
+<h3 id="关于amap的事件绑定"><a href="#关于amap的事件绑定" class="headerlink" title="关于amap的事件绑定"></a>关于amap的事件绑定</h3><p>有两种方法：  </p>
+<ul>
+<li><p>针对Map、覆盖物等常用类<br>直接使用on， off 方法来实现事件的简单绑定和移除</p>
+</li>
+<li><p>使用AMap.event命名空间<br>addDomListener(domobj, eventName, handler, context(没用过，不清楚))<br>addListener(obj, eventName, handler, context(没用过，不清楚))<br>removeListener(listener): 可以移除dom和非dom事件。</p>
+<p><a href="http://lbs.amap.com/api/javascript-api/example/event/dom-event/" target="_blank" rel="external">参考</a></p>
+</li>
+</ul>
+<h3 id="事件event中的内容"><a href="#事件event中的内容" class="headerlink" title="事件event中的内容"></a>事件event中的内容</h3><ul>
+<li>所有的CLICK事件<br>点击位置的经纬度，对应在画布上的横纵坐标，事件target， 事件type<br><img src="./pic2.png"></li>
+<li>其他类型事件，如moveend，zoom<br>event中只有事件类型type</li>
+</ul>
+<p>针对以上，我们可以对地图事件进行封装，一般需要的是事件发生的zoom，地图范围，点击位置的经纬度。<br>🌰如下:</p>
+<pre><code>const eventInjector = (ev, mapINS, cb) =&gt; {
+    const bounds = mapINS.getBounds();
+    const param = {
+        sw: bounds.getSouthWest(),
+        ne: bounds.getNorthEast(),
+        zoom: mapINS.getZoom(),
+        type: ev.type,
+        lng: ev.lnglat ? ev.lnglat.getLng() : &apos;&apos;,
+        lat: ev.lnglat ? ev.lnglat.getLat() : &apos;&apos;,
+    };
+      if (cb) cb(param);
+};
+
+const mapEventHandler = (mapINS, type, opt, cb) =&gt; mapINS[opt](type, (ev) =&gt; eventInjector(ev, mapINS, cb));
+
+//使用
+mapEventHandler(mapIns, &apos;dragend&apos;, &apos;on&apos;, this.handleMapScale);
+mapEventHandler(mapIns, &apos;dragend&apos;, &apos;off&apos;,this.handleMapScale);
+
+//handleMapScale
+ handleMapScale(ev) {
+   console.log(ev);
+   const { ne, sw, zoom, type } = ev;
+   ...
+ }
+</code></pre><p>之后，如果在地图上发生dragend，event的结果如下：<br><img src="./pic1.png"></p>
+<h2 id="常用地图基本类型"><a href="#常用地图基本类型" class="headerlink" title="常用地图基本类型"></a>常用地图基本类型</h2><h3 id="LngLat-：-经纬度坐标，确定地图上的一个点"><a href="#LngLat-：-经纬度坐标，确定地图上的一个点" class="headerlink" title="LngLat ： 经纬度坐标，确定地图上的一个点"></a>LngLat ： 经纬度坐标，确定地图上的一个点</h3><p>构造函数： AMap.LngLat(lng: 119.78, lat: 39.99);<br>生成一个经纬度为[119.78, 39.99]的地理坐标对象。<br>常用方法：  </p>
+<pre><code>- getLng()    获取经度
+- getLat()    获取纬度
+- offset(w:2,s:-3)   w经度，s纬度，参数为数字。将当前经纬度坐标值变化。经度是越向右越大，所以向右为正。同理，纬度越向上越大，所以向上为正。    
+- distance(lnglat: LngLat | [lng, lat])  当前经纬度与传入的经纬度的连线的地面距离
+- equals(lnglat:LngLat)
+</code></pre><h3 id="Bounds：经纬度范围矩形框"><a href="#Bounds：经纬度范围矩形框" class="headerlink" title="Bounds：经纬度范围矩形框"></a>Bounds：经纬度范围矩形框</h3><p>AMap.Bounds(southWest:LngLat1, northEast:LngLat2);<br>生成一个东北角是LngLat2，西南角是LngLat1  的矩形地物框。<br>常用方法：    </p>
+<pre><code>- contains(point: LngLat)   给出的经纬度点是否包含在矩形范围内
+- getCenter()
+- getSouthWest()
+- getNorthEast()
+</code></pre><h2 id="常用覆盖物"><a href="#常用覆盖物" class="headerlink" title="常用覆盖物"></a>常用覆盖物</h2><h3 id="AMap-Marker"><a href="#AMap-Marker" class="headerlink" title="AMap.Marker"></a>AMap.Marker</h3><ul>
+<li>构造：AMap.Marker({ markeroptions })  </li>
+<li>常用选项<br><strong>map</strong>:marker所在的地图<br><strong>position</strong>: LngLat类型，点在地图上的位置<br><strong>offset</strong>: 像素类型(-75，-75)，marker距离左上角的偏移<br><strong>content</strong>: string/object  这里可以自定义marker显示的内容，图片，svg等都可以。<br><strong>bubble</strong>: 将覆盖物的事件冒泡到地图上，默认false<br><strong>zIndex</strong>: 叠加顺序<br><strong>title</strong>: 鼠标滑过时，点标记的文字提示。<br><strong>extData</strong>: 用户自定义属性<br><strong>draggable</strong>: 标记点是否可以拖拽移动</li>
+<li>方法略多，这里就不写了，基本对应每个选项都会有个get，set方法。hide，show控制点标记的隐藏，还在map中。setMap比较有用，如果设为null，则在地图上移除当前Marker相关的div。还有一些移动类的应用，目前还没使用过，这里就不详述了，主要有：<code>moveAlong</code>, <code>moveTo</code>, <code>stopMove</code>, <code>pauseMove</code>, <code>resumeMove</code>。</li>
+<li>事件与地图对象基本一致，少了个ready。多了一些move的行为，<a href="http://lbs.amap.com/api/javascript-api/reference/overlay#Marker" target="_blank" rel="external">具体可参考</a></li>
+</ul>
+<h3 id="AMap-Polygon"><a href="#AMap-Polygon" class="headerlink" title="AMap.Polygon"></a>AMap.Polygon</h3><ul>
+<li>构造：AMap.Polygon({ options })  </li>
+<li><p>常用选项<br><strong>map</strong>:marker所在的地图<br><strong>path</strong>: 参数为，包含经纬度数组的数组.  </p>
+<pre><code>eg：[
+         [116.368904, 39.913423],
+        [116.382122, 39.901176],
+        [116.387271, 39.912501],
+        [116.398258, 39.904600]
+    ] 
+</code></pre></li>
+</ul>
+<p>  <strong>bubble</strong>: 将覆盖物的事件冒泡到地图上，默认false。<br>  <strong>zIndex</strong>: 叠加顺序, 默认比marker低。<br>  <strong>类似svg的多边形属性</strong>: strokeColor，strokeOpacity， strokeWeight， fillColor， fillOpacity， strokeStyle， strokeDasharray。<br>  <strong>extData</strong>: 自定义属性</p>
+<ul>
+<li>方法。对应path，extData， options都会有个get，set方法。hide，show控制多边形的隐藏，多边形还在map中。setMap比较有用，如果设为null，则在地图上移除当前polygon相关的div。getBounds,矩形范围对象，返回Bounds类型。getArea,获取多边形面积。contains(point:LngLat)，点是否在polygon内。</li>
+<li>事件很多，常用的又mouseover， click等。<a href="http://lbs.amap.com/api/javascript-api/reference/overlay#Polygon" target="_blank" rel="external">具体可参考</a>  </li>
+</ul>
+<h3 id="AMap-Circle"><a href="#AMap-Circle" class="headerlink" title="AMap.Circle"></a>AMap.Circle</h3><ul>
+<li>构造：AMap.Circle({ options })  </li>
+<li><p>常用选项<br><strong>map</strong>:marker所在的地图<br><strong>center</strong>: LngLat类型，圆心在地图上的位置<br><strong>radius</strong>: 半径，number类型，单位是米<br><strong>bubble</strong>: 将覆盖物的事件冒泡到地图上，默认false<br><strong>zIndex</strong>: 叠加顺序, 默认比marker低。<br><strong>extData</strong>: 用户自定义属性<br><strong>类似svg的多边形属性</strong>： 同上polygon</p>
+</li>
+<li><p>方法。对应center，extData， radius，options都会有个get，set方法。hide，show控制隐藏，还在map中。setMap同上。getBounds，圆外切矩形范围对象，返回Bounds类型。contains(point:LngLat)，点是否在圆内。</p>
+</li>
+<li>事件类型类似polygon  <a href="http://lbs.amap.com/api/javascript-api/reference/overlay#Circle" target="_blank" rel="external">具体可参考</a></li>
+</ul>
+<h3 id="AMap-Polyline"><a href="#AMap-Polyline" class="headerlink" title="AMap.Polyline"></a>AMap.Polyline</h3><ul>
+<li>构造：AMap.Marker({ markeroptions })  </li>
+<li>常用选项，与polygon差不多。多一些线条相关的内容，<a href="http://lbs.amap.com/api/javascript-api/reference/overlay#Polyline" target="_blank" rel="external">具体可参考</a></li>
+<li>方法和事件与polygon差不多</li>
+</ul>
+<h2 id="常用图层"><a href="#常用图层" class="headerlink" title="常用图层"></a>常用图层</h2><p>图层是位于最底层的模块，他可能在地图上的其他物件还没加载完就已经生成了。图层都需要地图以plugin的形式引进。  </p>
+<h3 id="AMap-Heatmap"><a href="#AMap-Heatmap" class="headerlink" title="AMap.Heatmap"></a>AMap.Heatmap</h3><p>heatmap是个plugin，需要添加plugin，在回调函数中生成AMap.Heatmap实例。</p>
+<pre><code>const heatmap;
+map.plugin([&quot;AMap.Heatmap&quot;], function() {
+  heatmap = new AMap.Heatmap(map, {
+        radius: 25, //给定半径
+        opacity: [0, 0.8]
+    });
+});
+</code></pre><p>上面的config，包含<code>radius``gradient``opacity``zooms</code>(支持的缩放级别，不在范围内，就不显示热力图了)<br>渐变可以按照如下设置  </p>
+<pre><code>gradient: { 0.4: &apos;red&apos;, 0.8: &apos;yellow&apos;, 1: &apos;blue&apos;}
+</code></pre><p><strong>方法</strong><br>与覆盖物的差不多，除了，  </p>
+<pre><code>addDataPoint(lng: Lng, lat: Lat, count: number)  
+setDataSet(data: obj, url:jsonp格式数据的服务地址，urlDataParser:可以传递函数进行数据转化) 
+// 这两个可以配合zoom，不同的zoom，热力图对应的数据集不同。 
+</code></pre><p>其中，data格式为：</p>
+<pre><code>{ max: number,
+  data: [
+  { lng: 116.7, lat: 39.9, count: 10 }, 
+  { lng: 116.7, lat: 39.9, count: 10 }],
+}
+</code></pre><h3 id="AMap-CustomLayer"><a href="#AMap-CustomLayer" class="headerlink" title="AMap.CustomLayer"></a>AMap.CustomLayer</h3><p>同样需要plugin来引入。</p>
+<p>给出的属性和方法很少，但是功能强大，需要自己开发，<a href="http://lbs.amap.com/api/javascript-api/example/layers/custom-layer/" target="_blank" rel="external">参考实例</a>  </p>
+<p>一般是自己做一些canvas，然后挂载在map上即可。<br>自定义图层有个render属性？使其等于绘制函数，就可以在地图上绘制出来。</p>
+<h2 id="搜索服务"><a href="#搜索服务" class="headerlink" title="搜索服务"></a>搜索服务</h2><p>支持搜索服务脱离地图使用，即使用搜索服务不再需要先实例化地图。通过AMap.plugin方法，加载需要的服务</p>
+<h3 id="AMap-Autocomplete"><a href="#AMap-Autocomplete" class="headerlink" title="AMap.Autocomplete"></a>AMap.Autocomplete</h3><ul>
+<li><p>常用选项：<br><strong>city:</strong>输入提示被限定的城市<br><strong>citylimit:</strong> 是否强制限制在设置的城市内搜索<br><strong>input:</strong>指定一个输入框，内容则作为input的id，在input输入文字后，会自动生成一个下拉选择列表。</p>
+</li>
+<li><p>search方法，可以结合他的search方法，获取数据，然后自己render样式~~</p>
+<p>AutocompleteResult对象： </p>
+<pre><code>{ info： 状态说明,
+  count: 输入提示条数,
+  tips: [
+    { name: 名称, district: 所属区域, ,adcode: 区域编码},
+    { name: 名称, district: 所属区域, ,adcode: 区域编码}...
+  ]
+}
+</code></pre></li>
+</ul>
+<p>通常autocomplete配合placeSearch进行使用的</p>
+<h3 id="AMap-PlaceSearch"><a href="#AMap-PlaceSearch" class="headerlink" title="AMap.PlaceSearch"></a>AMap.PlaceSearch</h3><ul>
+<li><p>常用选项：<br><strong>city:</strong>输入提示被限定的城市<br><strong>citylimit:</strong> 是否强制限制在设置的城市内搜索<br><strong>type:</strong>兴趣点类别，可以通过setType设置<br><strong>pageSize:</strong>单页显示结果条数<br><strong>extensions:</strong> ‘all’ 返回基本+详细信息<br><strong>panel&amp;renderStyle</strong>结果列表的html容器id，或者容器元素，结果列表将在给出的容器中进行展示，自己可以render样式。</p>
+</li>
+<li><p>可用方法见<a href="http://lbs.amap.com/api/javascript-api/reference/search#m_AMap.PlaceSearch" target="_blank" rel="external">参考</a>吧</p>
+</li>
+</ul>
+<p>上个search使用示例：  </p>
+<pre><code>html： 
+&lt;img
+  className={styles.searchIcon}
+  src={searchIcon}
+  alt=&quot;search&quot;
+  onClick={() =&gt; this.handleSearch()}
+/&gt;
+
+js:
+handleSearch() {
+// this.state.placeSearch是个AMap.Autocomplete实例
+    this.state.placeSearch.search(this.refs.searchInput.value,             this.handleSearchSelect);
+ }
+
+ handleSearchSelect(search, result) {
+    if (result.info === &apos;OK&apos;) {
+      // mapInstance是个封装了AMap的对象。
+      const mapIns = mapInstance.getter();
+      // 自定义搜索结果的marker样式。并绘制在地图上
+      this.generateSearchMarkers(result.poiList);
+      if (result.poiList.pois.length &gt; 0) {
+        const { lng, lat } = result.poiList.pois[0].location;
+        // 将map的中心定位到获取到的第一个poi的位置上。
+        mapIns.setCenter([lng, lat]);
+        mapIns.zoomIn();
+      }
+    }
+  }
+</code></pre><p> 如果查到结果searchResult有以下内容：<br> <img src="/Users/zcx/Desktop/屏幕快照 2017-05-18 下午2.38.49.png"></p>
+<p>其他还有好多具体的搜索的服务。由于没有用到，就没看。。。</p>
+<h2 id="信息窗体"><a href="#信息窗体" class="headerlink" title="信息窗体"></a>信息窗体</h2><h3 id="AMap-InfoWindow"><a href="#AMap-InfoWindow" class="headerlink" title="AMap.InfoWindow"></a>AMap.InfoWindow</h3><p>用于在地图上弹出一个详细信息展示窗体，地图上只允许同时展示1个信息窗体  </p>
+<ul>
+<li>属性<br><strong>isCustom：</strong> 是否自定义窗体，true 则完全按照content中的规定来显示<br><strong>autoMove：</strong> 将窗体完全展现在视图中。<br><strong>closeWhenClickMap: </strong>鼠标点击地图后是否关闭信息窗体<br><strong>position: </strong>信息窗体显示位置，类型为经纬度对象  </li>
+<li>方法事件类似polygon，有一些属性的get，set方法，open，close方法。</li>
+</ul>
+<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><h3 id="AMap-CitySearch"><a href="#AMap-CitySearch" class="headerlink" title="AMap.CitySearch"></a>AMap.CitySearch</h3><p>项目中用到这个api。它主要是根据ip返回对应的城市信息，根据输入ip或自动获取ip来获取城市信息。<br>该api也是个plugin，可以在初始loader地图的时候，就将其配置进去，将脚本加载时的代码。  </p>
+<p>两个方法：<br>getLocalCity((status, citySearchResult) =&gt; {…})<br>getCityById(ip, (status, citySearchResult) =&gt; {})</p>
+<p>例子：   </p>
+<pre><code>// citysearch部分代码，省略地图实例了，用mapIns代替
+citysearch.getLocalCity((status, result) =&gt; {
+    if (status === &apos;complete&apos; &amp;&amp; result.info === &apos;OK&apos;) {
+      if (result &amp;&amp; result.city &amp;&amp; result.bounds) {
+        const city = R.slice(0, -1, result.city);
+        const cindex = R.indexOf(city, R.pluck(&apos;cityName&apos;, cityList));
+        const ccode = R.pluck(&apos;cityCode&apos;, cityList);
+        if (cindex !== -1 &amp;&amp; city !== &apos;北京&apos;) {
+          mapIns.setCity(city);
+          mapIns.setZoom(11);
+        }
+      }
+    }
+});
+</code></pre><p>citySearchResult 的属性：city， bounds</p>
+<h2 id="位置解析"><a href="#位置解析" class="headerlink" title="位置解析"></a>位置解析</h2><h3 id="AMap-Geocoder"><a href="#AMap-Geocoder" class="headerlink" title="AMap.Geocoder"></a>AMap.Geocoder</h3><p>Geocoder是进行地址描述与地理坐标间的相互转换。也就是，给出一个地址名称，转换为地理坐标的经纬度等信息。或者给出一个经纬度，确定这个点的地址名称信息。  </p>
+<p>相关方法：</p>
+<ul>
+<li><p>获取地理编码：<br>getLocation(address:String, (status:String,result:info/GeocodeResult) =&gt; {})</p>
+</li>
+<li><p>逆地理编码：<br>getAddress(location:LngLat|Array.<lnglat>,<br>(status:String,result:info/ReGeocodeResult) =&gt; {})<br>// 最多20个地址数组。</lnglat></p>
+</li>
+</ul>
+<p>s<br>用的比较多的是逆地理编码，比如自己做一个在地图上点击，然后找出该位置的相关信息。<br>逆地理编码的返回结果属性：想展示什么，就从以下选择吧<br><img src="./pic3.png"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;常用的高德地图api&quot;&gt;&lt;a href=&quot;#常用的高德地图api&quot; class=&quot;headerlink&quot; title=&quot;常用的高德地图api&quot;&gt;&lt;/a&gt;常用的高德地图api&lt;/h1&gt;&lt;p&gt;关于appkey，分为两种，一个是api调用的key，一个是地图服务的key
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://misssweety.github.io/tags/js/"/>
+    
+      <category term="地图api" scheme="https://misssweety.github.io/tags/%E5%9C%B0%E5%9B%BEapi/"/>
+    
+      <category term="总结" scheme="https://misssweety.github.io/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css3实现3d效果</title>
+    <link href="https://misssweety.github.io/2017/05/15/css3%E5%AE%9E%E7%8E%B03d%E6%95%88%E6%9E%9C/"/>
+    <id>https://misssweety.github.io/2017/05/15/css3实现3d效果/</id>
+    <published>2017-05-15T08:34:12.000Z</published>
+    <updated>2017-05-18T07:11:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="css3实现3D效果"><a href="#css3实现3D效果" class="headerlink" title="css3实现3D效果"></a>css3实现3D效果</h2><h3 id="相关属性"><a href="#相关属性" class="headerlink" title="相关属性"></a>相关属性</h3><ul>
+<li>transform: rotateX(…)</li>
+<li>transfrom-origin: left center;</li>
+<li>transform-style: preserve-3d;</li>
+<li>perspective: 200px;</li>
+<li>perpective-origin: left center;</li>
+<li>backface-visibility: true;</li>
+</ul>
+<h3 id="3d效果基础知识"><a href="#3d效果基础知识" class="headerlink" title="3d效果基础知识"></a>3d效果基础知识</h3><p>一般是在旋转后才能表现出3d效果，css中规定的旋转规则如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./axis.png" alt="alt axis" title="">
+                </div>
+                <div class="image-caption">alt axis</div>
+            </figure></p>
+<p>rotateX是以屏幕的水平方向为轴旋转，rotateY是以屏幕的垂直方向为轴，rotateZ是以与屏幕平面垂直的方向为轴。<br>其实rotatex rotateY已经能实现3d效果了，但是不是很直观。搭配上perspective，perfect！</p>
+<h3 id="perspective"><a href="#perspective" class="headerlink" title="perspective"></a>perspective</h3><p>含义：透视效果。指定了观察者与z=0平面的距离，使具有三维位置变换的元素产生透视效果。等同于绘画中的1点透视||平行透视。<br>一个物体如果z-index为正，那么我们在画布中实际看到的就要偏大。如下第一个图。如果一个物体的z-index为负，那么显示在画布视图中，则偏小，如第二个图<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./view.png" alt="alt perspective" title="">
+                </div>
+                <div class="image-caption">alt perspective</div>
+            </figure></p>
+<p><strong>两种写法:</strong><br><code>a：perspective：300px;</code><br><code>b：transform: perspective(300px) rotateX(aa);</code>  </p>
+<p><strong>区别</strong>：第一个需要写在一个父级元素上，他规定了这个父级元素的透视点位置，换个角度说，当为元素规定perspective 属性时，其直接子元素会获得透视效果，而不是元素本身。第二个可以直接作用在当前元素上，也可以结合其他transform属性，规定了当前元素的透视点位置，对其他元素无影响。<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>perspective</strong> 值越大，3d效果越不明显；越小越明显。想像成镜头到物体的距离，越近越能看出高低起伏，越远线条展示的越平缓。<br>两种写法以及perspective对比，<a href="https://codepen.io/akixiao/pen/wdwdgW" target="_blank" rel="external">查看示例</a></p>
+<h3 id="webkit-perspective-origin"><a href="#webkit-perspective-origin" class="headerlink" title="-webkit-perspective-origin"></a>-webkit-perspective-origin</h3><p>消失点的位置，<br>语法：<code>-webkit-perspective-origin: xpos ypos</code><br>xpos,ypos 可以选择关键字，left|right|center     top|bottom|center 。如果是关键字，则是否对应xy无关紧要，浏览器会自己选择。如果是数值，百分比或者像素，则要按照x，y的顺序写。<br><a href="https://codepen.io/akixiao/pen/qmWeqj" target="_blank" rel="external">参考实例</a></p>
+<h3 id="backface-visibility"><a href="#backface-visibility" class="headerlink" title="backface-visibility"></a>backface-visibility</h3><p><code>backface-visibility</code> 属性定义当元素不面向屏幕时是否可见。有些时候前面的div如果设置了透明度，就会看到后面的对象，这是可以将该属性设为hidden就可以了。默认：<code>visible</code></p>
+<h3 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h3><p>这里主要提和3d有关的几个属性  </p>
+<ul>
+<li>rotateX( angle )</li>
+<li>rotateY( angle )</li>
+<li>rotateZ( angle )</li>
+<li>translateZ( tz )</li>
+<li>scaleZ( sz )</li>
+<li>translateZ，scaleZ会将对象在与屏幕平行的方向变化物体。会有失真。</li>
+</ul>
+<p>也有综合的写法：  </p>
+<ul>
+<li>translate3d( tx, ty, tz )</li>
+<li>scale3d( sx, sy, sz )</li>
+<li>rotate3d( rx, ry, rz, angle )</li>
+</ul>
+<p>rotate3d这里，前三个规定旋转轴在空间中的方向，比如x轴，就是（1，0，0）<br><code>rotate3d(1,0,0,90deg)   ===  rotateX(90deg)</code></p>
+<h3 id="transform-origin"><a href="#transform-origin" class="headerlink" title="transform-origin"></a>transform-origin</h3><p>规定变化的中心点。一般都是对象的重心。可以修改成任意的值，以旋转为例:</p>
+<pre><code>html
+&lt;div class=&quot;test1&quot;&gt;test&lt;/div&gt;
+&lt;div class=&quot;test2&quot;&gt;test2&lt;/div&gt;
+css
+div {
+  width:200px;
+  height: 200px;
+  background: rgba(255, 0, 0,.5);
+  margin: 20px auto;
+  animation: mymove 3s infinite;
+}
+.test1{
+  transform: perspective(500px) rotateY(0deg);
+}
+.test2 {
+  transform-origin: left;
+  transform: perspective(500px) rotateY(0deg);
+}
+
+@keyframes mymove
+{
+  from {transform: perspective(500px) rotateY(0deg);}
+  to {transform:perspective(500px) rotateY(360deg);}
+}
+</code></pre><p>表现是：test1将沿着div的宽度的一半为轴旋转。test2则沿着最左边的边框为轴旋转。<br><a href="https://codepen.io/akixiao/pen/mmdKYJ?editors=0100" target="_blank" rel="external">参考实例</a></p>
+<h3 id="实例一：翻牌效果"><a href="#实例一：翻牌效果" class="headerlink" title="实例一：翻牌效果"></a>实例一：翻牌效果</h3><pre><code>&lt;div class=&quot;container&quot;&gt;
+  &lt;div id=&quot;card&quot;&gt;
+    &lt;div class=&quot;front&quot;&gt;1&lt;/div&gt;
+    &lt;div class=&quot;back&quot;&gt;2&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+//css,设置一个container，他是个具有3d效果的box
+.container {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  perspective: 800px;
+  border: 1px solid #888;
+  margin: 40px auto;
+}
+#card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: flip 2s infinite;
+  transform-origin: left center;
+}
+#card figure {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  line-height: 200px;
+  backface-visibility: hidden;
+}
+.front {
+  background: tomato;
+
+}
+.back {
+  background: lightblue;
+  transform: rotateY( 180deg );
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateY( 0deg );
+  }
+  50% {
+    transform: rotateY( 180deg ) translateX(-100%);
+  }
+  100% {
+    transform: rotateY( 360deg )
+  }
+}
+</code></pre><p>container中的card div具有3d效果，如果想让card中的div等也有3d变化效果，可以通过对card设置： <code>transform-style: preserve-3d;</code> 将其父元素的3d透视集成下来，并使所有子元素保持在同一个3d空间中。背面那张牌需要翻到背面去，也就是<code>rotateY( 180deg );</code><br><a href="http://codepen.io/akixiao/pen/WjeWqQ" target="_blank" rel="external">参考示例</a></p>
+<p>###实例二：旋转的正方体<br><a href="http://codepen.io/akixiao/pen/gWYNZo" target="_blank" rel="external">参考示例</a><br>六个div拼凑起来的。分别在xy方向上进行翻转，立到对应的方向。此时在添加一个<code>translateZ</code>才能显现出他们的效果。否则都是堆在zindex为0的位置，什么都看不见.  </p>
+<p>别的配置及思想同上面的翻牌</p>
+<p>###常见问题：<br>1.设了transfrom-style:preserve-3d为什么还不好使。  </p>
+<p>这个时候需要查看父元素是否还设了，<code>overflow，filter，clip，isolation，clip-path，mask-image，mask-box-image-source， mix-blend-mode</code>，如果不是默认值的，会将transfrom-style:preserve-3d 失效。原因是前几个属性，会创造一个flatten的box，而preserve-3d是生成stacking context  的。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;css3实现3D效果&quot;&gt;&lt;a href=&quot;#css3实现3D效果&quot; class=&quot;headerlink&quot; title=&quot;css3实现3D效果&quot;&gt;&lt;/a&gt;css3实现3D效果&lt;/h2&gt;&lt;h3 id=&quot;相关属性&quot;&gt;&lt;a href=&quot;#相关属性&quot; class=&quot;head
+    
+    </summary>
+    
+    
+      <category term="css" scheme="https://misssweety.github.io/tags/css/"/>
+    
+      <category term="perspective" scheme="https://misssweety.github.io/tags/perspective/"/>
+    
+      <category term="3D效果" scheme="https://misssweety.github.io/tags/3D%E6%95%88%E6%9E%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读书笔记-闭包</title>
+    <link href="https://misssweety.github.io/2017/05/08/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E9%97%AD%E5%8C%85/"/>
+    <id>https://misssweety.github.io/2017/05/08/读书笔记-闭包/</id>
+    <published>2017-05-08T03:11:08.000Z</published>
+    <updated>2017-05-18T07:11:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="经典闭包"><a href="#经典闭包" class="headerlink" title="经典闭包"></a>经典闭包</h2><p>闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。<br><a href="https://jsbin.com/duyotivalu/1/edit?js,console,output" target="_blank" rel="external">参考</a></p>
+<pre><code>function foo () {
+  const a = 9;
+  const bar = () =&gt; {return a;}
+  return bar;
+}
+
+const aa = foo();
+console.log(aa());
+</code></pre><p>返回9；  </p>
+<p><strong>解析</strong><br>在<code>foo()</code>执行后，其返回值赋值给变量aa，并执行<code>aa()</code>，其实是通过不同的标识符引用调用了内部函数<code>bar()</code>。bar在其词法作用域外被正常执行了。而且foo函数执行后，通常整个foo内部作用域都被销毁，但是由于bar的存在，是的内部作用域依然存在，组织了垃圾回收。<br><code>bar()</code> 拥有涵盖<code>foo()</code>内部作用域的闭包，使得该作用域能一直存活。<code>bar()</code>依然持有对该作用域的饮用，这个引用就叫做<strong>闭包</strong>。  </p>
+<p>如果将函数当作第一级的值类型进行传递，其实就会有闭包的存在。<br>一些异步或者同步操作中，使用了回调函数，也是在使用闭包。  </p>
+<p><em>无处不在</em></p>
+<p>本质上无论何时何地，如果将函数(访问它们各自的词法作用域)当作第一 级的值类型并到处传递，你就会看到闭包在这些函数中的应用。在<code>定时器</code>、<code>事件监听器</code>、 <code>Ajax请求</code>、<code>跨窗口通信</code>、<code>Web Workers</code>或者<code>任何其他的异步(或者同步)任务</code>中，只要使用了<code>回调函数</code>，实际上就是在使用闭包.  </p>
+<p>最常见的考题</p>
+<pre><code>for (var i = 1; i&lt;= 5; i++) {
+  setTimeout(() =&gt;console.log(i), 1000*i);
+}
+</code></pre><p>输出是：五个6</p>
+<p>原因：i是全局变量，setTimeout是等待执行。延迟函数的回调会在循环结束时才执行,执行的时候i已经跳出循环，第一个满足的值就是6.所以输出5个6.</p>
+<p>修改：将var 改为let。只在当时的循环中生效。可以每秒输出12345</p>
+<p>另外一个应用：<br>模块</p>
+<p>从方便观察的角度看，一个从函数调用 所返回的，只有数据属性而没有闭包函数的对象并不是真正的模块。</p>
+<p>实例：</p>
+<pre><code>function CoolModule() {
+  var something = &quot;cool&quot;;
+  var another = [1, 2, 3];
+   function doSomething() { console.log( something ); }
+  function doAnother() {
+    console.log( another.join( &quot; ! &quot; ) );
+  }         
+  return {
+    doSomething: doSomething, doAnother: doAnother
+  };
+}
+var foo = CoolModule(); foo.doSomething(); // cool
+foo.doAnother(); // 1 ! 2 ! 3
+</code></pre><p>上一个示例代码中有一个叫作 CoolModule() 的独立的模块创建器，可以被调用任意多次， 每次调用都会创建一个新的模块实例。<br>如果想实现单例模式：<br>就是将coolmodule 转换为iife，并赋予一个标识符：</p>
+<pre><code>var foo = (...)();
+foo.doSomething();
+foo.doAnother(); 结果同上
+</code></pre><p>  模块有两个主要特征:(1)为创建内部作用域而调用了一个包装函数;(2)包装函数的返回值必须至少包括一个对内部函数的引用，这样就会创建涵盖整个包装函数内部作用域的闭包。   </p>
+<h4 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h4><pre><code>function foo() {
+  console.log( a ); // 2
+}
+function bar() {
+  var a = 3;
+  foo();
+}
+var a = 2;
+bar();
+</code></pre><p>输出结果：2。词法作用域，运行bar，到foo的时候，这里的a是全局变量的a，所以为2.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;经典闭包&quot;&gt;&lt;a href=&quot;#经典闭包&quot; class=&quot;headerlink&quot; title=&quot;经典闭包&quot;&gt;&lt;/a&gt;经典闭包&lt;/h2&gt;&lt;p&gt;闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://misssweety.github.io/tags/js/"/>
+    
+      <category term="闭包" scheme="https://misssweety.github.io/tags/%E9%97%AD%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux 目录结构</title>
+    <link href="https://misssweety.github.io/2017/05/08/linux%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95/"/>
+    <id>https://misssweety.github.io/2017/05/08/linux文件目录/</id>
+    <published>2017-05-08T02:46:56.000Z</published>
+    <updated>2017-05-08T03:11:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>原来学linux的时候，不上心，现在后悔莫及，开始补基础。<br>首先是最基本的目录结构。<br>linux是树状结构  </p>
+<p><strong>标橘色为重要目录</strong></p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>／</td>
+<td>根目录，整个文件系统层次结构的根目录，一般只放目录</td>
+</tr>
+<tr>
+<td>/bin/</td>
+<td>类似 <code>/usr/bin</code> 可执行的二进制文件的目录，常用的ls，tar，mv， cat等</td>
+</tr>
+<tr>
+<td>/boot/</td>
+<td>引导程序文件，放置linux系统启动时用到的一些文件</td>
+</tr>
+<tr>
+<td><font color="orange">/dev/</font></td>
+<td>存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备</td>
+</tr>
+<tr>
+<td><font color="orange">/etc/</font></td>
+<td>系统配置文件存放的目录,不建议在此目录下存放可执行文件，重要的配置文件</td>
+</tr>
+<tr>
+<td><font color="orange">/home/</font></td>
+<td>系统默认的用户家目录，新增用户账号时，用户的家目录都存放在此目录下, 建议单独分区，并设置较大的磁盘空间</td>
+</tr>
+<tr>
+<td>/lib/,/usr/lib/, /usr/local/lib/</td>
+<td>系统使用的函数库的目录，程序在执行过程中，需要调用一些额外的参数时需要函数库的协助，比较重要的目录为/lib/modules</td>
+</tr>
+<tr>
+<td>/lost+fount/</td>
+<td>系统异常产生错误时，会将一些遗失的片段放置于此目录下，通常这个目录会自动出现在装置目录下。</td>
+</tr>
+<tr>
+<td>/mnt/</td>
+<td>临时挂载的文件系统。比如cdrom,u盘等，直接插入光驱无法使用，要先挂载后使用</td>
+</tr>
+<tr>
+<td>/opt/</td>
+<td>给主机额外安装软件所摆放的目录, 可选应用软件包。</td>
+</tr>
+<tr>
+<td><font color="orange">/proc/</font></td>
+<td>此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间.比较重要的目录有/proc/cpuinfo、/proc/interrupts、/proc/dma、/proc/ioports、/proc/net/*等</td>
+</tr>
+<tr>
+<td>/root/</td>
+<td>超级权限用户的家目录</td>
+</tr>
+<tr>
+<td><font color="orange">/sbin:/usr/sbin:/usr/local/sbin</font></td>
+<td>放置系统管理员使用的可执行命令，如fdisk、shutdown、mount等。sbin目录下的命令，普通用户都执行不了。</td>
+</tr>
+<tr>
+<td>/tmp/</td>
+<td>一般用户或正在执行的程序临时存放文件的目录,任何人都可以访问,重要数据不可放置在此目录下,在系统重启时目录中文件不会被保留。</td>
+</tr>
+<tr>
+<td>/srv/</td>
+<td>服务启动之后需要访问的数据目录，如www服务需要访问的网页数据存放在/srv/www内</td>
+</tr>
+<tr>
+<td><font color="orange">/usr/</font></td>
+<td>默认软件都会存于该目录下。用于存储只读用户数据的第二层次；包含绝大多数的(多)用户工具和应用程序。</td>
+</tr>
+<tr>
+<td><font color="orange">/var/</font></td>
+<td>变量文件——在正常运行的系统中其内容不断变化的文件，如随时更改的日志文件 /var/log，/var/log/message： 所有的登录文件存放目录，/var/spool/mail： 邮件存放的目录， /var/run: 程序或服务启动</td>
+</tr>
+</tbody>
+</table>
+<h3 id="etc-目录"><a href="#etc-目录" class="headerlink" title="/etc/目录"></a>/etc/目录</h3><p>未完待续。。。<br><a href="http://yangrong.blog.51cto.com/6945369/1288072" target="_blank" rel="external">参考</a><br><a href="http://www.iteye.com/topic/1125162" target="_blank" rel="external">参考二</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;原来学linux的时候，不上心，现在后悔莫及，开始补基础。&lt;br&gt;首先是最基本的目录结构。&lt;br&gt;linux是树状结构  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;标橘色为重要目录&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;目录&lt;/th&gt;
+&lt;th&gt;描
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://misssweety.github.io/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>export相关</title>
+    <link href="https://misssweety.github.io/2017/04/18/exports/"/>
+    <id>https://misssweety.github.io/2017/04/18/exports/</id>
+    <published>2017-04-18T03:01:45.000Z</published>
+    <updated>2017-05-18T07:11:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="exports-和-module-exports-的区别"><a href="#exports-和-module-exports-的区别" class="headerlink" title="exports 和 module.exports 的区别"></a>exports 和 module.exports 的区别</h3><p><code>exports</code> 是引用 <code>module.exports</code> 的值。<code>module.exports</code> 被改变的时候，<code>exports</code>不会被改变，而模块导出的时候，真正导出的执行是<code>module.exports</code>，而不是<code>exports</code>。</p>
+<p>有以几点需要记住：</p>
+<p>module.exports 初始值为一个空对象 {}<br>exports 是指向的 module.exports 的引用<br>require() 返回的是 module.exports 而不是 exports<br>如果module.exports 当前没有任何属性的话，exports会把属性收集起来赋给module.exports。<br>如果module.exports 有属性的话, exports中的所有内容都会被忽略。</p>
+<pre><code>foo.js
+exports.a = function(){
+  console.log(&apos;a&apos;)
+}
+
+module.exports = {a: 2}
+exports.a = 1 
+
+test.js
+var x = require(&apos;./foo&apos;);
+console.log(x.a);
+输出 ：2
+
+
+如果：foo.js 为：
+exports.a = function(){
+  console.log(&apos;a&apos;)
+}
+exports.a = 1
+
+test.js 输出：1
+
+
+如果：foo.js为：
+exports.a = function(){
+  console.log(&apos;a&apos;)
+}
+test.js 输出：[Function]
+</code></pre><p>首先，node中的require 引进的是module.exports。。。见第一个实例。如果没有显式的写module.exports，则自动连接exports与module.exports。如果显示的写了module.exports，则会断开module.exports 与 exports 的联系。</p>
+<p>应用的话，如果只是导出某个变量或者某个功能，用exports.属性|方法。<br>如果是导出多个属性或方法或使用对象构造方法，module.module 比较好。</p>
+<h4 id="export-default-和-export-区别"><a href="#export-default-和-export-区别" class="headerlink" title="export default 和 export 区别"></a>export default 和 export 区别</h4><p>1.export与export default均可用于导出常量、函数、文件、模块等<br>2.你可以在其它文件或模块中通过import+(常量 | 函数 | 文件 | 模块)名的方式，将其导入，以便能够对其进行使用<br>3.在一个文件或模块中，export、import可以有多个，export default仅有一个<br>4.通过export方式导出，在导入时要加{ }，export default则不需要</p>
+<p>引入时：<br>加了default的变量，可以起任意名字，<br>非default的需要与export时的名字相同。</p>
+<h4 id="module-exports-vs-export"><a href="#module-exports-vs-export" class="headerlink" title="module.exports vs export"></a>module.exports vs export</h4><p>commonjs：module.exports   搭配的引入： require<br>es6: export               搭配的引入：  import</p>
+<p>普通js环境下是不支持es6的语法的，如果想这么用，需要用babel等进行转译。</p>
+<p>es6 <code>default</code> export 其实是与exports 等价的，只不过 <code>default</code> 只是一个保留的名称，可以想象为，exports 一个属性，属性名为default。所以如果是在node.js环境下，用的export default， 引用的时候用require的话，需要这么写：  </p>
+<p>var bar = require(‘./input’).default;</p>
+<p><code>export</code>  vs  <code>export default</code><br>这两个在import的时候，前者需要用{} 扩起来，有种解构的感觉。后者不需要{}扩。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;exports-和-module-exports-的区别&quot;&gt;&lt;a href=&quot;#exports-和-module-exports-的区别&quot; class=&quot;headerlink&quot; title=&quot;exports 和 module.exports 的区别&quot;&gt;&lt;/a&gt;ex
+    
+    </summary>
+    
+    
+      <category term="node.js" scheme="https://misssweety.github.io/tags/node-js/"/>
+    
+      <category term="js" scheme="https://misssweety.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Visual-Formatting-Model</title>
+    <link href="https://misssweety.github.io/2017/04/17/Visual-Formatting-Model/"/>
+    <id>https://misssweety.github.io/2017/04/17/Visual-Formatting-Model/</id>
+    <published>2017-04-17T04:00:00.000Z</published>
+    <updated>2017-04-26T03:58:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-视觉格式化模型-introduction"><a href="#1-视觉格式化模型-introduction" class="headerlink" title="1.视觉格式化模型 introduction"></a>1.视觉格式化模型 introduction</h2><p>视觉格式化模型：<code>User Agent</code> 如何在 <code>Visual Media</code>下处理文档树。</p>
+<p>视觉格式化模型中，文档树中的每一个元素根据盒模型 <code>Box Model</code> 产生零个或多个盒。这些盒的布局由以下内容控制：</p>
+<ul>
+<li>盒的尺寸和类型</li>
+<li>定位体系 Positioning Scheme （常规流，浮动和绝对定位）</li>
+<li>文档树中元素之间的关系</li>
+<li>外部信息（如：视口大小，图片的固有尺寸等）</li>
+</ul>
+<h3 id="1-1-视口-viewport"><a href="#1-1-视口-viewport" class="headerlink" title="1.1 视口 viewport"></a>1.1 视口 viewport</h3><p>连续媒体 <code>Continuous Media</code> 上工作的<code>user agent</code>一般会向用户提供一个<code>viewport</code>（屏幕上的一个窗口或其它可视区域）来帮助用户访问文档。<code>user agent</code>可以在调整视口大小的同时改变文档的布局</p>
+<h3 id="1-2-包含块-containing-blocks"><a href="#1-2-包含块-containing-blocks" class="headerlink" title="1.2 包含块 containing blocks"></a>1.2 包含块 containing blocks</h3><p>CSS2.1中，许多盒的定位和大小都根据一个名为包含块 <code>Containing Block</code> 的矩形盒的边缘来计算。生成的盒会充当其后代盒的包含块；我们称盒为其后代“创建”了包含块。说“盒的包含块”即是说“盒所处的包含块”，而不是盒所产生的包含块。</p>
+<h2 id="2-盒的生成-Controlling-Box-Generation"><a href="#2-盒的生成-Controlling-Box-Generation" class="headerlink" title="2 盒的生成 Controlling Box Generation"></a>2 盒的生成 Controlling Box Generation</h2><p>display指定盒的类型</p>
+<p>有几个概念：  </p>
+<ul>
+<li><code>block-level box</code>: display：block|table|list-item</li>
+<li><code>block box</code>: 除了table块盒和可替换元素，其他的都是块容器盒。也是块盒。</li>
+<li><code>block container box</code>: 一个块容器盒要么只包含块级盒，要么创建一个行内格式化上下文 <code>Inline Formatting Context</code> 并只包含行内级盒 <code>Inline-level Boxes</code>。不一定是block的才是，行内也是。所以和块级盒只是一部分有交集。</li>
+</ul>
+<h2 id="3-定位体系-Position-schemes"><a href="#3-定位体系-Position-schemes" class="headerlink" title="3 定位体系 Position schemes"></a>3 定位体系 Position schemes</h2><p>在<code>css2.1</code>中，一个<code>box</code>有三种机制来布局  </p>
+<ul>
+<li>normal flow：块级formatting, 行级formatting，相对定位</li>
+<li>float：box先按照normal flow放置，然后从流中脱离出来，可能会对后面的排序有影响</li>
+<li>absolute position：完全脱离出文档流，对之后的元素没有影响</li>
+</ul>
+<p>[<code>脱离文档流</code>] float， absolutely positioned， 根元素。</p>
+<h3 id="3-1-position-属性"><a href="#3-1-position-属性" class="headerlink" title="3.1 position 属性"></a>3.1 position 属性</h3><p>属性：  </p>
+<ul>
+<li>static：<br>top right等并不生效</li>
+<li>relative：<br>盒的定位根据常规流计算（盒被成为常规流内定位）。盒相对其常规位置移动。当B盒相对定位，B盒之后的盒定位时就当B没有移动一样来计算。table相关的内盒并没有relative属性</li>
+<li>absolute：<br>位置大小通过top，right等定义。脱离文档流了，即便绝对定位盒有外边距，也不同其他任何外边距折叠。</li>
+<li>fixed：<br>盒的定位根据 absolute 模型来计算，但除此之外，盒相对某些参照物保持固定。<br>【用户代理不可将固定盒的内容分页显示。注意用户代理可能用其他方法打印不可见内容。参见第13章“页盒外的内容”】</li>
+</ul>
+<h2 id="4-常规流-Normal-Flow"><a href="#4-常规流-Normal-Flow" class="headerlink" title="4 常规流 Normal Flow"></a>4 常规流 Normal Flow</h2><p>常规流中的盒子都属于某个<code>格式化上下文</code>，要么<code>块格式化上下文BFC</code>，要么<code>行内格式化上下文LFC</code>，总之不能二者得兼。</p>
+<p>###4.1 bfc  </p>
+<ul>
+<li>浮动</li>
+<li>绝对定位元素、</li>
+<li>非块盒的块容器（如：行内块 inline-block 、表格单元格 table-cell 以及表格标题 table-caption ）</li>
+<li>以及 overflow 属性不为 visible 的块盒（除了该值被传播到视口的情况）</li>
+</ul>
+<p>将为其内容创建一个新的块级格式化上下文。</p>
+<p>在块格式化上下文中:</p>
+<ul>
+<li>盒从包含块顶部一个接一个地垂直摆放。</li>
+<li>两个同胞盒间的垂直距离取决于 margin 属性。</li>
+<li>同一个块格式化上下文中的相邻块级盒的垂直外边距将折叠。</li>
+<li>每个盒的左外边缘紧贴包含块的左边缘。</li>
+</ul>
+<p>###4.2 lfc</p>
+<p>盒从包含块顶部一个接一个的水平摆放。盒的垂直对齐方式则不一：可能按底部或者顶部对齐，又或者按它们内容文本的基线对齐。</p>
+<ul>
+<li>行盒的宽度取决于包含块以及浮动。</li>
+<li>行盒的高总是足以容纳其包含的所有盒，当一个盒（ B ）的高度小于包含它的行盒的高度时， B 的垂直对齐方式由 vertical-align 属性决定。</li>
+<li>当一行不能包含所有时，它们会被分配到两个或者多个垂直摆放的行盒中，变成垂直堆叠。行盒的堆叠没有垂直间距（除非有特别声明）并且从不重叠。</li>
+<li>一般行内盒超过行盒宽度是，行内盒会被分在多个行盒中。</li>
+<li>如果一个行内盒不可切割（比如，行内盒包含的是单个字符或者语言指定的断字规则不允许断字，又或者行内盒的 white-space 属性值为 nowrap 或 pre ），那么该【行内盒将溢出行盒】。</li>
+</ul>
+<p>###4.3 相对定位<br>对于相对定位而言，<code>left</code> 和<code>right</code>使其发生水平位移。而且满足：left = - right。所以如果两个都定义了，则必有一个被忽略。<br>top bottom同理，top胜。</p>
+<h2 id="5-浮动-floats"><a href="#5-浮动-floats" class="headerlink" title="5 浮动 floats"></a>5 浮动 floats</h2><p>浮动盒将被移动至左侧或右侧直至其外侧紧贴包含盒的边缘或另外一个浮动的外边缘。如果存在行盒，浮动盒的顶部外边缘将与行盒的顶部对齐。</p>
+<p>float内元素的margin不会与包含他的发生垂直边距折叠。</p>
+<p>clear 清除浮动</p>
+<p><a href="https://segmentfault.com/a/1190000003096320#articleHeader5" target="_blank" rel="external">https://segmentfault.com/a/1190000003096320#articleHeader5</a></p>
+<p>[link]<a href="https://www.w3.org/TR/CSS2/visuren.html#block-formatting" target="_blank" rel="external">https://www.w3.org/TR/CSS2/visuren.html#block-formatting</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-视觉格式化模型-introduction&quot;&gt;&lt;a href=&quot;#1-视觉格式化模型-introduction&quot; class=&quot;headerlink&quot; title=&quot;1.视觉格式化模型 introduction&quot;&gt;&lt;/a&gt;1.视觉格式化模型 introducti
+    
+    </summary>
+    
+    
+      <category term="css" scheme="https://misssweety.github.io/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>thinking-with-join</title>
+    <link href="https://misssweety.github.io/2017/03/09/thinking-with-join/"/>
+    <id>https://misssweety.github.io/2017/03/09/thinking-with-join/</id>
+    <published>2017-03-09T14:16:48.000Z</published>
+    <updated>2017-04-26T04:21:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>下面这段代码是我们最常用的，为每个数据生成一个circle，调用数据里的x，y来定位。但是我们selectAll的元素，此时并不存在，那d3是如何工作的呢?</p>
+<blockquote>
+<p>svg.selectAll(“circle”)<br>  .data(data)<br>  .enter().append(“circle”)<br>    .attr(“cx”, function(d) { return d.x; })<br>    .attr(“cy”, function(d) { return d.y; })<br>    .attr(“r”, 2.5);</p>
+</blockquote>
+<p>在d3中，告诉d3你想要什么，而不是告诉d3怎样做什么。对于上面这个需求，我们要做的就是，我想要circle对应于数据，每个circle对应于一个数据，而不是告诉d3，你应该给我创造一个circle，然后告诉d3选择的circle应该和数据对应好。<br>这个原则就叫做<strong>data join</strong></p>
+<svg width="720" height="240" version="1.1" xmlns="http://www.w3.org/2000/svg"><br/>  <g transform="translate(0,128)"><br/>    <g transform="translate(300)"><br/>      <circle r="110" style="fill: rgba(49, 130, 189,.2);" stroke="black"/><br/>      <text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Data</text><br/>      <text x="-50" dy=".35em" text-anchor="middle">Enter</text><br/>    </g><br/>    <text x="360" dy=".35em" text-anchor="middle">Update</text><br/>    <g transform="translate(420)"><br/>      <circle r="110" style="fill: rgba(230, 85, 13,.2);" stroke="black"/><br/>      <text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Elements</text><br/>      <text x="50" dy=".35em" text-anchor="middle">Exit</text><br/>    </g><br/>  </g><br/></svg>
+
+<p>连接到现有元素的数据点生成update（内部）选择。剩余未绑定数据生成enter选择（左），表示缺少的元素。同样，任何剩余的未绑定元素会生成exit选择（右），表示要删除的元素。</p>
+<p>现在，我们可以通过data join 来揭开enter-append序列的谜团了</p>
+<ol>
+<li><code>svg.selectAll(&quot;circle&quot;)</code> 返回一个新的空<code>selection</code>，因为SVG容器是空的，所以该<code>selection</code>的父节点是SVG容器</li>
+<li>然后此<code>selection</code>连接到数据数组，生成三个新<code>selection</code>分别表示三种可能的状态：<code>enter</code>，<code>update</code>和<code>exit</code>。由于<code>selection</code>为空，所以<code>update</code>和<code>exit</code>选择为空，而<code>enter selection</code>包含每个新数据的占位符。</li>
+<li><code>update selection</code>通过<a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_data" target="_blank" rel="external">selection.data</a>返回,而<code>enter</code>和<code>exit selection</code>挂起<code>update selection</code>; <a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_enter" target="_blank" rel="external">selection.enter</a>返回<code>enter selection</code>。</li>
+<li>通过在<code>enter selection</code>上调用<a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_append" target="_blank" rel="external">selection.append</a>，将缺少的元素添加到SVG容器。这会为每个数据点向SVG容器添加一个新圆。</li>
+</ol>
+<p><em>Thinking with joins</em> 意味着在一个selection和数据集中声明一种关系，然后通过<code>enter</code>, <code>update</code>, <code>exit</code>实现这个关系.</p>
+<p>但是为什么会这么麻烦呢？为什么不一开始就创建多个元素呢？data join的美丽在于它的泛化。虽然上述代码只处理<code>enter selection</code>,这就可以处理静态可视化了，但是你可以将其扩展为支持动态可视化，只需对<code>update</code>和<code>exit</code>进行少量修改。这意味着您可以对<a href="https://bost.ocks.org/mike/path/" target="_blank" rel="external">实时数据</a>进行可视化，允许<a href="http://bl.ocks.org/mbostock/4063663" target="_blank" rel="external">交互式探索</a>，以及在数据集之间<a href="http://bl.ocks.org/mbostock/1256572" target="_blank" rel="external">平滑过渡</a>！</p>
+<p>看下包含三个状态的例子：</p>
+<blockquote>
+<p>var circle = svg.selectAll(“circle”)<br>  .data(data);<br>circle.exit().remove();<br>circle.enter().append(“circle”)<br>  .attr(“r”, 2.5)<br>  .merge(circle)<br>  .attr(“cx”, function(d) { return d.x; })<br>  .attr(“cy”, function(d) { return d.y; });</p>
+</blockquote>
+<p>无论何时运行此代码，它都会重新计算数据连接并保持元素和数据之间的所需对应关系。如果新数据集小于旧数据集，则剩余元素将在退出选择中结束并被删除。如果新数据集较大，剩余数据将在输入选择中结束，并添加新节点。如果新数据集的大小完全相同，那么所有元素都将使用新位置进行更新，并且不会添加或删除任何元素。</p>
+<p><code>thinking with join</code>用连接来思考意味着你的代码更具声明性：你处理这三个状态没有任何分支（if）或迭代（for）。而是描述元素应如何对应数据。如果给定的<code>enter</code>，<code>update</code>或<code>exit selection</code>恰好是空的，则相应的代码是无操作</p>
+<p>连接还允许将操作定向到特定状态（如果需要）。例如，你可以在enter而不是update上设置常量属性（例如由“r”属性定义的圆的半径）。通过重新选择元素和最小化DOM更改，您大大提高了渲染性能！同样，您可以将动画过渡指定为特定状态。例如，在entering状态，加入动画<a href="https://jsbin.com/vubibuvaqo/1/edit?html,output" target="_blank" rel="external">圆圈展开</a></p>
+<p>大致翻译自：<a href="https://bost.ocks.org/mike/join/" target="_blank" rel="external">thinking with join</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;下面这段代码是我们最常用的，为每个数据生成一个circle，调用数据里的x，y来定位。但是我们selectAll的元素，此时并不存在，那d3是如何工作的呢?&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;svg.selectAll(“circle”)&lt;br&gt;  .data(dat
+    
+    </summary>
+    
+    
+      <category term="d3" scheme="https://misssweety.github.io/tags/d3/"/>
+    
+      <category term="translate" scheme="https://misssweety.github.io/tags/translate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客搭建</title>
+    <link href="https://misssweety.github.io/2016/10/27/blog-publish/"/>
+    <id>https://misssweety.github.io/2016/10/27/blog-publish/</id>
+    <published>2016-10-27T04:00:00.000Z</published>
+    <updated>2017-04-26T04:23:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>适用于macOS</p>
+<p>###1.需要安装git，npm，node<br>升级本地npm</p>
+<pre><code>npm install npm@latest -g
+如果有权限问题，前面加上sudo就可以了
+</code></pre><p>###2.安装hexo</p>
+<pre><code>sudo npm install -g hexo
+全局安装了
+</code></pre><p>###3.hexo管理一个网站</p>
+<pre><code>hexo init blog
+名字随自己喜欢，这里起的事blog
+</code></pre><p>###4.进入该文件，进行管理</p>
+<pre><code>cd blog
+hexo server //启动你的本地网站，访问localhost:4000，就可以看到雏形了
+hexo new &quot;hello world&quot; //生成一个hello world.md文件，新新文章，添加到网站中
+</code></pre><p>###5.部署到github上</p>
+<p>####git上建立仓库<br>先在自己的库里创建一个新的repo,作为网站的远端库，一般命名为自己的账号名，例如：</p>
+<p>  我的账号<font color="purple"><code>missSweety</code></font>，新建的repo为<font color="purple"><code>missSweety.github.io</code></font></p>
+<p>####修改hexo配置文件<br>回到hexo中，为了部署到github上，我们需要修改<font color="purple"><code>_config.yml</code></font>文件如下：</p>
+<pre><code>deploy:
+  type: git
+  repository: https://github.com/MissSweety/MissSweety.github.io.git
+  branch: master
+</code></pre><p>####安装hexo deployer git<br>    npm install hexo-deployer-git –save<br>如果不安装这个，deploy的时候会报错的</p>
+<p>####hexo deploy<br>    hexo deploy<br>如果没配过ssh，还是会报错的<br>解决方法：</p>
+<pre><code>ssh-keygen -t rsa -b 4096 -C ‘email’
+</code></pre><p>按照提示，输入账号，密码，就会生成文件了<br>回到github网站，在setting中把公钥放进去  </p>
+<pre><code>ssh -T git@github.com
+</code></pre><p>用该指令可以查看是否已经鉴权了</p>
+<font color="lightblue">如果以上都好了，这次在用hexo deploy,就会自动push代码，并发布了，可以查看你的网站了</font>
+
+<p>###大功告成!!!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;适用于macOS&lt;/p&gt;
+&lt;p&gt;###1.需要安装git，npm，node&lt;br&gt;升级本地npm&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;npm install npm@latest -g
+如果有权限问题，前面加上sudo就可以了
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###2.安装hex
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="https://misssweety.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>
