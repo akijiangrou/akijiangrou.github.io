@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>React生命周期 | MissSweety&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="react,生命周期">
+    <meta name="description" content="react生命周期在自定义React组件时，会根据需要在组件生命周期的不同阶段实现不同的逻辑。本文源码是【15.6.1】 生命周期而组件的生命周期在不同状态下的执行顺序如下： 首次挂载组件 getDefaultProps getInitialState componentWillMount render componentDidMount  重新挂载组件 getInitialState compo">
+<meta name="keywords" content="react,生命周期">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React生命周期">
+<meta property="og:url" content="https://misssweety.github.io/2017/09/12/React生命周期/index.html">
+<meta property="og:site_name" content="MissSweety's Blog">
+<meta property="og:description" content="react生命周期在自定义React组件时，会根据需要在组件生命周期的不同阶段实现不同的逻辑。本文源码是【15.6.1】 生命周期而组件的生命周期在不同状态下的执行顺序如下： 首次挂载组件 getDefaultProps getInitialState componentWillMount render componentDidMount  重新挂载组件 getInitialState compo">
+<meta property="og:updated_time" content="2017-09-12T11:15:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React生命周期">
+<meta name="twitter:description" content="react生命周期在自定义React组件时，会根据需要在组件生命周期的不同阶段实现不同的逻辑。本文源码是【15.6.1】 生命周期而组件的生命周期在不同状态下的执行顺序如下： 首次挂载组件 getDefaultProps getInitialState componentWillMount render componentDidMount  重新挂载组件 getInitialState compo">
+    
+        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:zcx900308@qq.com" title="zcx900308@qq.com" class="mail">zcx900308@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="https://misssweety.github.io/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MissSweety" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">React生命周期</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">React生命周期</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-12T11:07:41.000Z" itemprop="datePublished" class="page-time">
+  2017-09-12
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#react生命周期"><span class="post-toc-number">1.</span> <span class="post-toc-text">react生命周期</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#生命周期"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">生命周期</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#首次挂载组件"><span class="post-toc-number">1.1.0.1.</span> <span class="post-toc-text">首次挂载组件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重新挂载组件"><span class="post-toc-number">1.1.0.2.</span> <span class="post-toc-text">重新挂载组件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#再次渲染组件-props-CHANGE"><span class="post-toc-number">1.1.0.3.</span> <span class="post-toc-text">再次渲染组件-props CHANGE</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#再次渲染组件-state-CHANGE"><span class="post-toc-number">1.1.0.4.</span> <span class="post-toc-text">再次渲染组件-state CHANGE</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#生命周期详解"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">生命周期详解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用createClass创建自定义组件"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">使用createClass创建自定义组件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mountComponent阶段"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">mountComponent阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RECEIVE—props-update的过程"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">RECEIVE—props update的过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#unmounting"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">unmounting</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#无状态组件"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">无状态组件</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-React生命周期"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">React生命周期</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-12 19:07:41" datetime="2017-09-12T11:07:41.000Z"  itemprop="datePublished">2017-09-12</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="react生命周期"><a href="#react生命周期" class="headerlink" title="react生命周期"></a>react生命周期</h1><p>在自定义React组件时，会根据需要在组件生命周期的不同阶段实现不同的逻辑。本文源码是【15.6.1】</p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p>而组件的生命周期在不同状态下的执行顺序如下：</p>
+<h4 id="首次挂载组件"><a href="#首次挂载组件" class="headerlink" title="首次挂载组件"></a>首次挂载组件</h4><ul>
+<li>getDefaultProps</li>
+<li>getInitialState</li>
+<li>componentWillMount</li>
+<li>render</li>
+<li>componentDidMount</li>
+</ul>
+<h4 id="重新挂载组件"><a href="#重新挂载组件" class="headerlink" title="重新挂载组件"></a>重新挂载组件</h4><ul>
+<li>getInitialState</li>
+<li>componentWillMount</li>
+<li>render</li>
+<li>componentDidMount</li>
+</ul>
+<h4 id="再次渲染组件-props-CHANGE"><a href="#再次渲染组件-props-CHANGE" class="headerlink" title="再次渲染组件-props CHANGE"></a>再次渲染组件-props CHANGE</h4><ul>
+<li>componentWillReceiveProps</li>
+<li>shouldComponentUpdate</li>
+<li>componentWillUpdate</li>
+<li>render</li>
+<li>componentDidUpdate</li>
+</ul>
+<h4 id="再次渲染组件-state-CHANGE"><a href="#再次渲染组件-state-CHANGE" class="headerlink" title="再次渲染组件-state CHANGE"></a>再次渲染组件-state CHANGE</h4><ul>
+<li>shouldComponentUpdate</li>
+<li>componentWillUpdate</li>
+<li>render</li>
+<li>componentDidUpdate</li>
+</ul>
+<p>下面就是揭秘React为何会按照上面这个执行生命周期。</p>
+<h2 id="生命周期详解"><a href="#生命周期详解" class="headerlink" title="生命周期详解"></a>生命周期详解</h2><p>自定义组件声明周期存在3个阶段：<br><strong>MOUNTING</strong>, <strong>RECEIVE_PROPS</strong>, <strong>UNMOUNTING</strong></p>
+<p>分别对应3种方法。</p>
+<ul>
+<li>mountComponent，</li>
+<li>updateComponent</li>
+<li>unmountComponent</li>
+</ul>
+<p>以上每个都提供了几种处理方法。will前缀的方法在进入状态之前调用，did在进入状态之后调用。</p>
+<h3 id="使用createClass创建自定义组件"><a href="#使用createClass创建自定义组件" class="headerlink" title="使用createClass创建自定义组件"></a>使用createClass创建自定义组件</h3><p>ES6编写React组件时：</p>
+<pre><code>class MyComponent extends React.Component
+</code></pre><p>是调用<code>createClass</code>创建组件，利用原型继承<code>ReactClassComponent</code>父类，合并<code>mixins</code>，初始化<code>defaultProps</code>，返回构造函数。下面是代码。</p>
+<p>关于createClass：【isomorphic/class/createClass.js】  </p>
+<pre><code>&apos;use strict&apos;;
+
+var {Component} = require(&apos;ReactBaseClasses&apos;);
+var {isValidElement} = require(&apos;ReactElement&apos;);
+var ReactNoopUpdateQueue = require(&apos;ReactNoopUpdateQueue&apos;);
+var factory = require(&apos;create-react-class/factory&apos;);
+
+module.exports = factory(Component, isValidElement, ReactNoopUpdateQueue);
+</code></pre><p>factory: [react/addons/create-react-class/factory.js];</p>
+<p>component如上，但是<code>createClass</code>实际上导出的是由<code>factory``包裹的函数。各种生命周期都是在factory</code>里构造的。<code>factory</code>里定义了，<code>ReactClassInterface</code>，里面规定了好多协议（如render等）</p>
+<pre><code>// Helper function to allow the creation of anonymous functions which do not
+// have .name set to the name of the variable being assigned to.
+function identity(fn) {
+  return fn;
+}
+
+function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
+  var injectedMixins = [];
+  // 定义reactclass中的协议（其实就是方法）
+  var ReactClassInterface = {
+    mixins: &apos;DEFINE_MANY&apos;,
+    statics: &apos;DEFINE_MANY&apos;,
+    propTypes: &apos;DEFINE_MANY&apos;,
+    contextTypes: &apos;DEFINE_MANY&apos;,
+    childContextTypes: &apos;DEFINE_MANY&apos;,
+    getDefaultProps: &apos;DEFINE_MANY_MERGED&apos;,
+    getInitialState: &apos;DEFINE_MANY_MERGED&apos;,
+    getChildContext: &apos;DEFINE_MANY_MERGED&apos;,
+    render: &apos;DEFINE_ONCE&apos;,
+    componentWillMount: &apos;DEFINE_MANY&apos;,
+    componentDidMount: &apos;DEFINE_MANY&apos;,
+    componentWillReceiveProps: &apos;DEFINE_MANY&apos;,
+    shouldComponentUpdate: &apos;DEFINE_ONCE&apos;,
+    componentWillUpdate: &apos;DEFINE_MANY&apos;,
+    componentDidUpdate: &apos;DEFINE_MANY&apos;,
+    componentWillUnmount: &apos;DEFINE_MANY&apos;,
+    updateComponent: &apos;OVERRIDE_BASE&apos;
+};
+
+  var ReactClassComponent = function() {};
+  _assign(
+    ReactClassComponent.prototype,
+    ReactComponent.prototype,
+    ReactClassMixin
+  );
+
+  function createClass(spec) {
+    // Constructor.name !== &apos;Constructor&apos;.确保不会将没有displayName的类识别为&apos;Constructor&apos;。重写了contructor函数~~~~
+     var Constructor = identity(function(props, context, updater) {
+     // 自动绑定
+     if (this.__reactAutoBindPairs.length) {
+      bindAutoBindMethods(this);
+    }
+
+    this.props = props;
+    this.context = context;
+    this.refs = emptyObject;
+    this.updater = updater || ReactNoopUpdateQueue;
+
+    this.state = null;
+    // reactClasses没有构造函数，通过getInitialState，与componentWillMount来进行初始化。
+    var initialState = this.getInitialState ? this.getInitialState() : null;
+    // 原型继承自父类。
+    Constructor.prototype = new ReactClassComponent();
+    Constructor.prototype.constructor = Constructor;
+    Constructor.prototype.__reactAutoBindPairs = [];
+
+    injectedMixins.forEach(mixSpecIntoComponent.bind(null, Constructor));
+// 把didmount，willunmount赋给原型
+    mixSpecIntoComponent(Constructor, IsMountedPreMixin);
+    mixSpecIntoComponent(Constructor, spec);
+    mixSpecIntoComponent(Constructor, IsMountedPostMixin);
+
+    // Initialize the defaultProps property after all mixins have been merged.
+    // 所有mixin合并后，开始初始化defaultProps
+    if (Constructor.getDefaultProps) {
+      Constructor.defaultProps = Constructor.getDefaultProps();
+    }
+    // 减少查找并设置原型的时间。
+    for (var methodName in ReactClassInterface) {
+      if (!Constructor.prototype[methodName]) {
+        Constructor.prototype[methodName] = null;
+      }
+    }
+
+    return Constructor;
+  } 
+  return createClass;
+}
+</code></pre><p>以上是初始化的阶段，第一次mounting前，<code>createClass</code>返回<code>Constructor</code>函数。<code>getDefaultProps</code> 是在constructor阶段调用的，所以生成一个实例后，就不会再调用了。所以只有初次挂载的时候才会调用。。。</p>
+<h3 id="mountComponent阶段"><a href="#mountComponent阶段" class="headerlink" title="mountComponent阶段"></a>mountComponent阶段</h3><p>mountComponent负责管理生命周期的<code>getInitialState</code>，<code>componentWillMount</code>，<code>render</code>，和<code>componentDidMount</code>.</p>
+<p>mountComponent挂载组件，初始化序号，标记等参数，判断是否为无状态组件，以及初始化操作。使用<code>getInitialState</code>获取初始化state。在<code>componentWillMount</code>中调用setState，<strong>不触发re-render</strong>，而是merge state。这个状态的this.state并不是最新的。在render中才可以获取更新的this.state。  </p>
+<p>[代码里]</p>
+<pre><code>// When mounting, calls to `setState` by `componentWillMount` will set
+  // `this._pendingStateQueue` without triggering a re-render.
+  if (this._pendingStateQueue) {
+    inst.state = this._processPendingState(inst.props, inst.context);
+    // merge state 
+  }
+</code></pre><p>利用：<code>this._pendingStateQueue</code> , <code>this._pendingReplaceState</code>, <code>this._pendingForceUpdate</code> 实现setState的异步跟新机制。</p>
+<p>render后，若存在didMount，则调用。</p>
+<p>mountComponent通过递归渲染的，由于是递归，肯定是父的willMOUNT, 父的RENDER, 子的willMount，子render，子didMount，父didmount。</p>
+<p>mountComponent,初始化state，执行<code>initialMount</code>，返回markup。</p>
+<pre><code>mountComponent: function(
+    transaction,
+    hostParent,
+    hostContainerInfo,
+    context,
+  ){
+    ...
+    var initialState = inst.state;
+    if (initialState === undefined) {
+      inst.state = initialState = null;
+    }
+
+    this._pendingStateQueue = null;
+    this._pendingReplaceState = false;
+    this._pendingForceUpdate = false;
+
+    var markup;
+    if (inst.unstable_handleError) {
+      markup = this.performInitialMountWithErrorHandling(
+        renderedElement,
+        hostParent,
+        hostContainerInfo,
+        transaction,
+        context,
+      );
+    } else {
+      markup = this.performInitialMount(
+        renderedElement,
+        hostParent,
+        hostContainerInfo,
+        transaction,
+        context,
+      );
+    }
+
+    if (inst.componentDidMount) {
+      if (__DEV__) {
+        transaction.getReactMountReady().enqueue(() =&gt; {
+          measureLifeCyclePerf(
+            () =&gt; inst.componentDidMount(),
+            this._debugID,
+            &apos;componentDidMount&apos;,
+          );
+        });
+      } else {
+        transaction.getReactMountReady().enqueue(inst.componentDidMount, inst);
+      }
+    }
+
+    return markup;
+  } 
+</code></pre><p>在<code>performInitialMount</code>函数中, 使用ReactReconciler，进行递归渲染组件。</p>
+<pre><code>var markup = ReactReconciler.mountComponent(
+  child,
+  transaction,
+  hostParent,
+  hostContainerInfo,
+  this._processChildContext(context),
+  debugID,
+);
+</code></pre><h3 id="RECEIVE—props-update的过程"><a href="#RECEIVE—props-update的过程" class="headerlink" title="RECEIVE—props update的过程"></a>RECEIVE—props update的过程</h3><p>源码里面：updateComponent负责管理生命周期的 <code>componentWillReceiveProps</code>，<code>shouldComponentUpdate</code>, <code>componentWillUpdate</code>, <code>componentDidUpdate</code>;</p>
+<p>首先通过<code>updateComponent</code>更新组件，如果元素不一致，说明要进行组件更新。<br>代码继续向下执行，如果有<code>componentWillReceiveProps</code>执行，其中有<code>setState</code>会合并state，且在<code>componentWillReceiveProps，shouldComponentUpdate，componentWillUpdate</code>中不会获取到新的state。只能在render和did状态才能获取。剩下几个状态也是有就执行，且顺序为：<br><code>shouldComponentUpdate</code><br><code>componentWillUpdate</code><br><code>render</code><br><code>componentDidUpdate</code></p>
+<p>在<code>updateComponent</code>中</p>
+<pre><code>updateComponent: function(
+transaction,
+prevParentElement,
+nextParentElement,
+prevUnmaskedContext,
+nextUnmaskedContext,
+</code></pre><p>  ) {<br>    var inst = this._instance;<br>    …<br>    var willReceive = false;</p>
+<pre><code>// 判断context变化与否，设置willReceive。
+if (this._context === nextUnmaskedContext) {
+  nextContext = inst.context;
+} else {
+  nextContext = this._processContext(nextUnmaskedContext);
+  willReceive = true;
+}
+
+var prevProps = prevParentElement.props;
+var nextProps = nextParentElement.props;
+// 判断props变化与否，设置willReceive。
+if (prevParentElement !== nextParentElement) {
+  willReceive = true;
+}
+
+if (willReceive &amp;&amp; inst.componentWillReceiveProps) {
+...
+判断和执行componentWillReceiveProps
+}
+
+var nextState = this._processPendingState(nextProps, nextContext);
+var shouldUpdate = true;
+... 下面是关于shouldupdate的判断和执行。
+</code></pre><p>shouldComponentUpdate，如果用户自定义了，则按照自定义判断来返回shouldUpdate，否则执行默认操作：</p>
+<pre><code>if (!this._pendingForceUpdate) {
+if (inst.shouldComponentUpdate) {
+    if (__DEV__) {
+      shouldUpdate = measureLifeCyclePerf(
+        () =&gt; inst.shouldComponentUpdate(nextProps, nextState, nextContext),
+        this._debugID,
+        &apos;shouldComponentUpdate&apos;,
+      );
+    } else {
+      shouldUpdate = inst.shouldComponentUpdate(
+        nextProps,
+        nextState,
+        nextContext,
+      );
+    }
+  } else {
+    if (this._compositeType === CompositeTypes.PureClass) {
+      shouldUpdate =
+        !shallowEqual(prevProps, nextProps) ||
+        !shallowEqual(inst.state, nextState);
+    }
+  }
+  }
+</code></pre><p>后面render要根据shouldUpdate的状态来执行。</p>
+<pre><code> if (shouldUpdate) {
+  this._pendingForceUpdate = false;
+  // Will set `this.props`, `this.state` and `this.context`.
+  this._performComponentUpdate(
+    nextParentElement,
+    nextProps,
+    nextState,
+    nextContext,
+    transaction,
+    nextUnmaskedContext,
+  );
+} else {
+  // 如果确定不更新，也要设置props，state，context
+  this._currentElement = nextParentElement;
+  this._context = nextUnmaskedContext;
+  inst.props = nextProps;
+  inst.state = nextState;
+  inst.context = nextContext;
+}
+</code></pre><p>如果应该update则调用一下函数<br><code>this._performComponentUpdate</code><br>规定了如果有componentWillUpdate，调用。<br>然后是_updateRenderedComponent，进行re-render，调动render方法更新dom<br>接着，如果有hasComponentDidUpdate，调用。</p>
+<pre><code>_updateRenderedComponent: function(transaction, context) {
+// 如果需要更新，则调用ReactReconciler.receiveComponent跟新组件
+  if (shouldUpdateReactComponent(prevRenderedElement, nextRenderedElement)) {
+      ReactReconciler.receiveComponent(
+        prevComponentInstance,
+        nextRenderedElement,
+        transaction,
+        this._processChildContext(context),
+      );
+   } else {
+     // 渲染组件，render递归
+     var nextMarkup = ReactReconciler.mountComponent(
+        child,
+        transaction,
+        this._hostParent,
+        this._hostContainerInfo,
+        this._processChildContext(context),
+        debugID,
+      );
+    }
+</code></pre><p>也是递归render的，所以也是父的先willUpdate，然后子的willUpdate,子的didUpdate，父的DidUpdate</p>
+<h3 id="unmounting"><a href="#unmounting" class="headerlink" title="unmounting"></a>unmounting</h3><p>负责管理<code>componentWillUnmount</code></p>
+<p>如果规定了componentWillUnmount，则执行并重置所有参数，更新队列以及状态。有setState，不会执行re-render。并清除了当前的这个实例。</p>
+<h3 id="无状态组件"><a href="#无状态组件" class="headerlink" title="无状态组件"></a>无状态组件</h3><p>只是一个render方法，没有组件实例化过程。因为没有状态，没有生命周期，接收props生成dom结构。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-09-12T11:15:20.000Z" itemprop="dateUpdated">2017-09-12 19:15:20</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/09/12/React生命周期/" target="_blank" rel="external">https://misssweety.github.io/2017/09/12/React生命周期/</a>
+        
+    </div>
+    <footer>
+        <a href="https://misssweety.github.io">
+            <img src="/img/avatar.jpg" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生命周期/">生命周期</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/09/12/React生命周期/&title=《React生命周期》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/09/12/React生命周期/&title=《React生命周期》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/09/12/React生命周期/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《React生命周期》 — MissSweety's Blog&url=https://misssweety.github.io/2017/09/12/React生命周期/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/09/12/React生命周期/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/29/d3-basic-line/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">d3-basic-line</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/09/12/React生命周期/&title=《React生命周期》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/09/12/React生命周期/&title=《React生命周期》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/09/12/React生命周期/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《React生命周期》 — MissSweety's Blog&url=https://misssweety.github.io/2017/09/12/React生命周期/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/09/12/React生命周期/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3aSW7DMAwF0Nz/0u4B2rifpNNC0tMqCDzoeUFw0OsVr+vbql5fvev1iYWBgbEs47pd94x8c/fX5+99S8XAwDiAMXl9EjTzDfXei4GBgXEfWJ8KxPlzMDAwMO4ZV7DuecmTMTAwMHpFbJ4a5sniP9TiGBgYCzLyrvvf//7IfAMDA2MpxlVceUNtXtwWdoWBgbE146lHT0rf+WEODAyMvRmTow/VUFsdDxRKZQwMjMMY1dZY797qsOGXPWBgYBzAqA4d81QvD7W9Qx7l6hkDA2NZRnVbeUJZHVImBe0PO8HAwDiSMW+0TQaleXLZzFsxMDCWYjyVDhYGjS1AFPoxMDA2ZeRpXF5YTtLKZrGNgYFxACN5WY7MMck/5dMiGBgY2zHyNv189JiPAUblMQYGxnaM/IZe0z85apYfIyufGcHAwNiIUR035i37amnaGyRgYGDszegdpMgTvjyM5iH47ZMxMDAOYOQtszkmL2gLzTgMDIxjGJOx5SQF7B0IextwMTAwNmX00sHqP/Pg/kvAxcDAOIAxOe5QHR7kAT0K3xgYGJsyruLKS9NJslimYmBgbM2oDgtz6iTIJp+mOf7EwMBYllFtt/VI+Wizeg0GBsY5jDzw9ULz556PgYGBEY0PW0H52YNoGBgYGKPh4iSM3n6yUcDFwMBYkNEbBlQb+nlLLi+kMTAwTmDkAbGXFFYL14TaDO4YGBjrMb4AgC1gvq/r8R4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'ah-oh！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MissSweety';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
