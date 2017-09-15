@@ -955,21 +955,9 @@ citysearch.getLocalCity((status, result) =&gt; {
 <li>perpective-origin: left center;</li>
 <li>backface-visibility: true;</li>
 </ul>
-<h3 id="3d效果基础知识"><a href="#3d效果基础知识" class="headerlink" title="3d效果基础知识"></a>3d效果基础知识</h3><p>一般是在旋转后才能表现出3d效果，css中规定的旋转规则如下：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="./axis.png" alt="alt axis" title="">
-                </div>
-                <div class="image-caption">alt axis</div>
-            </figure></p>
+<h3 id="3d效果基础知识"><a href="#3d效果基础知识" class="headerlink" title="3d效果基础知识"></a>3d效果基础知识</h3><p>一般是在旋转后才能表现出3d效果，css中规定的旋转规则如下：<br><img src="./axis.png" alt="alt axis"></p>
 <p>rotateX是以屏幕的水平方向为轴旋转，rotateY是以屏幕的垂直方向为轴，rotateZ是以与屏幕平面垂直的方向为轴。<br>其实rotatex rotateY已经能实现3d效果了，但是不是很直观。搭配上perspective，perfect！</p>
-<h3 id="perspective"><a href="#perspective" class="headerlink" title="perspective"></a>perspective</h3><p>含义：透视效果。指定了观察者与z=0平面的距离，使具有三维位置变换的元素产生透视效果。等同于绘画中的1点透视||平行透视。<br>一个物体如果z-index为正，那么我们在画布中实际看到的就要偏大。如下第一个图。如果一个物体的z-index为负，那么显示在画布视图中，则偏小，如第二个图<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="./view.png" alt="alt perspective" title="">
-                </div>
-                <div class="image-caption">alt perspective</div>
-            </figure></p>
+<h3 id="perspective"><a href="#perspective" class="headerlink" title="perspective"></a>perspective</h3><p>含义：透视效果。指定了观察者与z=0平面的距离，使具有三维位置变换的元素产生透视效果。等同于绘画中的1点透视||平行透视。<br>一个物体如果z-index为正，那么我们在画布中实际看到的就要偏大。如下第一个图。如果一个物体的z-index为负，那么显示在画布视图中，则偏小，如第二个图<br><img src="./view.png" alt="alt perspective"></p>
 <p><strong>两种写法:</strong><br><code>a：perspective：300px;</code><br><code>b：transform: perspective(300px) rotateX(aa);</code>  </p>
 <p><strong>区别</strong>：第一个需要写在一个父级元素上，他规定了这个父级元素的透视点位置，换个角度说，当为元素规定perspective 属性时，其直接子元素会获得透视效果，而不是元素本身。第二个可以直接作用在当前元素上，也可以结合其他transform属性，规定了当前元素的透视点位置，对其他元素无影响。<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>perspective</strong> 值越大，3d效果越不明显；越小越明显。想像成镜头到物体的距离，越近越能看出高低起伏，越远线条展示的越平缓。<br>两种写法以及perspective对比，<a href="https://codepen.io/akixiao/pen/wdwdgW" target="_blank" rel="external">查看示例</a></p>
 <h3 id="webkit-perspective-origin"><a href="#webkit-perspective-origin" class="headerlink" title="-webkit-perspective-origin"></a>-webkit-perspective-origin</h3><p>消失点的位置，<br>语法：<code>-webkit-perspective-origin: xpos ypos</code><br>xpos,ypos 可以选择关键字，left|right|center     top|bottom|center 。如果是关键字，则是否对应xy无关紧要，浏览器会自己选择。如果是数值，百分比或者像素，则要按照x，y的顺序写。<br><a href="https://codepen.io/akixiao/pen/qmWeqj" target="_blank" rel="external">参考实例</a></p>
