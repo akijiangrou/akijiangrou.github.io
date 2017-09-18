@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://misssweety.github.io/"/>
-  <updated>2017-09-18T08:45:41.000Z</updated>
+  <updated>2017-09-18T08:49:17.000Z</updated>
   <id>https://misssweety.github.io/</id>
   
   <author>
@@ -16,27 +16,57 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>D3aaa</title>
-    <link href="https://misssweety.github.io/2017/09/18/D3aaa/"/>
-    <id>https://misssweety.github.io/2017/09/18/D3aaa/</id>
+    <title>D3-api-transition</title>
+    <link href="https://misssweety.github.io/2017/09/18/D3-api-transition/"/>
+    <id>https://misssweety.github.io/2017/09/18/D3-api-transition/</id>
     <published>2017-09-18T08:45:41.000Z</published>
-    <updated>2017-09-18T08:45:41.000Z</updated>
+    <updated>2017-09-18T08:49:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="D3的动效API-transition"><a href="#D3的动效API-transition" class="headerlink" title="D3的动效API-transition"></a>D3的动效API-transition</h1><p>D3的动效都是通过transition来实现的。</p>
+<p><code>transition</code> 是类似于selection的接口，它用于动画改变DOM界面。<br><code>transition</code> 通过 <code>selection.transition</code> 获得，他和d3.select(…)返回的内容是一样的。</p>
+<h2 id="常用api"><a href="#常用api" class="headerlink" title="常用api"></a>常用api</h2><p>基本api：</p>
+<blockquote>
+<p>selection.transition([name])<br>selection.interrupt([name])<br>transition.duration()<br>transition.delay(value|func)<br>transition.ease(name)<br>transition.each()<br>transition.call()<br>transition.filter()<br>transition.merge()<br>transition.remove()  </p>
+</blockquote>
+<p>高级：</p>
+<blockquote>
+<p>transition.on  监控控制流，几个状态：start，end，interrupt。这个只是transition对象有。</p>
+<p>transition.attrTween<br>transition.styleTween<br>transition.tween(name[, value])</p>
+</blockquote>
+<h2 id="最简单例子"><a href="#最简单例子" class="headerlink" title="最简单例子"></a>最简单例子</h2><p>在需要变化的属性前加上<code>transition()</code>即可~~<br>例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">svg.selectAll(<span class="string">"rect"</span>)</div><div class="line"> .data(dataset)</div><div class="line"> .transition()    <span class="comment">// &lt;-- This is new! Everything else here is unchanged.</span></div><div class="line"> .attr(<span class="string">"y"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> h - yScale(d);</div><div class="line"> &#125;)</div><div class="line"> .attr(<span class="string">"height"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> yScale(d);</div><div class="line"> &#125;)</div><div class="line"> .attr(<span class="string">"fill"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">"rgb(0, 0, "</span> + (d * <span class="number">10</span>) + <span class="string">")"</span>;</div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
+<p>如果不加，则立即执行，加了则延迟一点点。默认：250ms</p>
+<h2 id="常用的transition写法"><a href="#常用的transition写法" class="headerlink" title="常用的transition写法"></a>常用的transition写法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.transition()</div><div class="line">  .delay(<span class="function"><span class="keyword">function</span>(<span class="params">d,i</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> i * <span class="number">150</span>;</div><div class="line">   &#125;)</div><div class="line">  .duration(<span class="number">1500</span>)</div><div class="line">  .ease(d3.easeBack)</div></pre></td></tr></table></figure>
+<p>每个元素都会有自己的delay。</p>
+<h3 id="ease-函数"><a href="#ease-函数" class="headerlink" title=" ease  函数"></a><strong> ease </strong> 函数</h3><pre><code>&quot;easeElastic&quot;,  
+&quot;easeBounce&quot;,  
+&quot;easeLinear&quot;,  
+&quot;easeSin&quot;,  
+&quot;easeQuad&quot;,  
+&quot;easeCubic&quot;,  
+&quot;easePoly&quot;,  
+&quot;easeCircle&quot;,  
+&quot;easeExp&quot;,  
+&quot;easeBack&quot;  
+</code></pre><p>调用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">selection.ease(d3.easeElastic)</div></pre></td></tr></table></figure></p>
+<h3 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h3><p>连续添加多个transition,最简单的方法之一，就是在第一个transition完成后，继续调用transition。<br>参考例子：<a href="https://codepen.io/akixiao/pen/BwNZRp" target="_blank" rel="external">https://codepen.io/akixiao/pen/BwNZRp</a></p>
+<p>** d3.active(node, [name])</p>
+<p>返回具有指定名称（如果有）的指定节点上的<code>active transition</code>。如果未指定名称，则使用null。如果指定节点上没有这样的<code>active transition</code>，则返回null。此方法对于创建链接<code>transition</code>很有用。</p>
+<h3 id="tween-补间动画"><a href="#tween-补间动画" class="headerlink" title="tween 补间动画"></a>tween 补间动画</h3><p>transition的变化详情，是通过interpolate实现的。<br>默认有几个情况：<br>如果attr中的value是数字，则使用interpolateNumber<br>如果value是color或者字符颜色，则使用 interpolateRgb.<br>其他情况：interpolateString  </p>
+<p><code>style</code>的属性也是一样的<br><code>tween</code>有自己的时间函数<br><code>tween</code>相关函数使用重点就是在，tween函数中设置自己的时间函数：  </p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">transition.tween(<span class="string">"attr.fill"</span>, function() &#123;</div><div class="line">  var <span class="keyword">node</span> <span class="title">= this</span>, i = d3.interpolateRgb(<span class="keyword">node</span>.<span class="title">getAttribute</span>(<span class="string">"fill"</span>), <span class="string">"blue"</span>);</div><div class="line">  return function(t) &#123;</div><div class="line">    <span class="keyword">node</span>.<span class="title">setAttribute</span>(<span class="string">"fill"</span>, i(t));</div><div class="line">  &#125;;</div><div class="line">&#125;);</div><div class="line">``` </div><div class="line"></div><div class="line">另一个数字补间应用：</div></pre></td></tr></table></figure>
+<p>.tween(‘number’, function() {<br>       const that = d3.select(this);<br>       const i = d3.interpolateRound(0, 200);<br>       return function(t) {<br>         that.style(‘color’, <code>rgb(${0 + i(t)}, ${80 + i(t)}, 232)</code>);<br>         that.text(i(t));<br>       }<br>     });</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">演示：[https://codepen.<span class="built_in">io</span>/akixiao/pen/mBJqzO](https://codepen.<span class="built_in">io</span>/akixiao/pen/mBJqzO)</div><div class="line"></div><div class="line">### 循环变换</div><div class="line">一般通过是将transition写成一个函数。然后使用on监听<span class="keyword">end</span>事件，实现递归调用。简单例子：</div><div class="line">  </div><div class="line">``` </div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">repeat</span><span class="params">()</span></span> &#123;</div><div class="line">     show.transition()</div><div class="line">     .delay(<span class="number">800</span>)</div><div class="line">     .duration(<span class="number">2000</span>)</div><div class="line">     .tween(<span class="string">'number'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</div><div class="line">       const that = d3.<span class="built_in">select</span>(this);</div><div class="line">       const i = d3.interpolateRound(<span class="number">0</span>, <span class="number">200</span>);</div><div class="line">       <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(t)</span></span> &#123;</div><div class="line">         that.style(<span class="string">'color'</span>, `rgb($&#123;<span class="number">0</span> + i(t)&#125;, $&#123;<span class="number">80</span> + i(t)&#125;, <span class="number">232</span>)`);</div><div class="line">         that.text(i(t));</div><div class="line">       &#125;</div><div class="line">     &#125;)</div><div class="line">     .on(<span class="string">'end'</span>, <span class="keyword">repeat</span>); </div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h3 id="一些例子"><a href="#一些例子" class="headerlink" title="一些例子"></a>一些例子</h3><p>d3实现的smooth scroll<br>高级玩法：<br><a href="https://bl.ocks.org/mbostock/70d5541b547cc222aa02" target="_blank" rel="external">https://bl.ocks.org/mbostock/70d5541b547cc222aa02</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="http://duspviz.mit.edu/d3-workshop/transitions-animation/" target="_blank" rel="external">d3 transition</a><br><a href="https://bost.ocks.org/mike/transition/" target="_blank" rel="external">working with transitions</a><br><a href="https://leanpub.com/d3-t-and-t-v4/read" target="_blank" rel="external">D3 Tips and Tricks V4.0</a></p>
+<p><a href="https://www.dashingd3js.com/lessons/d3-transition-basics" target="_blank" rel="external">D3 Transition Basics</a></p>
+</blockquote>
+]]></content>
     
     <summary type="html">
     
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Transition</title>
-    <link href="https://misssweety.github.io/2017/09/18/Transition/"/>
-    <id>https://misssweety.github.io/2017/09/18/Transition/</id>
-    <published>2017-09-18T08:44:52.000Z</published>
-    <updated>2017-09-18T08:44:52.000Z</updated>
-    
-    <summary type="html">
+      &lt;h1 id=&quot;D3的动效API-transition&quot;&gt;&lt;a href=&quot;#D3的动效API-transition&quot; class=&quot;headerlink&quot; title=&quot;D3的动效API-transition&quot;&gt;&lt;/a&gt;D3的动效API-transition&lt;/h1&gt;&lt;p&gt;D3
     
     </summary>
     

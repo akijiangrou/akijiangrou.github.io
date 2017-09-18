@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>D3-api-transition | MissSweety&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="D3的动效API-transitionD3的动效都是通过transition来实现的。 transition 是类似于selection的接口，它用于动画改变DOM界面。transition 通过 selection.transition 获得，他和d3.select(…)返回的内容是一样的。 常用api基本api：  selection.transition([name])selection.i">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="D3-api-transition">
+<meta property="og:url" content="https://misssweety.github.io/2017/09/18/D3-api-transition/index.html">
+<meta property="og:site_name" content="MissSweety's Blog">
+<meta property="og:description" content="D3的动效API-transitionD3的动效都是通过transition来实现的。 transition 是类似于selection的接口，它用于动画改变DOM界面。transition 通过 selection.transition 获得，他和d3.select(…)返回的内容是一样的。 常用api基本api：  selection.transition([name])selection.i">
+<meta property="og:updated_time" content="2017-09-18T08:49:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="D3-api-transition">
+<meta name="twitter:description" content="D3的动效API-transitionD3的动效都是通过transition来实现的。 transition 是类似于selection的接口，它用于动画改变DOM界面。transition 通过 selection.transition 获得，他和d3.select(…)返回的内容是一样的。 常用api基本api：  selection.transition([name])selection.i">
+    
+        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:zcx900308@163.com" title="zcx900308@163.com" class="mail">zcx900308@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="https://misssweety.github.io/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MissSweety" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">D3-api-transition</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">D3-api-transition</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-18T08:45:41.000Z" itemprop="datePublished" class="page-time">
+  2017-09-18
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#D3的动效API-transition"><span class="post-toc-number">1.</span> <span class="post-toc-text">D3的动效API-transition</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用api"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">常用api</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最简单例子"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">最简单例子</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用的transition写法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">常用的transition写法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ease-函数"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text"> ease  函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#链式调用"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">链式调用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tween-补间动画"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">tween 补间动画</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一些例子"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">一些例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">参考</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-D3-api-transition"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">D3-api-transition</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-18 16:45:41" datetime="2017-09-18T08:45:41.000Z"  itemprop="datePublished">2017-09-18</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="D3的动效API-transition"><a href="#D3的动效API-transition" class="headerlink" title="D3的动效API-transition"></a>D3的动效API-transition</h1><p>D3的动效都是通过transition来实现的。</p>
+<p><code>transition</code> 是类似于selection的接口，它用于动画改变DOM界面。<br><code>transition</code> 通过 <code>selection.transition</code> 获得，他和d3.select(…)返回的内容是一样的。</p>
+<h2 id="常用api"><a href="#常用api" class="headerlink" title="常用api"></a>常用api</h2><p>基本api：</p>
+<blockquote>
+<p>selection.transition([name])<br>selection.interrupt([name])<br>transition.duration()<br>transition.delay(value|func)<br>transition.ease(name)<br>transition.each()<br>transition.call()<br>transition.filter()<br>transition.merge()<br>transition.remove()  </p>
+</blockquote>
+<p>高级：</p>
+<blockquote>
+<p>transition.on  监控控制流，几个状态：start，end，interrupt。这个只是transition对象有。</p>
+<p>transition.attrTween<br>transition.styleTween<br>transition.tween(name[, value])</p>
+</blockquote>
+<h2 id="最简单例子"><a href="#最简单例子" class="headerlink" title="最简单例子"></a>最简单例子</h2><p>在需要变化的属性前加上<code>transition()</code>即可~~<br>例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">svg.selectAll(<span class="string">"rect"</span>)</div><div class="line"> .data(dataset)</div><div class="line"> .transition()    <span class="comment">// &lt;-- This is new! Everything else here is unchanged.</span></div><div class="line"> .attr(<span class="string">"y"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> h - yScale(d);</div><div class="line"> &#125;)</div><div class="line"> .attr(<span class="string">"height"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> yScale(d);</div><div class="line"> &#125;)</div><div class="line"> .attr(<span class="string">"fill"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="string">"rgb(0, 0, "</span> + (d * <span class="number">10</span>) + <span class="string">")"</span>;</div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
+<p>如果不加，则立即执行，加了则延迟一点点。默认：250ms</p>
+<h2 id="常用的transition写法"><a href="#常用的transition写法" class="headerlink" title="常用的transition写法"></a>常用的transition写法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.transition()</div><div class="line">  .delay(<span class="function"><span class="keyword">function</span>(<span class="params">d,i</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> i * <span class="number">150</span>;</div><div class="line">   &#125;)</div><div class="line">  .duration(<span class="number">1500</span>)</div><div class="line">  .ease(d3.easeBack)</div></pre></td></tr></table></figure>
+<p>每个元素都会有自己的delay。</p>
+<h3 id="ease-函数"><a href="#ease-函数" class="headerlink" title=" ease  函数"></a><strong> ease </strong> 函数</h3><pre><code>&quot;easeElastic&quot;,  
+&quot;easeBounce&quot;,  
+&quot;easeLinear&quot;,  
+&quot;easeSin&quot;,  
+&quot;easeQuad&quot;,  
+&quot;easeCubic&quot;,  
+&quot;easePoly&quot;,  
+&quot;easeCircle&quot;,  
+&quot;easeExp&quot;,  
+&quot;easeBack&quot;  
+</code></pre><p>调用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">selection.ease(d3.easeElastic)</div></pre></td></tr></table></figure></p>
+<h3 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h3><p>连续添加多个transition,最简单的方法之一，就是在第一个transition完成后，继续调用transition。<br>参考例子：<a href="https://codepen.io/akixiao/pen/BwNZRp" target="_blank" rel="external">https://codepen.io/akixiao/pen/BwNZRp</a></p>
+<p>** d3.active(node, [name])</p>
+<p>返回具有指定名称（如果有）的指定节点上的<code>active transition</code>。如果未指定名称，则使用null。如果指定节点上没有这样的<code>active transition</code>，则返回null。此方法对于创建链接<code>transition</code>很有用。</p>
+<h3 id="tween-补间动画"><a href="#tween-补间动画" class="headerlink" title="tween 补间动画"></a>tween 补间动画</h3><p>transition的变化详情，是通过interpolate实现的。<br>默认有几个情况：<br>如果attr中的value是数字，则使用interpolateNumber<br>如果value是color或者字符颜色，则使用 interpolateRgb.<br>其他情况：interpolateString  </p>
+<p><code>style</code>的属性也是一样的<br><code>tween</code>有自己的时间函数<br><code>tween</code>相关函数使用重点就是在，tween函数中设置自己的时间函数：  </p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">transition.tween(<span class="string">"attr.fill"</span>, function() &#123;</div><div class="line">  var <span class="keyword">node</span> <span class="title">= this</span>, i = d3.interpolateRgb(<span class="keyword">node</span>.<span class="title">getAttribute</span>(<span class="string">"fill"</span>), <span class="string">"blue"</span>);</div><div class="line">  return function(t) &#123;</div><div class="line">    <span class="keyword">node</span>.<span class="title">setAttribute</span>(<span class="string">"fill"</span>, i(t));</div><div class="line">  &#125;;</div><div class="line">&#125;);</div><div class="line">``` </div><div class="line"></div><div class="line">另一个数字补间应用：</div></pre></td></tr></table></figure>
+<p>.tween(‘number’, function() {<br>       const that = d3.select(this);<br>       const i = d3.interpolateRound(0, 200);<br>       return function(t) {<br>         that.style(‘color’, <code>rgb(${0 + i(t)}, ${80 + i(t)}, 232)</code>);<br>         that.text(i(t));<br>       }<br>     });</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">演示：[https://codepen.<span class="built_in">io</span>/akixiao/pen/mBJqzO](https://codepen.<span class="built_in">io</span>/akixiao/pen/mBJqzO)</div><div class="line"></div><div class="line">### 循环变换</div><div class="line">一般通过是将transition写成一个函数。然后使用on监听<span class="keyword">end</span>事件，实现递归调用。简单例子：</div><div class="line">  </div><div class="line">``` </div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">repeat</span><span class="params">()</span></span> &#123;</div><div class="line">     show.transition()</div><div class="line">     .delay(<span class="number">800</span>)</div><div class="line">     .duration(<span class="number">2000</span>)</div><div class="line">     .tween(<span class="string">'number'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> &#123;</div><div class="line">       const that = d3.<span class="built_in">select</span>(this);</div><div class="line">       const i = d3.interpolateRound(<span class="number">0</span>, <span class="number">200</span>);</div><div class="line">       <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">(t)</span></span> &#123;</div><div class="line">         that.style(<span class="string">'color'</span>, `rgb($&#123;<span class="number">0</span> + i(t)&#125;, $&#123;<span class="number">80</span> + i(t)&#125;, <span class="number">232</span>)`);</div><div class="line">         that.text(i(t));</div><div class="line">       &#125;</div><div class="line">     &#125;)</div><div class="line">     .on(<span class="string">'end'</span>, <span class="keyword">repeat</span>); </div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h3 id="一些例子"><a href="#一些例子" class="headerlink" title="一些例子"></a>一些例子</h3><p>d3实现的smooth scroll<br>高级玩法：<br><a href="https://bl.ocks.org/mbostock/70d5541b547cc222aa02" target="_blank" rel="external">https://bl.ocks.org/mbostock/70d5541b547cc222aa02</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="http://duspviz.mit.edu/d3-workshop/transitions-animation/" target="_blank" rel="external">d3 transition</a><br><a href="https://bost.ocks.org/mike/transition/" target="_blank" rel="external">working with transitions</a><br><a href="https://leanpub.com/d3-t-and-t-v4/read" target="_blank" rel="external">D3 Tips and Tricks V4.0</a></p>
+<p><a href="https://www.dashingd3js.com/lessons/d3-transition-basics" target="_blank" rel="external">D3 Transition Basics</a></p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-09-18T08:49:17.000Z" itemprop="dateUpdated">2017-09-18 16:49:17</time>
+</span><br>
+
+
+        
+        <a href="/2017/09/18/D3-api-transition/" target="_blank" rel="external">https://misssweety.github.io/2017/09/18/D3-api-transition/</a>
+        
+    </div>
+    <footer>
+        <a href="https://misssweety.github.io">
+            <img src="/img/avatar.jpg" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/09/18/D3-api-transition/&title=《D3-api-transition》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/09/18/D3-api-transition/&title=《D3-api-transition》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/09/18/D3-api-transition/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《D3-api-transition》 — MissSweety's Blog&url=https://misssweety.github.io/2017/09/18/D3-api-transition/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/09/18/D3-api-transition/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/09/18/关于Object查缺补漏/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">关于Object查缺补漏</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/09/18/D3-api-transition/&title=《D3-api-transition》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/09/18/D3-api-transition/&title=《D3-api-transition》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/09/18/D3-api-transition/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《D3-api-transition》 — MissSweety's Blog&url=https://misssweety.github.io/2017/09/18/D3-api-transition/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/09/18/D3-api-transition/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNklEQVR42u3a22rDMBBF0fz/T6fQp4JreZ8ZJ+DR1lNJYlvLhWEuer3wev+u9Pd/ryJ3OF5185IhQ8ZjGe/lOm7i+Jjjt2e/WT9lfbf1VTJkyNiBsQ6yZzCCX5NqYVqGDBky1kGWB8rOS5EhQ4aMuwIu2RavN8nrkCFDxs4MnuTVVq0x95FaXIYMGQ9kpIOBb/79wfmGDBkyHsLoBM1amUruEO9KhgwZoxn8AeTzNB3slMfoPIgMGTJGMGrlJR898qYbHzn884kMGTJGM9I0jiRz/dCc4mXIkDGbkW6OP4yPKmvNOBkyZOzD6LfGakNQEqxJmnjxP5EhQ8YgRq0QrW0rDcTpcEKGDBnzGPcOHdPfpAXw6T1lyJCxAYMfaOhsOthWOkKQIUPGaMZdrTF+kIIcv+AHZ2XIkLEDo1bv9sPxCy804JQhQ8Y2DH5IgodLHoL5QPQi4MqQIWMco5ZF1tpwaVEaFK4yZMjYgJGmbnF9XBoSpAWzDBkyZjN4o/+GBA4XrnGzT4YMGUMZPMDVjnytt8hfx8XnMmTI2ICxDpQdAGmurZ+L8DJkyBjN4GG39rD021riKEOGjNmMd7h4sCbvL31Np1fJkCFjNKN2PKuVwN3EkyFDxm6M/hCRl7Kd1l4rQZQhQ8YIRm0YmR6t6KxgEitDhoyNGXxI2R9/ts6MyJAhQwZmpK03HtZbqaEMGTIey0iPVqRt+lqx2prEypAhYxAjLSB5o41nbmk6WMTIkCHjeYwfgIU39fkpaU0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MissSweety';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
