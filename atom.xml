@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://misssweety.github.io/"/>
-  <updated>2017-09-12T11:15:20.000Z</updated>
+  <updated>2017-09-18T08:10:57.000Z</updated>
   <id>https://misssweety.github.io/</id>
   
   <author>
@@ -14,6 +14,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于Object查缺补漏</title>
+    <link href="https://misssweety.github.io/2017/09/18/%E5%85%B3%E4%BA%8EObject%E6%9F%A5%E7%BC%BA%E8%A1%A5%E6%BC%8F/"/>
+    <id>https://misssweety.github.io/2017/09/18/关于Object查缺补漏/</id>
+    <published>2017-09-18T08:09:48.000Z</published>
+    <updated>2017-09-18T08:10:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h2><p>这些都是对象子类型，看起来与基础类型一样。如下：</p>
+<ul>
+<li>String</li>
+<li>Number</li>
+<li>Boolean</li>
+<li>Object</li>
+<li>Function</li>
+<li>Array</li>
+<li>Date</li>
+<li>RegExp</li>
+<li>Error</li>
+</ul>
+<p>以上内置函数可以当做构造函数来使用。一些字面可以自动转换成对象类型进行一些方法的操作。</p>
+<h2 id="深复制-amp-浅复制"><a href="#深复制-amp-浅复制" class="headerlink" title="深复制 &amp; 浅复制"></a>深复制 &amp; 浅复制</h2><p>对于对象和数组来说，<code>浅复制</code>是对对象地址的复制，并没有开辟新的栈，复制的结果是两个对象指向同一个地址，修改一个对象的属性，会改变另一个对象属性。<code>深复制</code>则开辟新的栈，两个对象对应两个不同的地址，属性隔离。</p>
+<p>浅复制：拷贝引用<br>深复制：拷贝实例<br>深复制比较耗内存，而且可能出现死循环栈溢出的情况。<br>深复制死循环的例子：  </p>
+<p>const testArr = [];<br>const myObj = {<br>  a: 2,<br>  b: testArr,<br>};</p>
+<p>testArr.push(myObj, true);</p>
+<p>比如深复制myObj, 除了复制myObj外，还要复制testArr，而testArr引用了myObj,所以又要再次复制myObj，然后这两个开始循环引用导致死循环了。</p>
+<p>Object.assign是es6里非常好用的一个方法，<br><code>Object.assign()</code></p>
+<h2 id="属性描述符"><a href="#属性描述符" class="headerlink" title="属性描述符"></a>属性描述符</h2><p>是从es5以后，对象属性有了属性描述符。<br>一个对象的属性不仅包含属性值，还包含另外三个特性：<code>writable</code>，<code>enumerable</code> 和 <code>configurable</code><br>使用该函数，可以获取一个对象属性的配置信息。<br>Object.getOwnPropertyDescriptor( myObject, “a” );</p>
+<p>使用下面的函数，可以配置对象属性<br>Object.defineProperty(obj, ‘prop’, {<br>  value: 6,<br>  writable: true,<br>  configurable: true,<br>  enumerable: true,<br>});</p>
+<p><code>writable</code>: 控制能否重写这个属性的值<br><code>enumerable</code>: 控制这个属性能否被遍历<br><code>configurable</code>: 控制这个属性的属性描述符是否可以修改，也就是控制这三个属性是否可以被修改。configurable:false 还会禁止删除这个属性</p>
+<h2 id="控制属性的不变性"><a href="#控制属性的不变性" class="headerlink" title="控制属性的不变性"></a>控制属性的不变性</h2><p>当我们想控制一些对象的属性，让他成为不可改变的，我们有如下几种方法：</p>
+<h3 id="结合writable-amp-configurable"><a href="#结合writable-amp-configurable" class="headerlink" title="结合writable &amp; configurable"></a>结合writable &amp; configurable</h3><p>writable:false<br>configurable:false</p>
+<p>对应的属性将不会被更改。也不能被删除。</p>
+<h3 id="禁止扩展"><a href="#禁止扩展" class="headerlink" title="禁止扩展"></a>禁止扩展</h3><p><code>Object.preventExtensions</code><br>可以禁止一个对象添加新属性，并且保留已有属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">2</span>&#125;;</div><div class="line"><span class="built_in">Object</span>.preventExtensions(obj);</div><div class="line">obj.b = <span class="number">3</span>;</div><div class="line">obj.b; <span class="comment">// undefined </span></div><div class="line"><span class="comment">// strict mode：typeError</span></div></pre></td></tr></table></figure>
+<h3 id="seal-密封"><a href="#seal-密封" class="headerlink" title="seal 密封"></a>seal 密封</h3><p>Object.seal(..) 会创建一个“密封”的对象，等价于preventExtensions + 每个属性configurable: false;<br>但是其实这个是可以修改属性值的。</p>
+<h3 id="freeze-冻结"><a href="#freeze-冻结" class="headerlink" title="freeze 冻结"></a>freeze 冻结</h3><p>等价于对对象使用seal，并把每个属性标记为writable:false;</p>
+<p>但是该属性可以修改深度的对象。</p>
+<h2 id="对象属性获取原理"><a href="#对象属性获取原理" class="headerlink" title="对象属性获取原理"></a>对象属性获取原理</h2><p>属性访问其实是通过对象的[[get]]获取的。对象默认的内置 [[Get]] 操作首先在对象中查找是否有名称相同的属性， 如果找到就会返回这个属性的值。如果本对象中没有，会遍历原型链进行寻找。如果都没有则返回undefined。</p>
+<p>在es6中，我们可以进行这个内置操作的修改了。比如Proxy 代理对象。</p>
+<p>对应的还有[[Put]]内置操作。主要用来设置对象的值。<br>[[Put]] 被触发时，实际的行为取决于许多因素，包括对象中是否已经存在这个属性(这是最重要的因素，没有则会去查原型链)。<br>如果已经存在这个属性，[[Put]] 算法大致会检查下面这些内容。  </p>
+<ol>
+<li>属性是否是访问描述符?如果是并且存在setter就调用setter。  </li>
+<li>属性的数据描述符中writable是否是false?如果是，在非严格模式下静默失败，在严格模式下抛出 TypeError 异常。  </li>
+<li>如果都不是，将该值设置为属性的值。  </li>
+</ol>
+<h3 id="getter-amp-setter"><a href="#getter-amp-setter" class="headerlink" title="getter &amp; setter"></a>getter &amp; setter</h3><p>可以在对象的某个属性上进行修改默认的getter与setter函数。但是一般这两个要绑定在一起输出。两个方法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">const obj = &#123; <span class="keyword">get</span> c() &#123; <span class="keyword">return</span> <span class="number">1</span>;&#125; &#125;;</div><div class="line">Object.definePropperty(obj, <span class="string">'b'</span>,</div><div class="line">  &#123; <span class="keyword">get</span>: function() &#123; <span class="keyword">return</span> <span class="number">2</span>;&#125;&#125;</div><div class="line">);</div><div class="line"></div><div class="line">obj.c <span class="comment">// 1</span></div><div class="line">obj.b <span class="comment">// 2 </span></div><div class="line">obj.b = <span class="number">3</span>;</div><div class="line">obj.b <span class="comment">// 2</span></div><div class="line"></div><div class="line"><span class="comment">// get set 经典搭配</span></div><div class="line">const myObj = &#123;</div><div class="line">  <span class="keyword">get</span> a() &#123; <span class="keyword">return</span> <span class="keyword">this</span>._a_; &#125;</div><div class="line">  <span class="keyword">set</span> a(<span class="keyword">val</span>) &#123; <span class="keyword">this</span>._a_ = <span class="keyword">val</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="属性存在性"><a href="#属性存在性" class="headerlink" title="属性存在性"></a>属性存在性</h2><p>检验一个对象中是否有某个属性，可以用 <code>in</code>  <code>hasOwnProperty</code> 。可以用于检测是属性值为undefined，还是为定义属性。<br>但是这两个的区别是，<code>in</code>是对象本身和其原型链都查，后者则只查对象本身。</p>
+<p>参考的是《你不知道的javascript》</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;内置对象&quot;&gt;&lt;a href=&quot;#内置对象&quot; class=&quot;headerlink&quot; title=&quot;内置对象&quot;&gt;&lt;/a&gt;内置对象&lt;/h2&gt;&lt;p&gt;这些都是对象子类型，看起来与基础类型一样。如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;String&lt;/li&gt;
+&lt;li&gt;Number&lt;/
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://misssweety.github.io/tags/javascript/"/>
+    
+      <category term="object" scheme="https://misssweety.github.io/tags/object/"/>
+    
+  </entry>
   
   <entry>
     <title>React生命周期</title>
@@ -955,9 +1022,21 @@ citysearch.getLocalCity((status, result) =&gt; {
 <li>perpective-origin: left center;</li>
 <li>backface-visibility: true;</li>
 </ul>
-<h3 id="3d效果基础知识"><a href="#3d效果基础知识" class="headerlink" title="3d效果基础知识"></a>3d效果基础知识</h3><p>一般是在旋转后才能表现出3d效果，css中规定的旋转规则如下：<br><img src="./axis.png" alt="alt axis"></p>
+<h3 id="3d效果基础知识"><a href="#3d效果基础知识" class="headerlink" title="3d效果基础知识"></a>3d效果基础知识</h3><p>一般是在旋转后才能表现出3d效果，css中规定的旋转规则如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./axis.png" alt="alt axis" title="">
+                </div>
+                <div class="image-caption">alt axis</div>
+            </figure></p>
 <p>rotateX是以屏幕的水平方向为轴旋转，rotateY是以屏幕的垂直方向为轴，rotateZ是以与屏幕平面垂直的方向为轴。<br>其实rotatex rotateY已经能实现3d效果了，但是不是很直观。搭配上perspective，perfect！</p>
-<h3 id="perspective"><a href="#perspective" class="headerlink" title="perspective"></a>perspective</h3><p>含义：透视效果。指定了观察者与z=0平面的距离，使具有三维位置变换的元素产生透视效果。等同于绘画中的1点透视||平行透视。<br>一个物体如果z-index为正，那么我们在画布中实际看到的就要偏大。如下第一个图。如果一个物体的z-index为负，那么显示在画布视图中，则偏小，如第二个图<br><img src="./view.png" alt="alt perspective"></p>
+<h3 id="perspective"><a href="#perspective" class="headerlink" title="perspective"></a>perspective</h3><p>含义：透视效果。指定了观察者与z=0平面的距离，使具有三维位置变换的元素产生透视效果。等同于绘画中的1点透视||平行透视。<br>一个物体如果z-index为正，那么我们在画布中实际看到的就要偏大。如下第一个图。如果一个物体的z-index为负，那么显示在画布视图中，则偏小，如第二个图<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./view.png" alt="alt perspective" title="">
+                </div>
+                <div class="image-caption">alt perspective</div>
+            </figure></p>
 <p><strong>两种写法:</strong><br><code>a：perspective：300px;</code><br><code>b：transform: perspective(300px) rotateX(aa);</code>  </p>
 <p><strong>区别</strong>：第一个需要写在一个父级元素上，他规定了这个父级元素的透视点位置，换个角度说，当为元素规定perspective 属性时，其直接子元素会获得透视效果，而不是元素本身。第二个可以直接作用在当前元素上，也可以结合其他transform属性，规定了当前元素的透视点位置，对其他元素无影响。<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>perspective</strong> 值越大，3d效果越不明显；越小越明显。想像成镜头到物体的距离，越近越能看出高低起伏，越远线条展示的越平缓。<br>两种写法以及perspective对比，<a href="https://codepen.io/akixiao/pen/wdwdgW" target="_blank" rel="external">查看示例</a></p>
 <h3 id="webkit-perspective-origin"><a href="#webkit-perspective-origin" class="headerlink" title="-webkit-perspective-origin"></a>-webkit-perspective-origin</h3><p>消失点的位置，<br>语法：<code>-webkit-perspective-origin: xpos ypos</code><br>xpos,ypos 可以选择关键字，left|right|center     top|bottom|center 。如果是关键字，则是否对应xy无关紧要，浏览器会自己选择。如果是数值，百分比或者像素，则要按照x，y的顺序写。<br><a href="https://codepen.io/akixiao/pen/qmWeqj" target="_blank" rel="external">参考实例</a></p>

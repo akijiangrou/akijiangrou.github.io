@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>关于Object查缺补漏 | MissSweety&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="javascript,object">
+    <meta name="description" content="内置对象这些都是对象子类型，看起来与基础类型一样。如下：  String Number Boolean Object Function Array Date RegExp Error  以上内置函数可以当做构造函数来使用。一些字面可以自动转换成对象类型进行一些方法的操作。 深复制 &amp;amp; 浅复制对于对象和数组来说，浅复制是对对象地址的复制，并没有开辟新的栈，复制的结果是两个对象指向同一个地址，">
+<meta name="keywords" content="javascript,object">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Object查缺补漏">
+<meta property="og:url" content="https://misssweety.github.io/2017/09/18/关于Object查缺补漏/index.html">
+<meta property="og:site_name" content="MissSweety's Blog">
+<meta property="og:description" content="内置对象这些都是对象子类型，看起来与基础类型一样。如下：  String Number Boolean Object Function Array Date RegExp Error  以上内置函数可以当做构造函数来使用。一些字面可以自动转换成对象类型进行一些方法的操作。 深复制 &amp;amp; 浅复制对于对象和数组来说，浅复制是对对象地址的复制，并没有开辟新的栈，复制的结果是两个对象指向同一个地址，">
+<meta property="og:updated_time" content="2017-09-18T08:10:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Object查缺补漏">
+<meta name="twitter:description" content="内置对象这些都是对象子类型，看起来与基础类型一样。如下：  String Number Boolean Object Function Array Date RegExp Error  以上内置函数可以当做构造函数来使用。一些字面可以自动转换成对象类型进行一些方法的操作。 深复制 &amp;amp; 浅复制对于对象和数组来说，浅复制是对对象地址的复制，并没有开辟新的栈，复制的结果是两个对象指向同一个地址，">
+    
+        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:zcx900308@163.com" title="zcx900308@163.com" class="mail">zcx900308@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="https://misssweety.github.io/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MissSweety" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">关于Object查缺补漏</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">关于Object查缺补漏</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-18T08:09:48.000Z" itemprop="datePublished" class="page-time">
+  2017-09-18
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内置对象"><span class="post-toc-number">1.</span> <span class="post-toc-text">内置对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#深复制-amp-浅复制"><span class="post-toc-number">2.</span> <span class="post-toc-text">深复制 & 浅复制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#属性描述符"><span class="post-toc-number">3.</span> <span class="post-toc-text">属性描述符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#控制属性的不变性"><span class="post-toc-number">4.</span> <span class="post-toc-text">控制属性的不变性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结合writable-amp-configurable"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">结合writable & configurable</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#禁止扩展"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">禁止扩展</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#seal-密封"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">seal 密封</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#freeze-冻结"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">freeze 冻结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对象属性获取原理"><span class="post-toc-number">5.</span> <span class="post-toc-text">对象属性获取原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#getter-amp-setter"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">getter & setter</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#属性存在性"><span class="post-toc-number">6.</span> <span class="post-toc-text">属性存在性</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-关于Object查缺补漏"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">关于Object查缺补漏</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-18 16:09:48" datetime="2017-09-18T08:09:48.000Z"  itemprop="datePublished">2017-09-18</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h2><p>这些都是对象子类型，看起来与基础类型一样。如下：</p>
+<ul>
+<li>String</li>
+<li>Number</li>
+<li>Boolean</li>
+<li>Object</li>
+<li>Function</li>
+<li>Array</li>
+<li>Date</li>
+<li>RegExp</li>
+<li>Error</li>
+</ul>
+<p>以上内置函数可以当做构造函数来使用。一些字面可以自动转换成对象类型进行一些方法的操作。</p>
+<h2 id="深复制-amp-浅复制"><a href="#深复制-amp-浅复制" class="headerlink" title="深复制 &amp; 浅复制"></a>深复制 &amp; 浅复制</h2><p>对于对象和数组来说，<code>浅复制</code>是对对象地址的复制，并没有开辟新的栈，复制的结果是两个对象指向同一个地址，修改一个对象的属性，会改变另一个对象属性。<code>深复制</code>则开辟新的栈，两个对象对应两个不同的地址，属性隔离。</p>
+<p>浅复制：拷贝引用<br>深复制：拷贝实例<br>深复制比较耗内存，而且可能出现死循环栈溢出的情况。<br>深复制死循环的例子：  </p>
+<p>const testArr = [];<br>const myObj = {<br>  a: 2,<br>  b: testArr,<br>};</p>
+<p>testArr.push(myObj, true);</p>
+<p>比如深复制myObj, 除了复制myObj外，还要复制testArr，而testArr引用了myObj,所以又要再次复制myObj，然后这两个开始循环引用导致死循环了。</p>
+<p>Object.assign是es6里非常好用的一个方法，<br><code>Object.assign()</code></p>
+<h2 id="属性描述符"><a href="#属性描述符" class="headerlink" title="属性描述符"></a>属性描述符</h2><p>是从es5以后，对象属性有了属性描述符。<br>一个对象的属性不仅包含属性值，还包含另外三个特性：<code>writable</code>，<code>enumerable</code> 和 <code>configurable</code><br>使用该函数，可以获取一个对象属性的配置信息。<br>Object.getOwnPropertyDescriptor( myObject, “a” );</p>
+<p>使用下面的函数，可以配置对象属性<br>Object.defineProperty(obj, ‘prop’, {<br>  value: 6,<br>  writable: true,<br>  configurable: true,<br>  enumerable: true,<br>});</p>
+<p><code>writable</code>: 控制能否重写这个属性的值<br><code>enumerable</code>: 控制这个属性能否被遍历<br><code>configurable</code>: 控制这个属性的属性描述符是否可以修改，也就是控制这三个属性是否可以被修改。configurable:false 还会禁止删除这个属性</p>
+<h2 id="控制属性的不变性"><a href="#控制属性的不变性" class="headerlink" title="控制属性的不变性"></a>控制属性的不变性</h2><p>当我们想控制一些对象的属性，让他成为不可改变的，我们有如下几种方法：</p>
+<h3 id="结合writable-amp-configurable"><a href="#结合writable-amp-configurable" class="headerlink" title="结合writable &amp; configurable"></a>结合writable &amp; configurable</h3><p>writable:false<br>configurable:false</p>
+<p>对应的属性将不会被更改。也不能被删除。</p>
+<h3 id="禁止扩展"><a href="#禁止扩展" class="headerlink" title="禁止扩展"></a>禁止扩展</h3><p><code>Object.preventExtensions</code><br>可以禁止一个对象添加新属性，并且保留已有属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">2</span>&#125;;</div><div class="line"><span class="built_in">Object</span>.preventExtensions(obj);</div><div class="line">obj.b = <span class="number">3</span>;</div><div class="line">obj.b; <span class="comment">// undefined </span></div><div class="line"><span class="comment">// strict mode：typeError</span></div></pre></td></tr></table></figure>
+<h3 id="seal-密封"><a href="#seal-密封" class="headerlink" title="seal 密封"></a>seal 密封</h3><p>Object.seal(..) 会创建一个“密封”的对象，等价于preventExtensions + 每个属性configurable: false;<br>但是其实这个是可以修改属性值的。</p>
+<h3 id="freeze-冻结"><a href="#freeze-冻结" class="headerlink" title="freeze 冻结"></a>freeze 冻结</h3><p>等价于对对象使用seal，并把每个属性标记为writable:false;</p>
+<p>但是该属性可以修改深度的对象。</p>
+<h2 id="对象属性获取原理"><a href="#对象属性获取原理" class="headerlink" title="对象属性获取原理"></a>对象属性获取原理</h2><p>属性访问其实是通过对象的[[get]]获取的。对象默认的内置 [[Get]] 操作首先在对象中查找是否有名称相同的属性， 如果找到就会返回这个属性的值。如果本对象中没有，会遍历原型链进行寻找。如果都没有则返回undefined。</p>
+<p>在es6中，我们可以进行这个内置操作的修改了。比如Proxy 代理对象。</p>
+<p>对应的还有[[Put]]内置操作。主要用来设置对象的值。<br>[[Put]] 被触发时，实际的行为取决于许多因素，包括对象中是否已经存在这个属性(这是最重要的因素，没有则会去查原型链)。<br>如果已经存在这个属性，[[Put]] 算法大致会检查下面这些内容。  </p>
+<ol>
+<li>属性是否是访问描述符?如果是并且存在setter就调用setter。  </li>
+<li>属性的数据描述符中writable是否是false?如果是，在非严格模式下静默失败，在严格模式下抛出 TypeError 异常。  </li>
+<li>如果都不是，将该值设置为属性的值。  </li>
+</ol>
+<h3 id="getter-amp-setter"><a href="#getter-amp-setter" class="headerlink" title="getter &amp; setter"></a>getter &amp; setter</h3><p>可以在对象的某个属性上进行修改默认的getter与setter函数。但是一般这两个要绑定在一起输出。两个方法：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">const obj = &#123; <span class="keyword">get</span> c() &#123; <span class="keyword">return</span> <span class="number">1</span>;&#125; &#125;;</div><div class="line">Object.definePropperty(obj, <span class="string">'b'</span>,</div><div class="line">  &#123; <span class="keyword">get</span>: function() &#123; <span class="keyword">return</span> <span class="number">2</span>;&#125;&#125;</div><div class="line">);</div><div class="line"></div><div class="line">obj.c <span class="comment">// 1</span></div><div class="line">obj.b <span class="comment">// 2 </span></div><div class="line">obj.b = <span class="number">3</span>;</div><div class="line">obj.b <span class="comment">// 2</span></div><div class="line"></div><div class="line"><span class="comment">// get set 经典搭配</span></div><div class="line">const myObj = &#123;</div><div class="line">  <span class="keyword">get</span> a() &#123; <span class="keyword">return</span> <span class="keyword">this</span>._a_; &#125;</div><div class="line">  <span class="keyword">set</span> a(<span class="keyword">val</span>) &#123; <span class="keyword">this</span>._a_ = <span class="keyword">val</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="属性存在性"><a href="#属性存在性" class="headerlink" title="属性存在性"></a>属性存在性</h2><p>检验一个对象中是否有某个属性，可以用 <code>in</code>  <code>hasOwnProperty</code> 。可以用于检测是属性值为undefined，还是为定义属性。<br>但是这两个的区别是，<code>in</code>是对象本身和其原型链都查，后者则只查对象本身。</p>
+<p>参考的是《你不知道的javascript》</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-09-18T08:10:57.000Z" itemprop="dateUpdated">2017-09-18 16:10:57</time>
+</span><br>
+
+
+        
+        <a href="/2017/09/18/关于Object查缺补漏/" target="_blank" rel="external">https://misssweety.github.io/2017/09/18/关于Object查缺补漏/</a>
+        
+    </div>
+    <footer>
+        <a href="https://misssweety.github.io">
+            <img src="/img/avatar.jpg" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/object/">object</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/09/18/关于Object查缺补漏/&title=《关于Object查缺补漏》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/09/18/关于Object查缺补漏/&title=《关于Object查缺补漏》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/09/18/关于Object查缺补漏/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《关于Object查缺补漏》 — MissSweety's Blog&url=https://misssweety.github.io/2017/09/18/关于Object查缺补漏/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/09/18/关于Object查缺补漏/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/09/12/React生命周期/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">React生命周期</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/09/18/关于Object查缺补漏/&title=《关于Object查缺补漏》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/09/18/关于Object查缺补漏/&title=《关于Object查缺补漏》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/09/18/关于Object查缺补漏/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《关于Object查缺补漏》 — MissSweety's Blog&url=https://misssweety.github.io/2017/09/18/关于Object查缺补漏/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/09/18/关于Object查缺补漏/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3aS07DQBAFQO5/aZAQCySw8/ozIUjlFTLJMOWFu3nTb2/x9f55Ve/cr/b988l38/XLFx4eHl5r61fX1Ybuv5uQrlb4ibnfz4O/joeHh3eMd/8irm6i9xJP1s/3jIeHh/cKvJyafLLapuPh4eH9X14CzlvevLTg4eHhvRovCSMmoW1yp1oYlrMWPDw8vJhX3eIr/HzwfA8PDw9vcKreO9aaFIytlv3ru3h4eHgHeNVYNhkXqA4cbBWDwn8MeHh4eANeLyaohhd5aakOMTxQ4OHh4T2FVz0Ye/4bOE8e8PDw8J7Dmx+GJYNW+QqjB4GHh4d3gJf/Yz+5Uy05k1ikfDCGh4eH1+JVh6smkUH+OJKiFSnw8PDwDvC2xrB67XheGMr1DQ8PD+8YL1k0LwCTaKM6ZBDdwcPDwzvA6zWm+aBAPnpVbfGbRQIPDw9vzMtf1vlrOh+i6sUQhaEHPDw8vFVer8HND6u2xqeqwTEeHh7eX/HWDpPGHW8zLsHDw8M7wMtPi3rlIQ8gJoFIoeHGw8PDG/OSQ/r54dNuLFuIKvDw8PCO8fKSUGXkg1l5OSnn03h4eHgHeFuv/qRznz/EQguOh4eHd4C3FUbkEe0kul0InfHw8PBWeb1RgN5YVe+T+Wq//BYPDw9viVd94fYChd4DSkKNQkqNh4eH90ReslzelFe3O3pkeHh4eAd48/C0Fw1UY4i1GBcPDw9vzHsvXkls0Ssw1VA4WgcPDw/vAC+/khGr/MWd//m1NhoPDw9vlbdVDCaDAvMQ5JKKh4eHd4zXeylPphXu7zeb4+q28PDw8A7z8oA1KRVbo1cPdoWHh4f3Arw8VqgedE1Cjct18PDw8I7x8jBirdktFom8xcfDw8M7zZtsIm+a88eUr7xwsoeHh4dX430AWVemS1hqygEAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MissSweety';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
