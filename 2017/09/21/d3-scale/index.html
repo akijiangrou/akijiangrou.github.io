@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://misssweety.github.io/2017/09/21/d3-scale/quantile.png">
 <meta property="og:image" content="https://misssweety.github.io/2017/09/21/d3-scale/scaleMult.png">
 <meta property="og:image" content="https://misssweety.github.io/2017/09/21/d3-scale/interpolate.png">
-<meta property="og:updated_time" content="2017-09-22T08:34:57.000Z">
+<meta property="og:updated_time" content="2017-09-22T08:59:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="d3-scale">
 <meta name="twitter:description" content="scale缩放也叫比例尺。是可视化的基本，使抽象的数据，转换成可视化的代表，比如宽高，位置或者颜色等。 输入 &amp;amp; 输出scale缩放，其实是一种mapping。将输入的数据转换成对应的想要的输出的数据形式。   既然是转换，那就需要输入和输出。 输入是放入domain函数的参数。输出时放入range 函数的参数。       妙记  ID OR其实每个scale函数返回的都是函数，需要的参">
@@ -193,7 +193,7 @@
 <p>既然是转换，那就需要输入和输出。</p>
 <p>输入是放入<code>domain</code>函数的参数。<br>输出时放入<code>range</code> 函数的参数。  </p>
 <p><img src="./scale.png" width="400px">  </p>
-<p><strong> 妙记 </strong> ID OR<br>其实每个scale函数返回的都是函数，需要的参数就是数据。</p>
+<p><strong> 妙记 </strong> ID OR<br>其实每个scale函数返回的都是函数，需要的参数就是实际展示的数据。</p>
 <p>先举几个基本例子：  </p>
 <ul>
 <li><p>人口范围50万-130万  对应 输出长度为 500像素范围。</p>
@@ -213,13 +213,9 @@
 </li>
 </ul>
 <h2 id="scale-分类"><a href="#scale-分类" class="headerlink" title="scale 分类"></a>scale 分类</h2><p>按照我个人的偏好分类如下：</p>
-<ul>
-<li>输入输出都连续[linear, power, log]</li>
-<li>输出离散[quantize scale]</li>
-<li>输入输出都离散[band, point]</li>
-<li>颜色相关[顺序比例尺(),categorical color scale,]</li>
-<li>时间相关[scaleTime 属于连续型]</li>
-</ul>
+<blockquote>
+<p>输入输出都连续[linear, power, log]<br>输出离散[quantize scale quantile]<br>输入输出都离散[band, point, ordinal]<br>颜色相关[scaleSequential, category]<br>时间相关[scaleTime 属于连续型]</p>
+</blockquote>
 <h3 id="输入输出都连续"><a href="#输入输出都连续" class="headerlink" title="输入输出都连续"></a>输入输出都连续</h3><ul>
 <li>scaleLinear</li>
 <li>scalePower</li>
@@ -240,27 +236,27 @@
 </ul>
 <p>结果如下：<img src="./scaleMult.png" width="400px"></p>
 <h3 id="输入连续，输出离散"><a href="#输入连续，输出离散" class="headerlink" title="输入连续，输出离散"></a>输入连续，输出离散</h3><ul>
-<li><p>scaleQuantize,输入可以是连续范围，输出是离散的值，在range中规定。输入会按照输出数组的长度n分成n份。调用的时候，根据输入判定落在那个区间内，就输出对应的range中的值。<br>例子:  </p>
+<li><p>scaleQuantize<br>输入可以是连续范围，输出是离散的值，在range中规定。输入会按照输出数组的长度n分成n份。调用的时候，根据输入判定落在那个区间内，就输出对应的range中的值。<br>例子:  </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> quantizeScale = d3.scaleQuantize()</div><div class="line">  .domain([<span class="number">0</span>, <span class="number">100</span>])</div><div class="line">  .range([<span class="string">'purple'</span>, <span class="string">'pink'</span>, <span class="string">'lightgreen'</span>]);</div><div class="line"></div><div class="line">quantizeScale(<span class="number">10</span>);   <span class="comment">// returns 'purple'</span></div><div class="line">quantizeScale(<span class="number">30</span>);  <span class="comment">// returns 'purple'</span></div><div class="line">quantizeScale(<span class="number">90</span>);  <span class="comment">// returns 'lightgreen'</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>scaleQuantile，与上面类似，但是输入可以是随机的数组，d3会主动将domain中的数组排序，然后按照range的参数长度n来将排序后的输入分成n组，然后，按照下标值将domain内容均分，然后分别对应range中的内容。（当数量不均分时，可通过<code>quantileScale.quantiles()</code>查看边界分类）。 例子：</p>
+<li><p>scaleQuantile<br>与上面类似，但是输入可以是随机的数组，d3会主动将domain中的数组排序，然后按照range的参数长度n来将排序后的输入分成n组，然后，按照下标值将domain内容均分，然后分别对应range中的内容。（当数量不均分时，可通过<code>quantileScale.quantiles()</code>查看边界分类）。 例子：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myData = [<span class="number">0</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">10</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> linearScale = d3.scaleLinear()</div><div class="line">  .domain([<span class="number">0</span>, <span class="number">100</span>])</div><div class="line">  .range([<span class="number">0</span>, <span class="number">600</span>]);</div><div class="line"></div><div class="line"><span class="keyword">var</span> quantileScale = d3.scaleQuantile()</div><div class="line">  .domain(myData)</div><div class="line">  .range([<span class="string">'lightblue'</span>, <span class="string">'orange'</span>, <span class="string">'lightgreen'</span>]);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(quantileScale.quantiles())  <span class="comment">// [4.666666666666666, 8]</span></div><div class="line">d3.select(<span class="string">'#wrapper'</span>)</div><div class="line">  .selectAll(<span class="string">'circle'</span>)</div><div class="line">  .data([<span class="number">0</span>, <span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>,<span class="number">10</span>, <span class="number">20</span>])</div><div class="line">  .enter()</div><div class="line">  .append(<span class="string">'circle'</span>)</div><div class="line">  .attr(<span class="string">'r'</span>, <span class="number">3</span>)</div><div class="line">  .attr(<span class="string">'cx'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> linearScale(d);</div><div class="line">  &#125;)</div><div class="line">  .style(<span class="string">'fill'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> quantileScale(d);</div><div class="line">  &#125;);</div></pre></td></tr></table></figure>
 </li>
-<li><p>scaleThreshold，将domain中的数据映射到range中的颜色或者离散值。其实domain规定的数据的门限值，就是range中范围的分界点。domain中的数组长度要比range的少一位，这样才能将所有数据包含。看例子：  </p>
+<li><p>scaleThreshold<br>将domain中的数据映射到range中的颜色或者离散值。其实domain规定的数据的门限值，就是range中范围的分界点。domain中的数组长度要比range的少一位，这样才能将所有数据包含。看例子：  </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> thresholdScale = d3.scaleThreshold()</div><div class="line">  .domain([<span class="number">0</span>, <span class="number">50</span>, <span class="number">100</span>])</div><div class="line">  .range([<span class="string">'#purple'</span>, <span class="string">'lightblue'</span>, <span class="string">'orange'</span>, <span class="string">'#red'</span>]);</div><div class="line"></div><div class="line">thresholdScale(<span class="number">-10</span>);  <span class="comment">// returns '#purple'</span></div><div class="line">thresholdScale(<span class="number">20</span>);   <span class="comment">// returns 'lightblue'</span></div><div class="line">thresholdScale(<span class="number">70</span>);   <span class="comment">// returns 'orange'</span></div><div class="line">thresholdScale(<span class="number">110</span>);  <span class="comment">// returns '#red'</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="输入输出都离散"><a href="#输入输出都离散" class="headerlink" title="输入输出都离散"></a>输入输出都离散</h3><ul>
-<li><p>scaleOrdinal，domain和range规定的内容是一一对应的。如果range长度不够，则重复range。如果输入的数据布在domain中，则会将range中的第一个值赋给他。这个可以通过设置<code>.unknown(&#39;xxxx&#39;)</code>来自定义。</p>
+<li><p>scaleOrdinal<br>domain和range规定的内容是一一对应的。如果range长度不够，则重复range。如果输入的数据布在domain中，则会将range中的第一个值赋给他。这个可以通过设置<code>.unknown(&#39;xxxx&#39;)</code>来自定义。</p>
 </li>
-<li><p>scaleBand，domain规定每个band的值，range中规定整个柱形图的长度，也就是多个柱子和间隙的总和。当输入数据时，会返回对应的柱子的宽度以及起始位置。柱子宽度通过<code>d3.scaleBand().bandwidth()</code>  </p>
+<li><p>scaleBand<br>domain规定每个band的值，range中规定整个柱形图的长度，也就是多个柱子和间隙的总和。当输入数据时，会返回对应的柱子的宽度以及起始位置。柱子宽度通过<code>d3.scaleBand().bandwidth()</code>  </p>
 <blockquote>
 <p>bandwidth() 柱子宽度<br>paddingInner() 每个band间的距离<br>paddingOuter() 第一个子band前面的padding和最后一个子band后面padding 之和。<br>常用在柱形图，条形图中。自动生成柱子和间隙的位置。</p>
 </blockquote>
 </li>
 </ul>
 <ul>
-<li><p>scalePoint，按照给出的domain将range范围分为对应的n-1份。两边的间隔可以通过<code>d3.scalePoint.padding()</code>来计算。而间隔的值可通过<code>step()</code>获取</p>
+<li><p>scalePoint<br>按照给出的domain将range范围分为对应的n-1份。两边的间隔可以通过<code>d3.scalePoint.padding()</code>来计算。而间隔的值可通过<code>step()</code>获取</p>
 <p>一般输入输出都离散，常用在坐标轴，颜色中。</p>
 </li>
 </ul>
@@ -272,11 +268,14 @@
 </li>
 </ul>
 <h3 id="时间相关"><a href="#时间相关" class="headerlink" title="时间相关"></a>时间相关</h3><ul>
-<li><p>scaleTime</p>
-<p>时间格式输出，参考：<a href="https://github.com/d3/d3-time-format" target="_blank" rel="external">https://github.com/d3/d3-time-format</a></p>
+<li><p>scaleTime<br>主要用于与时间相关的应用上。可以将连续的时间转换成range中的范围，可以是长度颜色等等。<br>可以通过scaleTime获取一些数据，用<code>ticks()</code>。比如想要获取domain中每十天的值，可以使用如下代码：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> timescale = d3.scaleTime()</div><div class="line">  .domain([<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2017</span>, <span class="number">7</span>, <span class="number">1</span>), <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2017</span>, <span class="number">9</span>, <span class="number">1</span>)])</div><div class="line">  .range([<span class="number">0</span>, <span class="number">600</span>]);</div><div class="line"></div><div class="line"><span class="keyword">const</span> infor = timescale.ticks(d3.timeDay.every(<span class="number">10</span>));</div></pre></td></tr></table></figure>
+<p>以上输出的是：<br>August 01<br>August 11<br>August 21<br>August 31<br>September 01<br>September 11<br>September 21<br>October 01<br>更多时间tick可以参考：<a href="https://github.com/d3/d3-scale#time-scales" target="_blank" rel="external">https://github.com/d3/d3-scale#time-scales</a><br>时间格式输出，参考：<a href="https://github.com/d3/d3-time-format" target="_blank" rel="external">https://github.com/d3/d3-time-format</a></p>
 </li>
 </ul>
-<p><a href="http://d3indepth.com/scales/" target="_blank" rel="external">参考</a></p>
+<blockquote>
+<p><a href="http://d3indepth.com/scales/" target="_blank" rel="external">参考一</a><br><a href="https://github.com/d3/d3-scale" target="_blank" rel="external">参考二</a></p>
+</blockquote>
 
         </div>
 
@@ -284,7 +283,7 @@
     <div class="content">
         
 <span class="post-time">
-    最後更新時間：<time datetime="2017-09-22T08:34:57.000Z" itemprop="dateUpdated">2017-09-22 16:34:57</time>
+    最後更新時間：<time datetime="2017-09-22T08:59:20.000Z" itemprop="dateUpdated">2017-09-22 16:59:20</time>
 </span><br>
 
 
