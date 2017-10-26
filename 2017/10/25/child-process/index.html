@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>child_process | MissSweety&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="nodejs,js,shell">
+    <meta name="description" content="子进程child_process，使node可以在进程中执行操作，应用系统命令等。nodejs创建子进程有四种方法,分别是  spawnforkexecexecFile。  后两个函数有回调函数。前两个没有。其中spawn 是最基本的函数，剩下三个其实都是不同程度的封装。 功能child_process 会在父进程和衍生的子进程中建立stdin、stdout和stderr的管道。数据能以非阻塞的方">
+<meta name="keywords" content="nodejs,js,shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="child_process">
+<meta property="og:url" content="https://misssweety.github.io/2017/10/25/child-process/index.html">
+<meta property="og:site_name" content="MissSweety's Blog">
+<meta property="og:description" content="子进程child_process，使node可以在进程中执行操作，应用系统命令等。nodejs创建子进程有四种方法,分别是  spawnforkexecexecFile。  后两个函数有回调函数。前两个没有。其中spawn 是最基本的函数，剩下三个其实都是不同程度的封装。 功能child_process 会在父进程和衍生的子进程中建立stdin、stdout和stderr的管道。数据能以非阻塞的方">
+<meta property="og:updated_time" content="2017-10-25T11:54:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="child_process">
+<meta name="twitter:description" content="子进程child_process，使node可以在进程中执行操作，应用系统命令等。nodejs创建子进程有四种方法,分别是  spawnforkexecexecFile。  后两个函数有回调函数。前两个没有。其中spawn 是最基本的函数，剩下三个其实都是不同程度的封装。 功能child_process 会在父进程和衍生的子进程中建立stdin、stdout和stderr的管道。数据能以非阻塞的方">
+    
+        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:zcx900308@163.com" title="zcx900308@163.com" class="mail">zcx900308@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="https://misssweety.github.io/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MissSweety" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">child_process</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">child_process</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-25T11:45:20.000Z" itemprop="datePublished" class="page-time">
+  2017-10-25
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#功能"><span class="post-toc-number">1.</span> <span class="post-toc-text">功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四个api"><span class="post-toc-number">2.</span> <span class="post-toc-text">四个api</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#spawn"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">spawn</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-child-process"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">child_process</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-25 19:45:20" datetime="2017-10-25T11:45:20.000Z"  itemprop="datePublished">2017-10-25</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>子进程<code>child_process</code>，使node可以在进程中执行操作，应用系统命令等。nodejs创建子进程有四种方法,分别是</p>
+<blockquote>
+<p>spawn<br>fork<br>exec<br>execFile。</p>
+</blockquote>
+<p>后两个函数有回调函数。前两个没有。其中spawn 是最基本的函数，剩下三个其实都是不同程度的封装。</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>child_process 会在父进程和衍生的子进程中建立stdin、stdout和stderr的管道。数据能以非阻塞的方式在管道中流通。</p>
+<h2 id="四个api"><a href="#四个api" class="headerlink" title="四个api"></a>四个api</h2><p>官网里对这四个指令的解释：<br><code>spawn</code>: 异步衍生一个子进程，不阻塞node.js 事件循环。  </p>
+<p><code>fork</code>: 衍生一个新的 Node.js 进程，并通过建立一个 IPC 通讯通道来调用一个指定的模块，该通道允许父进程与子进程之间相互发送信息。  </p>
+<p><code>exec</code>:衍生一个 shell 并在 shell 上运行命令，当完成时会传入 stdout 和 stderr 到回调函数。  </p>
+<p><code>execFile</code>: 直接衍生命令，且无需先衍生一个 shell。 </p>
+<p>简单说说<code>exec</code>与<code>spawn</code>的区别：  </p>
+<ul>
+<li>exec可以方便的使用复杂的shell命令，而spawn需要拆分shell指令，写在数组参数里。  </li>
+<li>exec是将进程输出结果放在buffer中，结果完全返回后，在一次性的将其以回调函数的形式返回给node，这个可能会因为返回过大，超过buffersize而报错。</li>
+<li>相反的，spawn从子进程开始执行后，就开始不断将数据从子进程返回给主进程，它通过流的方式发数据传给主进程，从而实现了多进程之间的数据交换。  </li>
+<li>总结：如果只是想看运行结果，用exec；需要执行结果的数据，最好用spawn。  </li>
+</ul>
+<h3 id="spawn"><a href="#spawn" class="headerlink" title="spawn"></a>spawn</h3><p><code>child_process.spawn(command, [args], [options])</code>  </p>
+<p>command : 主命令<br>args : 其他参数，以及副命令<br>options: 见<a href="http://nodejs.cn/api/child_process.html#child_process_child_process_spawn_command_args_options" target="_blank" rel="external">文档</a>中的定义  </p>
+<p>// hellow.js</p>
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">const</span> &#123; spawn &#125; = <span class="built_in">require</span>(<span class="string">'child_process'</span>);</div><div class="line"> <span class="comment">// 主命令ls为第一个参数，辅助命令以及路径等参数，都放在参数数组里。</span></div><div class="line"><span class="keyword">const</span> ls = spawn(<span class="string">'ls'</span>, [<span class="string">'-lh'</span>, <span class="string">'/usr'</span>]);</div><div class="line"></div><div class="line">ls.stdout.on(<span class="string">'data'</span>, (data) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`stdout: <span class="subst">$&#123;data&#125;</span>`</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">ls.stderr.on(<span class="string">'data'</span>, (data) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`stderr: <span class="subst">$&#123;data&#125;</span>`</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">ls.on(<span class="string">'close'</span>, (code) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`child process exited with code <span class="subst">$&#123;code&#125;</span>`</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</code></pre><p>运行：<br>node hellow.js </p>
+<p>等价于运行：<br>ls -lh /usr</p>
+<p>输出如下：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">stdout: total 0</div><div class="line">drwxr-xr-x  1066 root  wheel    35K 10  8 19:37 bin  </div><div class="line">drwxr-xr-x   283 root  wheel   9.4K 10  8 19:37 lib  </div><div class="line">drwxr-xr-x   212 root  wheel   7.0K 10  8 20:27 libexec  </div><div class="line">drwxr-xr-x    23 root  wheel   782B  3 25  2017 local  </div><div class="line">drwxr-xr-x   246 root  wheel   8.2K 10  8 19:36 sbin  </div><div class="line">drwxr-xr-x    46 root  wheel   1.5K  3 25  2017 share  </div><div class="line">drwxr-xr-x     5 root  wheel   170B 12 13  2016 standalone  </div><div class="line"></div><div class="line">child process exited with code 0</div></pre></td></tr></table></figure></p>
+<p>example2 模拟ps ax | grep ssh </p>
+<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123; spawn &#125; = <span class="built_in">require</span>(<span class="string">'child_process'</span>);</div><div class="line"><span class="keyword">const</span> ps = spawn(<span class="string">'ps'</span>, [<span class="string">'ax'</span>]);</div><div class="line"><span class="keyword">const</span> grep = spawn(<span class="string">'grep'</span>, [<span class="string">'ssh'</span>]);</div><div class="line"></div><div class="line">ps.stdout.on(<span class="string">'data'</span>, (data) =&gt; &#123;</div><div class="line">  grep.stdin.write(data);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">ps.stderr.on(<span class="string">'data'</span>, (data) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`ps stderr: <span class="subst">$&#123;data&#125;</span>`</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">ps.on(<span class="string">'close'</span>, (code) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (code !== <span class="number">0</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`wrong ps process exited with code <span class="subst">$&#123;code&#125;</span>`</span>);</div><div class="line">  &#125;</div><div class="line">  grep.stdin.end();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">grep.stdout.on(<span class="string">'data'</span>, (data) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(data.toString());</div><div class="line">&#125;);</div><div class="line"></div><div class="line">grep.stderr.on(<span class="string">'data'</span>, (data) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`grep stderr: <span class="subst">$&#123;data&#125;</span>`</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">grep.on(<span class="string">'close'</span>, (code) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (code !== <span class="number">0</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`wrong grep process exited with code <span class="subst">$&#123;code&#125;</span>`</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`ps process exited with code <span class="subst">$&#123;code&#125;</span>`</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">1915 </span>  ??  S      <span class="number">0</span>:<span class="number">00.03</span> /<span class="keyword">usr</span>/bin/ssh-agent -l</div></pre></td></tr></table></figure>
+</code></pre><p>执行  ps ax | grep ssh  </p>
+<pre><code><figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">1915 </span>  ??  S      <span class="number">0</span>:<span class="number">00.03</span> /<span class="keyword">usr</span>/bin/ssh-agent -l</div><div class="line"><span class="symbol">57189 </span>s009  S+     <span class="number">0</span>:<span class="number">00.00</span> grep --<span class="keyword">color</span>=<span class="keyword">auto</span> --exclude-dir=.bzr --exclude-dir=<span class="keyword">CVS</span> --exclude-dir=.git --exclude-</div></pre></td></tr></table></figure>
+</code></pre><p>shell这个会有两条，是因为后面这个是上面寻找的这条shell的进程  </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-25T11:54:41.000Z" itemprop="dateUpdated">2017-10-25 19:54:41</time>
+</span><br>
+
+
+        
+        <a href="/2017/10/25/child-process/" target="_blank" rel="external">https://misssweety.github.io/2017/10/25/child-process/</a>
+        
+    </div>
+    <footer>
+        <a href="https://misssweety.github.io">
+            <img src="/img/avatar.jpg" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/10/25/child-process/&title=《child_process》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/10/25/child-process/&title=《child_process》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/10/25/child-process/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《child_process》 — MissSweety's Blog&url=https://misssweety.github.io/2017/10/25/child-process/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/10/25/child-process/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/09/21/d3-scale/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">d3-scale</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/10/25/child-process/&title=《child_process》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/10/25/child-process/&title=《child_process》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/10/25/child-process/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《child_process》 — MissSweety's Blog&url=https://misssweety.github.io/2017/10/25/child-process/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/10/25/child-process/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3awXaFIAxFUf//p+20E/TcBLsKHEZdfSpuBjGQXBce968x+nV0/fO9fJYJQ4YMGcsy7scxuqY28fNCkHmHM8qQIeMAxvOUhDSCkQUi8768swwZMmSAycj0PMjKkCFDxiwGwTyTasshQ4aMMxmdBC49eiOp54d7cRkyZCzISI/J/vLvT+obMmTIWIpxh6O2HSXB+m4MGTJk7M2YdTTWSfJqzRYyZMg4h9HfvpKX5iuaBuhpu3AZMmT8ewY/oOcpHYr0pTLDMODKkCFja0YaUmsH/ekhWnCXDBkyjmGkm8z0yKxTtnxZYhkyZBzA4Mlf2nhRK5TyD8DFo7sMGTKWZcx9LRI0a1tcRJIhQ8amjFqTVtoGwRnFEoIMGTIOYJBHzy1PdlLAYbeIDBkyNmXwKdMNJ083a80WxZWTIUPGgow0pXu+krPTe4NmCxkyZGzH4FvW9HV5vO8UFWTIkHECg6diPIzyVlR+qPcSuGXIkLE1g7w6D8GdwmS/4UOGDBl7MziAFzWDENkubcqQIeM0Bi89pilg2gIbN23IkCHjAEYQ2kr/Ic0W6Ulh0DkiQ4aMZRl3OGrrlDZP8DB98W+CDBkylmWkYS7l8QaOdDmKIVuGDBnLMvgGtbbJ7Dw5KDnIkCHjAEYt1eOvXqys4sRRhgwZMtLDuE5BtEiVIUOGjJDEW2M7AXrad0OGDBmLMPqNFLUD/dpzZMiQcRqj1akRhk6eUH5S1JQhQ8Z6jB/QqgPxaXFjTgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MissSweety';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
