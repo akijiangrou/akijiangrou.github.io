@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://misssweety.github.io/"/>
-  <updated>2017-10-27T09:38:28.000Z</updated>
+  <updated>2017-11-01T07:43:07.000Z</updated>
   <id>https://misssweety.github.io/</id>
   
   <author>
@@ -14,6 +14,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WebGL学习系列-基础篇</title>
+    <link href="https://misssweety.github.io/2017/11/01/WebGL%E5%AD%A6%E4%B9%A0%E7%B3%BB%E5%88%97-%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
+    <id>https://misssweety.github.io/2017/11/01/WebGL学习系列-基础篇/</id>
+    <published>2017-11-01T03:38:12.000Z</published>
+    <updated>2017-11-01T07:43:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>一直对图形之类的很喜欢，之后每天学习一点WEBGL相关的内容，明年也做出来一些3D动画网站就可以啦~~  </p>
+<blockquote>
+<p>[参考网站]<br><a href="http://www.glprogramming.com/red/" target="_blank" rel="external">OpenGL 编程指南</a><br>MOZILA <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API" target="_blank" rel="external">webGL</a><br><a href="http://www.yiibai.com/webgl/html5_canvas_overview.html#article-start" target="_blank" rel="external">WebGL中文教程</a><br><a href="http://www.hewebgl.com/" target="_blank" rel="external">three.js</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API/Tutorial/Adding_2D_content_to_a_WebGL_context" target="_blank" rel="external">webgl mdn 参考</a></p>
+</blockquote>
+<h2 id="WebGL-Web图形库"><a href="#WebGL-Web图形库" class="headerlink" title="WebGL (Web图形库)"></a>WebGL (Web图形库)</h2><p>是一种JavaScript API，用于在任何兼容的Web浏览器中呈现交互式3D和2D图形，而无需使用插件。WebGL通过引入一个与OpenGL ES 2.0紧密相符合的API，可以在HTML5 <code>&lt;canvas&gt;</code>元素中使用。</p>
+<h3 id="和canvas的关系"><a href="#和canvas的关系" class="headerlink" title="和canvas的关系"></a>和canvas的关系</h3><p>WebGL需要通过canvas来进行渲染，通过在getContext方法中传入，webgl相关字段，获取html中的画布。’webgl’ 或者 ‘experimental-webgl’ 都可以。  </p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'my_canvas'</span>);</div><div class="line"><span class="keyword">var</span> gl = canvas.getContext(<span class="string">'experimental-webgl'</span>);</div></pre></td></tr></table></figure>
+<h2 id="WebGL相关知识基础"><a href="#WebGL相关知识基础" class="headerlink" title="WebGL相关知识基础"></a>WebGL相关知识基础</h2><h3 id="WebGL坐标系"><a href="#WebGL坐标系" class="headerlink" title="WebGL坐标系"></a>WebGL坐标系</h3><p>在WebGL的坐标被限制为(1,1,1)和(-1，-1，- 1)。<br>坐标系如下：<br><img src="./pic1.png" width="300px">  </p>
+<h3 id="坐标"><a href="#坐标" class="headerlink" title="坐标"></a>坐标</h3><p>用显示器上单位度量出的数值起初叫做<code>物理设备坐标</code>或者叫<code>设备坐标</code>。对于光栅设备，我们使用的术语是<code>窗口坐标</code>或者<code>屏幕坐标</code>。屏幕坐标总是用某种整数类型来表示，因为帧缓存中任何像素中心都必须位于固定的网格点上。</p>
+<h3 id="WebGL颜色系统"><a href="#WebGL颜色系统" class="headerlink" title="WebGL颜色系统"></a>WebGL颜色系统</h3><p>webgl采用rgba的四色系统来定义颜色。与我们平时所用的颜色系统不一样的是，RGBA四个分量使用0.0~0.1之间的数值来表示。前三个分量表示三原色的饱和度，最后一个表示不透明度。  </p>
+<h3 id="清屏clearColor"><a href="#清屏clearColor" class="headerlink" title="清屏clearColor"></a>清屏clearColor</h3><p>一般canvas都会使用一个颜色填充来清理画布。 WebGL也需要清屏，一般初始化步骤如下  </p>
+  <figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置清除颜色(蓝色，不透明)</span></div><div class="line"><span class="keyword">gl</span>.clearColor(0.0, 1.0, 1.0, 1.0);</div><div class="line"><span class="comment">// 深度清理</span></div><div class="line"><span class="keyword">gl</span>.clearDepth(1.0);</div><div class="line"><span class="comment">//  开启“深度测试”, Z-缓存</span></div><div class="line"><span class="keyword">gl</span>.enable(<span class="keyword">gl</span>.DEPTH_TEST);</div><div class="line"><span class="comment">// 设置深度测试，近的物体遮挡远的物体</span></div><div class="line"><span class="keyword">gl</span>.depthFunc(<span class="keyword">gl</span>.LEQUAL);</div><div class="line"><span class="comment">// 清理画布</span></div><div class="line"><span class="keyword">gl</span>.<span class="keyword">clear</span>(<span class="keyword">gl</span>.COLOR_BUFFER_BIT);</div></pre></td></tr></table></figure>
+<h3 id="基本图元"><a href="#基本图元" class="headerlink" title="基本图元"></a>基本图元</h3><p>在webgl中，所有的几何图元都是由点、线段和三角形这样的基本图元组成。<br>webgl 提供了多种点和线段图元，相应的type参数如下  </p>
+<ul>
+<li>点（<code>gl.POINTS</code>）:每个顶点被显示的大小至少是一个像素。</li>
+<li>线段（<code>gl.LINES</code>）:这种图元把相继的顶点配对后解释为线段的两个端点（两两配对）。</li>
+<li>折线（<code>gl.LINE_STRIP</code>,<code>gl.LINE_LOOP</code>）想要让相继的顶点相连，可以使用折线图元。曲线可以通过合适的折线来近似。如果希望折线闭合，可以吧最后一个顶点设置与第一个顶点重合，也可以使用<code>gl.LINE_LOOP</code>类型，它会在最后一个顶点和第一个顶点之间画一条线，得到一个环路。</li>
+<li>三角形（<code>gl.TRIANGLE</code>）:相继的三个顶点组合在一起</li>
+<li>三角形条带和三角形扇（<code>gl.TRIANGLE_STRIP</code>,<code>gl.TRIANGEL_FAN</code>）: 前者就是每三个点连接成一个三角形。后面是每两个分别与0号点形成三角形。</li>
+<li><p>多边形 (<code>GL_POLYGON</code>, <code>GL_QUADS</code>, <code>GL_QUAD_STRIP</code>)  </p>
+<p><img src="./pic2.png" width="500px"></p>
+</li>
+</ul>
+<h3 id="着色器"><a href="#着色器" class="headerlink" title="着色器"></a>着色器</h3><p>一旦创建WEBGL上下文成功，你就可以在这个上下文里渲染画图了。着色器使用ES SL(嵌入式系统着色语言）在GPU上运行，语言类似C语言。在js中，我们可以写成字符串交由底层处理。同样使用script标签保存这些代码字符也是可行的。着色器来渲染我们的简单场景并画出我们的物体。个人理解是，js存一些信息，将内容交给硬件去绘制和呈现。  分为顶点着色器，片元着色器。  </p>
+<ul>
+<li><p>片段着色器：  在 WebGL 多边形中的每一个像素都叫一个片段。这个片段着色器的工作就是建立每个像素的色彩。在这个案例中，我们会简单地给每个像素填上白色。<br>gl_FragColor 是一个 GL 内置的特殊变量，用于片段的色彩填充。如下所示，设定它的值就是设定每个像素的颜色。</p>
+<pre><code><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">"shader-fs"</span> <span class="attr">type</span>=<span class="string">"x-shader/x-fragment"</span>&gt;</span><span class="actionscript"></span></div><div class="line">  <span class="keyword">void</span> main(<span class="keyword">void</span>) &#123;</div><div class="line">    gl_FragColor = vec4(<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</code></pre></li>
+<li><p>顶点着色器：  顶点着色器定义了每个顶点的位置和形状。</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">"shader-vs"</span> <span class="attr">type</span>=<span class="string">"x-shader/x-vertex"</span>&gt;</span><span class="actionscript"></span></div><div class="line">  attribute vec3 aVertexPosition;</div><div class="line"></div><div class="line">  uniform mat4 uMVMatrix;</div><div class="line">  uniform mat4 uPMatrix;</div><div class="line">  </div><div class="line">  <span class="keyword">void</span> main(<span class="keyword">void</span>) &#123;</div><div class="line">    gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, <span class="number">1.0</span>);</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a>简单实例</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一直对图形之类的很喜欢，之后每天学习一点WEBGL相关的内容，明年也做出来一些3D动画网站就可以啦~~  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[参考网站]&lt;br&gt;&lt;a href=&quot;http://www.glprogramming.com/red/&quot; target=&quot;_
+    
+    </summary>
+    
+    
+      <category term="three.js" scheme="https://misssweety.github.io/tags/three-js/"/>
+    
+      <category term="webGL" scheme="https://misssweety.github.io/tags/webGL/"/>
+    
+      <category term="学习笔记" scheme="https://misssweety.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>redux源码相关</title>
