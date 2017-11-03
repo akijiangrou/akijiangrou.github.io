@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://misssweety.github.io/"/>
-  <updated>2017-11-01T07:43:07.000Z</updated>
+  <updated>2017-11-03T07:38:24.000Z</updated>
   <id>https://misssweety.github.io/</id>
   
   <author>
@@ -16,15 +16,66 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>WebGL学习系列-three.js入门</title>
+    <link href="https://misssweety.github.io/2017/11/03/WebGL%E5%AD%A6%E4%B9%A0%E7%B3%BB%E5%88%97-three-js%E5%85%A5%E9%97%A8/"/>
+    <id>https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/</id>
+    <published>2017-11-03T04:21:26.000Z</published>
+    <updated>2017-11-03T07:38:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>被webGL吓得赶紧投入到three.js的怀抱，发现一个最简单的会旋转的正方型，只需10+就搞定了！<br>好的，那我们还是先学习three.js吧~~ 我的目的是先学会怎么制造3d的内容，至于渲染优化什么的目前我还不需要，所以先放弃读webGL的api。<br>先看three.js的基础知识。</p>
+<h2 id="三大组件"><a href="#三大组件" class="headerlink" title="三大组件"></a>三大组件</h2><p>在Three.js中，要渲染物体到网页中，我们需要3个组建：<code>场景（scene）</code>、<code>相机（camera）</code>和<code>渲染器（renderer）</code>。有了这三样东西，才能将物体渲染到网页中去。  </p>
+<h3 id="场景（scene）"><a href="#场景（scene）" class="headerlink" title="场景（scene）"></a><code>场景（scene）</code></h3><p>用<code>THREE.Scene</code>来表示。场景是所有物体的容器。每一个three.js 构造的3d内容，都需要在一个scene中。  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> scene = <span class="keyword">new</span> THREE.Scene();</div></pre></td></tr></table></figure>
+<h3 id="相机（camera）"><a href="#相机（camera）" class="headerlink" title="相机（camera）"></a><code>相机（camera）</code></h3><p>用<code>THREE.PerspectiveCamera(param)</code> 生成。相机决定了场景中哪个角度的景色会显示出来。相机就像人的眼睛一样，人站在不同位置，抬头或者低头都能够看到不同的景色。场景只有一种，但是相机却又很多种。要根据不同的场景选择不同的相机。 之后会介绍不同的相机。  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">75</span>, <span class="built_in">window</span>.innerWidth/<span class="built_in">window</span>.innerHeight, <span class="number">0.1</span>, <span class="number">1000</span>);</div></pre></td></tr></table></figure>
+<h3 id="渲染器（renderer）"><a href="#渲染器（renderer）" class="headerlink" title="渲染器（renderer）"></a><code>渲染器（renderer）</code></h3><p>用<code>THREE.WebGLRenderer()</code>生成。渲染器决定了渲染的结果应该画在页面的什么元素上面，并且以怎样的方式来绘制。renderer有一些自己的方法和属性，如<code>setSize()</code>, <code>domElement</code>，可以用于场景的展示。  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> renderer = <span class="keyword">new</span> THREE.WebGLRenderer();</div><div class="line">renderer.setSize(<span class="built_in">window</span>.innerWidth, <span class="built_in">window</span>.innerHeight);</div><div class="line"><span class="built_in">document</span>.body.appendChild(renderer.domElement);</div></pre></td></tr></table></figure>
+<h3 id="场景什么的都准备好了，上主角吧"><a href="#场景什么的都准备好了，上主角吧" class="headerlink" title="场景什么的都准备好了，上主角吧 ~~"></a>场景什么的都准备好了，上主角吧 ~~</h3><p>这里我们把物体添加到场景中去。<br>比如我们想添加一个矩形进去，<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> geometry = <span class="built_in">new</span> THREE.CubeGeometry(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>); </div><div class="line"></div><div class="line">//CubeGeometry(<span class="built_in">width</span>, <span class="built_in">height</span>, depth, segmentsWidth, segmentsHeight, segmentsDepth, materials, sides)</div><div class="line"></div><div class="line">// 材质</div><div class="line"><span class="built_in">var</span> material = <span class="built_in">new</span> THREE.MeshBasicMaterial(&#123;<span class="built_in">color</span>: <span class="number">0x00ff00</span>&#125;);</div><div class="line"><span class="built_in">var</span> <span class="built_in">cube</span> = <span class="built_in">new</span> THREE.Mesh(geometry, material); </div><div class="line"><span class="built_in">scene</span>.add(<span class="built_in">cube</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h3><p>渲染应该使用渲染器，结合相机和场景来得到结果画面。实现这个功能的函数是</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">renderer</span>.<span class="keyword">render</span>(scene, <span class="keyword">camera</span>);</div></pre></td></tr></table></figure>
+<p>render( scene, camera, renderTarget, forceClear )</p>
+<p>各个参数的意义是：<br>scene：前面定义的场景<br>camera：前面定义的相机<br>renderTarget：渲染的目标，默认是渲染到前面定义的render变量中<br>forceClear：每次绘制之前都将画布的内容给清除，即使自动清除标志autoClear为false，也会清除。  </p>
+<h3 id="场景，相机，渲染器之间的关系"><a href="#场景，相机，渲染器之间的关系" class="headerlink" title="场景，相机，渲染器之间的关系"></a>场景，相机，渲染器之间的关系</h3><p>场景是物体的容器，照相机就是选择场景的一部分，渲染器负责把照相机照下来的场景内容展示到屏幕上。  </p>
+<h2 id="计算机的3D世界"><a href="#计算机的3D世界" class="headerlink" title="计算机的3D世界"></a>计算机的3D世界</h2><p>计算机的3D世界，是由点组成的，两个点组成线，不在一条线上的点组成面，无书面就能构成各种形状的物体，成为网状的模型，叫做mesh模型，在给这个模型贴上皮肤（纹理），那么物体就和现实差不多了。。。  </p>
+<h3 id="右手坐标系"><a href="#右手坐标系" class="headerlink" title="右手坐标系"></a>右手坐标系</h3><p>threejs使用右手坐标系，x轴正方向向右，y轴正方向向上，z轴由屏幕从里向外。如下：  </p>
+<p><img src="./axis.png" width="200px"></p>
+<h3 id="坐标系的点"><a href="#坐标系的点" class="headerlink" title="坐标系的点"></a>坐标系的点</h3><p>联系原来学的几何，空间几何中，点可以用一个向量表示。那么在three.js中，可以用如下代码表示一个点：  假设一个点：(3,4,5)  </p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const point = new THREE.Vector(<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</div><div class="line"></div><div class="line">const pointer = new THREE.Vector();</div><div class="line">pointer.set(<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</div></pre></td></tr></table></figure>
+<h3 id="两点生成线"><a href="#两点生成线" class="headerlink" title="两点生成线"></a>两点生成线</h3><p>以两个点生成一条渐变的彩色线为例:  完整实例参考<code>line-three.html</code></p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initObject</span></span>() &#123;</div><div class="line">  <span class="comment">// 声明一个几何体geometry， 几何体里面有一个vertices变量，可以用来存放点。</span></div><div class="line">  <span class="keyword">var</span> geometry = <span class="keyword">new</span> <span class="type">THREE</span>.Geometry();</div><div class="line">  <span class="comment">// 定义线条材质，`LineBasicMaterial` 是有多个参数的，这个之后了解吧。这里就是定义线条材质是否使用顶点颜色，这是一个boolean值。意思是，线条各部分的颜色会根据顶点的颜色来进行插值</span></div><div class="line">  <span class="keyword">var</span> material = <span class="keyword">new</span> <span class="type">THREE</span>.LineBasicMaterial( &#123; vertexColors: <span class="type">true </span>&#125; );</div><div class="line">  <span class="comment">// 颜色，用于两个端点颜色。</span></div><div class="line">  <span class="keyword">var</span> color1 = <span class="keyword">new</span> <span class="type">THREE</span>.Color( <span class="number">0x444444</span> ), color2 = <span class="keyword">new</span> <span class="type">THREE</span>.Color( <span class="number">0xFF0000</span> ); </div><div class="line">  <span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="type">THREE</span>.Vector3( <span class="number">-100</span>, <span class="number">0</span>, <span class="number">100</span> );</div><div class="line">  <span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="type">THREE</span>.Vector3(  <span class="number">100</span>, <span class="number">0</span>, <span class="number">-100</span> );</div><div class="line">  geometry.vertices.push(p1);</div><div class="line">  geometry.vertices.push(p2);</div><div class="line">  <span class="comment">// 为上面两个顶点，设置两个颜色。</span></div><div class="line">  geometry.colors.push( color1, color2 );</div><div class="line">  <span class="comment">// 第一个参数是几何体geometry，里面包含了2个顶点和顶点的颜色。第二个参数是线条的材质，或者是线条的属性，表示线条以哪种方式取色。第三个参数是一组点的连接方式</span></div><div class="line">  <span class="keyword">var</span> line = <span class="keyword">new</span> <span class="type">THREE</span>.Line( geometry, material, THREE.LineSegments );</div><div class="line">  scene.add(line);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="线的更多理解"><a href="#线的更多理解" class="headerlink" title="线的更多理解"></a>线的更多理解</h3><p>threejs中，线是由点，材质，颜色组成的。<br><code>THREE.Vector</code>是点，但是threejs中没有提供单独画点的函数，所以要用THREE.Geometry来画，该结构有vertices属性，用来存放顶点。<br>材质的话，可以选择专为线准备的材质，THREE.LineBasicMaterial。<br>最后通过THREE.Line绘制了一条线。<br><code>new THREE.Line( geometry, material, THREE.LineSegments )</code>  </p>
+<p>如果想绘制一个网格线。那么思路就是，先定义一个长度为1000的x方向上的线，然后。将线均分为20份，每一条分别加一个y方向的位移。另一方面，垂直的线我们需要沿z方向旋转x轴上的线，然后在x方向上平移。  完整实例参考 <code>grid-three.html</code></p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">function initObject(<span class="built_in">scene</span>) &#123;</div><div class="line">  <span class="built_in">var</span> geometry = <span class="built_in">new</span> THREE.Geometry();</div><div class="line">  <span class="built_in">var</span> p1 = <span class="built_in">new</span> THREE.Vector3( -<span class="number">500</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">  <span class="built_in">var</span> p2 = <span class="built_in">new</span> THREE.Vector3(  <span class="number">500</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">  geometry.<span class="built_in">vertices</span>.<span class="built_in">push</span>(p1);</div><div class="line">  geometry.<span class="built_in">vertices</span>.<span class="built_in">push</span>(p2);</div><div class="line"></div><div class="line">  <span class="built_in">var</span> material = <span class="built_in">new</span> THREE.LineBasicMaterial(&#123; <span class="built_in">color</span>: <span class="number">0x800080</span>, <span class="built_in">opacity</span>: <span class="number">0.6</span>&#125;);</div><div class="line">  <span class="keyword">for</span> ( <span class="built_in">let</span> i = <span class="number">0</span>; i &lt;= <span class="number">20</span>; i ++ ) &#123;</div><div class="line">    <span class="built_in">var</span> line = <span class="built_in">new</span> THREE.Line( geometry, material );</div><div class="line">    line.<span class="built_in">position</span>.y = ( i * <span class="number">50</span> ) - <span class="number">500</span>;</div><div class="line">    <span class="built_in">scene</span>.add( line );</div><div class="line">    </div><div class="line">    <span class="built_in">var</span> line = <span class="built_in">new</span> THREE.Line( geometry, material);</div><div class="line">    line.<span class="built_in">position</span>.x = ( i * <span class="number">50</span> ) - <span class="number">500</span>;</div><div class="line">    // 将x轴方向的线，沿着z轴旋转<span class="number">90</span>度，就变成了垂直的线~~</div><div class="line">    line.rotation.z = <span class="number">90</span> * Math.PI / <span class="number">180</span>;</div><div class="line"></div><div class="line">    <span class="built_in">scene</span>.add( line );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>所有代码示例，可以参考这里<a href="https://github.com/MissSweety/threejs" target="_blank" rel="external">code</a>;</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;被webGL吓得赶紧投入到three.js的怀抱，发现一个最简单的会旋转的正方型，只需10+就搞定了！&lt;br&gt;好的，那我们还是先学习three.js吧~~ 我的目的是先学会怎么制造3d的内容，至于渲染优化什么的目前我还不需要，所以先放弃读webGL的api。&lt;br&gt;先看th
+    
+    </summary>
+    
+    
+      <category term="three.js" scheme="https://misssweety.github.io/tags/three-js/"/>
+    
+      <category term="webGL" scheme="https://misssweety.github.io/tags/webGL/"/>
+    
+      <category term="学习笔记" scheme="https://misssweety.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WebGL学习系列-基础篇</title>
     <link href="https://misssweety.github.io/2017/11/01/WebGL%E5%AD%A6%E4%B9%A0%E7%B3%BB%E5%88%97-%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
     <id>https://misssweety.github.io/2017/11/01/WebGL学习系列-基础篇/</id>
     <published>2017-11-01T03:38:12.000Z</published>
-    <updated>2017-11-01T07:43:07.000Z</updated>
+    <updated>2017-11-03T04:37:46.000Z</updated>
     
     <content type="html"><![CDATA[<p>一直对图形之类的很喜欢，之后每天学习一点WEBGL相关的内容，明年也做出来一些3D动画网站就可以啦~~  </p>
 <blockquote>
-<p>[参考网站]<br><a href="http://www.glprogramming.com/red/" target="_blank" rel="external">OpenGL 编程指南</a><br>MOZILA <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API" target="_blank" rel="external">webGL</a><br><a href="http://www.yiibai.com/webgl/html5_canvas_overview.html#article-start" target="_blank" rel="external">WebGL中文教程</a><br><a href="http://www.hewebgl.com/" target="_blank" rel="external">three.js</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API/Tutorial/Adding_2D_content_to_a_WebGL_context" target="_blank" rel="external">webgl mdn 参考</a></p>
+<p>[参考网站]<br><a href="http://www.glprogramming.com/red/" target="_blank" rel="external">OpenGL 编程指南</a><br>MOZILA <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API" target="_blank" rel="external">webGL</a><br><a href="http://www.yiibai.com/webgl/html5_canvas_overview.html#article-start" target="_blank" rel="external">WebGL中文教程</a><br><a href="http://www.hewebgl.com/" target="_blank" rel="external">three.js</a><br><a href="http://www.hiwebgl.com/?p=42" target="_blank" rel="external">中文教程</a></p>
 </blockquote>
 <h2 id="WebGL-Web图形库"><a href="#WebGL-Web图形库" class="headerlink" title="WebGL (Web图形库)"></a>WebGL (Web图形库)</h2><p>是一种JavaScript API，用于在任何兼容的Web浏览器中呈现交互式3D和2D图形，而无需使用插件。WebGL通过引入一个与OpenGL ES 2.0紧密相符合的API，可以在HTML5 <code>&lt;canvas&gt;</code>元素中使用。</p>
 <h3 id="和canvas的关系"><a href="#和canvas的关系" class="headerlink" title="和canvas的关系"></a>和canvas的关系</h3><p>WebGL需要通过canvas来进行渲染，通过在getContext方法中传入，webgl相关字段，获取html中的画布。’webgl’ 或者 ‘experimental-webgl’ 都可以。  </p>
@@ -54,7 +105,9 @@
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">"shader-vs"</span> <span class="attr">type</span>=<span class="string">"x-shader/x-vertex"</span>&gt;</span><span class="actionscript"></span></div><div class="line">  attribute vec3 aVertexPosition;</div><div class="line"></div><div class="line">  uniform mat4 uMVMatrix;</div><div class="line">  uniform mat4 uPMatrix;</div><div class="line">  </div><div class="line">  <span class="keyword">void</span> main(<span class="keyword">void</span>) &#123;</div><div class="line">    gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, <span class="number">1.0</span>);</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a>简单实例</h2>]]></content>
+<h2 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a>简单实例</h2><p>mdn 官网上的例子， <a href="https://github.com/mdn/webgl-examples/blob/gh-pages/tutorial/sample3/webgl-demo.js" target="_blank" rel="external">戳这里</a><br>写了150+行，还是缺少一些方法，<br>很繁琐，而且基本都是重复性的内容，难道没有更容易写的3d代码？ duangduangduang~</p>
+<h2 id="three-js"><a href="#three-js" class="headerlink" title="three.js"></a>three.js</h2><p>看了webgl的接口什么的，用它实现一个简单图形，太复杂繁琐了。赶紧使用three.js 吧。</p>
+]]></content>
     
     <summary type="html">
     
@@ -64,8 +117,6 @@
     
     </summary>
     
-    
-      <category term="three.js" scheme="https://misssweety.github.io/tags/three-js/"/>
     
       <category term="webGL" scheme="https://misssweety.github.io/tags/webGL/"/>
     

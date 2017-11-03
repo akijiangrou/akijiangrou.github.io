@@ -19,20 +19,20 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="three.js,webGL,学习笔记">
-    <meta name="description" content="一直对图形之类的很喜欢，之后每天学习一点WEBGL相关的内容，明年也做出来一些3D动画网站就可以啦~~    [参考网站]OpenGL 编程指南MOZILA webGLWebGL中文教程three.jswebgl mdn 参考  WebGL (Web图形库)是一种JavaScript API，用于在任何兼容的Web浏览器中呈现交互式3D和2D图形，而无需使用插件。WebGL通过引入一个与OpenG">
-<meta name="keywords" content="three.js,webGL,学习笔记">
+    <meta name="keywords" content="webGL,学习笔记">
+    <meta name="description" content="一直对图形之类的很喜欢，之后每天学习一点WEBGL相关的内容，明年也做出来一些3D动画网站就可以啦~~    [参考网站]OpenGL 编程指南MOZILA webGLWebGL中文教程three.js中文教程  WebGL (Web图形库)是一种JavaScript API，用于在任何兼容的Web浏览器中呈现交互式3D和2D图形，而无需使用插件。WebGL通过引入一个与OpenGL ES 2.0">
+<meta name="keywords" content="webGL,学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebGL学习系列-基础篇">
 <meta property="og:url" content="https://misssweety.github.io/2017/11/01/WebGL学习系列-基础篇/index.html">
 <meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="一直对图形之类的很喜欢，之后每天学习一点WEBGL相关的内容，明年也做出来一些3D动画网站就可以啦~~    [参考网站]OpenGL 编程指南MOZILA webGLWebGL中文教程three.jswebgl mdn 参考  WebGL (Web图形库)是一种JavaScript API，用于在任何兼容的Web浏览器中呈现交互式3D和2D图形，而无需使用插件。WebGL通过引入一个与OpenG">
+<meta property="og:description" content="一直对图形之类的很喜欢，之后每天学习一点WEBGL相关的内容，明年也做出来一些3D动画网站就可以啦~~    [参考网站]OpenGL 编程指南MOZILA webGLWebGL中文教程three.js中文教程  WebGL (Web图形库)是一种JavaScript API，用于在任何兼容的Web浏览器中呈现交互式3D和2D图形，而无需使用插件。WebGL通过引入一个与OpenGL ES 2.0">
 <meta property="og:image" content="https://misssweety.github.io/2017/11/01/WebGL学习系列-基础篇/pic1.png">
 <meta property="og:image" content="https://misssweety.github.io/2017/11/01/WebGL学习系列-基础篇/pic2.png">
-<meta property="og:updated_time" content="2017-11-01T07:43:07.000Z">
+<meta property="og:updated_time" content="2017-11-03T04:37:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebGL学习系列-基础篇">
-<meta name="twitter:description" content="一直对图形之类的很喜欢，之后每天学习一点WEBGL相关的内容，明年也做出来一些3D动画网站就可以啦~~    [参考网站]OpenGL 编程指南MOZILA webGLWebGL中文教程three.jswebgl mdn 参考  WebGL (Web图形库)是一种JavaScript API，用于在任何兼容的Web浏览器中呈现交互式3D和2D图形，而无需使用插件。WebGL通过引入一个与OpenG">
+<meta name="twitter:description" content="一直对图形之类的很喜欢，之后每天学习一点WEBGL相关的内容，明年也做出来一些3D动画网站就可以啦~~    [参考网站]OpenGL 编程指南MOZILA webGLWebGL中文教程three.js中文教程  WebGL (Web图形库)是一种JavaScript API，用于在任何兼容的Web浏览器中呈现交互式3D和2D图形，而无需使用插件。WebGL通过引入一个与OpenGL ES 2.0">
 <meta name="twitter:image" content="https://misssweety.github.io/2017/11/01/WebGL学习系列-基础篇/pic1.png">
     
         <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
@@ -166,7 +166,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#WebGL-Web图形库"><span class="post-toc-number">1.</span> <span class="post-toc-text">WebGL (Web图形库)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#和canvas的关系"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">和canvas的关系</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#WebGL相关知识基础"><span class="post-toc-number">2.</span> <span class="post-toc-text">WebGL相关知识基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#WebGL坐标系"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">WebGL坐标系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#坐标"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">坐标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#WebGL颜色系统"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">WebGL颜色系统</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#清屏clearColor"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">清屏clearColor</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本图元"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">基本图元</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#着色器"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">着色器</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简单实例"><span class="post-toc-number">3.</span> <span class="post-toc-text">简单实例</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#WebGL-Web图形库"><span class="post-toc-number">1.</span> <span class="post-toc-text">WebGL (Web图形库)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#和canvas的关系"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">和canvas的关系</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#WebGL相关知识基础"><span class="post-toc-number">2.</span> <span class="post-toc-text">WebGL相关知识基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#WebGL坐标系"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">WebGL坐标系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#坐标"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">坐标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#WebGL颜色系统"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">WebGL颜色系统</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#清屏clearColor"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">清屏clearColor</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本图元"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">基本图元</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#着色器"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">着色器</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简单实例"><span class="post-toc-number">3.</span> <span class="post-toc-text">简单实例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#three-js"><span class="post-toc-number">4.</span> <span class="post-toc-text">three.js</span></a></li></ol>
         </nav>
     </aside>
     
@@ -187,7 +187,7 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>一直对图形之类的很喜欢，之后每天学习一点WEBGL相关的内容，明年也做出来一些3D动画网站就可以啦~~  </p>
 <blockquote>
-<p>[参考网站]<br><a href="http://www.glprogramming.com/red/" target="_blank" rel="external">OpenGL 编程指南</a><br>MOZILA <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API" target="_blank" rel="external">webGL</a><br><a href="http://www.yiibai.com/webgl/html5_canvas_overview.html#article-start" target="_blank" rel="external">WebGL中文教程</a><br><a href="http://www.hewebgl.com/" target="_blank" rel="external">three.js</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API/Tutorial/Adding_2D_content_to_a_WebGL_context" target="_blank" rel="external">webgl mdn 参考</a></p>
+<p>[参考网站]<br><a href="http://www.glprogramming.com/red/" target="_blank" rel="external">OpenGL 编程指南</a><br>MOZILA <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API" target="_blank" rel="external">webGL</a><br><a href="http://www.yiibai.com/webgl/html5_canvas_overview.html#article-start" target="_blank" rel="external">WebGL中文教程</a><br><a href="http://www.hewebgl.com/" target="_blank" rel="external">three.js</a><br><a href="http://www.hiwebgl.com/?p=42" target="_blank" rel="external">中文教程</a></p>
 </blockquote>
 <h2 id="WebGL-Web图形库"><a href="#WebGL-Web图形库" class="headerlink" title="WebGL (Web图形库)"></a>WebGL (Web图形库)</h2><p>是一种JavaScript API，用于在任何兼容的Web浏览器中呈现交互式3D和2D图形，而无需使用插件。WebGL通过引入一个与OpenGL ES 2.0紧密相符合的API，可以在HTML5 <code>&lt;canvas&gt;</code>元素中使用。</p>
 <h3 id="和canvas的关系"><a href="#和canvas的关系" class="headerlink" title="和canvas的关系"></a>和canvas的关系</h3><p>WebGL需要通过canvas来进行渲染，通过在getContext方法中传入，webgl相关字段，获取html中的画布。’webgl’ 或者 ‘experimental-webgl’ 都可以。  </p>
@@ -217,14 +217,16 @@
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">"shader-vs"</span> <span class="attr">type</span>=<span class="string">"x-shader/x-vertex"</span>&gt;</span><span class="actionscript"></span></div><div class="line">  attribute vec3 aVertexPosition;</div><div class="line"></div><div class="line">  uniform mat4 uMVMatrix;</div><div class="line">  uniform mat4 uPMatrix;</div><div class="line">  </div><div class="line">  <span class="keyword">void</span> main(<span class="keyword">void</span>) &#123;</div><div class="line">    gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, <span class="number">1.0</span>);</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a>简单实例</h2>
+<h2 id="简单实例"><a href="#简单实例" class="headerlink" title="简单实例"></a>简单实例</h2><p>mdn 官网上的例子， <a href="https://github.com/mdn/webgl-examples/blob/gh-pages/tutorial/sample3/webgl-demo.js" target="_blank" rel="external">戳这里</a><br>写了150+行，还是缺少一些方法，<br>很繁琐，而且基本都是重复性的内容，难道没有更容易写的3d代码？ duangduangduang~</p>
+<h2 id="three-js"><a href="#three-js" class="headerlink" title="three.js"></a>three.js</h2><p>看了webgl的接口什么的，用它实现一个简单图形，太复杂繁琐了。赶紧使用three.js 吧。</p>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-11-01T07:43:07.000Z" itemprop="dateUpdated">2017-11-01 15:43:07</time>
+    Last updated: <time datetime="2017-11-03T04:37:46.000Z" itemprop="dateUpdated">2017-11-03 12:37:46</time>
 </span><br>
 
 
@@ -245,7 +247,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/three-js/">three.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webGL/">webGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webGL/">webGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
 
 
             
@@ -310,6 +312,13 @@
     </div>
   
 
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/03/WebGL学习系列-three-js入门/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">WebGL学习系列-three.js入门</h4>
+      </a>
+    </div>
   
 </nav>
 
