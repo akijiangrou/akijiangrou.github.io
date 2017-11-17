@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://misssweety.github.io/"/>
-  <updated>2017-11-13T07:08:24.000Z</updated>
+  <updated>2017-11-17T07:27:48.000Z</updated>
   <id>https://misssweety.github.io/</id>
   
   <author>
@@ -16,11 +16,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>post-message</title>
+    <link href="https://misssweety.github.io/2017/11/17/post-message/"/>
+    <id>https://misssweety.github.io/2017/11/17/post-message/</id>
+    <published>2017-11-17T07:10:44.000Z</published>
+    <updated>2017-11-17T07:27:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="用postmessage-进行iframe与parent的交流。"><a href="#用postmessage-进行iframe与parent的交流。" class="headerlink" title="用postmessage 进行iframe与parent的交流。"></a>用postmessage 进行iframe与parent的交流。</h2><p>需求描述：<br>父页面包含iframe  </p>
+  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">html</span> http:<span class="comment">//shu.sankuai.com&gt;</span></div><div class="line">  &lt;<span class="selector-tag">iframe</span> http:<span class="comment">//tag.sankuai.com&gt;</span></div><div class="line">  sjdkfjaksjfakfjs</div><div class="line">  &lt;/iframe&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>在<a href="http://tag.sankuai.com中有个button，点击后让父页面也就是shu.sankuai.com进行一些操作。那么怎么写呢？" target="_blank" rel="external">http://tag.sankuai.com中有个button，点击后让父页面也就是shu.sankuai.com进行一些操作。那么怎么写呢？</a>  </p>
+<p>首先在shu.sankuai.com 重要监听message事件，如下：  </p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"message"</span>, handleIframe);</div><div class="line"></div><div class="line"><span class="keyword">const</span> handleIframe = <span class="function"><span class="params">event</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">const</span> &#123; <span class="attr">data</span>:&#123; pathStr &#125;&#125; = event;</div><div class="line"><span class="comment">// 发送message的源</span></div><div class="line">  <span class="keyword">const</span> origin = event.origin || event.originalEvent.origin;</div><div class="line">  <span class="keyword">const</span> url = <span class="built_in">window</span>.top.location.origin;</div><div class="line"><span class="comment">// 防止监听多个源头的message</span></div><div class="line">  <span class="keyword">if</span> (test(<span class="regexp">/tag.sankuai.com/</span>, origin) &amp;&amp; pathStr) &#123;</div><div class="line">    <span class="built_in">window</span>.alert(pathStr);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>在tag.sankuai.com 中，点击button，触发click事件  </p>
+  <figure class="highlight roboconf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">handleClick() &#123;</div><div class="line">  <span class="attribute">const msg = &#123; pathStr</span>: '/shop/page/tagSetting?dim=poi&amp;tab=1' &#125;;</div><div class="line">  <span class="attribute">window.top.postMessage(msg, ’http</span>://shu<span class="variable">.sankuai</span><span class="variable">.com</span>');</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意postMessage的<code>发送方，必须是发送目的地的window对象</code>，第一个参数是data信息，第二个参数是接收这个message的url。  </p>
+<p>也就是说，我虽然在iframe中控制parent，但是实现时，是<strong>期望收到信息的window</strong>发出的message事件，这样该window才能监听到这个message。这样就好理解了。  </p>
+<p><a href="http://blog.csdn.net/monkindey/article/details/23659387" target="_blank" rel="external">参考</a>  </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;用postmessage-进行iframe与parent的交流。&quot;&gt;&lt;a href=&quot;#用postmessage-进行iframe与parent的交流。&quot; class=&quot;headerlink&quot; title=&quot;用postmessage 进行iframe与parent
+    
+    </summary>
+    
+    
+      <category term="DOM" scheme="https://misssweety.github.io/tags/DOM/"/>
+    
+      <category term="iframe" scheme="https://misssweety.github.io/tags/iframe/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WebGL学习系列-threejs-形状</title>
     <link href="https://misssweety.github.io/2017/11/10/WebGL%E5%AD%A6%E4%B9%A0%E7%B3%BB%E5%88%97-threejs-%E5%BD%A2%E7%8A%B6/"/>
     <id>https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/</id>
     <published>2017-11-10T09:56:43.000Z</published>
-    <updated>2017-11-13T07:08:24.000Z</updated>
+    <updated>2017-11-15T06:00:04.000Z</updated>
     
     <content type="html"><![CDATA[<p>three.js中创建物体，比如一条线，需要如下函数：<br><code>new THREE.Line( geometry, material );</code><br><strong>geometry</strong>: 几何体<br><strong>material</strong>: 材质<br>这是创建物体[mesh]必须的。<code>Geometry</code>主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。  </p>
 <h2 id="常见几何体"><a href="#常见几何体" class="headerlink" title="常见几何体"></a>常见几何体</h2><p>立方体，平面，球体，圆柱体，四面体，八面体，文字等。  </p>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>post-message | MissSweety&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="DOM,iframe">
+    <meta name="description" content="用postmessage 进行iframe与parent的交流。需求描述：父页面包含iframe     12345&amp;lt;html http://shu.sankuai.com&amp;gt;  &amp;lt;iframe http://tag.sankuai.com&amp;gt;  sjdkfjaksjfakfjs  &amp;lt;/iframe&amp;gt;&amp;lt;/html&amp;gt; 在http://tag.sankuai">
+<meta name="keywords" content="DOM,iframe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="post-message">
+<meta property="og:url" content="https://misssweety.github.io/2017/11/17/post-message/index.html">
+<meta property="og:site_name" content="MissSweety's Blog">
+<meta property="og:description" content="用postmessage 进行iframe与parent的交流。需求描述：父页面包含iframe     12345&amp;lt;html http://shu.sankuai.com&amp;gt;  &amp;lt;iframe http://tag.sankuai.com&amp;gt;  sjdkfjaksjfakfjs  &amp;lt;/iframe&amp;gt;&amp;lt;/html&amp;gt; 在http://tag.sankuai">
+<meta property="og:updated_time" content="2017-11-17T07:27:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="post-message">
+<meta name="twitter:description" content="用postmessage 进行iframe与parent的交流。需求描述：父页面包含iframe     12345&amp;lt;html http://shu.sankuai.com&amp;gt;  &amp;lt;iframe http://tag.sankuai.com&amp;gt;  sjdkfjaksjfakfjs  &amp;lt;/iframe&amp;gt;&amp;lt;/html&amp;gt; 在http://tag.sankuai">
+    
+        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:zcx900308@163.com" title="zcx900308@163.com" class="mail">zcx900308@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="https://misssweety.github.io/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MissSweety" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">post-message</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">post-message</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-17T07:10:44.000Z" itemprop="datePublished" class="page-time">
+  2017-11-17
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用postmessage-进行iframe与parent的交流。"><span class="post-toc-number">1.</span> <span class="post-toc-text">用postmessage 进行iframe与parent的交流。</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-post-message"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">post-message</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-17 15:10:44" datetime="2017-11-17T07:10:44.000Z"  itemprop="datePublished">2017-11-17</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="用postmessage-进行iframe与parent的交流。"><a href="#用postmessage-进行iframe与parent的交流。" class="headerlink" title="用postmessage 进行iframe与parent的交流。"></a>用postmessage 进行iframe与parent的交流。</h2><p>需求描述：<br>父页面包含iframe  </p>
+  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">html</span> http:<span class="comment">//shu.sankuai.com&gt;</span></div><div class="line">  &lt;<span class="selector-tag">iframe</span> http:<span class="comment">//tag.sankuai.com&gt;</span></div><div class="line">  sjdkfjaksjfakfjs</div><div class="line">  &lt;/iframe&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>在<a href="http://tag.sankuai.com中有个button，点击后让父页面也就是shu.sankuai.com进行一些操作。那么怎么写呢？" target="_blank" rel="external">http://tag.sankuai.com中有个button，点击后让父页面也就是shu.sankuai.com进行一些操作。那么怎么写呢？</a>  </p>
+<p>首先在shu.sankuai.com 重要监听message事件，如下：  </p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"message"</span>, handleIframe);</div><div class="line"></div><div class="line"><span class="keyword">const</span> handleIframe = <span class="function"><span class="params">event</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">const</span> &#123; <span class="attr">data</span>:&#123; pathStr &#125;&#125; = event;</div><div class="line"><span class="comment">// 发送message的源</span></div><div class="line">  <span class="keyword">const</span> origin = event.origin || event.originalEvent.origin;</div><div class="line">  <span class="keyword">const</span> url = <span class="built_in">window</span>.top.location.origin;</div><div class="line"><span class="comment">// 防止监听多个源头的message</span></div><div class="line">  <span class="keyword">if</span> (test(<span class="regexp">/tag.sankuai.com/</span>, origin) &amp;&amp; pathStr) &#123;</div><div class="line">    <span class="built_in">window</span>.alert(pathStr);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>在tag.sankuai.com 中，点击button，触发click事件  </p>
+  <figure class="highlight roboconf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">handleClick() &#123;</div><div class="line">  <span class="attribute">const msg = &#123; pathStr</span>: '/shop/page/tagSetting?dim=poi&amp;tab=1' &#125;;</div><div class="line">  <span class="attribute">window.top.postMessage(msg, ’http</span>://shu<span class="variable">.sankuai</span><span class="variable">.com</span>');</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意postMessage的<code>发送方，必须是发送目的地的window对象</code>，第一个参数是data信息，第二个参数是接收这个message的url。  </p>
+<p>也就是说，我虽然在iframe中控制parent，但是实现时，是<strong>期望收到信息的window</strong>发出的message事件，这样该window才能监听到这个message。这样就好理解了。  </p>
+<p><a href="http://blog.csdn.net/monkindey/article/details/23659387" target="_blank" rel="external">参考</a>  </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-11-17T07:27:48.000Z" itemprop="dateUpdated">2017-11-17 15:27:48</time>
+</span><br>
+
+
+        
+        <a href="/2017/11/17/post-message/" target="_blank" rel="external">https://misssweety.github.io/2017/11/17/post-message/</a>
+        
+    </div>
+    <footer>
+        <a href="https://misssweety.github.io">
+            <img src="/img/avatar.png" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iframe/">iframe</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/17/post-message/&title=《post-message》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/17/post-message/&title=《post-message》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/17/post-message/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《post-message》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/17/post-message/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/17/post-message/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/11/10/WebGL学习系列-threejs-形状/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">WebGL学习系列-threejs-形状</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/17/post-message/&title=《post-message》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/17/post-message/&title=《post-message》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/17/post-message/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《post-message》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/17/post-message/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/17/post-message/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aS27jMBAFwNz/0p5tBgMp7zU1AUSWVoYhiSwv2uzP11d8fb5d37/5957Z/VdPPXxhYGC8lvG5ve4XuH8q32Ky7g+rYGBgHMC4enUeHO8/J9Rk3cvvMTAwMMqD3f2m258AAwMD41lGsmSbDGNgYGDkSewsHc3fmR8rMTAwTmPkVfff//xf+hsYGBivYnzKK2lY5oF1ZSd/rYKBgbE1Iw9wSXNx1oy8fyrfDwYGxsmMPOC2A17tSMewaoiBgfFyxmz5WarZDo0VJT8MDIwjGXnAzYPmepmvuAkDA2M7xiyZnLU82xQ3OpJiYGAcwJiNO7QNzrw52ibMGBgYezNmCWf76raFmZz6IhIGBsYWjHyEot3uswntD6kyBgbG1oxZeM2Rs2GLWWjGwMA4gZEX1JImQd4qmA1bFD0EDAyMlzNmQXa9lL8yRhadcDEwMDZi5C2B9cGLp8YvLn9oDAyMTRmzV7epZp4AD38yDAyMrRmzgJsE2Vl7IC+x1ZMjGBgYGzHW09fkaoct6hMuBgbGYYxZu7EdgZ2NemBgYJzGaJsEs8PcegHuEoaBgbEpY+VI91QzMi/VXT6FgYGxNaMNc+0CK6X/thSIgYGxNyMJsnlJblZWe+A9GBgYBzDyrHelkVC0JFskBgYGRnyAm41ZDAcs2oogBgbGMYxkOGy2Vj5y8fD/BgYGxksYSRLbbiIvqLWJNAYGxmmMdsQhH5546kD5WFMTAwPjfYw//3edO7VQKhkAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MissSweety';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
