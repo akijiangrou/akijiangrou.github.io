@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://misssweety.github.io/"/>
-  <updated>2017-12-01T10:32:15.000Z</updated>
+  <updated>2017-12-05T06:42:48.000Z</updated>
   <id>https://misssweety.github.io/</id>
   
   <author>
@@ -14,6 +14,130 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>flex布局</title>
+    <link href="https://misssweety.github.io/2017/12/05/flex%E5%B8%83%E5%B1%80/"/>
+    <id>https://misssweety.github.io/2017/12/05/flex布局/</id>
+    <published>2017-12-05T02:34:41.000Z</published>
+    <updated>2017-12-05T06:42:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>flex是个超好用的css 布局属性。<br>到2017-12 主要浏览器基本都支持了。如下：<br><img src="./cani.png"></p>
+<p>flex 属性可应用于，flex容器，flex项目。其中flex容器中的元素，自动成为flex项目。<br>根据属性控制的轴的类型，简单总结下flex的各个属性，如下：  </p>
+<p>假设9个方块其html如下，基本css如下：  </p>
+  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"container"</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;A&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;B&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;C&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;D&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;E&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;F&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;G&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;H&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;I&lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<p>css  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">background</span>: pink;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">background</span>: orange;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">  <span class="attribute">text-align</span>:center;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>未加flex布局时的原始样式。<br><img src="1.png">  </p>
+<h2 id="flex-container"><a href="#flex-container" class="headerlink" title="flex container"></a>flex container</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">background</span>: pink;</div><div class="line">  <span class="attribute">width</span>: <span class="number">600px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="2.png"></p>
+<h3 id="主轴方向相关的属性"><a href="#主轴方向相关的属性" class="headerlink" title="主轴方向相关的属性"></a>主轴方向相关的属性</h3><blockquote>
+<p><strong>[flex-direction]</strong>  规定项目排列方式，也就是主轴方向</p>
+</blockquote>
+<ul>
+<li>row：默认，沿主轴从左向右排列子元素。规定主轴为水平方向。</li>
+<li>row-reverse：从右向左</li>
+<li>column：规定主轴方向为垂直方向，从上到下排列子元素。</li>
+<li>column-reverse： 从下到上排列。</li>
+</ul>
+<blockquote>
+<p><strong>[flex-direction]</strong>  规定换行情况  </p>
+</blockquote>
+<ul>
+<li>no-wrap： 默认，不换行。见上面第二张图</li>
+<li>wrap：换行。</li>
+<li>wrap-reverse： 换行，且第一行在下方。</li>
+</ul>
+<p>如果规定了父元素宽度，默认不换行的话，其子元素会等比例缩小宽度（也就是子元素定义的宽不生效了）。如果换行，则按照子元素大小来显示。</p>
+<blockquote>
+<p><strong>[flex-flow]</strong>  以上两个的简写</p>
+</blockquote>
+<ul>
+<li>主轴方向 + 换行  </li>
+</ul>
+<p>例子：  <code>flex-flow:row-reverse wrap-reverse;</code><br><img src="3.png"></p>
+<blockquote>
+<p><strong>[justify-content]</strong>  项目在主轴方向上的对齐方式。</p>
+</blockquote>
+<ul>
+<li>flex-start：默认，相对于主轴左对齐（要根据flex-direction规定的轴方向来说，以下相同，不赘述了）</li>
+<li>flex-end：右对齐</li>
+<li>center：居中</li>
+<li>space-between：两端对齐，项目之间间隔相同</li>
+<li>space-around：每个项目的两侧间隔相同，所以项目间的距离是项目与边框的距离的二倍</li>
+</ul>
+<p>例子：<br><code>flex-flow:row-reverse wrap-reverse;</code><br><code>justify-content:flex-end;</code><br><img src="4.png"></p>
+<p>如果换成center：<br><code>justify-content:center;</code><br><img src="5.png"></p>
+<p>如果换成space-between：<br><code>justify-content:space-between;</code><br><img src="6.png">  </p>
+<h3 id="交叉轴方向相关的属性"><a href="#交叉轴方向相关的属性" class="headerlink" title="交叉轴方向相关的属性"></a>交叉轴方向相关的属性</h3><p>下面换个基础图，  </p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">background</span>: pink;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">background</span>: orange;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">text-align</span>:center;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="7.png"></p>
+<p>如果我们设下：<code>flex-flow:row wrap;</code><br>则有：<br><img src="8.png"></p>
+<blockquote>
+<p><strong>[align-items]</strong>  项目在交叉轴上的对齐方式</p>
+</blockquote>
+<ul>
+<li>flex-start： 交叉轴的起点对齐</li>
+<li>flex-end：交叉轴的终点对齐</li>
+<li>center：交叉轴的中点对齐</li>
+<li>baseline：项目的第一行文字的基线对齐</li>
+<li>stretch：默认，如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
+</ul>
+<p>行数比较多的时候，有些效果可能看不出来。</p>
+<p>例子：将c div改一下高度：  </p>
+  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"height:150px"</span>&gt;C&lt;/div&gt;</div><div class="line"></div><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  displaybase: <span class="attribute">flex</span>;</div><div class="line">  <span class="attribute">background</span>: pink;</div><div class="line">  <span class="attribute">flex-flow</span>: row wrap;</div><div class="line">  <span class="attribute">justify-content</span>: space-around;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">align-items</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="9.png"></p>
+<p>如果：改成<code>align-items: baseline;</code>  </p>
+<p><img src="10.png"></p>
+<blockquote>
+<p><strong>[align-content]</strong>  主轴在交叉轴上的对齐方式<br>只有单行主轴的时候不生效。<br>与justify-content内容相同，多了个stretch，这个是默认值。<br>不过都是轴线相对于交叉轴的。比如：<code>flex-start</code>多根主轴在交叉轴的方向上，按交叉轴起点方向向下排列。</p>
+</blockquote>
+<p><code>justify-content: space-around;</code><br><code>align-content: space-around;</code></p>
+<p><img src="11.png"></p>
+<p><code>align-content: space-between;</code>  </p>
+<p><img src="12.png">  </p>
+<h2 id="flex-item"><a href="#flex-item" class="headerlink" title="flex item"></a>flex item</h2><p>每个flex项目也可以自定义一些属性。  </p>
+<blockquote>
+<p><strong>[order]</strong>  定义项目的排列顺序。数值越小，排列越靠前，默认为0</p>
+</blockquote>
+<p>例子，假如我们把上面的Fdiv的order改一下：<br><code>&lt;div style=&quot;order:2&quot;&gt;F&lt;/div&gt;</code> </p>
+<p><img src="13.png">  </p>
+<blockquote>
+<p><strong>[flex-grow]</strong>  项目的放大比例。默认为0。如果为1，就是都占据同样的空间。其他的数字，则是如果有空余空间，则按照比例分配空间。  </p>
+<p><strong>[flex-shrink]</strong> 项目的缩小比例。如果空间不够，将项目按照比例缩小。数字越大，缩小比例越大。</p>
+</blockquote>
+<p>例子：<br>  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"order:2;flex-shrink: 0"</span>&gt;F&lt;/div&gt;</div><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">flex-flow</span>: row nowrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="14.png"></p>
+<p><code>&lt;div style=&quot;order:2;flex-shrink: 2&quot;&gt;F&lt;/div&gt;</code><br><img src="15.png"></p>
+<blockquote>
+<p><strong>[flex-basis]</strong>  项目占据的主轴空间。可以设为百分比。<br>默认： <code>0 1 auto；</code><br>快捷：<code>auto</code>   <code>（1 1 auto）</code><br>flex属性：[&lt;’flex-grow’&gt; &lt;’flex-shrink’&gt;? || &lt;’flex-basis’&gt;]  </p>
+</blockquote>
+<p>换新的布局：  </p>
+  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">background</span>: pink;</div><div class="line">  <span class="attribute">flex-flow</span>: row wrap;</div><div class="line">  <span class="attribute">align-items</span>: center;</div><div class="line">  <span class="attribute">justify-content</span>: space-around;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">align-content</span>: stretch;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">background</span>: orange;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">text-align</span>:center;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">0</span> <span class="number">1</span> <span class="number">30%</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"height:150px"</span>&gt;C&lt;/div&gt;</div><div class="line">其余不变</div></pre></td></tr></table></figure>
+<p><img src="16.png"></p>
+<p>如果c设置上flex <code>&lt;div style=&quot;height:150px;flex: 2 1 30%&quot;&gt;C&lt;/div&gt;</code></p>
+<p><img src="17.png"></p>
+<blockquote>
+<p><strong>[align-self]</strong><br>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认继承父元素的align-items属性。其他属性与上面相同。<br><code>&lt;div style=&quot;align-self:flex-end&quot;&gt;F&lt;/div&gt;</code></p>
+</blockquote>
+<p><img src="last.png">  </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;flex是个超好用的css 布局属性。&lt;br&gt;到2017-12 主要浏览器基本都支持了。如下：&lt;br&gt;&lt;img src=&quot;./cani.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;flex 属性可应用于，flex容器，flex项目。其中flex容器中的元素，自动成为flex项目。&lt;br&gt;根据
+    
+    </summary>
+    
+    
+      <category term="css" scheme="https://misssweety.github.io/tags/css/"/>
+    
+      <category term="学习笔记" scheme="https://misssweety.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="flex" scheme="https://misssweety.github.io/tags/flex/"/>
+    
+  </entry>
   
   <entry>
     <title>vue学习笔记</title>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>flex布局 | MissSweety&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="css,学习笔记,flex">
+    <meta name="description" content="flex是个超好用的css 布局属性。到2017-12 主要浏览器基本都支持了。如下： flex 属性可应用于，flex容器，flex项目。其中flex容器中的元素，自动成为flex项目。根据属性控制的轴的类型，简单总结下flex的各个属性，如下：   假设9个方块其html如下，基本css如下：     1234567891011&amp;lt;div class=&quot;container&quot;&amp;gt;  &amp;l">
+<meta name="keywords" content="css,学习笔记,flex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flex布局">
+<meta property="og:url" content="https://misssweety.github.io/2017/12/05/flex布局/index.html">
+<meta property="og:site_name" content="MissSweety's Blog">
+<meta property="og:description" content="flex是个超好用的css 布局属性。到2017-12 主要浏览器基本都支持了。如下： flex 属性可应用于，flex容器，flex项目。其中flex容器中的元素，自动成为flex项目。根据属性控制的轴的类型，简单总结下flex的各个属性，如下：   假设9个方块其html如下，基本css如下：     1234567891011&amp;lt;div class=&quot;container&quot;&amp;gt;  &amp;l">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/cani.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/1.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/2.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/3.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/4.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/5.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/6.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/7.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/8.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/9.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/10.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/11.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/12.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/13.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/14.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/15.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/16.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/17.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/05/flex布局/last.png">
+<meta property="og:updated_time" content="2017-12-05T06:42:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flex布局">
+<meta name="twitter:description" content="flex是个超好用的css 布局属性。到2017-12 主要浏览器基本都支持了。如下： flex 属性可应用于，flex容器，flex项目。其中flex容器中的元素，自动成为flex项目。根据属性控制的轴的类型，简单总结下flex的各个属性，如下：   假设9个方块其html如下，基本css如下：     1234567891011&amp;lt;div class=&quot;container&quot;&amp;gt;  &amp;l">
+<meta name="twitter:image" content="https://misssweety.github.io/2017/12/05/flex布局/cani.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:zcx900308@163.com" title="zcx900308@163.com" class="mail">zcx900308@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="https://misssweety.github.io/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MissSweety" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">flex布局</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">flex布局</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-05T02:34:41.000Z" itemprop="datePublished" class="page-time">
+  2017-12-05
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#flex-container"><span class="post-toc-number">1.</span> <span class="post-toc-text">flex container</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主轴方向相关的属性"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">主轴方向相关的属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#交叉轴方向相关的属性"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">交叉轴方向相关的属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#flex-item"><span class="post-toc-number">2.</span> <span class="post-toc-text">flex item</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-flex布局"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">flex布局</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-05 10:34:41" datetime="2017-12-05T02:34:41.000Z"  itemprop="datePublished">2017-12-05</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>flex是个超好用的css 布局属性。<br>到2017-12 主要浏览器基本都支持了。如下：<br><img src="./cani.png"></p>
+<p>flex 属性可应用于，flex容器，flex项目。其中flex容器中的元素，自动成为flex项目。<br>根据属性控制的轴的类型，简单总结下flex的各个属性，如下：  </p>
+<p>假设9个方块其html如下，基本css如下：  </p>
+  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"container"</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;A&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;B&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;C&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;D&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;E&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;F&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;G&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;H&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  &lt;<span class="keyword">div</span>&gt;I&lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<p>css  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">background</span>: pink;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">background</span>: orange;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">  <span class="attribute">text-align</span>:center;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>未加flex布局时的原始样式。<br><img src="1.png">  </p>
+<h2 id="flex-container"><a href="#flex-container" class="headerlink" title="flex container"></a>flex container</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">background</span>: pink;</div><div class="line">  <span class="attribute">width</span>: <span class="number">600px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="2.png"></p>
+<h3 id="主轴方向相关的属性"><a href="#主轴方向相关的属性" class="headerlink" title="主轴方向相关的属性"></a>主轴方向相关的属性</h3><blockquote>
+<p><strong>[flex-direction]</strong>  规定项目排列方式，也就是主轴方向</p>
+</blockquote>
+<ul>
+<li>row：默认，沿主轴从左向右排列子元素。规定主轴为水平方向。</li>
+<li>row-reverse：从右向左</li>
+<li>column：规定主轴方向为垂直方向，从上到下排列子元素。</li>
+<li>column-reverse： 从下到上排列。</li>
+</ul>
+<blockquote>
+<p><strong>[flex-direction]</strong>  规定换行情况  </p>
+</blockquote>
+<ul>
+<li>no-wrap： 默认，不换行。见上面第二张图</li>
+<li>wrap：换行。</li>
+<li>wrap-reverse： 换行，且第一行在下方。</li>
+</ul>
+<p>如果规定了父元素宽度，默认不换行的话，其子元素会等比例缩小宽度（也就是子元素定义的宽不生效了）。如果换行，则按照子元素大小来显示。</p>
+<blockquote>
+<p><strong>[flex-flow]</strong>  以上两个的简写</p>
+</blockquote>
+<ul>
+<li>主轴方向 + 换行  </li>
+</ul>
+<p>例子：  <code>flex-flow:row-reverse wrap-reverse;</code><br><img src="3.png"></p>
+<blockquote>
+<p><strong>[justify-content]</strong>  项目在主轴方向上的对齐方式。</p>
+</blockquote>
+<ul>
+<li>flex-start：默认，相对于主轴左对齐（要根据flex-direction规定的轴方向来说，以下相同，不赘述了）</li>
+<li>flex-end：右对齐</li>
+<li>center：居中</li>
+<li>space-between：两端对齐，项目之间间隔相同</li>
+<li>space-around：每个项目的两侧间隔相同，所以项目间的距离是项目与边框的距离的二倍</li>
+</ul>
+<p>例子：<br><code>flex-flow:row-reverse wrap-reverse;</code><br><code>justify-content:flex-end;</code><br><img src="4.png"></p>
+<p>如果换成center：<br><code>justify-content:center;</code><br><img src="5.png"></p>
+<p>如果换成space-between：<br><code>justify-content:space-between;</code><br><img src="6.png">  </p>
+<h3 id="交叉轴方向相关的属性"><a href="#交叉轴方向相关的属性" class="headerlink" title="交叉轴方向相关的属性"></a>交叉轴方向相关的属性</h3><p>下面换个基础图，  </p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">background</span>: pink;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">background</span>: orange;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">text-align</span>:center;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="7.png"></p>
+<p>如果我们设下：<code>flex-flow:row wrap;</code><br>则有：<br><img src="8.png"></p>
+<blockquote>
+<p><strong>[align-items]</strong>  项目在交叉轴上的对齐方式</p>
+</blockquote>
+<ul>
+<li>flex-start： 交叉轴的起点对齐</li>
+<li>flex-end：交叉轴的终点对齐</li>
+<li>center：交叉轴的中点对齐</li>
+<li>baseline：项目的第一行文字的基线对齐</li>
+<li>stretch：默认，如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
+</ul>
+<p>行数比较多的时候，有些效果可能看不出来。</p>
+<p>例子：将c div改一下高度：  </p>
+  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"height:150px"</span>&gt;C&lt;/div&gt;</div><div class="line"></div><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  displaybase: <span class="attribute">flex</span>;</div><div class="line">  <span class="attribute">background</span>: pink;</div><div class="line">  <span class="attribute">flex-flow</span>: row wrap;</div><div class="line">  <span class="attribute">justify-content</span>: space-around;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">align-items</span>: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="9.png"></p>
+<p>如果：改成<code>align-items: baseline;</code>  </p>
+<p><img src="10.png"></p>
+<blockquote>
+<p><strong>[align-content]</strong>  主轴在交叉轴上的对齐方式<br>只有单行主轴的时候不生效。<br>与justify-content内容相同，多了个stretch，这个是默认值。<br>不过都是轴线相对于交叉轴的。比如：<code>flex-start</code>多根主轴在交叉轴的方向上，按交叉轴起点方向向下排列。</p>
+</blockquote>
+<p><code>justify-content: space-around;</code><br><code>align-content: space-around;</code></p>
+<p><img src="11.png"></p>
+<p><code>align-content: space-between;</code>  </p>
+<p><img src="12.png">  </p>
+<h2 id="flex-item"><a href="#flex-item" class="headerlink" title="flex item"></a>flex item</h2><p>每个flex项目也可以自定义一些属性。  </p>
+<blockquote>
+<p><strong>[order]</strong>  定义项目的排列顺序。数值越小，排列越靠前，默认为0</p>
+</blockquote>
+<p>例子，假如我们把上面的Fdiv的order改一下：<br><code>&lt;div style=&quot;order:2&quot;&gt;F&lt;/div&gt;</code> </p>
+<p><img src="13.png">  </p>
+<blockquote>
+<p><strong>[flex-grow]</strong>  项目的放大比例。默认为0。如果为1，就是都占据同样的空间。其他的数字，则是如果有空余空间，则按照比例分配空间。  </p>
+<p><strong>[flex-shrink]</strong> 项目的缩小比例。如果空间不够，将项目按照比例缩小。数字越大，缩小比例越大。</p>
+</blockquote>
+<p>例子：<br>  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"order:2;flex-shrink: 0"</span>&gt;F&lt;/div&gt;</div><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">flex-flow</span>: row nowrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="14.png"></p>
+<p><code>&lt;div style=&quot;order:2;flex-shrink: 2&quot;&gt;F&lt;/div&gt;</code><br><img src="15.png"></p>
+<blockquote>
+<p><strong>[flex-basis]</strong>  项目占据的主轴空间。可以设为百分比。<br>默认： <code>0 1 auto；</code><br>快捷：<code>auto</code>   <code>（1 1 auto）</code><br>flex属性：[&lt;’flex-grow’&gt; &lt;’flex-shrink’&gt;? || &lt;’flex-basis’&gt;]  </p>
+</blockquote>
+<p>换新的布局：  </p>
+  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">background</span>: pink;</div><div class="line">  <span class="attribute">flex-flow</span>: row wrap;</div><div class="line">  <span class="attribute">align-items</span>: center;</div><div class="line">  <span class="attribute">justify-content</span>: space-around;</div><div class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">align-content</span>: stretch;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">background</span>: orange;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">text-align</span>:center;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">flex</span>: <span class="number">0</span> <span class="number">1</span> <span class="number">30%</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"height:150px"</span>&gt;C&lt;/div&gt;</div><div class="line">其余不变</div></pre></td></tr></table></figure>
+<p><img src="16.png"></p>
+<p>如果c设置上flex <code>&lt;div style=&quot;height:150px;flex: 2 1 30%&quot;&gt;C&lt;/div&gt;</code></p>
+<p><img src="17.png"></p>
+<blockquote>
+<p><strong>[align-self]</strong><br>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认继承父元素的align-items属性。其他属性与上面相同。<br><code>&lt;div style=&quot;align-self:flex-end&quot;&gt;F&lt;/div&gt;</code></p>
+</blockquote>
+<p><img src="last.png">  </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-12-05T06:42:48.000Z" itemprop="dateUpdated">2017-12-05 14:42:48</time>
+</span><br>
+
+
+        
+        <a href="/2017/12/05/flex布局/" target="_blank" rel="external">https://misssweety.github.io/2017/12/05/flex布局/</a>
+        
+    </div>
+    <footer>
+        <a href="https://misssweety.github.io">
+            <img src="/img/avatar.png" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/12/05/flex布局/&title=《flex布局》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/12/05/flex布局/&title=《flex布局》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/12/05/flex布局/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《flex布局》 — MissSweety's Blog&url=https://misssweety.github.io/2017/12/05/flex布局/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/12/05/flex布局/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/11/28/vue学习笔记/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">vue学习笔记</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/12/05/flex布局/&title=《flex布局》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/12/05/flex布局/&title=《flex布局》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/12/05/flex布局/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《flex布局》 — MissSweety's Blog&url=https://misssweety.github.io/2017/12/05/flex布局/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/12/05/flex布局/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNklEQVR42u3aS46DMBBF0ex/0/S0JWL6vrJpyeXLCCUEcxhUXJ/PBx/Xr+P5k/u39yv5KosPGTJkbMu4Ho/RNc93uH97Pyd3IM8mQ4aMcxijW6865yGYs2XIkCGDPFYauMnGUYYMGTLmGWmaylPZZ5IMGTJk8CDIy3AkNSWvb3EuLkOGjA0ZvOr+/+ev9DdkyJCxFeMKjzTI8sfiQfbLKjJkyGjNSJdJE9GZgl08liFDhoymjBqAhNSZ4trzuMaXT2TIkHEYgw941dJgvmIQsmXIkNGaUQusxQUwLL2PDBkyTmCkD0fCcVqMS0fKhhtEGTJkHMZIxyzSYbK0DPfH9lSGDBmtGbWhCl5iq42XpU8lQ4aMrgweHNMBi7cT2mHVUIYMGe0YQZuwtLFLr5wPzTJkyOjHSMcm1o5Q1JLYYEkZMmS0YJAiPi/MkcCdtgECsAwZMloz0u1abRu3dshseAcZMmQ0ZaQBl89l8TJc2mZY8L8hQ4aMDRmrMGmqXGuOxv8YMmTIaMFIW4k8IPJfoT1sujWUIUNGI8bMUEUavnlIRbNsMmTIOIZR6w/y9DV9Hfyly5AhozfjCg/esAy2dPh9D38lQ4aM1oyZMJempjzIzhTmZMiQ0ZXBN3ZpKT8dv6hdI0OGjHMYtcBHPlmb0Ma5uAwZMo5k1EpstQ3igsaADBkyDmag7dp81wK/MhkyZJzASBuQ881O0gZ4pdwmQ4aMDRk8IM6U8nkQJwG32NSUIUPGfowf72qJh6T6sXgAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MissSweety';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
