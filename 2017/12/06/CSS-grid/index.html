@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>CSS-grid | MissSweety&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="css3,grid,学习笔记">
+    <meta name="description" content="例子grid布局的思想就是，先将一个container 设置上display:grid; ,然后使用grid-template-columns: &amp;amp; grid-template-rows 将这个div划分为多个小格子。然后使用grid-column &amp;amp; grid-row将子元素放置在一个或者多个小格子中。 代码实现。   See the Pen grid-start by akix">
+<meta name="keywords" content="css3,grid,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS-grid">
+<meta property="og:url" content="https://misssweety.github.io/2017/12/06/CSS-grid/index.html">
+<meta property="og:site_name" content="MissSweety's Blog">
+<meta property="og:description" content="例子grid布局的思想就是，先将一个container 设置上display:grid; ,然后使用grid-template-columns: &amp;amp; grid-template-rows 将这个div划分为多个小格子。然后使用grid-column &amp;amp; grid-row将子元素放置在一个或者多个小格子中。 代码实现。   See the Pen grid-start by akix">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/06/CSS-grid/gridline.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/06/CSS-grid/gridtrack.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/06/CSS-grid/gridcell.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/06/CSS-grid/gridline的副本.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/06/CSS-grid/name-line.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/06/CSS-grid/area.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/06/CSS-grid/auto-grid-one.png">
+<meta property="og:image" content="https://misssweety.github.io/2017/12/06/CSS-grid/auto-grid-two.png">
+<meta property="og:updated_time" content="2017-12-07T02:42:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS-grid">
+<meta name="twitter:description" content="例子grid布局的思想就是，先将一个container 设置上display:grid; ,然后使用grid-template-columns: &amp;amp; grid-template-rows 将这个div划分为多个小格子。然后使用grid-column &amp;amp; grid-row将子元素放置在一个或者多个小格子中。 代码实现。   See the Pen grid-start by akix">
+<meta name="twitter:image" content="https://misssweety.github.io/2017/12/06/CSS-grid/gridline.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:zcx900308@163.com" title="zcx900308@163.com" class="mail">zcx900308@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="https://misssweety.github.io/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/MissSweety" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">CSS-grid</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">CSS-grid</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-06T08:28:23.000Z" itemprop="datePublished" class="page-time">
+  2017-12-06
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例子"><span class="post-toc-number">1.</span> <span class="post-toc-text">例子</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基础知识"><span class="post-toc-number">2.</span> <span class="post-toc-text">基础知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grid容器（grid-container）"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">grid容器（grid container）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grid项目（grid-item"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">grid项目（grid item)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网格线-（grid-lines）"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">网格线 （grid lines）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网格轨道（grid-track）"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">网格轨道（grid track）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grid-cell"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">grid cell</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grid-area"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">grid area</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#gutters"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">gutters</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#grid-container"><span class="post-toc-number">3.</span> <span class="post-toc-text">grid container</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#display"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">display</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grid-template"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">grid-template</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#grid-template-column"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">grid-template-column</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#grid-template-row"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">grid-template-row</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#grid-template-areas"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">grid-template-areas</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grid-gap"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">grid-gap</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#justify-items"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">justify-items</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#align-items"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">align-items</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#justify-contents"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">justify-contents</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#align-contents"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">align-contents</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grid-auto"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">grid-auto</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#grid-items"><span class="post-toc-number">4.</span> <span class="post-toc-text">grid items</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grid-column"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">grid-column</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grid-row"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">grid-row</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#grid-area-1"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">grid-area</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#justify-self"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">justify-self</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#align-self"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">align-self</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实战"><span class="post-toc-number">5.</span> <span class="post-toc-text">实战</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-CSS-grid"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">CSS-grid</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-06 16:28:23" datetime="2017-12-06T08:28:23.000Z"  itemprop="datePublished">2017-12-06</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>grid布局的思想就是，先将一个container 设置上<code>display:grid;</code> ,然后使用<code>grid-template-columns:</code> &amp; <code>grid-template-rows</code> 将这个div划分为多个小格子。然后使用<code>grid-column</code> &amp; <code>grid-row</code>将子元素放置在一个或者多个小格子中。</p>
+<p>代码实现。  </p>
+<p></p><p data-height="438" data-theme-id="0" data-slug-hash="ooOLje" data-default-tab="html,result" data-user="akixiao" data-embed-version="2" data-pen-title="grid-start" class="codepen">See the Pen <a href="https://codepen.io/akixiao/pen/ooOLje/" target="_blank" rel="external">grid-start</a> by akixiao (<a href="https://codepen.io/akixiao" target="_blank" rel="external">@akixiao</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>css：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">display</span>:grid;</div><div class="line">  <span class="attribute">width</span>:<span class="number">600px</span>;</div><div class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr <span class="number">1</span>fr;</div><div class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">100px</span> <span class="number">200px</span>;</div><div class="line">  <span class="attribute">grid-gap</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">background</span>: gray;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.grid-item</span> &#123;</div><div class="line">  <span class="attribute">background</span>: lightblue;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#333</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.last-item</span> &#123;</div><div class="line">  <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</div><div class="line">  <span class="attribute">grid-column-end</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在<strong>container</strong>中：<br><code>display:grid;</code>声明这个container是采用grid布局的。 </p>
+<p><code>grid-template-XXX</code>设置了这个div的网格式布局的基本。  </p>
+<p>在<strong>item</strong>中：<br><code>grid-column-xxx</code>设置了这个div在grid中所占有的布局。  </p>
+<p>grid布局中新增了一些知识，下面就利用这个例子来分别解释gird布局中的一些基本术语。</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><blockquote>
+<h3 id="grid容器（grid-container）"><a href="#grid容器（grid-container）" class="headerlink" title="grid容器（grid container）"></a>grid容器（grid container）</h3></blockquote>
+<p>设置了<code>display:gird|inline-grid|subgrid</code>的元素，被称为<code>grid container</code>。他是所有网格项目<code>grid item</code>的直接父元素。  如上面的<code>div.container</code></p>
+<blockquote>
+<h3 id="grid项目（grid-item"><a href="#grid项目（grid-item" class="headerlink" title="grid项目（grid item)"></a>grid项目（grid item)</h3></blockquote>
+<p><code>grid container</code>的子元素被称为grid item。如上面的<code>div.grid-item</code></p>
+<blockquote>
+<h3 id="网格线-（grid-lines）"><a href="#网格线-（grid-lines）" class="headerlink" title="网格线 （grid lines）"></a>网格线 （grid lines）</h3></blockquote>
+<p>网格线是水平和垂直方向来分割空间的线。水平方向的网格线是从左向右；垂直方向是从上往下。编号都是从<code>1</code>开始的。<code>grid</code>布局就是通过grid lines进行元素的布局的。通过grid-template等属性设置网格线。如果是负值，是从右往左方向。</p>
+<p><img src="./gridline.png"></p>
+<p>按照最上面的例子，<code>grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 200px;</code><br>将空间分成了6个部分，水平方向3个格子，垂直方向2个格子。<br>相应的，gridline如上，有7条。三条紫色虚线为 <code>row grid lines</code> 。四条蓝色垂直虚线为<code>column grid lines</code>。  这七条线划分出了该grid的6个子空间，之后可以根据网格线号码定位网格项目。 网格线还可在定义轨道的时候，进行命名。 详见<code>[grid-template]</code>  </p>
+<blockquote>
+<h3 id="网格轨道（grid-track）"><a href="#网格轨道（grid-track）" class="headerlink" title="网格轨道（grid track）"></a>网格轨道（grid track）</h3></blockquote>
+<p>两条邻近grid line之间的空间就是grid track。通过grid-template设置。  </p>
+<p><img src="./gridtrack.png"><br>其中半透明橘黄色就是一个grid track。</p>
+<blockquote>
+<h3 id="grid-cell"><a href="#grid-cell" class="headerlink" title="grid cell"></a>grid cell</h3></blockquote>
+<p>两条邻近的<code>row grid line</code> 和两条邻近的<code>column grid line</code> 之间的空间。是grid布局的基础单元。所有的布局都可以通过选择不同范围的grid cell 来实现。如下面的蓝色方块。</p>
+<p><img src="./gridcell.png"></p>
+<blockquote>
+<h3 id="grid-area"><a href="#grid-area" class="headerlink" title="grid area"></a>grid area</h3></blockquote>
+<p>任意四条线间的空间，被称为grid area，由多个grid组成。如下绿色部分，如果用css表示该部分应该是。<br><code>grid-row: 2/4</code><br><code>grid-column: 1/3</code></p>
+<p>或者</p>
+<p><code>grid-row: -3/-1</code><br><code>grid-column: -3/-1</code></p>
+<p><img src="./gridline的副本.png"></p>
+<blockquote>
+<h3 id="gutters"><a href="#gutters" class="headerlink" title="gutters"></a>gutters</h3></blockquote>
+<p>tracks 之间的间隔，如例子中的深灰色的部分。<br>可以通过<br><code>grid-column-gap, grid-row-gap, or grid-gap</code>来设置。  </p>
+<h2 id="grid-container"><a href="#grid-container" class="headerlink" title="grid container"></a>grid container</h2><blockquote>
+<h3 id="display"><a href="#display" class="headerlink" title="display"></a>display</h3></blockquote>
+<p><strong>【display:grid|inline-grid|subgrid】</strong><br>第三个是指，当grid container 本身是一个grid item，也可以通过设置这个属性，进一步对该item进行网格式布局。  </p>
+<p>声明这个container是grid形式的。因此在块容器中的一些属性使用并不适用于网格容器当中:</p>
+<ul>
+<li>多列布局属性column-*不能用于网格容器</li>
+<li>float ，clear, vertical-align 都不生效</li>
+<li>::first-line和::first-letter伪元素不能用于网格容器  </li>
+</ul>
+<p>grid containe的可用css属性如下：</p>
+<blockquote>
+<h3 id="grid-template"><a href="#grid-template" class="headerlink" title="grid-template"></a>grid-template</h3></blockquote>
+<p>是<code>grid-template-row</code> and <code>grid-template-column</code> 的缩写。显示的设定网格的行和列。</p>
+<h4 id="grid-template-column"><a href="#grid-template-column" class="headerlink" title="grid-template-column"></a><code>grid-template-column</code></h4><p><strong>【grid-template-column: [name] value …】</strong><br>每写一个value值，则定义了一个轨道宽度。  单位可以是<code>px</code> <code>em</code> <code>%</code> <code>fr</code>。 这里<code>fr</code>是一个新单位，代表可用空间的比例。一个例子如下：  </p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="jaRRQL" data-default-tab="css,result" data-user="akixiao" data-embed-version="2" data-pen-title="grid-testone" class="codepen">See the Pen <a href="https://codepen.io/akixiao/pen/jaRRQL/" target="_blank" rel="external">grid-testone</a> by akixiao (<a href="https://codepen.io/akixiao" target="_blank" rel="external">@akixiao</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p><code>grid-gap: 10px;</code><br><code>grid-template-columns: 50px repeat(2, 1fr) 2fr;</code></p>
+<p>这里是在水平方向上分为4个部分，长度分别是 50px 1fr 1fr 2fr。 1fr是怎么计算呢，其实就是 <code>(width - 50 - 3*10) / 4</code>px。fr就不需要我们自己主动计算百分比了，他会自行计算。更准确。</p>
+<p>代码<a href="https://codepen.io/akixiao/pen/jaRRQL" target="_blank" rel="external">https://codepen.io/akixiao/pen/jaRRQL</a></p>
+<p><strong>repeat()</strong> 可以创建重复的网格轨道, 接受两个参数：第一个参数定义网格轨道应该重复的次数，第二个参数定义每个轨道的尺寸。</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">grid</span>-template-<span class="built_in">columns</span>: 50px repeat(<span class="number">3</span>, 1fr)</div></pre></td></tr></table></figure>
+<p><strong>minmax()</strong> 网格轨道最大最小尺寸。<br>minmax()函数接受两个参数：第一个参数定义网格轨道的最小值，第二个参数定义网格轨道的最大值。可以接受任何长度值，也接受auto值。auto值允许网格轨道基于内容的尺寸拉伸或挤压。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">grid-<span class="keyword">template</span>-rows: minmax(<span class="number">100</span>px, <span class="keyword">auto</span>) <span class="number">50</span>px;</div><div class="line">grid-<span class="keyword">template</span>-columns: minmax(<span class="keyword">auto</span>, <span class="number">25</span>%) <span class="number">50</span>px <span class="number">1f</span>r <span class="number">1f</span>r;</div></pre></td></tr></table></figure>
+<p>这个就是意味着，第一行的高度最小为100px，可以超过，第二行高度为50px; 第一列的宽度最大为25%，可以根据其他列适当缩小值，其余列为定义的值。</p>
+<p>实际例子：</p>
+<p></p><p data-height="265" data-theme-id="0" data-slug-hash="pdBmZq" data-default-tab="css,result" data-user="akixiao" data-embed-version="2" data-pen-title="grid-test-minmax" class="codepen">See the Pen <a href="https://codepen.io/akixiao/pen/pdBmZq/" target="_blank" rel="external">grid-test-minmax</a> by akixiao (<a href="https://codepen.io/akixiao" target="_blank" rel="external">@akixiao</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<p>name代表什么呢？这里是指网格线名称。假如我写了如下的grid-template（这里copy了一下，偷懒了）</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.<span class="keyword">container</span> &#123;</div><div class="line">  grid-template-columns: <span class="comment">[first]</span> 40px <span class="comment">[line2]</span> 50px <span class="comment">[line3]</span> auto <span class="comment">[col4-start]</span> 50px <span class="comment">[five]</span> 40px <span class="comment">[end]</span>;</div><div class="line">  grid-template-rows: <span class="comment">[row1-start]</span> 25% <span class="comment">[row1-end]</span> 100px <span class="comment">[third-line]</span> auto <span class="comment">[last-line]</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="./name-line.png" width="500px"></p>
+<p>当我们在grid items中布局的时候，可以不用在写编号了，写name就可以了。例如：  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">  <span class="attribute">grid-column</span>: first/line3;</div><div class="line">  <span class="attribute">grid-row</span>: row1-start/third-line;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上写法，这个item将占据 <code>width：90px;height: 25%*height + 100 px</code> 的空间，相当于左上角四个grid。  </p>
+<p><a href="https://codepen.io/akixiao/pen/BmEgBV" target="_blank" rel="external">展示结果</a></p>
+<h4 id="grid-template-row"><a href="#grid-template-row" class="headerlink" title="grid-template-row"></a><code>grid-template-row</code></h4><p><strong>【grid-template-row: [name] value …】</strong><br>先来说value，每写一个值，则定义了一个轨道高度。  单位可以是<code>px</code> <code>em</code> <code>%</code>。其余与column相似。  内容与grid-template-column相似，不多说了。  </p>
+<h4 id="grid-template-areas"><a href="#grid-template-areas" class="headerlink" title="grid-template-areas"></a><code>grid-template-areas</code></h4><p><strong>【grid-template-areas: [name]|none|.】</strong><br>这个属性，就是将轨道分出来的每个grid 都赋予一个name，然后grid items 可以根据name来进行布局。不多说，上例子更明确  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">display</span>:grid;</div><div class="line">  <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">120px</span> auto;</div><div class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">60px</span> <span class="number">1</span>fr <span class="number">60px</span>;</div><div class="line">  <span class="attribute">background</span>: gray;</div><div class="line">  <span class="attribute">grid-template-areas</span>:</div><div class="line">    <span class="string">"sidebar header"</span></div><div class="line">    <span class="string">"sidebar content"</span></div><div class="line">    <span class="string">"sidebar footer"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.sidebar</span> &#123;</div><div class="line">  <span class="attribute">grid-area</span>: sidebar;</div><div class="line">  <span class="attribute">background</span>: purple;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.header</span> &#123;</div><div class="line">  <span class="attribute">grid-area</span>: header;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#333</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.content</span> &#123;</div><div class="line">  <span class="attribute">grid-area</span>: content;</div><div class="line">  <span class="attribute">background</span>: lightblue;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.footer</span> &#123;</div><div class="line">  <span class="attribute">grid-area</span>: footer;</div><div class="line">  <span class="attribute">background</span>: orange;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"container"</span>&gt;</div><div class="line">  <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"sidebar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"header"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"content"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"footer"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
+<p>结果图： <img src="./area.png"><br><a href="https://codepen.io/akixiao/pen/xPevXJ" target="_blank" rel="external">代码</a></p>
+<p>关于简写的grid-template:  综合grid line，grid track，grid area。 </p>
+  <figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">grid</span>-template-<span class="built_in">columns</span>: 120px auto;</div><div class="line"><span class="built_in">grid</span>-template-rows:[<span class="built_in">row</span>-<span class="number">1</span>] 60px [<span class="built_in">row</span>-<span class="number">2</span>] auto [<span class="built_in">row</span>-<span class="number">3</span>] 60px [<span class="built_in">row</span>-<span class="number">4</span>];</div><div class="line"><span class="built_in">grid</span>-template-areas:</div><div class="line">  <span class="string">"sidebar header"</span></div><div class="line">  <span class="string">"sidebar content"</span></div><div class="line">  <span class="string">"sidebar footer"</span>;</div></pre></td></tr></table></figure>
+<p>  等价于</p>
+  <figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">grid</span>-template: [<span class="built_in">row</span>-<span class="number">1</span>] <span class="string">"sidebar header"</span> 60px</div><div class="line">               [<span class="built_in">row</span>-<span class="number">2</span>] <span class="string">"sidebar content"</span> auto</div><div class="line">               [<span class="built_in">row</span>-<span class="number">3</span>] <span class="string">"sidebar footer"</span> 60px [<span class="built_in">row</span>-<span class="number">4</span>]</div><div class="line">              /  120px auto;</div></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="grid-gap"><a href="#grid-gap" class="headerlink" title="grid-gap"></a>grid-gap</h3></blockquote>
+<p>这个是，<code>grid-row-gap</code>和<code>grid-column-gap</code>的缩写。<br>创建的是轨道间的距离。如最开始的例子：  </p>
+<p><code>grid-gap: 10px;</code><br>这个等价于：  </p>
+<p><code>grid-row-gap: 10px</code><br><code>grid-column-gap: 10px</code></p>
+<p>下面是grid 元素的对齐方式：  </p>
+<blockquote>
+<h3 id="justify-items"><a href="#justify-items" class="headerlink" title="justify-items"></a>justify-items</h3><h3 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h3></blockquote>
+<p>这两个分别是指定网格项目沿着行轴的对齐方式，和沿着列轴的对齐方式。<br>可用的属性有：  解释都是以<code>justify-items</code>为例，<code>align-items</code>请自动转换为相对于纵轴来说。</p>
+<ul>
+<li>start: 内容居左排列</li>
+<li>end: 内容居右排列</li>
+<li>center: 内容居中排列</li>
+<li>stretch: 默认值，横跨整个row 轴</li>
+</ul>
+<blockquote>
+<h3 id="justify-contents"><a href="#justify-contents" class="headerlink" title="justify-contents"></a>justify-contents</h3><h3 id="align-contents"><a href="#align-contents" class="headerlink" title="align-contents"></a>align-contents</h3></blockquote>
+<p>这两个是网格轨道的对齐方式，分别相对于<code>justify-contents</code>指定网格轨道沿着列轴的排列方式，其实就是row网格轨道在垂直方向上的排列情况。和<code>align-contents</code>网格轨道沿着row轴的排列方式，是column网格轨道在水平方向上的排列情况。<br>可用属性：  </p>
+<ul>
+<li>start：居左</li>
+<li>end： 居右</li>
+<li>center: 居中</li>
+<li>strech： 拉伸</li>
+<li>space-around：每个轨道两边距离相同</li>
+<li>space-between：第一和最后的羽绒器边缘没有间距，其他轨道距离相同。</li>
+<li>space-evenly：轨道距离容器边缘和轨道间的距离都相同。</li>
+</ul>
+<blockquote>
+<h3 id="grid-auto"><a href="#grid-auto" class="headerlink" title="grid-auto"></a>grid-auto</h3><p><code>grid-template-columns</code>, <code>grid-template-rows</code>, <code>grid-template-areas</code> 可以定义显示的网格，给出确定的网格轨道宽高，和明确的grid数量。也可以使用<code>grid-auto-rows</code> 和 <code>grid-auto-columns</code>创建隐式网格。  </p>
+</blockquote>
+<p>隐式网格，当项目被放置在template未规定的grid时，就会生成隐式网格。如果是按照template摆放的内容，就算定义了隐式grid，隐式grid也不会出现在展示中。  </p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">.container &#123;</div><div class="line">  <span class="built_in">display</span>:<span class="built_in">grid</span>;</div><div class="line">  <span class="built_in">height</span>: 400px;</div><div class="line">  <span class="built_in">display</span>: <span class="built_in">grid</span>; </div><div class="line">  <span class="built_in">grid</span>-template-<span class="built_in">columns</span>: 100px;</div><div class="line">  <span class="built_in">grid</span>-auto-<span class="built_in">columns</span>: 200px;</div><div class="line">  <span class="built_in">grid</span>-template-rows: 100px;</div><div class="line">  <span class="built_in">grid</span>-auto-rows: 200px;</div><div class="line">&#125;</div><div class="line">.<span class="built_in">first</span> &#123;</div><div class="line">  <span class="built_in">grid</span>-column: <span class="number">1</span>;</div><div class="line">  <span class="built_in">grid</span>-<span class="built_in">row</span>: <span class="number">1</span>;</div><div class="line">  <span class="built_in">background</span>: lightblue;</div><div class="line">&#125;</div><div class="line">.<span class="built_in">second</span> &#123;</div><div class="line">  <span class="built_in">background</span>: orange;</div><div class="line">&#125;</div><div class="line">.<span class="built_in">third</span> &#123;</div><div class="line">  <span class="built_in">background</span>: pink;</div><div class="line">&#125;</div><div class="line">.forth &#123;</div><div class="line">  <span class="built_in">background</span>: tomato;</div><div class="line">  <span class="built_in">grid</span>-<span class="built_in">row</span>: <span class="number">2</span>;</div><div class="line">  <span class="built_in">grid</span>-column:<span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div class=<span class="string">"container"</span>&gt;</div><div class="line">  &lt;div class=<span class="string">"first"</span>&gt;<span class="number">1</span>&lt;/div&gt;</div><div class="line">  &lt;div class=<span class="string">"second"</span>&gt;<span class="number">2</span>&lt;/div&gt;</div><div class="line">  &lt;div class=<span class="string">"third"</span>&gt;<span class="number">3</span>&lt;/div&gt;</div><div class="line">  &lt;div class=<span class="string">"forth"</span>&gt;<span class="number">4</span>&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>上面只显示定义了一个columns和rows。 如果不规定forth中的样式，则默认向1下方添加高度为200px，宽度为100px的div。如果在forth中设置了不存在的cell，则container会生成隐式grid，其他的div会根据顺序以添加了隐式grid进行排列。</p>
+<p>当forth为  </p>
+<p><code>.forth { background: tomato; grid-row: 2; grid-column:2; }</code><br><img src="./auto-grid-one.png">  </p>
+<p><code>.forth { background: tomato; grid-row: 3; grid-column:3; }</code><br><img src="./auto-grid-two.png"></p>
+<h2 id="grid-items"><a href="#grid-items" class="headerlink" title="grid items"></a>grid items</h2><p>上面都是grid container的属性，下面介绍grid items 可以使用的各种属性。首先既然是grid item了，一些block的属性就不在适用了，如下： </p>
+<ul>
+<li>浮动和清除浮动，对于网格项目中使用不生效。</li>
+<li>vertical-align属性对于网格项目不生效</li>
+</ul>
+<blockquote>
+<h3 id="grid-column"><a href="#grid-column" class="headerlink" title="grid-column"></a>grid-column</h3><h3 id="grid-row"><a href="#grid-row" class="headerlink" title="grid-row"></a>grid-row</h3><h3 id="grid-area-1"><a href="#grid-area-1" class="headerlink" title="grid-area"></a>grid-area</h3></blockquote>
+<p><code>grid-area</code>是<code>grid-column</code> &amp; <code>grid-row</code>的缩写。或者是template中的area-name<br>缩写方式：</p>
+  <figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">grid</span>-area: <span class="built_in">grid</span>-<span class="built_in">row</span>-start / <span class="built_in">grid</span>-column-start/ <span class="built_in">grid</span>-<span class="built_in">row</span>-end / <span class="built_in">grid</span>-column-end;</div><div class="line"></div><div class="line"><span class="built_in">grid</span>-area: name;</div></pre></td></tr></table></figure>
+<p><code>grid-column: grid-column-start / grid-column-end;</code><br><code>grid-row: grid-row-start / grid-row-end;</code></p>
+<p>以上都要输入grid line的值: 这个值可以是数字，也可以是具体名称name，也可以是name-start/name-end。  </p>
+<p>一个命名的template-area，都会隐式的生成 4 条 grid-line的名称：  </p>
+<ul>
+<li>area-start, area-end  行</li>
+<li>area-start, area-end  列</li>
+</ul>
+<p>所以，在放置<code>grid item</code> 的时候，也可以不用<code>grid-area</code>, 用<code>grid-column</code>，<code>grid-row</code>输入隐式<code>grid line</code> 的名称即可。  </p>
+<p>还有一种方式，通过合并单元格的形式，对grid item进行布局。<code>span</code>关键词实现单元格的跨越，类似table中的合并单元格，比如colspan合并列，rowspan合并行。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item-2</span> &#123;</div><div class="line">  <span class="attribute">grid-column</span>: <span class="number">2</span> / <span class="number">4</span>;</div><div class="line">  <span class="attribute">grid-row</span>: <span class="number">1</span> / <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">等价于：  </div><div class="line"></div><div class="line"><span class="selector-class">.item-2</span> &#123;</div><div class="line">  <span class="attribute">grid-column</span>: <span class="number">2</span> / span <span class="number">2</span>;</div><div class="line">  <span class="attribute">grid-row</span>: <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="justify-self"><a href="#justify-self" class="headerlink" title="justify-self"></a>justify-self</h3><h3 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h3></blockquote>
+<p>含义及内容参考<code>justify-items</code> &amp; <code>align-items</code>。 这个是可以在项目本身修改下自己的排列方式。 </p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>参考：<a href="https://www.w3cplus.com/css3/breaking-out-with-css-grid-explained.html" target="_blank" rel="external">CSS Grid实现限宽容器</a></p>
+<p><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank" rel="external">参考</a><br><a href="https://alialaa.github.io/css-grid-cheat-sheet/" target="_blank" rel="external">cheat sheet</a><br><a href="http://cssgridgarden.com/" target="_blank" rel="external">小游戏掌握grid</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-12-07T02:42:34.000Z" itemprop="dateUpdated">2017-12-07 10:42:34</time>
+</span><br>
+
+
+        
+        <a href="/2017/12/06/CSS-grid/" target="_blank" rel="external">https://misssweety.github.io/2017/12/06/CSS-grid/</a>
+        
+    </div>
+    <footer>
+        <a href="https://misssweety.github.io">
+            <img src="/img/avatar.png" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css3/">css3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grid/">grid</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/12/06/CSS-grid/&title=《CSS-grid》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/12/06/CSS-grid/&title=《CSS-grid》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/12/06/CSS-grid/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CSS-grid》 — MissSweety's Blog&url=https://misssweety.github.io/2017/12/06/CSS-grid/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/12/06/CSS-grid/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/05/flex布局/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">flex布局</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/12/06/CSS-grid/&title=《CSS-grid》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/12/06/CSS-grid/&title=《CSS-grid》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/12/06/CSS-grid/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《CSS-grid》 — MissSweety's Blog&url=https://misssweety.github.io/2017/12/06/CSS-grid/&via=https://misssweety.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/12/06/CSS-grid/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3awW7rMAwEwP7/T7vXAi/126WSApZGpyJxLE0PBEXy6yte14/185P7b/9d7S5vXhgYGI9lXLcr2eD+uPf4+zckZ8PAwDiH8dvhZs+sBN92XwwMDIwkEWyDY5JoYmBgYKwz8stnG2oxMDAwVi6xyeFmV+I/vYtjYGA8kJFX3f/+74/0NzAwMB7FuMqVB9/2WNfCwsDA2Juxsk37ZFuwq8cyMDAwNmW0oXNljCxPOu/HNV58goGBcQAj+dn6tTMvpeVtzhcZLgYGxnaMlUJ/GzSTgPuR0hsGBsbDGbOxibbElj+TXJhf/AoDA2NrRhLU8oDbthCiC2oegjEwMDZlzMpbyYWz/V/O3lDfxTEwMB7IaF/9rpJZe8OO3oOBgXEMIy+65WnlehsgCs0YGBibMj7XDJgNgbUtVQwMjNMYSVF+1rZsk8t6RwwMjAMY6+NcbUB/18LAwDiNkbce21blLCks2qUYGBhbM/LxrLx6t0JaKsZhYGAcxkiO3pbq2nGxtvGAgYFxAqMduVgZI1sZsMDAwMDIr51tIjgbrShKeBgYGJsyrnLNinH/SenKEZDoBxgYGBsxZonaDJwniEm7YtgWxcDAeCxjFmTXa/KzRgIGBsbJjFngm7VC21SyHrbAwMDAiAtnw7GJWUkOAwMDo0z+ZnutjI5hYGCcwMiHvZLWZl5ie1cTFAMDY29GfnXMg+NK8P1gUxMDA+N5jG8PivoIQTByeQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'MissSweety';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
