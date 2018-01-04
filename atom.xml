@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://misssweety.github.io/"/>
-  <updated>2017-12-07T02:42:34.000Z</updated>
+  <updated>2018-01-04T08:04:55.000Z</updated>
   <id>https://misssweety.github.io/</id>
   
   <author>
@@ -14,6 +14,87 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基础知识查缺补漏-数据类型</title>
+    <link href="https://misssweety.github.io/2018/01/04/%E6%9F%A5%E7%BC%BA%E8%A1%A5%E6%BC%8F/"/>
+    <id>https://misssweety.github.io/2018/01/04/查缺补漏/</id>
+    <published>2018-01-04T07:24:57.000Z</published>
+    <updated>2018-01-04T08:04:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><ul>
+<li>数组delete元素后，length不变。  </li>
+</ul>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</div><div class="line">delete a[<span class="number">1</span>] </div><div class="line">a; <span class="comment">// [1, empty, 3, 4, 5]</span></div><div class="line">a.length;  <span class="comment">// 5</span></div></pre></td></tr></table></figure>
+<ul>
+<li>数组也可以加入键值，不过不计入长度，如果键值能够强制转化成十进制数字，则会当做数字索引来用。</li>
+</ul>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">const b = [];</div><div class="line">b[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">b['foo'] = <span class="number">2</span>;</div><div class="line">b.length;  <span class="comment">// 1</span></div><div class="line">b.foo;     <span class="comment">// 2</span></div><div class="line"></div><div class="line">b['<span class="number">5</span>'] = <span class="number">5</span>;</div><div class="line">b.length;   <span class="comment">// 6</span></div></pre></td></tr></table></figure>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p>字符串和字符数组很像 ~~<br>差别：字符串不可变，字符数组是可变的。  </p>
+<ul>
+<li>可以用数组方法来处理字符串  </li>
+</ul>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = <span class="string">'abcdefg'</span>;</div><div class="line"></div><div class="line">a.<span class="built_in">join</span>;  <span class="comment">// undefined;</span></div><div class="line">a.<span class="built_in">map</span>;   <span class="comment">// undefined;</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> b = <span class="keyword">Array</span>.prototype.<span class="built_in">join</span>.call(a, <span class="string">'-'</span>);</div><div class="line">b;  <span class="comment">// "a-b-c-d-e-f-g"</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> c = <span class="keyword">Array</span>.prototype.<span class="built_in">map</span>.call(a, v =&gt; v.toUpperCase() + <span class="string">','</span>).<span class="built_in">join</span>(<span class="string">''</span>);</div><div class="line"></div><div class="line">c;  <span class="comment">// "A.B.C.D.E.F.G."   注意join，如果没有其实就是普通的字符串数组了。</span></div></pre></td></tr></table></figure>
+<ul>
+<li>部分数组函数，字符串不能用，比如reverse。<br>例子：实现字符串反转</li>
+</ul>
+<p>需要先将字符串打散成数组，然后操作。  </p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> reverseStr = arr =&gt; arr.<span class="built_in">split</span>(<span class="string">""</span>).<span class="built_in">reverse</span>().<span class="built_in">join</span>(<span class="string">""</span>);</div></pre></td></tr></table></figure>
+<p>如果需要经常以字符数组的方式来处理字符串的话，倒不如直接使用数组，最后用join(“”)转换成字符串。  </p>
+<h1 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h1><ul>
+<li>指定有效数位显示位数 toPrecision(..)   都转化成相应位数的字符串  </li>
+</ul>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const a = <span class="number">43.68</span>;</div><div class="line">a.toPrecision(<span class="number">1</span>)   <span class="comment">// "4e+1"</span></div><div class="line">a.toPrecision(<span class="number">2</span>)   <span class="comment">// "43"</span></div><div class="line">a.toPrecision(<span class="number">3</span>)   <span class="comment">// "43.7"</span></div><div class="line">a.toPrecision(<span class="number">5</span>)   <span class="comment">// "43.680"</span></div></pre></td></tr></table></figure>
+<p>注意：如果用数字直接调用toFixed，toPrecision 等都要用（）抱起来，因为<code>.</code>会被认为是数字的一部分。</p>
+<ul>
+<li>二进制八进制表示法<br>0b11110011   //243<br>0o363        // 243</li>
+</ul>
+<p>最好用小写的  0[zero]b  或者  0o来表示。虽然大写也行，但是容易混淆</p>
+<ul>
+<li>较小数值比较<br>0.1 + 0.2 === 0.3    // 输出是false  </li>
+</ul>
+<p>二进制浮点数中的 0.1 和 0.2 并不是十分精确，它们相加的结果并非刚好等于 0.3，而是一个比较接近的数字 0.30000000000000004  </p>
+<p>解决方法：设置一个误差范围值，机器精度2^-52, ES6中已经规定了这个常数，Number.EPSILON;</p>
+<p> 自己写的判断：  </p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">const</span> numberClose = <span class="function">(<span class="params">s1,s2</span>) =&gt;</span> <span class="built_in">Math</span>.abs(s1-s2) &lt; <span class="built_in">Number</span>.EPSILON;</div><div class="line"></div><div class="line"><span class="comment">// test </span></div><div class="line"> <span class="keyword">const</span> a = <span class="number">0.1</span> + <span class="number">0.2</span>;</div><div class="line"> <span class="keyword">const</span> b = <span class="number">0.3</span>;</div><div class="line"> numberClose(a, b);  <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>整数的安全范围<br>2^53 - 1  9007199254740991   ES6：Number.MAX_SAFE_INTEGER<br>最小：-9007199254740991   定义为： Number. MIN_SAFE_INTEGER</p>
+<p>检测整数：  </p>
+</li>
+</ul>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Number</span>.isInteger(<span class="number">43</span>)  // <span class="literal">true</span></div><div class="line"><span class="built_in">Number</span>.isInteger(<span class="number">43.0</span>)  // <span class="literal">true</span></div></pre></td></tr></table></figure>
+<p>  检测是否是安全的整数<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">Number</span>.isSafeInteger( <span class="keyword">Number</span>.MAX_SAFE_INTEGER );  // <span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>特殊数值<br>NaN 是唯一一个不等于自身的值。  </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="literal">null</span> === <span class="literal">null</span>  <span class="comment">// true</span></div><div class="line"><span class="literal">undefined</span> === <span class="literal">undefined</span>  <span class="comment">// true</span></div><div class="line"><span class="literal">NaN</span> === <span class="literal">NaN</span>  <span class="comment">// false</span></div><div class="line"><span class="literal">Infinity</span> === <span class="literal">Infinity</span></div><div class="line"></div><div class="line"><span class="comment">// 语义上，判断一个数字是否是 NaN， 第一种，显然不对，因为他并不是 NaN。</span></div><div class="line"><span class="built_in">window</span>.isNaN(<span class="string">'abc'</span>)  <span class="comment">// true  </span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="string">'abc'</span>)  <span class="comment">// false</span></div><div class="line"></div><div class="line"><span class="literal">Infinity</span>  <span class="comment">// 1/0</span></div><div class="line"><span class="literal">Infinity</span>/<span class="literal">Infinity</span>  <span class="comment">//  NaN</span></div></pre></td></tr></table></figure>
+<p>  注意：如果计算结果溢出，则为无穷数，而且无法再回到有穷数了。</p>
+<ul>
+<li>0 &amp; -0<br>有些奇怪：<br>[1] 这两个值相等<br>[2] 没有大小之分<br>[3] 数字转换成string的时候，只会是’0’，但是parse回数字的时候，可以转换成 -0 </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = <span class="number">0</span>;</div><div class="line"><span class="keyword">const</span> b = <span class="number">-0</span>;</div><div class="line"></div><div class="line">a === b;  <span class="comment">// true</span></div><div class="line">a &gt; b;    <span class="comment">// false</span></div><div class="line"><span class="built_in">JSON</span>.stringify(b)   <span class="comment">// "0"</span></div><div class="line"><span class="built_in">JSON</span>.parse(<span class="string">'-0'</span>)    <span class="comment">// -0</span></div></pre></td></tr></table></figure>
+<p> 如果判断 -0 怎么弄呢？通过 1/-0 等于 -Inifinity 来实现。  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNegZero</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> n = <span class="built_in">Number</span>(num);</div><div class="line">  <span class="keyword">return</span> n=== <span class="number">0</span> &amp;&amp; <span class="number">1</span>/n === -<span class="literal">Infinity</span>; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ES6 中用<code>Object.is()</code> 可以实现 负零判断，NaN判断    </p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = <span class="number">1</span> / <span class="string">"foo"</span>;</div><div class="line"><span class="keyword">const</span> b = <span class="number">-0</span>;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.<span class="keyword">is</span>(a, NaN);   <span class="comment">// true</span></div><div class="line"><span class="built_in">Object</span>.<span class="keyword">is</span>(b, <span class="number">-0</span>);    <span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="built_in">Object</span>.<span class="keyword">is</span>(b, <span class="number">0</span>);     <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>能用 <code>==</code> &amp; <code>===</code> 就不要用Object.is() 效率比较低，有特殊的相等比较的时候再用。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;数组delete元素后，length不变。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight lsl&quot;
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://misssweety.github.io/tags/javascript/"/>
+    
+      <category term="基础类型" scheme="https://misssweety.github.io/tags/%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS-grid</title>
