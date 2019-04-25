@@ -20,28 +20,54 @@
     
     
     <meta name="keywords" content="学习笔记,webGL,Three.js">
-    <meta name="description" content="图像渲染要依赖光源，如果没有光，世界就是一片黑暗，即使物体存在，你也看不出来。为了让计算机模拟光照效果，提出了几种不同的光源模型。    环境光   平行光   点光源   聚光灯    Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真。   在解释光的问题外，还要先说明下Three.js 中，颜色都是16进制来表示的，白色：0xffffff。   环境光环境光是指场景整体的光照">
-<meta name="keywords" content="学习笔记,webGL,Three.js">
+    <meta name="description" content="图像渲染要依赖光源，如果没有光，世界就是一片黑暗，即使物体存在，你也看不出来。为了让计算机模拟光照效果，提出了几种不同的光源模型。  
+
+环境光  
+平行光  
+点光源  
+聚光灯  
+
+Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真。  
+在解释光的问题外，还要先说明下Three.js 中，颜色都是16进制来表示的，白色：0xffffff。  
+环境光环境光是指场景整体的光照">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebGL学习系列-threejs-光源">
 <meta property="og:url" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/index.html">
 <meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="图像渲染要依赖光源，如果没有光，世界就是一片黑暗，即使物体存在，你也看不出来。为了让计算机模拟光照效果，提出了几种不同的光源模型。    环境光   平行光   点光源   聚光灯    Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真。   在解释光的问题外，还要先说明下Three.js 中，颜色都是16进制来表示的，白色：0xffffff。   环境光环境光是指场景整体的光照">
-<meta property="og:image" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/light1.png">
-<meta property="og:image" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/light2.png">
-<meta property="og:image" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/light3.png">
-<meta property="og:image" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/light4.png">
-<meta property="og:image" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/light5.png">
-<meta property="og:image" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/light6.png">
-<meta property="og:image" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/light7.png">
-<meta property="og:image" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/light8.png">
-<meta property="og:image" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/light9.png">
-<meta property="og:image" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/light10.png">
+<meta property="og:description" content="图像渲染要依赖光源，如果没有光，世界就是一片黑暗，即使物体存在，你也看不出来。为了让计算机模拟光照效果，提出了几种不同的光源模型。  
+
+环境光  
+平行光  
+点光源  
+聚光灯  
+
+Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真。  
+在解释光的问题外，还要先说明下Three.js 中，颜色都是16进制来表示的，白色：0xffffff。  
+环境光环境光是指场景整体的光照">
+<meta property="og:image" content="https://misssweety.github.io/./light1.png">
+<meta property="og:image" content="https://misssweety.github.io/./light2.png">
+<meta property="og:image" content="https://misssweety.github.io/./light3.png">
+<meta property="og:image" content="https://misssweety.github.io/./light4.png">
+<meta property="og:image" content="https://misssweety.github.io/./light5.png">
+<meta property="og:image" content="https://misssweety.github.io/./light6.png">
+<meta property="og:image" content="https://misssweety.github.io/./light7.png">
+<meta property="og:image" content="https://misssweety.github.io/./light8.png">
+<meta property="og:image" content="https://misssweety.github.io/./light9.png">
+<meta property="og:image" content="https://misssweety.github.io/./light10.png">
 <meta property="og:updated_time" content="2017-11-06T09:11:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebGL学习系列-threejs-光源">
-<meta name="twitter:description" content="图像渲染要依赖光源，如果没有光，世界就是一片黑暗，即使物体存在，你也看不出来。为了让计算机模拟光照效果，提出了几种不同的光源模型。    环境光   平行光   点光源   聚光灯    Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真。   在解释光的问题外，还要先说明下Three.js 中，颜色都是16进制来表示的，白色：0xffffff。   环境光环境光是指场景整体的光照">
-<meta name="twitter:image" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/light1.png">
+<meta name="twitter:description" content="图像渲染要依赖光源，如果没有光，世界就是一片黑暗，即使物体存在，你也看不出来。为了让计算机模拟光照效果，提出了几种不同的光源模型。  
+
+环境光  
+平行光  
+点光源  
+聚光灯  
+
+Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真。  
+在解释光的问题外，还要先说明下Three.js 中，颜色都是16进制来表示的，白色：0xffffff。  
+环境光环境光是指场景整体的光照">
+<meta name="twitter:image" content="https://misssweety.github.io/./light1.png">
     
         <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
     
@@ -135,7 +161,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -205,31 +231,31 @@
 <h2 id="环境光"><a href="#环境光" class="headerlink" title="环境光"></a>环境光</h2><p>环境光是指场景整体的光照效果，是由于场景内若干光源的多次反射形成的亮度一致的效果，通常用来为整个场景指定一个基础亮度。因此，环境光没有明确的光源位置，在各处形成的亮度也是一致的。  </p>
 <h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p><code>THREE.AmbientLight(hex)</code>  </p>
 <h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>具体例子，创建光源添加到场景中。  </p>
-<pre><code><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> light = <span class="keyword">new</span> THREE.AmbientLight(<span class="number">0xffffff</span>);</div><div class="line">scene.<span class="keyword">add</span>(light);</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> light = <span class="keyword">new</span> THREE.AmbientLight(<span class="number">0xffffff</span>);</span><br><span class="line">scene.<span class="keyword">add</span>(light);</span><br></pre></td></tr></table></figure>
 </code></pre><p>加入两个物体：  白色正方形和绿色正方形，进行光的实验。  </p>
-<pre><code><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">const</span> cube = <span class="keyword">new</span> THREE.CubeGeometry(<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>);</div><div class="line"><span class="keyword">const</span> material = (<span class="built_in">color</span>) =&gt; <span class="keyword">new</span> THREE.MeshLambertMaterial(&#123;<span class="built_in">color</span>: <span class="built_in">color</span> &#125;));</div><div class="line"></div><div class="line"> <span class="keyword">const</span> greenCube = <span class="keyword">new</span> THREE.Mesh(cube, material(<span class="number">0x00ff00</span>));</div><div class="line"> greenCube.position.x = <span class="number">300</span>;</div><div class="line"> scene.<span class="built_in">add</span>(greenCube);</div><div class="line"></div><div class="line"> <span class="keyword">const</span> whiteCube = <span class="keyword">new</span> THREE.Mesh(cube, material(<span class="number">0xffffff</span>));</div><div class="line"> whiteCube.position.x = <span class="number">-300</span>;</div><div class="line"> scene.<span class="built_in">add</span>(whiteCube);</div><div class="line"></div><div class="line"></div><div class="line"> <span class="comment">// 照相机位置：  </span></div><div class="line"> function initCamera(<span class="built_in">width</span>, <span class="built_in">height</span>) &#123;</div><div class="line">  <span class="keyword">const</span> <span class="built_in">camera</span> = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">45</span>, <span class="built_in">width</span> / <span class="built_in">height</span>, <span class="number">1</span>, <span class="number">8000</span>);</div><div class="line">  <span class="comment">// camera 位于屏幕外侧1500px的地方，这样可以直接做平面图了。</span></div><div class="line">  <span class="built_in">camera</span>.position.x = <span class="number">0</span>;</div><div class="line">  <span class="built_in">camera</span>.position.y = <span class="number">0</span>;</div><div class="line">  <span class="built_in">camera</span>.position.z = <span class="number">1500</span>;</div><div class="line">  <span class="built_in">camera</span>.lookAt(<span class="number">0</span>, <span class="number">20</span>, <span class="number">1</span>);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="built_in">camera</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">const</span> cube = <span class="keyword">new</span> THREE.CubeGeometry(<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>);</span><br><span class="line"><span class="keyword">const</span> material = (<span class="built_in">color</span>) =&gt; <span class="keyword">new</span> THREE.MeshLambertMaterial(&#123;<span class="built_in">color</span>: <span class="built_in">color</span> &#125;));</span><br><span class="line"></span><br><span class="line"> <span class="keyword">const</span> greenCube = <span class="keyword">new</span> THREE.Mesh(cube, material(<span class="number">0x00ff00</span>));</span><br><span class="line"> greenCube.position.x = <span class="number">300</span>;</span><br><span class="line"> scene.<span class="built_in">add</span>(greenCube);</span><br><span class="line"></span><br><span class="line"> <span class="keyword">const</span> whiteCube = <span class="keyword">new</span> THREE.Mesh(cube, material(<span class="number">0xffffff</span>));</span><br><span class="line"> whiteCube.position.x = <span class="number">-300</span>;</span><br><span class="line"> scene.<span class="built_in">add</span>(whiteCube);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">// 照相机位置：  </span></span><br><span class="line"> function initCamera(<span class="built_in">width</span>, <span class="built_in">height</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="built_in">camera</span> = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">45</span>, <span class="built_in">width</span> / <span class="built_in">height</span>, <span class="number">1</span>, <span class="number">8000</span>);</span><br><span class="line">  <span class="comment">// camera 位于屏幕外侧1500px的地方，这样可以直接做平面图了。</span></span><br><span class="line">  <span class="built_in">camera</span>.position.x = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">camera</span>.position.y = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">camera</span>.position.z = <span class="number">1500</span>;</span><br><span class="line">  <span class="built_in">camera</span>.lookAt(<span class="number">0</span>, <span class="number">20</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">camera</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </code></pre><p>白色光源 + 白色正方形和绿色正方形<br>效果如下：<br><img src="./light1.png" width="60%"></p>
 <p>想让光线暗一些，就把光源变灰一些。<br>效果如下：<br><img src="./light2.png" width="60%"></p>
 <p>如果光源是红光，看下两个物体的颜色<br>效果如下：<br><img src="./light3.png" width="60%"><br>我们可以看到，绿色的小方块没了（变成黑色的了），原因是，我们能看到物体，都是因为他反射的光，而绿色小方块的红色通道是0，反射不回来内容了，所以我们看到的就是黑色物体了，如果把光源调到带有绿色的，我们可以看到如下效果：  </p>
-<pre><code><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> light = <span class="keyword">new</span> THREE.AmbientLight(<span class="number">0xff8800</span>);</div><div class="line">      scene.<span class="keyword">add</span>(light);</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> light = <span class="keyword">new</span> THREE.AmbientLight(<span class="number">0xff8800</span>);</span><br><span class="line">      scene.<span class="keyword">add</span>(light);</span><br></pre></td></tr></table></figure>
 </code></pre><p><img src="./light4.png" width="60%"></p>
 <p>综上，当我们使用环境光的时候，最好使用白色光与灰色光，其他颜色会导致物体显色奇怪。  </p>
 <h2 id="平行光"><a href="#平行光" class="headerlink" title="平行光"></a>平行光</h2><p>太阳光常常被看作平行光，这是因为相对地球上物体的尺度而言，太阳离我们的距离足够远。对于任意平行的平面，平行光照射的亮度都是相同的，而与平面所在位置无关。</p>
 <h3 id="构造函数-1"><a href="#构造函数-1" class="headerlink" title="构造函数"></a>构造函数</h3><p><code>THREE.DirectionalLight(hex, intensity)</code>  </p>
 <p><strong>intensity:</strong> 亮度，缺省值为1，表示100%亮度。<br>对于平行光而言，设置光源位置尤为重要</p>
 <h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><p>也是两个小正方形，白色和绿色。与上面的不同，我们调整了照相机的位置：  </p>
-<pre><code><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function initCamera(<span class="built_in">width</span>, <span class="built_in">height</span>) &#123;</div><div class="line">  <span class="keyword">const</span> <span class="built_in">camera</span> = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">45</span>, <span class="built_in">width</span> / <span class="built_in">height</span>, <span class="number">1</span>, <span class="number">8000</span>);</div><div class="line">  <span class="comment">// camera 位于屏幕外侧1500px的地方，这样可以直接做平面图了。</span></div><div class="line">  <span class="built_in">camera</span>.position.x = <span class="number">500</span>;</div><div class="line">  <span class="built_in">camera</span>.position.y = <span class="number">500</span>;</div><div class="line">  <span class="built_in">camera</span>.position.z = <span class="number">1500</span>;</div><div class="line">  <span class="built_in">camera</span>.lookAt(<span class="number">100</span>, <span class="number">0</span>, <span class="number">1</span>);</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="built_in">camera</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function initCamera(<span class="built_in">width</span>, <span class="built_in">height</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="built_in">camera</span> = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">45</span>, <span class="built_in">width</span> / <span class="built_in">height</span>, <span class="number">1</span>, <span class="number">8000</span>);</span><br><span class="line">  <span class="comment">// camera 位于屏幕外侧1500px的地方，这样可以直接做平面图了。</span></span><br><span class="line">  <span class="built_in">camera</span>.position.x = <span class="number">500</span>;</span><br><span class="line">  <span class="built_in">camera</span>.position.y = <span class="number">500</span>;</span><br><span class="line">  <span class="built_in">camera</span>.position.z = <span class="number">1500</span>;</span><br><span class="line">  <span class="built_in">camera</span>.lookAt(<span class="number">100</span>, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">camera</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </code></pre><p>光源：  </p>
-<pre><code><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">light = new THREE.DirectionalLight(<span class="number">0xffffff</span>, <span class="number">1</span>);</div><div class="line">light.position.set(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>);</div><div class="line">scene.add(light);</div></pre></td></tr></table></figure>
+<pre><code><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">light = new THREE.DirectionalLight(<span class="number">0xffffff</span>, <span class="number">1</span>);</span><br><span class="line">light.position.set(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>);</span><br><span class="line">scene.add(light);</span><br></pre></td></tr></table></figure>
 </code></pre><p>说明，光是从z方向处200px的位置向着所有物体照射。  我们可以得到如下图像。<br><img src="./light5.png" width="60%"></p>
 <p>我们调整下光的照射方向：  </p>
-  <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">light.position.set(<span class="number">800</span>, <span class="number">0</span>, <span class="number">400</span>);</div></pre></td></tr></table></figure>
+  <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">light.position.set(<span class="number">800</span>, <span class="number">0</span>, <span class="number">400</span>);</span><br></pre></td></tr></table></figure>
 <p>说明，光是在x方向800，y方向为0，z方向处400px，与原点连线形成的向量，这个方向形成的光线。 我们可以得到如下图像。<br><img src="./light6.png" width="60%"></p>
 <p>对比下，我们加上y方向的光，  light.position.set(800, 200, 400);<br><img src="./light7.png" width="60%"></p>
 <h2 id="点光源"><a href="#点光源" class="headerlink" title="点光源"></a>点光源</h2><p>点光源是不计光源大小，可以看作一个点发出的光源。点光源照到不同物体表面的亮度是线性递减的，因此，离点光源距离越远的物体会显得越暗。这里光在每个面上的亮度是不同的，对于每个三角面片，将根据三个顶点的亮度进行插值。</p>
 <h3 id="构造函数-2"><a href="#构造函数-2" class="headerlink" title="构造函数"></a>构造函数</h3><p><code>THREE.PointLight(hex, intensity, distance)</code>  </p>
 <p><strong>distance</strong>：光源最远照射的距离，缺省值是0。</p>
-<h3 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h3><pre><code><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">light = new THREE.PointLight(<span class="number">0xffffff</span>, <span class="number">2</span>, <span class="number">1000</span>);</div><div class="line">light.position.set(<span class="number">0</span>, <span class="number">200</span>, <span class="number">300</span>);</div></pre></td></tr></table></figure>
+<h3 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h3><pre><code><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">light = new THREE.PointLight(<span class="number">0xffffff</span>, <span class="number">2</span>, <span class="number">1000</span>);</span><br><span class="line">light.position.set(<span class="number">0</span>, <span class="number">200</span>, <span class="number">300</span>);</span><br></pre></td></tr></table></figure>
 </code></pre><p>一个点光源，在坐标(0, 200, 300)位置，进行照射，最远距离1000，结果如下：  </p>
 <p><img src="./light8.png" width="60%"><br>当最远距离缩小为500，结果：  </p>
 <p><img src="./light9.png" width="60%">  </p>
@@ -237,7 +263,7 @@
 <h3 id="构造函数-3"><a href="#构造函数-3" class="headerlink" title="构造函数"></a>构造函数</h3><p><code>THREE.SpotLight(hex, intensity, distance, angle, exponent)</code></p>
 <p><strong>angle</strong>：angle是聚光灯的张角，缺省值是Math.PI / 3，最大值是Math.PI / 2<br><strong>exponent</strong>：exponent是光强在偏离target的衰减指数（target需要在之后定义，缺省值为(0, 0, 0)），缺省值是10。  </p>
 <p>使用聚光灯，一般还要设置target。  如果想让一个物体的运动有灯光跟随，可以将target设置为改对象。  </p>
-<h3 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h3><pre><code><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">light = new THREE.SpotLight(<span class="number">0xffff00</span>, <span class="number">2</span>, <span class="number">1000</span>, Math.<span class="literal">PI</span> /<span class="number">4</span> , <span class="number">25</span>);</div><div class="line">light.position.set(<span class="number">300</span>, <span class="number">500</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+<h3 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h3><pre><code><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">light = new THREE.SpotLight(<span class="number">0xffff00</span>, <span class="number">2</span>, <span class="number">1000</span>, Math.<span class="literal">PI</span> /<span class="number">4</span> , <span class="number">25</span>);</span><br><span class="line">light.position.set(<span class="number">300</span>, <span class="number">500</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
 </code></pre><p><img src="./light10.png" width="60%">  </p>
 <p><a href="https://read.douban.com/ebook/7412854/" target="_blank" rel="external">参考</a></p>
 
@@ -247,7 +273,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-11-06T09:11:53.000Z" itemprop="dateUpdated">2017-11-06 17:11:53</time>
+    最后更新时间：<time datetime="2017-11-06T09:11:53.000Z" itemprop="dateUpdated">2017-11-06 17:11:53</time>
 </span><br>
 
 
@@ -326,18 +352,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/11/03/WebGL学习系列-threejs-camera/" id="post-prev" class="post-nav-link">
+      <a href="/2017/11/10/WebGL学习系列-threejs-形状/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">WebGL学习系列-threejs-camera</h4>
+        <h4 class="title">WebGL学习系列-threejs-形状</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/11/10/WebGL学习系列-threejs-形状/" id="post-next" class="post-nav-link">
+      <a href="/2017/11/03/WebGL学习系列-threejs-camera/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">WebGL学习系列-threejs-形状</h4>
+        <h4 class="title">WebGL学习系列-threejs-camera</h4>
       </a>
     </div>
   
@@ -374,11 +400,11 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Jessica &copy; 2015 - 2018</span>
+        <p><span>Jessica &copy; 2015 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

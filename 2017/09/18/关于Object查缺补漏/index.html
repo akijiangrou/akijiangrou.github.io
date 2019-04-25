@@ -20,17 +20,55 @@
     
     
     <meta name="keywords" content="javascript,object">
-    <meta name="description" content="内置对象这些都是对象子类型，看起来与基础类型一样。如下：  String Number Boolean Object Function Array Date RegExp Error  以上内置函数可以当做构造函数来使用。一些字面可以自动转换成对象类型进行一些方法的操作。 深复制 &amp;amp; 浅复制对于对象和数组来说，浅复制是对对象地址的复制，并没有开辟新的栈，复制的结果是两个对象指向同一个地址，">
-<meta name="keywords" content="javascript,object">
+    <meta name="description" content="内置对象这些都是对象子类型，看起来与基础类型一样。如下：
+
+String
+Number
+Boolean
+Object
+Function
+Array
+Date
+RegExp
+Error
+
+以上内置函数可以当做构造函数来使用。一些字面可以自动转换成对象类型进行一些方法的操作。
+深复制 &amp;amp; 浅复制对于对象和数组来说，浅复制是对对象地址的复制，并没有开辟新的栈，复制的结果是两个对象指向同一个地址，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Object查缺补漏">
 <meta property="og:url" content="https://misssweety.github.io/2017/09/18/关于Object查缺补漏/index.html">
 <meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="内置对象这些都是对象子类型，看起来与基础类型一样。如下：  String Number Boolean Object Function Array Date RegExp Error  以上内置函数可以当做构造函数来使用。一些字面可以自动转换成对象类型进行一些方法的操作。 深复制 &amp;amp; 浅复制对于对象和数组来说，浅复制是对对象地址的复制，并没有开辟新的栈，复制的结果是两个对象指向同一个地址，">
+<meta property="og:description" content="内置对象这些都是对象子类型，看起来与基础类型一样。如下：
+
+String
+Number
+Boolean
+Object
+Function
+Array
+Date
+RegExp
+Error
+
+以上内置函数可以当做构造函数来使用。一些字面可以自动转换成对象类型进行一些方法的操作。
+深复制 &amp;amp; 浅复制对于对象和数组来说，浅复制是对对象地址的复制，并没有开辟新的栈，复制的结果是两个对象指向同一个地址，">
 <meta property="og:updated_time" content="2017-09-18T08:10:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Object查缺补漏">
-<meta name="twitter:description" content="内置对象这些都是对象子类型，看起来与基础类型一样。如下：  String Number Boolean Object Function Array Date RegExp Error  以上内置函数可以当做构造函数来使用。一些字面可以自动转换成对象类型进行一些方法的操作。 深复制 &amp;amp; 浅复制对于对象和数组来说，浅复制是对对象地址的复制，并没有开辟新的栈，复制的结果是两个对象指向同一个地址，">
+<meta name="twitter:description" content="内置对象这些都是对象子类型，看起来与基础类型一样。如下：
+
+String
+Number
+Boolean
+Object
+Function
+Array
+Date
+RegExp
+Error
+
+以上内置函数可以当做构造函数来使用。一些字面可以自动转换成对象类型进行一些方法的操作。
+深复制 &amp;amp; 浅复制对于对象和数组来说，浅复制是对对象地址的复制，并没有开辟新的栈，复制的结果是两个对象指向同一个地址，">
     
         <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
     
@@ -124,7 +162,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -208,7 +246,7 @@
 <h3 id="结合writable-amp-configurable"><a href="#结合writable-amp-configurable" class="headerlink" title="结合writable &amp; configurable"></a>结合writable &amp; configurable</h3><p>writable:false<br>configurable:false</p>
 <p>对应的属性将不会被更改。也不能被删除。</p>
 <h3 id="禁止扩展"><a href="#禁止扩展" class="headerlink" title="禁止扩展"></a>禁止扩展</h3><p><code>Object.preventExtensions</code><br>可以禁止一个对象添加新属性，并且保留已有属性。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">2</span>&#125;;</div><div class="line"><span class="built_in">Object</span>.preventExtensions(obj);</div><div class="line">obj.b = <span class="number">3</span>;</div><div class="line">obj.b; <span class="comment">// undefined </span></div><div class="line"><span class="comment">// strict mode：typeError</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">2</span>&#125;;</span><br><span class="line"><span class="built_in">Object</span>.preventExtensions(obj);</span><br><span class="line">obj.b = <span class="number">3</span>;</span><br><span class="line">obj.b; <span class="comment">// undefined </span></span><br><span class="line"><span class="comment">// strict mode：typeError</span></span><br></pre></td></tr></table></figure>
 <h3 id="seal-密封"><a href="#seal-密封" class="headerlink" title="seal 密封"></a>seal 密封</h3><p>Object.seal(..) 会创建一个“密封”的对象，等价于preventExtensions + 每个属性configurable: false;<br>但是其实这个是可以修改属性值的。</p>
 <h3 id="freeze-冻结"><a href="#freeze-冻结" class="headerlink" title="freeze 冻结"></a>freeze 冻结</h3><p>等价于对对象使用seal，并把每个属性标记为writable:false;</p>
 <p>但是该属性可以修改深度的对象。</p>
@@ -221,7 +259,7 @@
 <li>如果都不是，将该值设置为属性的值。  </li>
 </ol>
 <h3 id="getter-amp-setter"><a href="#getter-amp-setter" class="headerlink" title="getter &amp; setter"></a>getter &amp; setter</h3><p>可以在对象的某个属性上进行修改默认的getter与setter函数。但是一般这两个要绑定在一起输出。两个方法：</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">const obj = &#123; <span class="keyword">get</span> c() &#123; <span class="keyword">return</span> <span class="number">1</span>;&#125; &#125;;</div><div class="line">Object.definePropperty(obj, <span class="string">'b'</span>,</div><div class="line">  &#123; <span class="keyword">get</span>: function() &#123; <span class="keyword">return</span> <span class="number">2</span>;&#125;&#125;</div><div class="line">);</div><div class="line"></div><div class="line">obj.c <span class="comment">// 1</span></div><div class="line">obj.b <span class="comment">// 2 </span></div><div class="line">obj.b = <span class="number">3</span>;</div><div class="line">obj.b <span class="comment">// 2</span></div><div class="line"></div><div class="line"><span class="comment">// get set 经典搭配</span></div><div class="line">const myObj = &#123;</div><div class="line">  <span class="keyword">get</span> a() &#123; <span class="keyword">return</span> <span class="keyword">this</span>._a_; &#125;</div><div class="line">  <span class="keyword">set</span> a(<span class="keyword">val</span>) &#123; <span class="keyword">this</span>._a_ = <span class="keyword">val</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123; <span class="keyword">get</span> c() &#123; <span class="keyword">return</span> <span class="number">1</span>;&#125; &#125;;</span><br><span class="line">Object.definePropperty(obj, <span class="string">'b'</span>,</span><br><span class="line">  &#123; <span class="keyword">get</span>: function() &#123; <span class="keyword">return</span> <span class="number">2</span>;&#125;&#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">obj.c <span class="comment">// 1</span></span><br><span class="line">obj.b <span class="comment">// 2 </span></span><br><span class="line">obj.b = <span class="number">3</span>;</span><br><span class="line">obj.b <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// get set 经典搭配</span></span><br><span class="line">const myObj = &#123;</span><br><span class="line">  <span class="keyword">get</span> a() &#123; <span class="keyword">return</span> <span class="keyword">this</span>._a_; &#125;</span><br><span class="line">  <span class="keyword">set</span> a(<span class="keyword">val</span>) &#123; <span class="keyword">this</span>._a_ = <span class="keyword">val</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="属性存在性"><a href="#属性存在性" class="headerlink" title="属性存在性"></a>属性存在性</h2><p>检验一个对象中是否有某个属性，可以用 <code>in</code>  <code>hasOwnProperty</code> 。可以用于检测是属性值为undefined，还是为定义属性。<br>但是这两个的区别是，<code>in</code>是对象本身和其原型链都查，后者则只查对象本身。</p>
 <p>参考的是《你不知道的javascript》</p>
 
@@ -231,7 +269,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-09-18T08:10:57.000Z" itemprop="dateUpdated">2017-09-18 16:10:57</time>
+    最后更新时间：<time datetime="2017-09-18T08:10:57.000Z" itemprop="dateUpdated">2017-09-18 16:10:57</time>
 </span><br>
 
 
@@ -310,18 +348,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/09/12/React生命周期/" id="post-prev" class="post-nav-link">
+      <a href="/2017/09/18/D3-api-transition/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">React生命周期</h4>
+        <h4 class="title">D3-api-transition</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/09/18/D3-api-transition/" id="post-next" class="post-nav-link">
+      <a href="/2017/09/12/React生命周期/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">D3-api-transition</h4>
+        <h4 class="title">React生命周期</h4>
       </a>
     </div>
   
@@ -358,11 +396,11 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Jessica &copy; 2015 - 2018</span>
+        <p><span>Jessica &copy; 2015 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

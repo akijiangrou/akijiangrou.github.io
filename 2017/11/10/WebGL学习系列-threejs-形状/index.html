@@ -20,19 +20,24 @@
     
     
     <meta name="keywords" content="学习笔记,webGL,Three.js">
-    <meta name="description" content="three.js中创建物体，比如一条线，需要如下函数：new THREE.Line( geometry, material );geometry: 几何体material: 材质这是创建物体[mesh]必须的。Geometry主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。   常见几何体立方体，平面，球体，圆柱体，四面体，八面体，文字等。   立方">
-<meta name="keywords" content="学习笔记,webGL,Three.js">
+    <meta name="description" content="three.js中创建物体，比如一条线，需要如下函数：new THREE.Line( geometry, material );geometry: 几何体material: 材质这是创建物体[mesh]必须的。Geometry主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。  
+常见几何体立方体，平面，球体，圆柱体，四面体，八面体，文字等。  
+立方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebGL学习系列-threejs-形状">
 <meta property="og:url" content="https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/index.html">
 <meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="three.js中创建物体，比如一条线，需要如下函数：new THREE.Line( geometry, material );geometry: 几何体material: 材质这是创建物体[mesh]必须的。Geometry主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。   常见几何体立方体，平面，球体，圆柱体，四面体，八面体，文字等。   立方">
-<meta property="og:image" content="https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/pic1.png">
+<meta property="og:description" content="three.js中创建物体，比如一条线，需要如下函数：new THREE.Line( geometry, material );geometry: 几何体material: 材质这是创建物体[mesh]必须的。Geometry主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。  
+常见几何体立方体，平面，球体，圆柱体，四面体，八面体，文字等。  
+立方">
+<meta property="og:image" content="https://misssweety.github.io/pic1.png">
 <meta property="og:updated_time" content="2017-11-15T06:00:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebGL学习系列-threejs-形状">
-<meta name="twitter:description" content="three.js中创建物体，比如一条线，需要如下函数：new THREE.Line( geometry, material );geometry: 几何体material: 材质这是创建物体[mesh]必须的。Geometry主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。   常见几何体立方体，平面，球体，圆柱体，四面体，八面体，文字等。   立方">
-<meta name="twitter:image" content="https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/pic1.png">
+<meta name="twitter:description" content="three.js中创建物体，比如一条线，需要如下函数：new THREE.Line( geometry, material );geometry: 几何体material: 材质这是创建物体[mesh]必须的。Geometry主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。  
+常见几何体立方体，平面，球体，圆柱体，四面体，八面体，文字等。  
+立方">
+<meta name="twitter:image" content="https://misssweety.github.io/pic1.png">
     
         <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
     
@@ -126,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -194,15 +199,15 @@
 <h3 id="圆形"><a href="#圆形" class="headerlink" title="圆形"></a>圆形</h3><p><code>THREE.CircleGeometry(radius, segments, thetaStart, thetaLength)</code><br>同理，segments越大，越接近于圆。  </p>
 <h3 id="圆台"><a href="#圆台" class="headerlink" title="圆台"></a>圆台</h3><p><code>THREE.CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded)</code><br>openEnded表示是否没有顶面和底面。默认为false(有顶面和底面)。  </p>
 <h3 id="正四面体"><a href="#正四面体" class="headerlink" title="正四面体"></a>正四面体</h3><p>多面体的参数，都是半径 &amp; detail。半径是外接球半径，detail是细节层次，一般可以省略。  </p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> tri = <span class="keyword">new</span> THREE.TetrahedronGeometry(<span class="number">150</span>);</div><div class="line">  <span class="keyword">const</span> triObj= <span class="keyword">new</span> THREE.Mesh(tri, material(<span class="number">0x333333</span>));</div><div class="line">  triObj.<span class="built_in">position</span>.y = <span class="number">-300</span>;</div><div class="line">  triObj.<span class="built_in">position</span>.x = <span class="number">300</span>;</div><div class="line">  scene.add(triObj);</div></pre></td></tr></table></figure>
-<h3 id="正八面体"><a href="#正八面体" class="headerlink" title="正八面体"></a>正八面体</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 正八面体</span></div><div class="line">  <span class="keyword">const</span> octo = <span class="keyword">new</span> THREE.OctahedronGeometry(<span class="number">150</span>);</div><div class="line">  <span class="keyword">const</span> octoObj= <span class="keyword">new</span> THREE.Mesh(octo, material(<span class="number">0x33ff33</span>));</div><div class="line">  octoObj.<span class="built_in">position</span>.y = <span class="number">-300</span>;</div><div class="line">  octoObj.<span class="built_in">position</span>.x = <span class="number">-300</span>;</div><div class="line">  scene.add(octoObj);</div></pre></td></tr></table></figure>
-<h3 id="正20面体"><a href="#正20面体" class="headerlink" title="正20面体"></a>正20面体</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 正二十面体</span></div><div class="line">  <span class="keyword">const</span> icos = <span class="keyword">new</span> THREE.IcosahedronGeometry(<span class="number">150</span>);</div><div class="line">  <span class="keyword">const</span> icosObj= <span class="keyword">new</span> THREE.Mesh(icos, material(<span class="number">0xff3333</span>));</div><div class="line">  icosObj.<span class="built_in">position</span>.y = <span class="number">-300</span>;</div><div class="line">  icosObj.<span class="built_in">position</span>.x = <span class="number">0</span>;</div><div class="line">  scene.add(icosObj);</div></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tri = <span class="keyword">new</span> THREE.TetrahedronGeometry(<span class="number">150</span>);</span><br><span class="line">  <span class="keyword">const</span> triObj= <span class="keyword">new</span> THREE.Mesh(tri, material(<span class="number">0x333333</span>));</span><br><span class="line">  triObj.<span class="built_in">position</span>.y = <span class="number">-300</span>;</span><br><span class="line">  triObj.<span class="built_in">position</span>.x = <span class="number">300</span>;</span><br><span class="line">  scene.add(triObj);</span><br></pre></td></tr></table></figure>
+<h3 id="正八面体"><a href="#正八面体" class="headerlink" title="正八面体"></a>正八面体</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正八面体</span></span><br><span class="line">  <span class="keyword">const</span> octo = <span class="keyword">new</span> THREE.OctahedronGeometry(<span class="number">150</span>);</span><br><span class="line">  <span class="keyword">const</span> octoObj= <span class="keyword">new</span> THREE.Mesh(octo, material(<span class="number">0x33ff33</span>));</span><br><span class="line">  octoObj.<span class="built_in">position</span>.y = <span class="number">-300</span>;</span><br><span class="line">  octoObj.<span class="built_in">position</span>.x = <span class="number">-300</span>;</span><br><span class="line">  scene.add(octoObj);</span><br></pre></td></tr></table></figure>
+<h3 id="正20面体"><a href="#正20面体" class="headerlink" title="正20面体"></a>正20面体</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正二十面体</span></span><br><span class="line">  <span class="keyword">const</span> icos = <span class="keyword">new</span> THREE.IcosahedronGeometry(<span class="number">150</span>);</span><br><span class="line">  <span class="keyword">const</span> icosObj= <span class="keyword">new</span> THREE.Mesh(icos, material(<span class="number">0xff3333</span>));</span><br><span class="line">  icosObj.<span class="built_in">position</span>.y = <span class="number">-300</span>;</span><br><span class="line">  icosObj.<span class="built_in">position</span>.x = <span class="number">0</span>;</span><br><span class="line">  scene.add(icosObj);</span><br></pre></td></tr></table></figure>
 <h3 id="甜甜圈"><a href="#甜甜圈" class="headerlink" title="甜甜圈"></a>甜甜圈</h3><p><code>THREE.TorusGeometry(150, 50, 10, 20)</code><br>第一个甜甜圈整个半径，第二个参数:管道半径，后面分别对应两者的半径。需要把两个半径调大，甜甜圈看着就光滑了。  </p>
 <h3 id="打结版的甜甜圈"><a href="#打结版的甜甜圈" class="headerlink" title="打结版的甜甜圈"></a>打结版的甜甜圈</h3><p><code>THREE.TorusKnotGeometry(radius, tube, radialSegments, tubularSegments, p, q, heightScale)</code><br>p和q是控制其样式的参数，一般可以缺省， heightScale: z轴上的缩放。  </p>
-<h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><h4 id="boxHelper"><a href="#boxHelper" class="headerlink" title="boxHelper"></a>boxHelper</h4><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> <span class="built_in">mesh</span> = <span class="built_in">new</span> THREE.Mesh(geom,material);</div><div class="line"><span class="built_in">scene</span>.add(<span class="built_in">mesh</span>);</div><div class="line"><span class="built_in">border</span> = <span class="built_in">new</span> THREE.BoxHelper( <span class="built_in">mesh</span>,<span class="number">0x0dc3b4</span> );//设置边框，这个边框不会旋转</div><div class="line"><span class="built_in">scene</span>.add( <span class="built_in">border</span> );</div></pre></td></tr></table></figure>
+<h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><h4 id="boxHelper"><a href="#boxHelper" class="headerlink" title="boxHelper"></a>boxHelper</h4><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> <span class="built_in">mesh</span> = <span class="built_in">new</span> THREE.Mesh(geom,material);</span><br><span class="line"><span class="built_in">scene</span>.add(<span class="built_in">mesh</span>);</span><br><span class="line"><span class="built_in">border</span> = <span class="built_in">new</span> THREE.BoxHelper( <span class="built_in">mesh</span>,<span class="number">0x0dc3b4</span> );//设置边框，这个边框不会旋转</span><br><span class="line"><span class="built_in">scene</span>.add( <span class="built_in">border</span> );</span><br></pre></td></tr></table></figure>
 <p>边框不跟随物体旋转</p>
 <h4 id="edgesHelper"><a href="#edgesHelper" class="headerlink" title="edgesHelper"></a>edgesHelper</h4><p>边框跟随</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> <span class="built_in">mesh</span> = <span class="built_in">new</span> THREE.Mesh(geom,material);</div><div class="line"><span class="built_in">scene</span>.add(<span class="built_in">mesh</span>);</div><div class="line"><span class="built_in">border</span> = <span class="built_in">new</span> THREE.edgesHelper( <span class="built_in">mesh</span>,<span class="number">0x0dc3b4</span> );//设置边框，这个边框不会旋转</div><div class="line"><span class="built_in">scene</span>.add( <span class="built_in">border</span> );</div></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> <span class="built_in">mesh</span> = <span class="built_in">new</span> THREE.Mesh(geom,material);</span><br><span class="line"><span class="built_in">scene</span>.add(<span class="built_in">mesh</span>);</span><br><span class="line"><span class="built_in">border</span> = <span class="built_in">new</span> THREE.edgesHelper( <span class="built_in">mesh</span>,<span class="number">0x0dc3b4</span> );//设置边框，这个边框不会旋转</span><br><span class="line"><span class="built_in">scene</span>.add( <span class="built_in">border</span> );</span><br></pre></td></tr></table></figure>
 <p>各种形状的展示：<br><img src="pic1.png"><br>代码参考：  <a href="https://github.com/MissSweety/threejs/blob/master/js/geometry.js" target="_blank" rel="external">https://github.com/MissSweety/threejs/blob/master/js/geometry.js</a>  </p>
 <h2 id="外部模型-3ds-max"><a href="#外部模型-3ds-max" class="headerlink" title="外部模型[3ds max]"></a>外部模型[3ds max]</h2><p><a href="https://read.douban.com/reader/ebook/7412854/" target="_blank" rel="external">参考文献-几何形状</a><br><a href="https://www.august.com.au/blog/animating-scenes-with-webgl-three-js/" target="_blank" rel="external">形状实战</a><br><a href="http://learningthreejs.com/" target="_blank" rel="external">视频教程</a></p>
 
@@ -212,7 +217,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-11-15T06:00:04.000Z" itemprop="dateUpdated">2017-11-15 14:00:04</time>
+    最后更新时间：<time datetime="2017-11-15T06:00:04.000Z" itemprop="dateUpdated">2017-11-15 14:00:04</time>
 </span><br>
 
 
@@ -291,18 +296,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/11/06/WebGL学习系列-threejs-光源/" id="post-prev" class="post-nav-link">
+      <a href="/2017/11/17/post-message/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">WebGL学习系列-threejs-光源</h4>
+        <h4 class="title">post-message</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/11/17/post-message/" id="post-next" class="post-nav-link">
+      <a href="/2017/11/06/WebGL学习系列-threejs-光源/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">post-message</h4>
+        <h4 class="title">WebGL学习系列-threejs-光源</h4>
       </a>
     </div>
   
@@ -339,11 +344,11 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Jessica &copy; 2015 - 2018</span>
+        <p><span>Jessica &copy; 2015 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

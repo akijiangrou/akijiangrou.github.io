@@ -20,19 +20,57 @@
     
     
     <meta name="keywords" content="d3,line,可视化">
-    <meta name="description" content="d3-折线图从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识 需要的知识 scale extent transition line curve axis  步骤 获取svg容器 &amp;lt;svg width=&amp;quot;500&amp;quot; height=&amp;quot;270&amp;quot; class=&amp;quot;testline&amp;quot;&amp;gt;&amp;lt;/svg&amp;gt;  const">
-<meta name="keywords" content="d3,line,可视化">
+    <meta name="description" content="d3-折线图从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识
+需要的知识
+scale
+extent
+transition
+line
+curve
+axis
+
+步骤
+获取svg容器
+&amp;lt;svg width=&amp;quot;500&amp;quot; height=&amp;quot;270&amp;quot; class=&amp;quot;testline&amp;quot;&amp;gt;&amp;lt;/svg&amp;gt;
+
+const">
 <meta property="og:type" content="article">
 <meta property="og:title" content="d3-basic-line">
 <meta property="og:url" content="https://misssweety.github.io/2017/06/29/d3-basic-line/index.html">
 <meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="d3-折线图从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识 需要的知识 scale extent transition line curve axis  步骤 获取svg容器 &amp;lt;svg width=&amp;quot;500&amp;quot; height=&amp;quot;270&amp;quot; class=&amp;quot;testline&amp;quot;&amp;gt;&amp;lt;/svg&amp;gt;  const">
-<meta property="og:image" content="https://misssweety.github.io/2017/06/29/d3-basic-line/line.png">
+<meta property="og:description" content="d3-折线图从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识
+需要的知识
+scale
+extent
+transition
+line
+curve
+axis
+
+步骤
+获取svg容器
+&amp;lt;svg width=&amp;quot;500&amp;quot; height=&amp;quot;270&amp;quot; class=&amp;quot;testline&amp;quot;&amp;gt;&amp;lt;/svg&amp;gt;
+
+const">
+<meta property="og:image" content="https://misssweety.github.io/./line.png">
 <meta property="og:updated_time" content="2017-06-29T04:27:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="d3-basic-line">
-<meta name="twitter:description" content="d3-折线图从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识 需要的知识 scale extent transition line curve axis  步骤 获取svg容器 &amp;lt;svg width=&amp;quot;500&amp;quot; height=&amp;quot;270&amp;quot; class=&amp;quot;testline&amp;quot;&amp;gt;&amp;lt;/svg&amp;gt;  const">
-<meta name="twitter:image" content="https://misssweety.github.io/2017/06/29/d3-basic-line/line.png">
+<meta name="twitter:description" content="d3-折线图从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识
+需要的知识
+scale
+extent
+transition
+line
+curve
+axis
+
+步骤
+获取svg容器
+&amp;lt;svg width=&amp;quot;500&amp;quot; height=&amp;quot;270&amp;quot; class=&amp;quot;testline&amp;quot;&amp;gt;&amp;lt;/svg&amp;gt;
+
+const">
+<meta name="twitter:image" content="https://misssweety.github.io/./line.png">
     
         <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
     
@@ -126,7 +164,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -260,7 +298,7 @@ g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-06-29T04:27:31.000Z" itemprop="dateUpdated">2017-06-29 12:27:31</time>
+    最后更新时间：<time datetime="2017-06-29T04:27:31.000Z" itemprop="dateUpdated">2017-06-29 12:27:31</time>
 </span><br>
 
 
@@ -339,18 +377,18 @@ g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/06/02/git实用指令/" id="post-prev" class="post-nav-link">
+      <a href="/2017/09/12/React生命周期/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">git实用指令</h4>
+        <h4 class="title">React生命周期</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/09/12/React生命周期/" id="post-next" class="post-nav-link">
+      <a href="/2017/06/02/git实用指令/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">React生命周期</h4>
+        <h4 class="title">git实用指令</h4>
       </a>
     </div>
   
@@ -387,11 +425,11 @@ g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Jessica &copy; 2015 - 2018</span>
+        <p><span>Jessica &copy; 2015 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

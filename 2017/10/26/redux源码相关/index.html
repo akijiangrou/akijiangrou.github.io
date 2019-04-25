@@ -20,17 +20,31 @@
     
     
     <meta name="keywords" content="js,redux,源码">
-    <meta name="description" content="redux源码阅读redux源码很少，重点在思想。   createStore function createStore(reducer, preloadedState, enhancer)  reducer是唯一必传的参数，它很重要，因为它决定了整个state。preloadedState就是state的初始值。第三个参数不是特别常用，它是个函数，如果它存在的情况下，会执行下面的语句： enha">
-<meta name="keywords" content="js,redux,源码">
+    <meta name="description" content="redux源码阅读redux源码很少，重点在思想。  
+createStore
+function createStore(reducer, preloadedState, enhancer)
+
+reducer是唯一必传的参数，它很重要，因为它决定了整个state。preloadedState就是state的初始值。第三个参数不是特别常用，它是个函数，如果它存在的情况下，会执行下面的语句：
+enha">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redux源码相关">
 <meta property="og:url" content="https://misssweety.github.io/2017/10/26/redux源码相关/index.html">
 <meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="redux源码阅读redux源码很少，重点在思想。   createStore function createStore(reducer, preloadedState, enhancer)  reducer是唯一必传的参数，它很重要，因为它决定了整个state。preloadedState就是state的初始值。第三个参数不是特别常用，它是个函数，如果它存在的情况下，会执行下面的语句： enha">
+<meta property="og:description" content="redux源码阅读redux源码很少，重点在思想。  
+createStore
+function createStore(reducer, preloadedState, enhancer)
+
+reducer是唯一必传的参数，它很重要，因为它决定了整个state。preloadedState就是state的初始值。第三个参数不是特别常用，它是个函数，如果它存在的情况下，会执行下面的语句：
+enha">
 <meta property="og:updated_time" content="2017-10-27T09:38:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redux源码相关">
-<meta name="twitter:description" content="redux源码阅读redux源码很少，重点在思想。   createStore function createStore(reducer, preloadedState, enhancer)  reducer是唯一必传的参数，它很重要，因为它决定了整个state。preloadedState就是state的初始值。第三个参数不是特别常用，它是个函数，如果它存在的情况下，会执行下面的语句： enha">
+<meta name="twitter:description" content="redux源码阅读redux源码很少，重点在思想。  
+createStore
+function createStore(reducer, preloadedState, enhancer)
+
+reducer是唯一必传的参数，它很重要，因为它决定了整个state。preloadedState就是state的初始值。第三个参数不是特别常用，它是个函数，如果它存在的情况下，会执行下面的语句：
+enha">
     
         <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
     
@@ -124,7 +138,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -190,13 +204,13 @@
 <p><code>enhancer(createStore)(reducer, preloadedState)</code></p>
 <p>enhancer 增强createStore。</p>
 <p>createStore内部维护：  </p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> currentReducer = reducer</div><div class="line"><span class="selector-tag">var</span> currentState = preloadedState</div></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> currentReducer = reducer</span><br><span class="line"><span class="selector-tag">var</span> currentState = preloadedState</span><br></pre></td></tr></table></figure>
 <h3 id="function-subscribe-listener"><a href="#function-subscribe-listener" class="headerlink" title="function subscribe(listener)"></a>function subscribe(listener)</h3><p>在createStore内部维护了两个数组currentListeners、nextListeners。nextListeners的存在是为了避免在listeners执行过程中，listeners发生改变，导致错误。listeners的添加或删除都是对nextListeners进行操作的。nextListeners 初始等于 currentListeners = [];</p>
 <p>每次subscribe 都会判定下nextListeners === currentListeners是否相等。</p>
 <p>每次执行substribe 都会返回function unsubscribe()，取消监听。  </p>
 <h3 id="function-dispatch-action"><a href="#function-dispatch-action" class="headerlink" title="function dispatch(action)"></a>function dispatch(action)</h3><p>currentState = currentReducer(currentState, action)</p>
 <p>有dispatch，就一定执行currentReducer。<br>以及</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var listeners = currentListeners = nextListeners</div><div class="line"><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; listeners.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</div><div class="line">  listeners[i]()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> action</div></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var listeners = currentListeners = nextListeners</span><br><span class="line"><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; listeners.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</span><br><span class="line">  listeners[i]()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> action</span><br></pre></td></tr></table></figure>
 <p>调用subscribe传进来的listeners，按顺序执行它们，没有任何条件判断，也就是说只要执行dispatch，所有的listeners都会执行，不管state有没有发生改变，而且listeners执行的时候是没参数的。</p>
 <p>而且，在创建store的时候，会  </p>
 <h3 id="function-getState"><a href="#function-getState" class="headerlink" title="function getState()"></a>function getState()</h3><p>return currentState</p>
@@ -210,16 +224,16 @@
 <p>如果是对象，则对每一个key，进行上面的转化，最后返回一个函数集合的对象。</p>
 <h2 id="combineReducers"><a href="#combineReducers" class="headerlink" title="combineReducers"></a>combineReducers</h2><p><code>function combineReducers(reducers)</code></p>
 <p>它接收的参数reducers是个对象，对象的value不能是undefined，必须是function。符合这个标准的reducer会被放入finalReducers中。<br>然后再对finalReducers进行校验，reducer必须有default处理，不能处理Redux内部的action type，比如@@redux/INIT。然后返回一个函数combination(state = {}, action)，它也是一个reducer，可以被再次和其他reducer combine。一般combination等同于currentReducer，它的返回结果会赋给state，combination的关键代码如下：</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> hasChanged = <span class="literal">false</span></div><div class="line">    <span class="built_in">var</span> nextState = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> (<span class="built_in">var</span> i = <span class="number">0</span>; i &lt; finalReducerKeys.<span class="built_in">length</span>; i++) &#123;</div><div class="line">      <span class="built_in">var</span> <span class="built_in">key</span> = finalReducerKeys[i]</div><div class="line">      <span class="built_in">var</span> reducer = finalReducers[<span class="built_in">key</span>]</div><div class="line">      <span class="built_in">var</span> previousStateForKey = state[<span class="built_in">key</span>]</div><div class="line">      <span class="built_in">var</span> nextStateForKey = reducer(previousStateForKey, action)</div><div class="line">      <span class="keyword">if</span> (typeof nextStateForKey === 'undefined') &#123;</div><div class="line">        <span class="built_in">var</span> errorMessage = getUndefinedStateErrorMessage(<span class="built_in">key</span>, action)</div><div class="line">        <span class="built_in">throw</span> <span class="built_in">new</span> Error(errorMessage)</div><div class="line">      &#125;</div><div class="line">      nextState[<span class="built_in">key</span>] = nextStateForKey</div><div class="line">      hasChanged = hasChanged || nextStateForKey !== previousStateForKey</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> hasChanged ? nextState : state</div></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> hasChanged = <span class="literal">false</span></span><br><span class="line">    <span class="built_in">var</span> nextState = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">var</span> i = <span class="number">0</span>; i &lt; finalReducerKeys.<span class="built_in">length</span>; i++) &#123;</span><br><span class="line">      <span class="built_in">var</span> <span class="built_in">key</span> = finalReducerKeys[i]</span><br><span class="line">      <span class="built_in">var</span> reducer = finalReducers[<span class="built_in">key</span>]</span><br><span class="line">      <span class="built_in">var</span> previousStateForKey = state[<span class="built_in">key</span>]</span><br><span class="line">      <span class="built_in">var</span> nextStateForKey = reducer(previousStateForKey, action)</span><br><span class="line">      <span class="keyword">if</span> (typeof nextStateForKey === 'undefined') &#123;</span><br><span class="line">        <span class="built_in">var</span> errorMessage = getUndefinedStateErrorMessage(<span class="built_in">key</span>, action)</span><br><span class="line">        <span class="built_in">throw</span> <span class="built_in">new</span> Error(errorMessage)</span><br><span class="line">      &#125;</span><br><span class="line">      nextState[<span class="built_in">key</span>] = nextStateForKey</span><br><span class="line">      hasChanged = hasChanged || nextStateForKey !== previousStateForKey</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> hasChanged ? nextState : state</span><br></pre></td></tr></table></figure>
 <p>reducer从state中拿到对应的state，然后把返回的数据组装到state的对应位置(nextState[key] = nextStateForKey)</p>
-<h2 id="applyMiddleware"><a href="#applyMiddleware" class="headerlink" title="applyMiddleware"></a>applyMiddleware</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">export <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">applyMiddleware</span><span class="params">(<span class="rest_arg">...middlewares</span>)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> (createStore) =&gt; (reducer, preloadedState, enhancer) =&gt; &#123;</div><div class="line">    <span class="keyword">var</span> store = createStore(reducer, preloadedState, enhancer)</div><div class="line">    <span class="keyword">var</span> dispatch = store.dispatch</div><div class="line">    <span class="keyword">var</span> chain = []</div><div class="line"></div><div class="line">    <span class="keyword">var</span> middlewareAPI = &#123;</div><div class="line">      getState: store.getState,</div><div class="line">      dispatch: (action) =&gt; dispatch(action)</div><div class="line">    &#125;</div><div class="line">    chain = middlewares.map(middleware =&gt; middleware(middlewareAPI))</div><div class="line">    dispatch = compose(...chain)(store.dispatch)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      ...store,</div><div class="line">      dispatch</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="applyMiddleware"><a href="#applyMiddleware" class="headerlink" title="applyMiddleware"></a>applyMiddleware</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">export <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">applyMiddleware</span><span class="params">(<span class="rest_arg">...middlewares</span>)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (createStore) =&gt; (reducer, preloadedState, enhancer) =&gt; &#123;</span><br><span class="line">    <span class="keyword">var</span> store = createStore(reducer, preloadedState, enhancer)</span><br><span class="line">    <span class="keyword">var</span> dispatch = store.dispatch</span><br><span class="line">    <span class="keyword">var</span> chain = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> middlewareAPI = &#123;</span><br><span class="line">      getState: store.getState,</span><br><span class="line">      dispatch: (action) =&gt; dispatch(action)</span><br><span class="line">    &#125;</span><br><span class="line">    chain = middlewares.map(middleware =&gt; middleware(middlewareAPI))</span><br><span class="line">    dispatch = compose(...chain)(store.dispatch)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      ...store,</span><br><span class="line">      dispatch</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>applyMiddleWARE, 返回的其实是createStore，来增强dispatch。常用的thunkMiddleware，强化dispatch，可以传递函数，不一定是object。</p>
 <p>一般使用的时候，是如下调用的，以thunkmiddleware为例：</p>
 <p>thunkMiddleware 如下： </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 返回以 dispatch 和 getState 作为参数的action</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">thunkMiddleware</span>(<span class="params">&#123; dispatch, getState &#125;</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="params">next</span> =&gt;</span> action =&gt; &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</div><div class="line">      <span class="keyword">return</span> action(dispatch, getState);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> next(action);</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// usage</span></div><div class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware&#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</div><div class="line"><span class="keyword">import</span> thunkMiddleware <span class="keyword">from</span> <span class="string">'redux-thunk'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> store = createStore(</div><div class="line">      reducers,</div><div class="line">      state,</div><div class="line">      applyMiddleware(thunkMiddleware)</div><div class="line">);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回以 dispatch 和 getState 作为参数的action</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">thunkMiddleware</span>(<span class="params">&#123; dispatch, getState &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">next</span> =&gt;</span> action =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> action(dispatch, getState);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next(action);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// usage</span></span><br><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware&#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">import</span> thunkMiddleware <span class="keyword">from</span> <span class="string">'redux-thunk'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(</span><br><span class="line">      reducers,</span><br><span class="line">      state,</span><br><span class="line">      applyMiddleware(thunkMiddleware)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p>相当于有了enhancer，<br>上面store 会按如下执行：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// createStore.js</span></div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> enhancer !== <span class="string">'undefined'</span>) &#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> enhancer !== <span class="string">'function'</span>) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Expected the enhancer to be a function.'</span>)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> enhancer(createStore)(reducer, initialState)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// createStore.js</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> enhancer !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> enhancer !== <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Expected the enhancer to be a function.'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> enhancer(createStore)(reducer, initialState)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  ||<br>\/</p>
 <p><code>applyMiddleware(thunkMiddleware)(createStore)(reducer, initialState)</code></p>
 <p>||<br>\/</p>
@@ -238,7 +252,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-27T09:38:28.000Z" itemprop="dateUpdated">2017-10-27 17:38:28</time>
+    最后更新时间：<time datetime="2017-10-27T09:38:28.000Z" itemprop="dateUpdated">2017-10-27 17:38:28</time>
 </span><br>
 
 
@@ -317,18 +331,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/10/25/child-process/" id="post-prev" class="post-nav-link">
+      <a href="/2017/11/01/WebGL学习系列-基础篇/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">child_process</h4>
+        <h4 class="title">WebGL学习系列-基础篇</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2017/11/01/WebGL学习系列-基础篇/" id="post-next" class="post-nav-link">
+      <a href="/2017/10/25/child-process/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">WebGL学习系列-基础篇</h4>
+        <h4 class="title">child_process</h4>
       </a>
     </div>
   
@@ -365,11 +379,11 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
-        <p><span>Jessica &copy; 2015 - 2018</span>
+        <p><span>Jessica &copy; 2015 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
