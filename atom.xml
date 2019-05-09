@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://misssweety.github.io/"/>
-  <updated>2018-10-12T03:51:46.000Z</updated>
+  <updated>2019-05-09T12:59:34.000Z</updated>
   <id>https://misssweety.github.io/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React滚动吸顶最佳实践</title>
+    <link href="https://misssweety.github.io/2019/04/25/React%E6%BB%9A%E5%8A%A8%E5%90%B8%E9%A1%B6%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
+    <id>https://misssweety.github.io/2019/04/25/React滚动吸顶最佳实践/</id>
+    <published>2019-04-25T03:43:04.000Z</published>
+    <updated>2019-05-09T12:59:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>普通的模块吸顶实现思路，就是clone一个滚动的元素，当元素快要滚出视口的时候，将clone的元素fix到顶部或者某个位置。<br>那么对于react组件，就可以使用两个同样组件，也是监听滚动事件，控制第二个组件的显示与否。例子如下</p>
+<p>### </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;普通的模块吸顶实现思路，就是clone一个滚动的元素，当元素快要滚出视口的时候，将clone的元素fix到顶部或者某个位置。&lt;br&gt;那么对于
+    
+    </summary>
+    
+    
+      <category term="React 滚动吸顶" scheme="https://misssweety.github.io/tags/React-%E6%BB%9A%E5%8A%A8%E5%90%B8%E9%A1%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>经典欧洲行</title>
@@ -572,15 +594,15 @@
     <link href="https://misssweety.github.io/2017/11/17/post-message/"/>
     <id>https://misssweety.github.io/2017/11/17/post-message/</id>
     <published>2017-11-17T07:10:44.000Z</published>
-    <updated>2017-11-17T07:27:48.000Z</updated>
+    <updated>2019-05-09T13:00:42.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="用postmessage-进行iframe与parent的交流。"><a href="#用postmessage-进行iframe与parent的交流。" class="headerlink" title="用postmessage 进行iframe与parent的交流。"></a>用postmessage 进行iframe与parent的交流。</h2><p>需求描述：<br>父页面包含iframe  </p>
-  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">html</span> http:<span class="comment">//shu.sankuai.com&gt;</span></span><br><span class="line">  &lt;<span class="selector-tag">iframe</span> http:<span class="comment">//tag.sankuai.com&gt;</span></span><br><span class="line">  sjdkfjaksjfakfjs</span><br><span class="line">  &lt;/iframe&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>在<a href="http://tag.sankuai.com中有个button，点击后让父页面也就是shu.sankuai.com进行一些操作。那么怎么写呢？" target="_blank" rel="external">http://tag.sankuai.com中有个button，点击后让父页面也就是shu.sankuai.com进行一些操作。那么怎么写呢？</a>  </p>
-<p>首先在shu.sankuai.com 重要监听message事件，如下：  </p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"message"</span>, handleIframe);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> handleIframe = <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">data</span>:&#123; pathStr &#125;&#125; = event;</span><br><span class="line"><span class="comment">// 发送message的源</span></span><br><span class="line">  <span class="keyword">const</span> origin = event.origin || event.originalEvent.origin;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="built_in">window</span>.top.location.origin;</span><br><span class="line"><span class="comment">// 防止监听多个源头的message</span></span><br><span class="line">  <span class="keyword">if</span> (test(<span class="regexp">/tag.sankuai.com/</span>, origin) &amp;&amp; pathStr) &#123;</span><br><span class="line">    <span class="built_in">window</span>.alert(pathStr);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>在tag.sankuai.com 中，点击button，触发click事件  </p>
-  <figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">handleClick() &#123;</span><br><span class="line">  <span class="attribute">const msg = &#123; pathStr</span>: '/shop/page/tagSetting?dim=poi&amp;tab=1' &#125;;</span><br><span class="line">  <span class="attribute">window.top.postMessage(msg, ’http</span>://shu<span class="variable">.sankuai</span><span class="variable">.com</span>');</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">html</span> http:<span class="comment">//a.b.com&gt;</span></span><br><span class="line">  &lt;<span class="selector-tag">iframe</span> http:<span class="comment">//c.b.com&gt;</span></span><br><span class="line">  sjdkfjaksjfakfjs</span><br><span class="line">  &lt;/iframe&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>在<a href="http://c.b.com中有个button，点击后让父页面也就是a.b.com进行一些操作。那么怎么写呢？" target="_blank" rel="external">http://c.b.com中有个button，点击后让父页面也就是a.b.com进行一些操作。那么怎么写呢？</a>  </p>
+<p>首先在a.b.com 重要监听message事件，如下：  </p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"message"</span>, handleIframe);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> handleIframe = <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">data</span>:&#123; pathStr &#125;&#125; = event;</span><br><span class="line"><span class="comment">// 发送message的源</span></span><br><span class="line">  <span class="keyword">const</span> origin = event.origin || event.originalEvent.origin;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="built_in">window</span>.top.location.origin;</span><br><span class="line"><span class="comment">// 防止监听多个源头的message</span></span><br><span class="line">  <span class="keyword">if</span> (test(<span class="regexp">/c.b.com/</span>, origin) &amp;&amp; pathStr) &#123;</span><br><span class="line">    <span class="built_in">window</span>.alert(pathStr);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在c.b.com 中，点击button，触发click事件  </p>
+  <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">handleClick() &#123;</span><br><span class="line">  <span class="keyword">const</span> msg = &#123; pathStr: <span class="string">'/shop/page/tagSetting?dim=poi&amp;tab=1'</span> &#125;;</span><br><span class="line">  <span class="built_in">window</span>.top.postMessage(msg, ’http:<span class="comment">//a.b.com');</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意postMessage的<code>发送方，必须是发送目的地的window对象</code>，第一个参数是data信息，第二个参数是接收这个message的url。  </p>
 <p>也就是说，我虽然在iframe中控制parent，但是实现时，是<strong>期望收到信息的window</strong>发出的message事件，这样该window才能监听到这个message。这样就好理解了。  </p>
 <p><a href="http://blog.csdn.net/monkindey/article/details/23659387" target="_blank" rel="external">参考</a>  </p>
