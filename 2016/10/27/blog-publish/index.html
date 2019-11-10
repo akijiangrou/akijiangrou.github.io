@@ -20,18 +20,18 @@
     
     
     <meta name="keywords" content="hexo">
-    <meta name="description" content="适用于macOS ###1.需要安装git，npm，node升级本地npm npm install npm@latest -g 如果有权限问题，前面加上sudo就可以了 ###2.安装hexo sudo npm install -g hexo 全局安装了 ###3.hexo管理一个网站 hexo init blog 名字随自己喜欢，这里起的事blog ###4.进入该文件，进行管理 cd blog">
+    <meta name="description" content="适用于macOS 1.需要安装git，npm，node升级本地npm npm install npm@latest -g 如果有权限问题，前面加上sudo就可以了 2.安装hexosudo npm install -g hexo 全局安装了 3.hexo管理一个网站hexo init blog 名字随自己喜欢，这里起的事blog 4.进入该文件，进行管理cd blog hexo server //">
 <meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="博客搭建">
 <meta property="og:url" content="https://akijiangrou.github.io/2016/10/27/blog-publish/index.html">
 <meta property="og:site_name" content="Aki酱肉&#39;s Blog">
-<meta property="og:description" content="适用于macOS ###1.需要安装git，npm，node升级本地npm npm install npm@latest -g 如果有权限问题，前面加上sudo就可以了 ###2.安装hexo sudo npm install -g hexo 全局安装了 ###3.hexo管理一个网站 hexo init blog 名字随自己喜欢，这里起的事blog ###4.进入该文件，进行管理 cd blog">
+<meta property="og:description" content="适用于macOS 1.需要安装git，npm，node升级本地npm npm install npm@latest -g 如果有权限问题，前面加上sudo就可以了 2.安装hexosudo npm install -g hexo 全局安装了 3.hexo管理一个网站hexo init blog 名字随自己喜欢，这里起的事blog 4.进入该文件，进行管理cd blog hexo server //">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-10T11:30:55.794Z">
+<meta property="og:updated_time" content="2019-11-10T12:36:42.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客搭建">
-<meta name="twitter:description" content="适用于macOS ###1.需要安装git，npm，node升级本地npm npm install npm@latest -g 如果有权限问题，前面加上sudo就可以了 ###2.安装hexo sudo npm install -g hexo 全局安装了 ###3.hexo管理一个网站 hexo init blog 名字随自己喜欢，这里起的事blog ###4.进入该文件，进行管理 cd blog">
+<meta name="twitter:description" content="适用于macOS 1.需要安装git，npm，node升级本地npm npm install npm@latest -g 如果有权限问题，前面加上sudo就可以了 2.安装hexosudo npm install -g hexo 全局安装了 3.hexo管理一个网站hexo init blog 名字随自己喜欢，这里起的事blog 4.进入该文件，进行管理cd blog hexo server //">
     
         <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
@@ -161,6 +161,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-需要安装git，npm，node"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.需要安装git，npm，node</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-安装hexo"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.安装hexo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-hexo管理一个网站"><span class="post-toc-number">3.</span> <span class="post-toc-text">3.hexo管理一个网站</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-进入该文件，进行管理"><span class="post-toc-number">4.</span> <span class="post-toc-text">4.进入该文件，进行管理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-部署到github上"><span class="post-toc-number">5.</span> <span class="post-toc-text">5.部署到github上</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#git上建立仓库"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">git上建立仓库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改hexo配置文件"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">修改hexo配置文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装hexo-deployer-git"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">安装hexo deployer git</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hexo-deploy"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">hexo deploy</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#大功告成"><span class="post-toc-number">6.</span> <span class="post-toc-text">大功告成!!!</span></a></li></ol>
+        </nav>
+    </aside>
+    
 <article id="post-blog-publish"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -177,44 +184,41 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>适用于macOS</p>
-<p>###1.需要安装git，npm，node<br>升级本地npm</p>
+<h3 id="1-需要安装git，npm，node"><a href="#1-需要安装git，npm，node" class="headerlink" title="1.需要安装git，npm，node"></a>1.需要安装git，npm，node</h3><p>升级本地npm</p>
 <pre><code>npm install npm@latest -g
 如果有权限问题，前面加上sudo就可以了
-</code></pre><p>###2.安装hexo</p>
-<pre><code>sudo npm install -g hexo
+</code></pre><h3 id="2-安装hexo"><a href="#2-安装hexo" class="headerlink" title="2.安装hexo"></a>2.安装hexo</h3><pre><code>sudo npm install -g hexo
 全局安装了
-</code></pre><p>###3.hexo管理一个网站</p>
-<pre><code>hexo init blog
+</code></pre><h3 id="3-hexo管理一个网站"><a href="#3-hexo管理一个网站" class="headerlink" title="3.hexo管理一个网站"></a>3.hexo管理一个网站</h3><pre><code>hexo init blog
 名字随自己喜欢，这里起的事blog
-</code></pre><p>###4.进入该文件，进行管理</p>
-<pre><code>cd blog
+</code></pre><h3 id="4-进入该文件，进行管理"><a href="#4-进入该文件，进行管理" class="headerlink" title="4.进入该文件，进行管理"></a>4.进入该文件，进行管理</h3><pre><code>cd blog
 hexo server //启动你的本地网站，访问localhost:4000，就可以看到雏形了
 hexo new &quot;hello world&quot; //生成一个hello world.md文件，新新文章，添加到网站中
-</code></pre><p>###5.部署到github上</p>
-<p>####git上建立仓库<br>先在自己的库里创建一个新的repo,作为网站的远端库，一般命名为自己的账号名，例如：</p>
+</code></pre><h3 id="5-部署到github上"><a href="#5-部署到github上" class="headerlink" title="5.部署到github上"></a>5.部署到github上</h3><h4 id="git上建立仓库"><a href="#git上建立仓库" class="headerlink" title="git上建立仓库"></a>git上建立仓库</h4><p>先在自己的库里创建一个新的repo,作为网站的远端库，一般命名为自己的账号名，例如：</p>
 <p>  我的账号<font color="purple"><code>missSweety</code></font>，新建的repo为<font color="purple"><code>Akijiangrou.github.io</code></font></p>
-<p>####修改hexo配置文件<br>回到hexo中，为了部署到github上，我们需要修改<font color="purple"><code>_config.yml</code></font>文件如下：</p>
+<h4 id="修改hexo配置文件"><a href="#修改hexo配置文件" class="headerlink" title="修改hexo配置文件"></a>修改hexo配置文件</h4><p>回到hexo中，为了部署到github上，我们需要修改<font color="purple"><code>_config.yml</code></font>文件如下：</p>
 <pre><code>deploy:
   type: git
   repository: https://github.com/MissSweety/Akijiangrou.github.io.git
   branch: master
-</code></pre><p>####安装hexo deployer git<br>    npm install hexo-deployer-git –save<br>如果不安装这个，deploy的时候会报错的</p>
-<p>####hexo deploy<br>    hexo deploy<br>如果没配过ssh，还是会报错的<br>解决方法：</p>
+</code></pre><h4 id="安装hexo-deployer-git"><a href="#安装hexo-deployer-git" class="headerlink" title="安装hexo deployer git"></a>安装hexo deployer git</h4><pre><code>npm install hexo-deployer-git --save
+</code></pre><p>如果不安装这个，deploy的时候会报错的</p>
+<h4 id="hexo-deploy"><a href="#hexo-deploy" class="headerlink" title="hexo deploy"></a>hexo deploy</h4><pre><code>hexo deploy
+</code></pre><p>如果没配过ssh，还是会报错的<br>解决方法：</p>
 <pre><code>ssh-keygen -t rsa -b 4096 -C ‘email’
 </code></pre><p>按照提示，输入账号，密码，就会生成文件了<br>回到github网站，在setting中把公钥放进去  </p>
 <pre><code>ssh -T git@github.com
 </code></pre><p>用该指令可以查看是否已经鉴权了</p>
 <font color="lightblue">如果以上都好了，这次在用hexo deploy,就会自动push代码，并发布了，可以查看你的网站了</font>
 
-<p>###大功告成!!!</p>
-
+<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成!!!"></a>大功告成!!!</h3>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-11-10T11:30:55.794Z" itemprop="dateUpdated">2019-11-10 19:30:55</time>
+    Last updated: <time datetime="2019-11-10T12:36:42.796Z" itemprop="dateUpdated">2019-11-10 20:36:42</time>
 </span><br>
 
 

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>vue-cli3之部分配置 | Aki酱肉&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="vuewebpack,vue-cli3,config">
+    <meta name="description" content="最近开始弄vue了，通过vue-cli3 我们可以快速生成使用 vue的单页应用。但是vue-cli3将babel，webpack等配置信息都封装起来了，很多配置不知道怎么改了。 下面写一些有用的配置。  vue.config.js  123456789101112131415161718192021222324252627282930313233343536373839404142434445">
+<meta name="keywords" content="vuewebpack,vue-cli3,config">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-cli3之部分配置">
+<meta property="og:url" content="https://akijiangrou.github.io/2019/11/10/vue-cli3之部分配置/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="最近开始弄vue了，通过vue-cli3 我们可以快速生成使用 vue的单页应用。但是vue-cli3将babel，webpack等配置信息都封装起来了，很多配置不知道怎么改了。 下面写一些有用的配置。  vue.config.js  123456789101112131415161718192021222324252627282930313233343536373839404142434445">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-10T14:24:43.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue-cli3之部分配置">
+<meta name="twitter:description" content="最近开始弄vue了，通过vue-cli3 我们可以快速生成使用 vue的单页应用。但是vue-cli3将babel，webpack等配置信息都封装起来了，很多配置不知道怎么改了。 下面写一些有用的配置。  vue.config.js  123456789101112131415161718192021222324252627282930313233343536373839404142434445">
+    
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:chunxiao5316@126.com" title="chunxiao5316@126.com" class="mail">chunxiao5316@126.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="https://akijiangrou.github.io/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">vue-cli3之部分配置</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">vue-cli3之部分配置</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-11-10T12:29:07.000Z" itemprop="datePublished" class="page-time">
+  2019-11-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vue-config-js"><span class="post-toc-number">1.</span> <span class="post-toc-text">vue.config.js</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于开发环境的代理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">关于开发环境的代理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于less全局变量的配置"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">关于less全局变量的配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#生产环境去掉console-log"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">生产环境去掉console.log</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#postcss-config-js"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">postcss.config.js</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于babel-配置。"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">关于babel 配置。</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-vue-cli3之部分配置"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vue-cli3之部分配置</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-11-10 20:29:07" datetime="2019-11-10T12:29:07.000Z"  itemprop="datePublished">2019-11-10</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>最近开始弄<code>vue</code>了，通过<code>vue-cli3</code> 我们可以快速生成使用 <code>vue</code>的单页应用。但是<code>vue-cli3</code>将<code>babel</code>，<code>webpack</code>等配置信息都封装起来了，很多配置不知道怎么改了。 下面写一些有用的配置。</p>
+</blockquote>
+<h2 id="vue-config-js"><a href="#vue-config-js" class="headerlink" title="vue.config.js"></a>vue.config.js</h2>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  publicPath: <span class="string">'./'</span>, <span class="comment">// 基本路径</span></span><br><span class="line">  outputDir: <span class="string">'dist'</span>, <span class="comment">// 输出文件目录</span></span><br><span class="line">  lintOnSave: <span class="literal">false</span>, <span class="comment">// eslint-loader 是否在保存的时候检查</span></span><br><span class="line">  <span class="comment">// see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md</span></span><br><span class="line">  <span class="comment">// webpack配置</span></span><br><span class="line">  chainWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (process.env.use_analyzer) &#123;</span><br><span class="line">      config</span><br><span class="line">        .plugin(<span class="string">"webpack-bundle-analyzer"</span>)</span><br><span class="line">        .use(<span class="built_in">require</span>(<span class="string">"webpack-bundle-analyzer"</span>).BundleAnalyzerPlugin); <span class="comment">// 加个包分析的工具，可以这样写。</span></span><br><span class="line">    &#125;</span><br><span class="line">    config.module</span><br><span class="line">      .rule(<span class="string">'vue'</span>)</span><br><span class="line">      .use(<span class="string">'vue-loader'</span>)</span><br><span class="line">      .loader(<span class="string">'vue-loader'</span>)</span><br><span class="line">      .tap(<span class="function"><span class="params">options</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 修改一些loader</span></span><br><span class="line">        <span class="keyword">return</span> options;</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  configureWebpack: <span class="function">(<span class="params">config</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</span><br><span class="line">      <span class="comment">// 为生产环境修改配置...</span></span><br><span class="line">      config.mode = <span class="string">'production'</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 为开发环境修改配置...</span></span><br><span class="line">      config.mode = <span class="string">'development'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Object</span>.assign(config, &#123;</span><br><span class="line">      <span class="comment">// 开发生产共同配置</span></span><br><span class="line">      resolve: &#123;</span><br><span class="line">        alias: &#123;</span><br><span class="line">          <span class="string">'@'</span>: path.resolve(__dirname, <span class="string">'./src'</span>),</span><br><span class="line">          <span class="string">'@c'</span>: path.resolve(__dirname, <span class="string">'./src/components'</span>),</span><br><span class="line">          <span class="string">'@p'</span>: path.resolve(__dirname, <span class="string">'./src/pages'</span>)</span><br><span class="line">        &#125; <span class="comment">// 别名配置</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  productionSourceMap: <span class="literal">false</span>, <span class="comment">// 生产环境是否生成 sourceMap 文件</span></span><br><span class="line">  <span class="comment">// css相关配置</span></span><br><span class="line">  css: &#123;</span><br><span class="line">    extract: <span class="literal">true</span>, <span class="comment">// 是否使用css分离插件 ExtractTextPlugin</span></span><br><span class="line">    sourceMap: <span class="literal">false</span>, <span class="comment">// 开启 CSS source maps?</span></span><br><span class="line">    loaderOptions: &#123;</span><br><span class="line">      css: &#123;&#125;, <span class="comment">// 这里的选项会传递给 css-loader</span></span><br><span class="line">      postcss: &#123;&#125; <span class="comment">// 这里的选项会传递给 postcss-loader</span></span><br><span class="line">    &#125;, <span class="comment">// css预设器配置项 详见https://cli.vuejs.org/zh/config/#css-loaderoptions</span></span><br><span class="line">    modules: <span class="literal">false</span> <span class="comment">// 启用 CSS modules for all css / pre-processor files.</span></span><br><span class="line">  &#125;,</span><br><span class="line">  pwa: &#123;&#125;, <span class="comment">// PWA 插件相关配置 see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa</span></span><br><span class="line">  <span class="comment">// webpack-dev-server 相关配置</span></span><br><span class="line">  devServer: &#123;</span><br><span class="line">    open: process.platform === <span class="string">'darwin'</span>,</span><br><span class="line">    host: <span class="string">'0.0.0.0'</span>, <span class="comment">// 允许外部ip访问</span></span><br><span class="line">    port: <span class="number">8022</span>, <span class="comment">// 端口</span></span><br><span class="line">    https: <span class="literal">false</span>, <span class="comment">// 启用https</span></span><br><span class="line">    overlay: &#123;</span><br><span class="line">      warnings: <span class="literal">true</span>,</span><br><span class="line">      errors: <span class="literal">true</span></span><br><span class="line">    &#125;, <span class="comment">// 错误、警告在页面弹出</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 第三方插件配置</span></span><br><span class="line">  pluginOptions: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="关于开发环境的代理"><a href="#关于开发环境的代理" class="headerlink" title="关于开发环境的代理"></a>关于开发环境的代理</h3>  <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">//</span> vue.config.js</span><br><span class="line"></span><br><span class="line">const path = require<span class="params">('path')</span>;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  <span class="string">//</span> other config;</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="string">//</span> 假设请求地址：https:<span class="string">//www.jianshu.com/shakespeare/v2/notes/3529d2d1e2f9/book</span>。</span><br><span class="line">      <span class="string">//</span> 当我们在本地请求：localhost<span class="function">:8022</span>/testJianshu/3529d2d1e2f9/book 的时候，就会映射到 https:<span class="string">//www.jianshu.com/shakespeare/v2/notes/3529d2d1e2f9/book</span> </span><br><span class="line">      '<span class="string">/testJianshu</span>': &#123;</span><br><span class="line">        target: 'https:<span class="string">//www.jianshu.com</span>',</span><br><span class="line">        changeOrigin: <span class="literal">true</span>, <span class="string">//</span> 允许跨域请求</span><br><span class="line">        <span class="string">//</span> ws: <span class="literal">true</span>, <span class="string">//</span> 是否代理websockets</span><br><span class="line">        <span class="string">//</span> secure: <span class="literal">false</span>, <span class="string">//</span> 是否验证SSL Certs</span><br><span class="line">        pathRewrite: &#123;</span><br><span class="line">          '^<span class="string">/testJianshu</span>': '<span class="string">/shakespeare/v2/notes/</span>'</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="string">//</span> 代理转发配置，用于调试环境</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>关于上面的代理测试，我们随便在一个vue文件中，使用如下请求，即可验证：</p>
+  <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mounted() &#123;</span><br><span class="line">  axios.<span class="keyword">get</span>(<span class="string">'/testJianshu/3529d2d1e2f9/book'</span>).<span class="keyword">then</span>(res =&gt; &#123;</span><br><span class="line">    console.log(<span class="string">'-----'</span>);</span><br><span class="line">    console.log(res.data); // 输出&#123;"notebook_id":<span class="number">25529189</span>,"notebook_name":"【前端】工程化","liked_by_user":<span class="keyword">false</span>&#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="关于less全局变量的配置"><a href="#关于less全局变量的配置" class="headerlink" title="关于less全局变量的配置"></a>关于less全局变量的配置</h3><p>比如我们写了个less插件，想快速改变主题颜色，可以采用globalVars来实现</p>
+  <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// for： theme.js</span></span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  <span class="string">"@button-primary-bg-color"</span>: <span class="string">"yellow"</span>,</span><br><span class="line">  <span class="string">"@label-primary-color"</span>: <span class="string">"black"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  <span class="comment">// other config;</span></span><br><span class="line"><span class="symbol">  css:</span> &#123;</span><br><span class="line"><span class="symbol">    extract:</span> true, <span class="comment">// 是否使用css分离插件 ExtractTextPlugin</span></span><br><span class="line"><span class="symbol">    sourceMap:</span> false, <span class="comment">// 开启 CSS source maps</span></span><br><span class="line"><span class="symbol">    loaderOptions:</span> &#123;</span><br><span class="line"><span class="symbol">      less:</span> &#123;</span><br><span class="line"><span class="symbol">        modifyVars:</span> themeObj, <span class="comment">// 这里在theme.js文件中配置全局变量，这样会把主题颜色打包在项目中。</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="生产环境去掉console-log"><a href="#生产环境去掉console-log" class="headerlink" title="生产环境去掉console.log"></a>生产环境去掉console.log</h3>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> UglifyPlugin = <span class="built_in">require</span>(<span class="string">'uglifyjs-webpack-plugin'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    ...</span><br><span class="line"> configureWebpack: <span class="function">(<span class="params">config</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</span><br><span class="line">      <span class="comment">// 为生产环境修改配置...</span></span><br><span class="line">      config.mode = <span class="string">'production'</span></span><br><span class="line">      <span class="comment">// 将每个依赖包打包成单独的js文件</span></span><br><span class="line">      <span class="keyword">let</span> optimization = &#123;</span><br><span class="line">        ...</span><br><span class="line">        minimizer: [<span class="keyword">new</span> UglifyPlugin(&#123;</span><br><span class="line">          uglifyOptions: &#123;</span><br><span class="line">            compress: &#123;</span><br><span class="line">              warnings: <span class="literal">false</span>,</span><br><span class="line">              drop_console: <span class="literal">true</span>, <span class="comment">// console</span></span><br><span class="line">              drop_debugger: <span class="literal">false</span>,</span><br><span class="line">              pure_funcs: [<span class="string">'console.log'</span>] <span class="comment">// 移除console</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)]</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">Object</span>.assign(config, &#123;</span><br><span class="line">        optimization</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 为开发环境修改配置...</span></span><br><span class="line">      config.mode = <span class="string">'development'</span></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="postcss-config-js"><a href="#postcss-config-js" class="headerlink" title="postcss.config.js"></a>postcss.config.js</h3><p>当我们在移动端，想完全适应屏幕，我们可以使用<code>postcss-px-to-viewport</code>插件，进行px到viewport的自动转换。转换后，会发现所有px都变为vw or vh。<br>我们可以如下配置：</p>
+  <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line"><span class="symbol">  plugins:</span> &#123;</span><br><span class="line"><span class="symbol">    autoprefixer:</span> &#123;&#125;,</span><br><span class="line">    <span class="string">"postcss-px-to-viewport"</span>: &#123;</span><br><span class="line"><span class="symbol">      viewportWidth:</span> <span class="number">750</span>, <span class="comment">// 视窗的宽度，对应的是我们设计稿的宽度，一般是750</span></span><br><span class="line"><span class="symbol">      viewportHeight:</span> <span class="number">1334</span>, <span class="comment">// 视窗的高度，根据750设备的宽度来指定，一般指定1334，也可以不配置</span></span><br><span class="line"><span class="symbol">      unitPrecision:</span> <span class="number">4</span>, <span class="comment">// 指定`px`转换为视窗单位值的小数位数（很多时候无法整除）</span></span><br><span class="line"><span class="symbol">      viewportUnit:</span> <span class="string">"vw"</span>, <span class="comment">// 指定需要转换成的视窗单位，建议使用vw</span></span><br><span class="line"><span class="symbol">      exclude:</span> [/node_modules/, /src\<span class="meta-keyword">/components/</span>], <span class="comment">// 排除无需编译的文件夹</span></span><br><span class="line"><span class="symbol">      selectorBlackList:</span> [<span class="string">".ignore"</span>, <span class="string">".hairlines"</span>], <span class="comment">// 指定不转换为视窗单位的类，可以自定义，可以无限添加,建议定义一至两个通用的类名</span></span><br><span class="line"><span class="symbol">      minPixelValue:</span> <span class="number">1</span>, <span class="comment">// 小于或等于`1px`不转换为视窗单位，你也可以设置为你想要的值</span></span><br><span class="line"><span class="symbol">      mediaQuery:</span> false <span class="comment">// 允许在媒体查询中转换`px`</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 不支持vw，vh的浏览器要加这个插件，进行兼容</span></span><br><span class="line">    <span class="string">"postcss-viewport-units"</span>: &#123;</span><br><span class="line">      <span class="comment">// 处理工具伪类和项目样式伪类的冲突问题</span></span><br><span class="line"><span class="symbol">      filterRule:</span> rule =&gt;</span><br><span class="line">        rule.selector.indexOf(<span class="string">"::after"</span>) === <span class="number">-1</span> &amp;&amp;</span><br><span class="line">        rule.selector.indexOf(<span class="string">"::before"</span>) === <span class="number">-1</span> &amp;&amp;</span><br><span class="line">        rule.selector.indexOf(<span class="string">":after"</span>) === <span class="number">-1</span> &amp;&amp;</span><br><span class="line">        rule.selector.indexOf(<span class="string">":before"</span>) === <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="关于babel-配置。"><a href="#关于babel-配置。" class="headerlink" title="关于babel 配置。"></a>关于babel 配置。</h3><p>如果有一些自己写的组件，或者没有转为es5 的组件，需要babel-loader进行转换。可以在webpack中加入：</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">transpileDependencies</span>: ["cccc"],  // 通过 Babel 显式转译一个依赖，可以在这个选项中列出来。</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">// 或者：</span><br><span class="line">const path = require('path');</span><br><span class="line"></span><br><span class="line">function resolve(dir) &#123;</span><br><span class="line">  return path.join(__dirname, '.', dir);</span><br><span class="line">&#125;</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  ... // 其他配置</span><br><span class="line">  chainWebpack: config =&gt; &#123;</span><br><span class="line">    config.module.rule('compile')</span><br><span class="line">      .test(/\.js$/)</span><br><span class="line">      .include</span><br><span class="line">      .add(resolve('src'))</span><br><span class="line">      .add(resolve('node_modules/webpack-dev-server/client'))</span><br><span class="line">      .add(resolve('node_modules/cccc'))</span><br><span class="line">      .end()</span><br><span class="line">      .use('babel')</span><br><span class="line">      .loader('babel-loader')</span><br><span class="line">      .options(&#123;</span><br><span class="line">        presets: [</span><br><span class="line">          ['@babel/preset-env', &#123;</span><br><span class="line">            modules: false</span><br><span class="line">          &#125;]</span><br><span class="line">        ]</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 如上配置，会在整个loader后面加一个叫compile的loader</span><br></pre></td></tr></table></figure>
+<p>关于babel 配置，vue-cli3 已经进行了很多封装。</p>
+<p>关于解释vue-cli3中的babel配置，以及相对于es678兼容性的问题，查看：<a href="https://segmentfault.com/a/1190000020392040?utm_source=tag-newest" target="_blank" rel="noopener">链接</a><br>这里写的很明白</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-11-10T14:24:43.946Z" itemprop="dateUpdated">2019-11-10 22:24:43</time>
+</span><br>
+
+
+        
+        <a href="/2019/11/10/vue-cli3之部分配置/" target="_blank" rel="external">https://akijiangrou.github.io/2019/11/10/vue-cli3之部分配置/</a>
+        
+    </div>
+    <footer>
+        <a href="https://akijiangrou.github.io">
+            <img src="/img/avatar.png" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/config/">config</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-cli3/">vue-cli3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuewebpack/">vuewebpack</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2019/11/10/vue-cli3之部分配置/&title=《vue-cli3之部分配置》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2019/11/10/vue-cli3之部分配置/&title=《vue-cli3之部分配置》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2019/11/10/vue-cli3之部分配置/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-cli3之部分配置》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2019/11/10/vue-cli3之部分配置/&via=https://akijiangrou.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2019/11/10/vue-cli3之部分配置/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/25/React滚动吸顶最佳实践/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">React滚动吸顶最佳实践</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2019/11/10/vue-cli3之部分配置/&title=《vue-cli3之部分配置》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2019/11/10/vue-cli3之部分配置/&title=《vue-cli3之部分配置》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2019/11/10/vue-cli3之部分配置/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-cli3之部分配置》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2019/11/10/vue-cli3之部分配置/&via=https://akijiangrou.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2019/11/10/vue-cli3之部分配置/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpUlEQVR42u3aMXLDMAwEQP//006TLpF8AIjYk1lVHkeiuSxE5oDHI76eP66re5Jx7r+/+q1k/OaFh4eHN5761dD5N/fTuvrm/vv737pcejw8PLw1XvKyzjeJ3p29zy8seHh4eB/GO0tKxsTDw8P7H7zJATp/Fg8PD+/TeEkYkbzEc0B1+dazFjw8PLyYl1eRPufzSn0PDw8Pb1xVr5bw89g3f6H3xvl+Cg8PD2+BV22WqlJ7jVOT4zIeHh7eNq/a0jSZxKR9qhkc4+Hh4a3xqqX6/K/VcDZZvkKbAh4eHt4CLy8v5aWvPESoLk0+Ph4eHt4eL48JJpPrtaje3xMVw/Dw8PAWeNWWpmrw2ms+6B3KX2wPeHh4eId4+Qt3gu+FFPkmUajs4eHh4R3iTf7tz4tSyRE5X9zoWTw8PLwF3v1AvdaoswflQqNAPmk8PDy8Aa8avPYaDvIYYnKI/2U0PDw8vAXePGDNQ97qQlTnUK7y4eHh4bV4+T/51aPzdjNBtGHg4eHhLfCqR+feq7y6YZw91uPh4eGd5VUD1vxYnI98tvyGh4eH9ze8fOqT9qy89WrSdPXobY54eHh4RV6v4Wm+AUyC4HJPGR4eHt5RXjVK6MW45f6vVpSMh4eHt82rNhNsTDEpvE0O8Xh4eHgbvLz0lYcUvfsnzQEHmgbw8PDwDvF6Ue9kir3lxsPDw3sXrzqJ3rOjcDbOGfDw8PA2eM/iVW0smBfV8nLdL2Pi4eHhLfAmUWx1oLOTHmHw8PDwxrxqeb4a0U7O+we2DTw8PLw1Xi84SAD5YvWWptAHgYeHh/cmXn60PRwZFOeMh4eH9zm8XjQw3wyqba94eHh427y86JUX9fP7k/GbJTc8PDy8Bd4kYJ0Xw3pR70p9Dw8PD+/1734B+pRUuR32fw8AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'aki酱肉';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
