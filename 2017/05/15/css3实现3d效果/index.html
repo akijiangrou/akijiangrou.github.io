@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,52 +13,30 @@
     
     
     
-    <title>css3实现3d效果 | MissSweety&#39;s Blog | never say never</title>
+    <title>css3实现3d效果 | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="css,perspective,3D效果">
-    <meta name="description" content="css3实现3D效果相关属性
-transform: rotateX(…)
-transfrom-origin: left center;
-transform-style: preserve-3d;
-perspective: 200px;
-perpective-origin: left center;
-backface-visibility: true;
-
-3d效果基础知识一般是在旋转后才能表现出3d">
+    <meta name="description" content="css3实现3D效果相关属性 transform: rotateX(…) transfrom-origin: left center; transform-style: preserve-3d; perspective: 200px; perpective-origin: left center; backface-visibility: true;  3d效果基础知识一般是在旋转后才能表现出3d">
+<meta name="keywords" content="css,perspective,3D效果">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css3实现3d效果">
-<meta property="og:url" content="https://misssweety.github.io/2017/05/15/css3实现3d效果/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="css3实现3D效果相关属性
-transform: rotateX(…)
-transfrom-origin: left center;
-transform-style: preserve-3d;
-perspective: 200px;
-perpective-origin: left center;
-backface-visibility: true;
-
-3d效果基础知识一般是在旋转后才能表现出3d">
-<meta property="og:image" content="https://misssweety.github.io/./axis.png">
-<meta property="og:image" content="https://misssweety.github.io/./view.png">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/05/15/css3实现3d效果/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="css3实现3D效果相关属性 transform: rotateX(…) transfrom-origin: left center; transform-style: preserve-3d; perspective: 200px; perpective-origin: left center; backface-visibility: true;  3d效果基础知识一般是在旋转后才能表现出3d">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/05/15/css3实现3d效果/axis.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/05/15/css3实现3d效果/view.png">
 <meta property="og:updated_time" content="2017-05-18T07:11:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3实现3d效果">
-<meta name="twitter:description" content="css3实现3D效果相关属性
-transform: rotateX(…)
-transfrom-origin: left center;
-transform-style: preserve-3d;
-perspective: 200px;
-perpective-origin: left center;
-backface-visibility: true;
-
-3d效果基础知识一般是在旋转后才能表现出3d">
-<meta name="twitter:image" content="https://misssweety.github.io/./axis.png">
+<meta name="twitter:description" content="css3实现3D效果相关属性 transform: rotateX(…) transfrom-origin: left center; transform-style: preserve-3d; perspective: 200px; perpective-origin: left center; backface-visibility: true;  3d效果基础知识一般是在旋转后才能表现出3d">
+<meta name="twitter:image" content="https://akijiangrou.github.io/2017/05/15/css3实现3d效果/axis.png">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -92,7 +70,7 @@ backface-visibility: true;
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -120,7 +98,7 @@ backface-visibility: true;
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -232,8 +210,8 @@ backface-visibility: true;
                 <div class="image-caption">alt perspective</div>
             </figure></p>
 <p><strong>两种写法:</strong><br><code>a：perspective：300px;</code><br><code>b：transform: perspective(300px) rotateX(aa);</code>  </p>
-<p><strong>区别</strong>：第一个需要写在一个父级元素上，他规定了这个父级元素的透视点位置，换个角度说，当为元素规定perspective 属性时，其直接子元素会获得透视效果，而不是元素本身。第二个可以直接作用在当前元素上，也可以结合其他transform属性，规定了当前元素的透视点位置，对其他元素无影响。<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>perspective</strong> 值越大，3d效果越不明显；越小越明显。想像成镜头到物体的距离，越近越能看出高低起伏，越远线条展示的越平缓。<br>两种写法以及perspective对比，<a href="https://codepen.io/akixiao/pen/wdwdgW" target="_blank" rel="external">查看示例</a></p>
-<h3 id="webkit-perspective-origin"><a href="#webkit-perspective-origin" class="headerlink" title="-webkit-perspective-origin"></a>-webkit-perspective-origin</h3><p>消失点的位置，<br>语法：<code>-webkit-perspective-origin: xpos ypos</code><br>xpos,ypos 可以选择关键字，left|right|center     top|bottom|center 。如果是关键字，则是否对应xy无关紧要，浏览器会自己选择。如果是数值，百分比或者像素，则要按照x，y的顺序写。<br><a href="https://codepen.io/akixiao/pen/qmWeqj" target="_blank" rel="external">参考实例</a></p>
+<p><strong>区别</strong>：第一个需要写在一个父级元素上，他规定了这个父级元素的透视点位置，换个角度说，当为元素规定perspective 属性时，其直接子元素会获得透视效果，而不是元素本身。第二个可以直接作用在当前元素上，也可以结合其他transform属性，规定了当前元素的透视点位置，对其他元素无影响。<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>perspective</strong> 值越大，3d效果越不明显；越小越明显。想像成镜头到物体的距离，越近越能看出高低起伏，越远线条展示的越平缓。<br>两种写法以及perspective对比，<a href="https://codepen.io/akixiao/pen/wdwdgW" target="_blank" rel="noopener">查看示例</a></p>
+<h3 id="webkit-perspective-origin"><a href="#webkit-perspective-origin" class="headerlink" title="-webkit-perspective-origin"></a>-webkit-perspective-origin</h3><p>消失点的位置，<br>语法：<code>-webkit-perspective-origin: xpos ypos</code><br>xpos,ypos 可以选择关键字，left|right|center     top|bottom|center 。如果是关键字，则是否对应xy无关紧要，浏览器会自己选择。如果是数值，百分比或者像素，则要按照x，y的顺序写。<br><a href="https://codepen.io/akixiao/pen/qmWeqj" target="_blank" rel="noopener">参考实例</a></p>
 <h3 id="backface-visibility"><a href="#backface-visibility" class="headerlink" title="backface-visibility"></a>backface-visibility</h3><p><code>backface-visibility</code> 属性定义当元素不面向屏幕时是否可见。有些时候前面的div如果设置了透明度，就会看到后面的对象，这是可以将该属性设为hidden就可以了。默认：<code>visible</code></p>
 <h3 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h3><p>这里主要提和3d有关的几个属性  </p>
 <ul>
@@ -276,7 +254,7 @@ div {
   from {transform: perspective(500px) rotateY(0deg);}
   to {transform:perspective(500px) rotateY(360deg);}
 }
-</code></pre><p>表现是：test1将沿着div的宽度的一半为轴旋转。test2则沿着最左边的边框为轴旋转。<br><a href="https://codepen.io/akixiao/pen/mmdKYJ?editors=0100" target="_blank" rel="external">参考实例</a></p>
+</code></pre><p>表现是：test1将沿着div的宽度的一半为轴旋转。test2则沿着最左边的边框为轴旋转。<br><a href="https://codepen.io/akixiao/pen/mmdKYJ?editors=0100" target="_blank" rel="noopener">参考实例</a></p>
 <h3 id="实例一：翻牌效果"><a href="#实例一：翻牌效果" class="headerlink" title="实例一：翻牌效果"></a>实例一：翻牌效果</h3><pre><code>&lt;div class=&quot;container&quot;&gt;
   &lt;div id=&quot;card&quot;&gt;
     &lt;div class=&quot;front&quot;&gt;1&lt;/div&gt;
@@ -332,8 +310,8 @@ div {
     transform: rotateY( 360deg )
   }
 }
-</code></pre><p>container中的card div具有3d效果，如果想让card中的div等也有3d变化效果，可以通过对card设置： <code>transform-style: preserve-3d;</code> 将其父元素的3d透视集成下来，并使所有子元素保持在同一个3d空间中。背面那张牌需要翻到背面去，也就是<code>rotateY( 180deg );</code><br><a href="http://codepen.io/akixiao/pen/WjeWqQ" target="_blank" rel="external">参考示例</a></p>
-<p>###实例二：旋转的正方体<br><a href="http://codepen.io/akixiao/pen/gWYNZo" target="_blank" rel="external">参考示例</a><br>六个div拼凑起来的。分别在xy方向上进行翻转，立到对应的方向。此时在添加一个<code>translateZ</code>才能显现出他们的效果。否则都是堆在zindex为0的位置，什么都看不见.  </p>
+</code></pre><p>container中的card div具有3d效果，如果想让card中的div等也有3d变化效果，可以通过对card设置： <code>transform-style: preserve-3d;</code> 将其父元素的3d透视集成下来，并使所有子元素保持在同一个3d空间中。背面那张牌需要翻到背面去，也就是<code>rotateY( 180deg );</code><br><a href="http://codepen.io/akixiao/pen/WjeWqQ" target="_blank" rel="noopener">参考示例</a></p>
+<p>###实例二：旋转的正方体<br><a href="http://codepen.io/akixiao/pen/gWYNZo" target="_blank" rel="noopener">参考示例</a><br>六个div拼凑起来的。分别在xy方向上进行翻转，立到对应的方向。此时在添加一个<code>translateZ</code>才能显现出他们的效果。否则都是堆在zindex为0的位置，什么都看不见.  </p>
 <p>别的配置及思想同上面的翻牌</p>
 <p>###常见问题：<br>1.设了transfrom-style:preserve-3d为什么还不好使。  </p>
 <p>这个时候需要查看父元素是否还设了，<code>overflow，filter，clip，isolation，clip-path，mask-image，mask-box-image-source， mix-blend-mode</code>，如果不是默认值的，会将transfrom-style:preserve-3d 失效。原因是前几个属性，会创造一个flatten的box，而preserve-3d是生成stacking context  的。</p>
@@ -349,11 +327,11 @@ div {
 
 
         
-        <a href="/2017/05/15/css3实现3d效果/" target="_blank" rel="external">https://misssweety.github.io/2017/05/15/css3实现3d效果/</a>
+        <a href="/2017/05/15/css3实现3d效果/" target="_blank" rel="external">https://akijiangrou.github.io/2017/05/15/css3实现3d效果/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -375,7 +353,7 @@ div {
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/05/15/css3实现3d效果/&title=《css3实现3d效果》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/05/15/css3实现3d效果/&title=《css3实现3d效果》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -385,22 +363,22 @@ div {
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/05/15/css3实现3d效果/&title=《css3实现3d效果》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/05/15/css3实现3d效果/&title=《css3实现3d效果》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/05/15/css3实现3d效果/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/05/15/css3实现3d效果/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《css3实现3d效果》 — MissSweety's Blog&url=https://misssweety.github.io/2017/05/15/css3实现3d效果/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《css3实现3d效果》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/05/15/css3实现3d效果/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/05/15/css3实现3d效果/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/05/15/css3实现3d效果/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -493,7 +471,7 @@ div {
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/05/15/css3实现3d效果/&title=《css3实现3d效果》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/05/15/css3实现3d效果/&title=《css3实现3d效果》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -503,22 +481,22 @@ div {
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/05/15/css3实现3d效果/&title=《css3实现3d效果》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/05/15/css3实现3d效果/&title=《css3实现3d效果》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/05/15/css3实现3d效果/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/05/15/css3实现3d效果/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《css3实现3d效果》 — MissSweety's Blog&url=https://misssweety.github.io/2017/05/15/css3实现3d效果/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《css3实现3d效果》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/05/15/css3实现3d效果/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/05/15/css3实现3d效果/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/05/15/css3实现3d效果/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -529,7 +507,7 @@ div {
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3awW6EMAxFUf7/p+m2Ujtwn01GirmsqmkKOVTyOLaPA1/n5fV7zfV6/pRjxSVDhoxtGXyLfx9A1qS/Ja/jn/vIkCHjBYxPtybB9Ho92S557s2eZciQIeMyXTvBRdbLkCFDxrMM8glPCj+tlCFDhox+KW1F1Wv5WVyGDBkbMnjV/fs/L+lvyJAhYyvGGV5pWKxtMd6VDBkyRjNqt043wamtsQwZMmSMZnQSNV76J39LRjpudiVDhoyhDJLSkaBZC8GcdAOWIUPGaEbtSEmoJGjWGp/FeqEMGTK2ZaRtwnRsolaqI6/j5ntDhgwZIxid4YZ1PdXgP9Cf0ZAhQ8aGjH4A5YW8tGwXBFwZMmQMYqRnQx4Q+frOHmTIkPEeRi3JIyX72rBFLTTLkCFjNqNzfO1/Uhu2eKA9IEOGjG0ZNTDfxLOH4ZtvDxkyZIxg1IYn0oEwfjQtthBkyJAxmtEpwZNSfr9Ix+8vQ4aM2QxSGkuHITqDGmkjU4YMGW9m8LSMFPEJLB0IQwFXhgwZgxg8i+yMdqUH4ODlypAh48UMfsTl4xS1EB93NmTIkDGCcYZXrUyWDk/EVBkyZIxmpM1CPgzBwfx4XGujypAhYwYjDbJPHXSfWiNDhoz3MNLARx6TJoJp6JchQ4aMtLjGwWn7M8heZciQIaPUtlzRNH0g4MqQIWNDBm9ApqU0XqTrNCRkyJAxm5HmXTz5SxsJy5uaMmTI2I/xA9DPS6mmm6zcAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3ay26DMBAF0Pz/T6fbSlXgXg9thTleRQkxHBajefj1itf7x/r5/acrv//6aedPu128MDAwbst4H66EMX8Fk2swMDCew0hC4fFjtUHzeP/82TAwMDByxjxlzAM6BgYGRhv42nB5fHcMDAyMSRHb3iy58h9qcQwMjBsy8q7733/+lfkGBgbGrRjvcrVFbFuaLj4VBgbG1oy1MWRSgrbttslYFAMDY29GciQrb9/nAfc46Uye4YItMDAwbsJom+9tspj896oRKQYGxt6MyUNPAmVeyhY7YGBgbMrIx4T5ALINwUmhexK4MTAwtmYkydnaUYzJaKEuYjEwMB7ASDbKQ2H+OtaafSc8DAyMjRh5oTgpWecHL072wcDA2JpRx+PBkGAtuSzKVwwMjE0ZawlfnkTORw7FmREMDIxNGe1Bh7zd3wbZNgSfnBnBwMDYiLGWwLWYvBm3eBQDAwPjAYx800nTvw2j+YgCAwNjb0YbCvN0cO3wRBJ8T0YCGBgYD2C0jbBJ2ndx+MbAwHgMo5h5lsXqq1z1a8XAwHgAI0/R5oFy7XjHyZUYGBibMt7lmv8rL32LwI2BgbE1Yy1Rm7TGrmreJWkrBgbGToy1JlcegvNX0w4yFwcDGBgYt2XkgW8tcueBuG3DYWBgYLTZZR6a27ucUDEwMDDKUWWSJuYJ5eIIEwMDYzvGZBiw1pjLD5Bd3G7DwMC4IWNSgrZDyrwZ144KMDAwNmV8AaWkLhtlQz3oAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -579,7 +557,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

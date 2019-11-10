@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,55 +13,27 @@
     
     
     
-    <title>读书笔记-闭包 | MissSweety&#39;s Blog | never say never</title>
+    <title>读书笔记-闭包 | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="js,闭包">
-    <meta name="description" content="经典闭包闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。参考
-function foo () {
-  const a = 9;
-  const bar = () =&amp;gt; {return a;}
-  return bar;
-}
-
-const aa = foo();
-console.log(aa());
-返回9；  
-解析在foo">
+    <meta name="description" content="经典闭包闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。参考 function foo () {   const a = 9;   const bar = () =&amp;gt; {return a;}   return bar; }  const aa = foo(); console.log(aa()); 返回9；   解析在foo">
+<meta name="keywords" content="js,闭包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读书笔记-闭包">
-<meta property="og:url" content="https://misssweety.github.io/2017/05/08/读书笔记-闭包/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="经典闭包闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。参考
-function foo () {
-  const a = 9;
-  const bar = () =&amp;gt; {return a;}
-  return bar;
-}
-
-const aa = foo();
-console.log(aa());
-返回9；  
-解析在foo">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/05/08/读书笔记-闭包/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="经典闭包闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。参考 function foo () {   const a = 9;   const bar = () =&amp;gt; {return a;}   return bar; }  const aa = foo(); console.log(aa()); 返回9；   解析在foo">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2017-05-18T07:11:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-闭包">
-<meta name="twitter:description" content="经典闭包闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。参考
-function foo () {
-  const a = 9;
-  const bar = () =&amp;gt; {return a;}
-  return bar;
-}
-
-const aa = foo();
-console.log(aa());
-返回9；  
-解析在foo">
+<meta name="twitter:description" content="经典闭包闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。参考 function foo () {   const a = 9;   const bar = () =&amp;gt; {return a;}   return bar; }  const aa = foo(); console.log(aa()); 返回9；   解析在foo">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -95,7 +67,7 @@ console.log(aa());
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -123,7 +95,7 @@ console.log(aa());
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -211,7 +183,7 @@ console.log(aa());
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="经典闭包"><a href="#经典闭包" class="headerlink" title="经典闭包"></a>经典闭包</h2><p>闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。<br><a href="https://jsbin.com/duyotivalu/1/edit?js,console,output" target="_blank" rel="external">参考</a></p>
+            <h2 id="经典闭包"><a href="#经典闭包" class="headerlink" title="经典闭包"></a>经典闭包</h2><p>闭包是一个函数（引用），即使他是在当前词法作用域之外执行，他也可以记住并访问所在的词法作用域。就是用这个引用来访问。<br><a href="https://jsbin.com/duyotivalu/1/edit?js,console,output" target="_blank" rel="noopener">参考</a></p>
 <pre><code>function foo () {
   const a = 9;
   const bar = () =&gt; {return a;}
@@ -275,11 +247,11 @@ bar();
 
 
         
-        <a href="/2017/05/08/读书笔记-闭包/" target="_blank" rel="external">https://misssweety.github.io/2017/05/08/读书笔记-闭包/</a>
+        <a href="/2017/05/08/读书笔记-闭包/" target="_blank" rel="external">https://akijiangrou.github.io/2017/05/08/读书笔记-闭包/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -301,7 +273,7 @@ bar();
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/05/08/读书笔记-闭包/&title=《读书笔记-闭包》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/05/08/读书笔记-闭包/&title=《读书笔记-闭包》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -311,22 +283,22 @@ bar();
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/05/08/读书笔记-闭包/&title=《读书笔记-闭包》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/05/08/读书笔记-闭包/&title=《读书笔记-闭包》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/05/08/读书笔记-闭包/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/05/08/读书笔记-闭包/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《读书笔记-闭包》 — MissSweety's Blog&url=https://misssweety.github.io/2017/05/08/读书笔记-闭包/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《读书笔记-闭包》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/05/08/读书笔记-闭包/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/05/08/读书笔记-闭包/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/05/08/读书笔记-闭包/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -419,7 +391,7 @@ bar();
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/05/08/读书笔记-闭包/&title=《读书笔记-闭包》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/05/08/读书笔记-闭包/&title=《读书笔记-闭包》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -429,22 +401,22 @@ bar();
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/05/08/读书笔记-闭包/&title=《读书笔记-闭包》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/05/08/读书笔记-闭包/&title=《读书笔记-闭包》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/05/08/读书笔记-闭包/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/05/08/读书笔记-闭包/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《读书笔记-闭包》 — MissSweety's Blog&url=https://misssweety.github.io/2017/05/08/读书笔记-闭包/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《读书笔记-闭包》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/05/08/读书笔记-闭包/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/05/08/读书笔记-闭包/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/05/08/读书笔记-闭包/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -455,7 +427,7 @@ bar();
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aMW7EMAxE0dz/0pt2G8t/Rk4AU1+VoSwcPRcEKfLnB6/P17ra+d6/egN5vnrDA0uGDBmvZXyWizDI0dfINXh9NhkyZJzD6F63f4irHX42GTJkyCCJ4Ho//RwyZMiQ8SyDV5Tpp5EhQ4aMrohNr97So/AALUOGjNMYPID+//Of9DdkyJDxKsanWt2VHAnl3alkyJAxm0Gu5nlqmB6rG8KQIUPGmYxuIIwUqDxkrw/0WPkqQ4aMFzJ42tf9Yz4clgZ9GTJknMkgCVkXoLs0kSeaMmTImM3gwS5tEqQFcFpCx2FXhgwZr2XsBMedQvexUTAZMmQcwIjLRTwM0X2gnYaEDBkyZjN2Wond0Xcu/mTIkHEag19m8XEKvtOV0zJkyDiNwcMrB+y/swz6MmTIGM3oBi9IgkgCLvl90LqQIUPGUMbOgBcvUJ9qPAS3hjJkyBjB4C2BOH5XvcWykSBDhowDGHyMNQ2apPjkAfcmKZQhQ8ZQRlfKdpdr6eVdNzomQ4aMeQw+hpWudIysayrIkCHjBEY6GNGNYnT78fWfDBkyhjK6MJru7P/1hi1DhozRjDTMdSROfappKkOGjHkMHmTj5iK+VktbCDcZrgwZMoYySLmYRus0fUzfGVfJMmTIOICR/oY3D1BIXeNlyJAho0rX1mG0a4je3B3KkCFjNKNrBqTPJAUsE0oZMmSMZuyUjunl/rolSQIuD+gyZMgYwfgFqnhgvoK4kuoAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aS27DMAxFUe9/0+40QGH3PlIpIOp6FDiBpeMBw4+uC1/3x/V55+nz7+v9yU+rLL5kyJCxLeN+vfhv+EbJHuJ1ZciQcQCDL/++5Kqt873JkCFDBk/+SFgkiaAMGTJkrGLwWhJtApTKMmTIkEGK2JT09BsSyr9Yi8uQIWNDBu+6///nr8w3ZMiQsRWjVo6SO+8J3+JdyZAhYzQjTe/SApWngKTE/ePVyJAhYygjbdzXBgDvd9JRQbFKliFDxuYM0o7vpH2dRBOFbBkyZIxm1IrGfmrIXw15QTJkyJjNSJfsDyNJSCVJ52MRK0OGjHGMtKwl5S4vSvnAoDjUlCFDxghGGljThWu8tCEoQ4aM2YzOEYd+aE4LXTQElSFDxjhG+lCylbSIreV7j/1CGTJkjGb000TyCmr/BsXDFjJkyBjB6DTaakci0lEBTzFlyJAxm9HZCm+Epce/+FEzGTJknMNIy9RaAOWBNT40JkOGjGMYtVDLYbWqM85tZciQMZTBR4m1UrYTUtGTZciQcQCjP6okbf007AbHO2TIkHEAY1UiuDbRJGAZMmTMZtzhlQZQ0lxLW3UXX0yGDBkjGGmYS9v9a0eh6ZhThgwZkxhpkE1LUN7CS8ecwb+HDBkyRjD6w8jaL9N/gODMiAwZMg5mkLKzliC22nMyZMiQ0RhkkqKXjCpREStDhozRjHQrnVZd+u3idpsMGTI2ZKRHHGrbIptYW07LkCFjBOMHEQj6CBHIxvsAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
@@ -505,7 +477,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

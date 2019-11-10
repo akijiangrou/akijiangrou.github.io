@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,40 +13,27 @@
     
     
     
-    <title>redux源码相关 | MissSweety&#39;s Blog | never say never</title>
+    <title>redux源码相关 | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="js,redux,源码">
-    <meta name="description" content="redux源码阅读redux源码很少，重点在思想。  
-createStore
-function createStore(reducer, preloadedState, enhancer)
-
-reducer是唯一必传的参数，它很重要，因为它决定了整个state。preloadedState就是state的初始值。第三个参数不是特别常用，它是个函数，如果它存在的情况下，会执行下面的语句：
-enha">
+    <meta name="description" content="redux源码阅读redux源码很少，重点在思想。   createStore function createStore(reducer, preloadedState, enhancer)  reducer是唯一必传的参数，它很重要，因为它决定了整个state。preloadedState就是state的初始值。第三个参数不是特别常用，它是个函数，如果它存在的情况下，会执行下面的语句： enha">
+<meta name="keywords" content="js,redux,源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redux源码相关">
-<meta property="og:url" content="https://misssweety.github.io/2017/10/26/redux源码相关/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="redux源码阅读redux源码很少，重点在思想。  
-createStore
-function createStore(reducer, preloadedState, enhancer)
-
-reducer是唯一必传的参数，它很重要，因为它决定了整个state。preloadedState就是state的初始值。第三个参数不是特别常用，它是个函数，如果它存在的情况下，会执行下面的语句：
-enha">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/10/26/redux源码相关/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="redux源码阅读redux源码很少，重点在思想。   createStore function createStore(reducer, preloadedState, enhancer)  reducer是唯一必传的参数，它很重要，因为它决定了整个state。preloadedState就是state的初始值。第三个参数不是特别常用，它是个函数，如果它存在的情况下，会执行下面的语句： enha">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2017-10-27T09:38:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redux源码相关">
-<meta name="twitter:description" content="redux源码阅读redux源码很少，重点在思想。  
-createStore
-function createStore(reducer, preloadedState, enhancer)
-
-reducer是唯一必传的参数，它很重要，因为它决定了整个state。preloadedState就是state的初始值。第三个参数不是特别常用，它是个函数，如果它存在的情况下，会执行下面的语句：
-enha">
+<meta name="twitter:description" content="redux源码阅读redux源码很少，重点在思想。   createStore function createStore(reducer, preloadedState, enhancer)  reducer是唯一必传的参数，它很重要，因为它决定了整个state。preloadedState就是state的初始值。第三个参数不是特别常用，它是个函数，如果它存在的情况下，会执行下面的语句： enha">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -80,7 +67,7 @@ enha">
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -108,7 +95,7 @@ enha">
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -204,13 +191,13 @@ enha">
 <p><code>enhancer(createStore)(reducer, preloadedState)</code></p>
 <p>enhancer 增强createStore。</p>
 <p>createStore内部维护：  </p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> currentReducer = reducer</span><br><span class="line"><span class="selector-tag">var</span> currentState = preloadedState</span><br></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentReducer = reducer</span><br><span class="line"><span class="keyword">var</span> currentState = preloadedState</span><br></pre></td></tr></table></figure>
 <h3 id="function-subscribe-listener"><a href="#function-subscribe-listener" class="headerlink" title="function subscribe(listener)"></a>function subscribe(listener)</h3><p>在createStore内部维护了两个数组currentListeners、nextListeners。nextListeners的存在是为了避免在listeners执行过程中，listeners发生改变，导致错误。listeners的添加或删除都是对nextListeners进行操作的。nextListeners 初始等于 currentListeners = [];</p>
 <p>每次subscribe 都会判定下nextListeners === currentListeners是否相等。</p>
 <p>每次执行substribe 都会返回function unsubscribe()，取消监听。  </p>
 <h3 id="function-dispatch-action"><a href="#function-dispatch-action" class="headerlink" title="function dispatch(action)"></a>function dispatch(action)</h3><p>currentState = currentReducer(currentState, action)</p>
 <p>有dispatch，就一定执行currentReducer。<br>以及</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var listeners = currentListeners = nextListeners</span><br><span class="line"><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; listeners.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</span><br><span class="line">  listeners[i]()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> action</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var listeners = currentListeners = nextListeners</span><br><span class="line"><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; listeners.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</span><br><span class="line">  listeners[<span class="built_in">i</span>]()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> action</span><br></pre></td></tr></table></figure>
 <p>调用subscribe传进来的listeners，按顺序执行它们，没有任何条件判断，也就是说只要执行dispatch，所有的listeners都会执行，不管state有没有发生改变，而且listeners执行的时候是没参数的。</p>
 <p>而且，在创建store的时候，会  </p>
 <h3 id="function-getState"><a href="#function-getState" class="headerlink" title="function getState()"></a>function getState()</h3><p>return currentState</p>
@@ -230,7 +217,7 @@ enha">
 <p>applyMiddleWARE, 返回的其实是createStore，来增强dispatch。常用的thunkMiddleware，强化dispatch，可以传递函数，不一定是object。</p>
 <p>一般使用的时候，是如下调用的，以thunkmiddleware为例：</p>
 <p>thunkMiddleware 如下： </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回以 dispatch 和 getState 作为参数的action</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">thunkMiddleware</span>(<span class="params">&#123; dispatch, getState &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">next</span> =&gt;</span> action =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> action(dispatch, getState);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next(action);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回以 dispatch 和 getState 作为参数的action</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">thunkMiddleware</span>(<span class="params">&#123; dispatch, getState &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">next</span> =&gt;</span> <span class="function"><span class="params">action</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> action(dispatch, getState);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next(action);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// usage</span></span><br><span class="line"><span class="keyword">import</span> &#123;createStore, applyMiddleware&#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">import</span> thunkMiddleware <span class="keyword">from</span> <span class="string">'redux-thunk'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(</span><br><span class="line">      reducers,</span><br><span class="line">      state,</span><br><span class="line">      applyMiddleware(thunkMiddleware)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p>相当于有了enhancer，<br>上面store 会按如下执行：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// createStore.js</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> enhancer !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> enhancer !== <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Expected the enhancer to be a function.'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> enhancer(createStore)(reducer, initialState)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -257,11 +244,11 @@ enha">
 
 
         
-        <a href="/2017/10/26/redux源码相关/" target="_blank" rel="external">https://misssweety.github.io/2017/10/26/redux源码相关/</a>
+        <a href="/2017/10/26/redux源码相关/" target="_blank" rel="external">https://akijiangrou.github.io/2017/10/26/redux源码相关/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -283,7 +270,7 @@ enha">
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/10/26/redux源码相关/&title=《redux源码相关》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/10/26/redux源码相关/&title=《redux源码相关》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -293,22 +280,22 @@ enha">
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/10/26/redux源码相关/&title=《redux源码相关》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/10/26/redux源码相关/&title=《redux源码相关》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/10/26/redux源码相关/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/10/26/redux源码相关/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《redux源码相关》 — MissSweety's Blog&url=https://misssweety.github.io/2017/10/26/redux源码相关/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《redux源码相关》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/10/26/redux源码相关/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/10/26/redux源码相关/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/10/26/redux源码相关/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -401,7 +388,7 @@ enha">
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/10/26/redux源码相关/&title=《redux源码相关》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/10/26/redux源码相关/&title=《redux源码相关》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -411,22 +398,22 @@ enha">
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/10/26/redux源码相关/&title=《redux源码相关》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/10/26/redux源码相关/&title=《redux源码相关》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/10/26/redux源码相关/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/10/26/redux源码相关/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《redux源码相关》 — MissSweety's Blog&url=https://misssweety.github.io/2017/10/26/redux源码相关/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《redux源码相关》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/10/26/redux源码相关/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/10/26/redux源码相关/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/10/26/redux源码相关/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -437,7 +424,7 @@ enha">
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aS27jMBAFQN//0p7tDAZm3mPLAUSVVoEgmawsWv3h6xVf77+uvef/f/fTnXyV+sLAwLgt47281ttql1xvfb3Kp2cwMDCew1gvmQfH5P56Q+t1P97HwMDACEJtsvz6+SShxMDAwJgz2sQuSUAxMDAw2sX22mpJgP6lWhwDA+OGjLZN9pt/f2W+gYGBcSvGu7wmqeG1O/nnlzEwMI5mtK2xSVu/HVXWhz8wMDCOZkyOdl0VavNyt04fMTAwbs5I2vSTwcDkN4sRAgYGxiMZeehsBwkTdv1lwMDAOIKRlJd7JWj7zLxIxsDAOJWxDmd5MB0dgJiHYAwMjKMZ+fGsPKHcO8KV/wt++G5gYGAcx2gTwTwgXtWqi0prDAyMBzCS8JdvtA3K83EpBgbG2Yz2ONe1o4X2yddm5oiBgXEOY2/JpPSdjAHaA2QYGBinMpI0bp7efWOcgIGB8QTGfKqQg9svQB6+MTAwzmZcu2TemMvbfEUzDgMD4wGM+rVB76sNr0WGi4GB8QDGXps+D7KTIUERcDEwMA5l5K/Nm3GTgP4xucTAwDiUsTdc3GO3CV9BxcDAOJoxL0QnQTZPNOszIxgYGMcx8g3lYbE9HJYPKjAwMJ7MyA9YJGVtu4m9IhYDAwOjLUT3mmuXUTEwMDC+0OJvj6ZFRSwGBsbRjL1hwF6Z2g4nLm63YWBg3JCRB8RJK79NCr8y1MTAwLgf4w+NiPAuMuRTKQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aQW7EQAgF0bn/pSfbSImd+uCJ1FC9spyR3c8LAg2vF17vb+vnHbLun3z1loeXDBkyjmWQ1/MNXf2G/5V/LBkyZGxjkFBYu75/S/qcy/syZMiQga954L6iypAhQ8ZTDPIyHnBlyJAhgzBIoOwXpenWP1KLy5Ah40AGP3X//+uP9DdkyJBxFKPThuQBuvM0tCsZMmSMZnTKSzIwwTG1kliGDBk7GbxcJAGU3CEjHShZlCFDxmgGH4boH36RrafppgwZMmYz7kMbLzjTgzkeXtEwmQwZMkYzOiMRtSSv3/5EgV6GDBmDGPxBtcP62u/jjytDhow1jFqoTUNk/6Dtlz3LkCFjNKN2oMY3SgrjTkksQ4aMDQxedtbK19qwBXkXGrOQIUPGIEYnvNbGI9L/BqiIlSFDxlBGOgpWKzg7KWPQXpUhQ8YCRjrIVTuf50lkOl4mQ4aMbQw+wtUpbnkjIa7IZciQMY5BkrYgRSuxedL5R/IqQ4aMoYza8Rkpd2upZFr6ypAhYxujlqLxApWvtL0qQ4aMDYz0unO4xo/n+EeXIUPGVMY7XPxAP003Ww0DGTJkjGakiVptnIJ8jto/gBgmQ4aMYxk8yKaBkjQY7u8HrQUZMmQsYKRjXjxpa3VWOzMjMmTIWM/oB83O8dwDnVIZMmSsYXSGJ9KRVtQekCFDxmhGrRmQjmWkjcyPHLfJkCHjQEYtaatt4qmUsdjUlCFDxnmML9gRslDUHSOjAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -487,7 +474,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

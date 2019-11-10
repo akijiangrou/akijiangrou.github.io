@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,30 +13,29 @@
     
     
     
-    <title>WebGL学习系列-three.js入门 | MissSweety&#39;s Blog | never say never</title>
+    <title>WebGL学习系列-three.js入门 | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="学习笔记,three.js,webGL">
-    <meta name="description" content="被webGL吓得赶紧投入到three.js的怀抱，发现一个最简单的会旋转的正方型，只需10+就搞定了！好的，那我们还是先学习three.js吧~~ 我的目的是先学会怎么制造3d的内容，至于渲染优化什么的目前我还不需要，所以先放弃读webGL的api。先看three.js的基础知识。
-三大组件在Three.js中，要渲染物体到网页中，我们需要3个组建：场景（scene）、相机（camera）和渲染器">
+    <meta name="keywords" content="three.js,webGL,学习笔记">
+    <meta name="description" content="被webGL吓得赶紧投入到three.js的怀抱，发现一个最简单的会旋转的正方型，只需10+就搞定了！好的，那我们还是先学习three.js吧~~ 我的目的是先学会怎么制造3d的内容，至于渲染优化什么的目前我还不需要，所以先放弃读webGL的api。先看three.js的基础知识。 三大组件在Three.js中，要渲染物体到网页中，我们需要3个组建：场景（scene）、相机（camera）和渲染器">
+<meta name="keywords" content="three.js,webGL,学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebGL学习系列-three.js入门">
-<meta property="og:url" content="https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="被webGL吓得赶紧投入到three.js的怀抱，发现一个最简单的会旋转的正方型，只需10+就搞定了！好的，那我们还是先学习three.js吧~~ 我的目的是先学会怎么制造3d的内容，至于渲染优化什么的目前我还不需要，所以先放弃读webGL的api。先看three.js的基础知识。
-三大组件在Three.js中，要渲染物体到网页中，我们需要3个组建：场景（scene）、相机（camera）和渲染器">
-<meta property="og:image" content="https://misssweety.github.io/./axis.png">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="被webGL吓得赶紧投入到three.js的怀抱，发现一个最简单的会旋转的正方型，只需10+就搞定了！好的，那我们还是先学习three.js吧~~ 我的目的是先学会怎么制造3d的内容，至于渲染优化什么的目前我还不需要，所以先放弃读webGL的api。先看three.js的基础知识。 三大组件在Three.js中，要渲染物体到网页中，我们需要3个组建：场景（scene）、相机（camera）和渲染器">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/axis.png">
 <meta property="og:updated_time" content="2017-11-13T07:22:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebGL学习系列-three.js入门">
-<meta name="twitter:description" content="被webGL吓得赶紧投入到three.js的怀抱，发现一个最简单的会旋转的正方型，只需10+就搞定了！好的，那我们还是先学习three.js吧~~ 我的目的是先学会怎么制造3d的内容，至于渲染优化什么的目前我还不需要，所以先放弃读webGL的api。先看three.js的基础知识。
-三大组件在Three.js中，要渲染物体到网页中，我们需要3个组建：场景（scene）、相机（camera）和渲染器">
-<meta name="twitter:image" content="https://misssweety.github.io/./axis.png">
+<meta name="twitter:description" content="被webGL吓得赶紧投入到three.js的怀抱，发现一个最简单的会旋转的正方型，只需10+就搞定了！好的，那我们还是先学习three.js吧~~ 我的目的是先学会怎么制造3d的内容，至于渲染优化什么的目前我还不需要，所以先放弃读webGL的api。先看three.js的基础知识。 三大组件在Three.js中，要渲染物体到网页中，我们需要3个组建：场景（scene）、相机（camera）和渲染器">
+<meta name="twitter:image" content="https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/axis.png">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -70,7 +69,7 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -98,7 +97,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -167,7 +166,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三大组件"><span class="post-toc-number">1.</span> <span class="post-toc-text">三大组件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#场景（scene）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">场景（scene）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#相机（camera）"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">相机（camera）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#渲染器（renderer）"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">渲染器（renderer）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#light光源-amp-object物体"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">light光源 & object物体</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#场景，相机，渲染器之间的关系"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">场景，相机，渲染器之间的关系</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#计算机的3D世界"><span class="post-toc-number">2.</span> <span class="post-toc-text">计算机的3D世界</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#右手坐标系"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">右手坐标系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#坐标系的点"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">坐标系的点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#两点生成线"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">两点生成线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线的更多理解"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">线的更多理解</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三大组件"><span class="post-toc-number">1.</span> <span class="post-toc-text">三大组件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#场景（scene）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">场景（scene）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#相机（camera）"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">相机（camera）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#渲染器（renderer）"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">渲染器（renderer）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#light光源-amp-object物体"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">light光源 &amp; object物体</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#场景，相机，渲染器之间的关系"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">场景，相机，渲染器之间的关系</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#计算机的3D世界"><span class="post-toc-number">2.</span> <span class="post-toc-text">计算机的3D世界</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#右手坐标系"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">右手坐标系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#坐标系的点"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">坐标系的点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#两点生成线"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">两点生成线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线的更多理解"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">线的更多理解</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -191,11 +190,11 @@
 <h3 id="场景（scene）"><a href="#场景（scene）" class="headerlink" title="场景（scene）"></a><code>场景（scene）</code></h3><p>用<code>THREE.Scene</code>来表示。场景是所有物体的容器。每一个three.js 构造的3d内容，都需要在一个scene中。  </p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> scene = <span class="keyword">new</span> THREE.Scene();</span><br></pre></td></tr></table></figure>
 <h3 id="相机（camera）"><a href="#相机（camera）" class="headerlink" title="相机（camera）"></a><code>相机（camera）</code></h3><p>用<code>THREE.PerspectiveCamera(param)</code> 生成。相机决定了场景中哪个角度的景色会显示出来。相机就像人的眼睛一样，人站在不同位置，抬头或者低头都能够看到不同的景色。场景只有一种，但是相机却又很多种。要根据不同的场景选择不同的相机。 之后会介绍不同的相机。  </p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> camera = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">75</span>, <span class="built_in">window</span>.innerWidth/<span class="built_in">window</span>.innerHeight, <span class="number">0.1</span>, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var camera = <span class="keyword">new</span> THREE.<span class="constructor">PerspectiveCamera(75, <span class="params">window</span>.<span class="params">innerWidth</span><span class="operator">/</span><span class="params">window</span>.<span class="params">innerHeight</span>, 0.1, 1000)</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="渲染器（renderer）"><a href="#渲染器（renderer）" class="headerlink" title="渲染器（renderer）"></a><code>渲染器（renderer）</code></h3><p>用<code>THREE.WebGLRenderer()</code>生成。渲染器决定了渲染的结果应该画在页面的什么元素上面，并且以怎样的方式来绘制。renderer有一些自己的方法和属性，如<code>setSize()</code>, <code>domElement</code>，可以用于场景的展示。<br>渲染应该使用渲染器，结合相机和场景来得到结果画面。实现这个功能的函数是:  </p>
 <p><code>render( scene, camera, renderTarget, forceClear )</code></p>
 <p>各个参数的意义是：<br>scene：前面定义的场景<br>camera：前面定义的相机<br>renderTarget：渲染的目标，默认是渲染到前面定义的render变量中<br>forceClear：每次绘制之前都将画布的内容给清除，即使自动清除标志autoClear为false，也会清除。  </p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> renderer = <span class="keyword">new</span> THREE.WebGLRenderer();</span><br><span class="line">renderer.setSize(<span class="built_in">window</span>.innerWidth, <span class="built_in">window</span>.innerHeight);</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(renderer.domElement);</span><br></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var renderer = <span class="keyword">new</span> THREE.<span class="constructor">WebGLRenderer()</span>;</span><br><span class="line">renderer.set<span class="constructor">Size(<span class="params">window</span>.<span class="params">innerWidth</span>, <span class="params">window</span>.<span class="params">innerHeight</span>)</span>;</span><br><span class="line">document.body.append<span class="constructor">Child(<span class="params">renderer</span>.<span class="params">domElement</span>)</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="light光源-amp-object物体"><a href="#light光源-amp-object物体" class="headerlink" title="light光源 &amp; object物体"></a><code>light</code>光源 &amp; <code>object</code>物体</h3><p>场景什么的都准备好了，上主角吧 ~~  </p>
 <p>一个标准three.js 模板  </p>
 <p>这里我们把物体添加到场景中去。<br>比如我们想添加一个矩形进去，<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> geometry = <span class="built_in">new</span> THREE.CubeGeometry(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>); </span><br><span class="line"></span><br><span class="line">//CubeGeometry(<span class="built_in">width</span>, <span class="built_in">height</span>, depth, segmentsWidth, segmentsHeight, segmentsDepth, materials, sides)</span><br><span class="line"></span><br><span class="line">// 材质</span><br><span class="line"><span class="built_in">var</span> material = <span class="built_in">new</span> THREE.MeshBasicMaterial(&#123;<span class="built_in">color</span>: <span class="number">0x00ff00</span>&#125;);</span><br><span class="line"><span class="built_in">var</span> <span class="built_in">cube</span> = <span class="built_in">new</span> THREE.Mesh(geometry, material); </span><br><span class="line"><span class="built_in">scene</span>.add(<span class="built_in">cube</span>);</span><br></pre></td></tr></table></figure></p>
@@ -204,24 +203,24 @@
 <p>three.js 的实现过程  </p>
 <p><strong>创建一个场景</strong><br><code>var scene = new THREE.Scene()</code>;  </p>
 <p><strong>添加一个渲染器</strong><br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var <span class="keyword">render</span> = new THREE.WebGLRenderer(&#123;</span><br><span class="line">  <span class="keyword">canvas</span>: document.getElementById(<span class="string">'myCanvas'</span>),</span><br><span class="line">  antialias: true</span><br><span class="line">&#125;); <span class="comment">// 抗锯齿属性  </span></span><br><span class="line"><span class="keyword">render</span>.setClearColor(<span class="number">0xffffff</span>); <span class="comment">// 背景色为白色</span></span><br><span class="line"><span class="keyword">render</span>.setSize(<span class="keyword">canvas</span>.style.width, <span class="keyword">canvas</span>.style.height);</span><br></pre></td></tr></table></figure></p>
-<p><strong>创建一个照相机</strong><br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var camera = new THREE.PerspectiveCamera(<span class="number">45</span>, window.innerWidth / window.innerHeight, <span class="number">0.1</span>, <span class="number">1000</span>);  </span><br><span class="line">   </span><br><span class="line"><span class="comment">//设置相机朝向位置为(20,0,20) </span></span><br><span class="line">camera.lookAt(new THREE.Vector3(<span class="number">20</span>, <span class="number">0</span>, <span class="number">20</span>));</span><br></pre></td></tr></table></figure></p>
+<p><strong>创建一个照相机</strong><br><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var camera = <span class="keyword">new</span> THREE.<span class="constructor">PerspectiveCamera(45, <span class="params">window</span>.<span class="params">innerWidth</span> <span class="operator">/</span> <span class="params">window</span>.<span class="params">innerHeight</span>, 0.1, 1000)</span>;  </span><br><span class="line">   </span><br><span class="line"><span class="comment">//设置相机朝向位置为(20,0,20) </span></span><br><span class="line">camera.look<span class="constructor">At(<span class="params">new</span> THREE.Vector3(20, 0, 20)</span>);</span><br></pre></td></tr></table></figure></p>
 <p><strong>创建光</strong>  </p>
-<figure class="highlight pony"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> light = <span class="function"><span class="keyword">new</span> <span class="title">THREE</span>.<span class="title">AmbientLight</span>(<span class="number">0xffffff</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">//使用 Scene()的add方法将light添加到Scene中  </span></span><br><span class="line"><span class="title">scene</span>.<span class="title">add</span>(light);</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> light = <span class="keyword">new</span> THREE.AmbientLight(<span class="number">0xffffff</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">//使用 Scene()的add方法将light添加到Scene中  </span></span><br><span class="line">scene.<span class="keyword">add</span>(light);</span><br></pre></td></tr></table></figure>
 <p><strong>创建一个物体</strong>  </p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//物体三维图形</span></span><br><span class="line"><span class="keyword">var</span> geometry = <span class="keyword">new</span> <span class="type">THREE</span>.CubeGeometry(<span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>); </span><br><span class="line">    </span><br><span class="line"><span class="comment">//物体材质 </span></span><br><span class="line"><span class="keyword">var</span> material = <span class="keyword">new</span> <span class="type">THREE</span>.MeshBasicMaterial(&#123;  </span><br><span class="line">  color: <span class="type">0x4d6dad  </span></span><br><span class="line">&#125;);  </span><br><span class="line"><span class="comment">//生成三维物体</span></span><br><span class="line"><span class="keyword">var</span> mesh = <span class="keyword">new</span> <span class="type">THREE</span>.Mesh(geometry, material); </span><br><span class="line">mesh.position.<span class="keyword">set</span>(<span class="number">10</span>, <span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用 Scene()的add方法将mesh添加到Scene中</span></span><br><span class="line">scene.add(mesh);</span><br></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//物体三维图形</span></span><br><span class="line"><span class="keyword">var</span> geometry = <span class="keyword">new</span> <span class="type">THREE</span>.CubeGeometry(<span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>); </span><br><span class="line">    </span><br><span class="line"><span class="comment">//物体材质 </span></span><br><span class="line"><span class="keyword">var</span> material = <span class="keyword">new</span> <span class="type">THREE</span>.MeshBasicMaterial(&#123;  </span><br><span class="line">  color: <span class="type">0x4d6dad  </span></span><br><span class="line"><span class="type"></span>&#125;);  </span><br><span class="line"><span class="comment">//生成三维物体</span></span><br><span class="line"><span class="keyword">var</span> mesh = <span class="keyword">new</span> <span class="type">THREE</span>.Mesh(geometry, material); </span><br><span class="line">mesh.position.<span class="keyword">set</span>(<span class="number">10</span>, <span class="number">0</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用 Scene()的add方法将mesh添加到Scene中</span></span><br><span class="line">scene.add(mesh);</span><br></pre></td></tr></table></figure>
 <p><strong>创建一个物体</strong>  </p>
 <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 渲染场景  </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">render</span>.<span class="keyword">render</span>(scene, <span class="keyword">camera</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="右手坐标系"><a href="#右手坐标系" class="headerlink" title="右手坐标系"></a>右手坐标系</h3><p>threejs使用右手坐标系，x轴正方向向右，y轴正方向向上，z轴由屏幕从里向外。如下：  </p>
 <p><img src="./axis.png" width="200px"></p>
 <h3 id="坐标系的点"><a href="#坐标系的点" class="headerlink" title="坐标系的点"></a>坐标系的点</h3><p>联系原来学的几何，空间几何中，点可以用一个向量表示。那么在three.js中，可以用如下代码表示一个点：  假设一个点：(3,4,5)  </p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const point = new THREE.Vector(<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">const pointer = new THREE.Vector();</span><br><span class="line">pointer.set(<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> point = new THREE.Vector(<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pointer = new THREE.Vector();</span><br><span class="line">pointer.<span class="keyword">set</span>(<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="两点生成线"><a href="#两点生成线" class="headerlink" title="两点生成线"></a>两点生成线</h3><p>以两个点生成一条渐变的彩色线为例:  完整实例参考<code>line-three.html</code></p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initObject</span></span>() &#123;</span><br><span class="line">  <span class="comment">// 声明一个几何体geometry， 几何体里面有一个vertices变量，可以用来存放点。</span></span><br><span class="line">  <span class="keyword">var</span> geometry = <span class="keyword">new</span> <span class="type">THREE</span>.Geometry();</span><br><span class="line">  <span class="comment">// 定义线条材质，`LineBasicMaterial` 是有多个参数的，这个之后了解吧。这里就是定义线条材质是否使用顶点颜色，这是一个boolean值。意思是，线条各部分的颜色会根据顶点的颜色来进行插值</span></span><br><span class="line">  <span class="keyword">var</span> material = <span class="keyword">new</span> <span class="type">THREE</span>.LineBasicMaterial( &#123; vertexColors: <span class="type">true </span>&#125; );</span><br><span class="line">  <span class="comment">// 颜色，用于两个端点颜色。</span></span><br><span class="line">  <span class="keyword">var</span> color1 = <span class="keyword">new</span> <span class="type">THREE</span>.Color( <span class="number">0x444444</span> ), color2 = <span class="keyword">new</span> <span class="type">THREE</span>.Color( <span class="number">0xFF0000</span> ); </span><br><span class="line">  <span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="type">THREE</span>.Vector3( <span class="number">-100</span>, <span class="number">0</span>, <span class="number">100</span> );</span><br><span class="line">  <span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="type">THREE</span>.Vector3(  <span class="number">100</span>, <span class="number">0</span>, <span class="number">-100</span> );</span><br><span class="line">  geometry.vertices.push(p1);</span><br><span class="line">  geometry.vertices.push(p2);</span><br><span class="line">  <span class="comment">// 为上面两个顶点，设置两个颜色。</span></span><br><span class="line">  geometry.colors.push( color1, color2 );</span><br><span class="line">  <span class="comment">// 第一个参数是几何体geometry，里面包含了2个顶点和顶点的颜色。第二个参数是线条的材质，或者是线条的属性，表示线条以哪种方式取色。第三个参数是一组点的连接方式</span></span><br><span class="line">  <span class="keyword">var</span> line = <span class="keyword">new</span> <span class="type">THREE</span>.Line( geometry, material, THREE.LineSegments );</span><br><span class="line">  scene.add(line);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="线的更多理解"><a href="#线的更多理解" class="headerlink" title="线的更多理解"></a>线的更多理解</h3><p>threejs中，线是由点，材质，颜色组成的。<br><code>THREE.Vector</code>是点，但是threejs中没有提供单独画点的函数，所以要用THREE.Geometry来画，该结构有vertices属性，用来存放顶点。<br>材质的话，可以选择专为线准备的材质，THREE.LineBasicMaterial。<br>最后通过THREE.Line绘制了一条线。<br><code>new THREE.Line( geometry, material, THREE.LineSegments )</code>  </p>
 <p>如果想绘制一个网格线。那么思路就是，先定义一个长度为1000的x方向上的线，然后。将线均分为20份，每一条分别加一个y方向的位移。另一方面，垂直的线我们需要沿z方向旋转x轴上的线，然后在x方向上平移。  完整实例参考 <code>grid-three.html</code></p>
 <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function initObject(<span class="built_in">scene</span>) &#123;</span><br><span class="line">  <span class="built_in">var</span> geometry = <span class="built_in">new</span> THREE.Geometry();</span><br><span class="line">  <span class="built_in">var</span> p1 = <span class="built_in">new</span> THREE.Vector3( -<span class="number">500</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="built_in">var</span> p2 = <span class="built_in">new</span> THREE.Vector3(  <span class="number">500</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">  geometry.<span class="built_in">vertices</span>.<span class="built_in">push</span>(p1);</span><br><span class="line">  geometry.<span class="built_in">vertices</span>.<span class="built_in">push</span>(p2);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">var</span> material = <span class="built_in">new</span> THREE.LineBasicMaterial(&#123; <span class="built_in">color</span>: <span class="number">0x800080</span>, <span class="built_in">opacity</span>: <span class="number">0.6</span>&#125;);</span><br><span class="line">  <span class="keyword">for</span> ( <span class="built_in">let</span> i = <span class="number">0</span>; i &lt;= <span class="number">20</span>; i ++ ) &#123;</span><br><span class="line">    <span class="built_in">var</span> line = <span class="built_in">new</span> THREE.Line( geometry, material );</span><br><span class="line">    line.<span class="built_in">position</span>.y = ( i * <span class="number">50</span> ) - <span class="number">500</span>;</span><br><span class="line">    <span class="built_in">scene</span>.add( line );</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">var</span> line = <span class="built_in">new</span> THREE.Line( geometry, material);</span><br><span class="line">    line.<span class="built_in">position</span>.x = ( i * <span class="number">50</span> ) - <span class="number">500</span>;</span><br><span class="line">    // 将x轴方向的线，沿着z轴旋转<span class="number">90</span>度，就变成了垂直的线~~</span><br><span class="line">    line.rotation.z = <span class="number">90</span> * Math.PI / <span class="number">180</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scene</span>.add( line );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>所有代码示例，可以参考这里<a href="https://github.com/MissSweety/threejs" target="_blank" rel="external">code</a>;<br>英文参考：<a href="https://www.script-tutorials.com/category/html5-2/page/2/" target="_blank" rel="external">webgl with three.js</a><br>实战参考： <a href="https://teakki.com/p/58a3c1c4f0d40775548c8e9b" target="_blank" rel="external">dragon/three.js</a><br>实例参考：<a href="https://aotu.io/notes/2017/08/28/getting-started-with-threejs/index.html" target="_blank" rel="external">参考1</a><br>实例参考：<a href="http://www.myjscode.com/page/articleThree.html" target="_blank" rel="external">参考2</a></p>
+<p>所有代码示例，可以参考这里<a href="https://github.com/MissSweety/threejs" target="_blank" rel="noopener">code</a>;<br>英文参考：<a href="https://www.script-tutorials.com/category/html5-2/page/2/" target="_blank" rel="noopener">webgl with three.js</a><br>实战参考： <a href="https://teakki.com/p/58a3c1c4f0d40775548c8e9b" target="_blank" rel="noopener">dragon/three.js</a><br>实例参考：<a href="https://aotu.io/notes/2017/08/28/getting-started-with-threejs/index.html" target="_blank" rel="noopener">参考1</a><br>实例参考：<a href="http://www.myjscode.com/page/articleThree.html" target="_blank" rel="noopener">参考2</a></p>
 </blockquote>
 
         </div>
@@ -235,11 +234,11 @@
 
 
         
-        <a href="/2017/11/03/WebGL学习系列-three-js入门/" target="_blank" rel="external">https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/</a>
+        <a href="/2017/11/03/WebGL学习系列-three-js入门/" target="_blank" rel="external">https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -261,7 +260,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/&title=《WebGL学习系列-three.js入门》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/&title=《WebGL学习系列-three.js入门》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -271,22 +270,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/&title=《WebGL学习系列-three.js入门》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/&title=《WebGL学习系列-three.js入门》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-three.js入门》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-three.js入门》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -379,7 +378,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/&title=《WebGL学习系列-three.js入门》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/&title=《WebGL学习系列-three.js入门》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -389,22 +388,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/&title=《WebGL学习系列-three.js入门》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/&title=《WebGL学习系列-three.js入门》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-three.js入门》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-three.js入门》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/03/WebGL学习系列-three-js入门/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-three-js入门/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -415,7 +414,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aS47jMAwFwNz/0j0HCKw8foTxorIK2rGsUgMiTerziT9/D5/vq993JX/5Hu38ffmDh4eHtzT1KuD8+6eryVOSER7vxcPDw7vGS4arMvJJ/5hiHCTw8PDw3snLf7NFShYRDw8P7828/DHJ5KqJOB4eHt57ePmEkrvmy/Efai14eHh4MS/vIr3n+5X+Hh4eHt64q37ecJOr1eZZ9Yk/ZouHh4d3gZdvuHmzf36A4Pz0fJ54eHh493jVXLQ6aLVs0QtRSWEaDw8Pb5fX23bzxDc/apAHiUKpAg8PD2+J13v539ru8wVqIvHw8PAu8PLEtLe5V8dMDg2MmmF4eHh4F3i9NDcfp7dY54Q+Kgfj4eHhLfFy0uSIQHXrry5oVIzAw8PDW+LlyF7RoVdE6LW7oooLHh4e3phXfqUPCgHVZaqOPCrd4uHh4S0dGqhO7jxoUj7IDyJUSxLNNhgeHh5ezKsWbeeFhklxtpzE4+Hh4V3g5a2sfPuePz4vQIxeEvDw8PBWeXlqu8u4HaLw8PDwtnjVAkGv6ZWHnKTUmx9uwMPDw9vlJWXWalSZlB56afTjVTw8PLxrvK0GWJ5wz0u3ydEEPDw8vHu8/ABoNdnN2/y941Y/ghkeHh7eBV6+KSdTr7bTqqElfw14/B/i4eHhrfJ2ixF5SMhLEtVAhYeHh3eblzTj8ynOk+bq8YUoIuHh4eGt8vLGWG+EZFnzBL3wr8LDw8Nb5fWKDlshpJooV4vIeHh4eDd4vQ034fXwk0X5bMUTPDw8vIA3CQa9lHorbJzngIeHh3eb12uMTVLtZvobzx8PDw/vPbxq8bdaOOi1wR5/j4eHh/cyXrLRz48XFDC7gQEPDw9vXOdMmlX5XZMycSGtx8PDw7vAm7/w94oL1dQ5P86Fh4eHd433D/Ddc6jwIewgAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpklEQVR42u3aS1LEMAwFQO5/aTjAVOA9yYahqrOiJj93FpaQ9PERH58vR3Ll072vZ7+/Mnnv6sDDw8NbLz1fYnL90y9PK0nOFp8ADw8P7xoveVz+mnoRo/dGHwgPDw/vbXh5MGifmafpeHh4eP+Fl6fjm5DzZ4EBDw8PL+bNiq1toWH2KVfJOh4eHt4FXt5Fep+/r/T38PDw8NZd9VlzK9/iZ7xitXh4eHgXePmG+5SwnmqStcWIYp14eHh413jJRt8WI9pfkjfWjTc8PDy8o7z8hv3GnYeK2TVRMQIPDw9vzdu0/2d11KTZPxveGvb38PDw8ErehrH/HJuBg+QXPDw8vNu8tmXVbv2nCr5Fao6Hh4d3gbdJfDdNsllRIy924OHh4d3jtQ9tm1V58t2GhKjgi4eHh3eBNxucmmE2JYzVYBYeHh7eBV6OzMcOZg22TZFimF7j4eHhjXj7pv5sKbMiRY7Ew8PDu8HLl5s3nA6XEoLc+BGJh4eHd4HXNvhnBdm8ZdWGqGKQCw8PD+8oL7+0TZfzZDov0dafFQ8PD+8or01P89e3o11tYj0cusLDw8M7ytsMWs2GX/dBJfovAQ8PD+8ary1GtI202dbfDhzg4eHh3eYl2+tsm86fmTwhH2goqtR4eHh4C16epM7CxtkhrXY0AQ8PD+8erw0J7Wdqy7h5aTgaHcDDw8O7wJuVd+uiQJk6z56Jh4eHd4/3WR6nhgBOPfmHs3h4eHgXeJt40jLytLstH9cYPDw8vDVv1p4/FULyoDJsm+Hh4eFd4+XFgllxth0vmBU1itN4eHh4v8jbL6Le3MtPj4eHh/duvLzokNyVh4e80IyHh4f3O7y8EJAXFE4tPQ8bj4EBDw8P7yhvMyDVbtP1th604g4ceHh4eOn1X41nQQX9iKUgAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -465,7 +464,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

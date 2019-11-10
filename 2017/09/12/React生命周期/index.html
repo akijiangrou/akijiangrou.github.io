@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,58 +13,27 @@
     
     
     
-    <title>React生命周期 | MissSweety&#39;s Blog | never say never</title>
+    <title>React生命周期 | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="react,生命周期">
-    <meta name="description" content="react生命周期在自定义React组件时，会根据需要在组件生命周期的不同阶段实现不同的逻辑。本文源码是【15.6.1】
-生命周期而组件的生命周期在不同状态下的执行顺序如下：
-首次挂载组件
-getDefaultProps
-getInitialState
-componentWillMount
-render
-componentDidMount
-
-重新挂载组件
-getInitialState
-compo">
+    <meta name="description" content="react生命周期在自定义React组件时，会根据需要在组件生命周期的不同阶段实现不同的逻辑。本文源码是【15.6.1】 生命周期而组件的生命周期在不同状态下的执行顺序如下： 首次挂载组件 getDefaultProps getInitialState componentWillMount render componentDidMount  重新挂载组件 getInitialState compo">
+<meta name="keywords" content="react,生命周期">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React生命周期">
-<meta property="og:url" content="https://misssweety.github.io/2017/09/12/React生命周期/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="react生命周期在自定义React组件时，会根据需要在组件生命周期的不同阶段实现不同的逻辑。本文源码是【15.6.1】
-生命周期而组件的生命周期在不同状态下的执行顺序如下：
-首次挂载组件
-getDefaultProps
-getInitialState
-componentWillMount
-render
-componentDidMount
-
-重新挂载组件
-getInitialState
-compo">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/09/12/React生命周期/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="react生命周期在自定义React组件时，会根据需要在组件生命周期的不同阶段实现不同的逻辑。本文源码是【15.6.1】 生命周期而组件的生命周期在不同状态下的执行顺序如下： 首次挂载组件 getDefaultProps getInitialState componentWillMount render componentDidMount  重新挂载组件 getInitialState compo">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2017-10-25T11:44:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React生命周期">
-<meta name="twitter:description" content="react生命周期在自定义React组件时，会根据需要在组件生命周期的不同阶段实现不同的逻辑。本文源码是【15.6.1】
-生命周期而组件的生命周期在不同状态下的执行顺序如下：
-首次挂载组件
-getDefaultProps
-getInitialState
-componentWillMount
-render
-componentDidMount
-
-重新挂载组件
-getInitialState
-compo">
+<meta name="twitter:description" content="react生命周期在自定义React组件时，会根据需要在组件生命周期的不同阶段实现不同的逻辑。本文源码是【15.6.1】 生命周期而组件的生命周期在不同状态下的执行顺序如下： 首次挂载组件 getDefaultProps getInitialState componentWillMount render componentDidMount  重新挂载组件 getInitialState compo">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -98,7 +67,7 @@ compo">
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -126,7 +95,7 @@ compo">
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -264,7 +233,7 @@ var factory = require(&apos;create-react-class/factory&apos;);
 
 module.exports = factory(Component, isValidElement, ReactNoopUpdateQueue);
 </code></pre><p>factory: [react/addons/create-react-class/factory.js];</p>
-<p>component如上，但是<code>createClass</code>实际上导出的是由<code>factory``包裹的函数。各种生命周期都是在factory</code>里构造的。<code>factory</code>里定义了，<code>ReactClassInterface</code>，里面规定了好多协议（如render等）</p>
+<p>component如上，但是<code>createClass</code>实际上导出的是由<code>factory`</code>包裹的函数。各种生命周期都是在factory<code>里构造的。</code>factory<code>里定义了，</code>ReactClassInterface`，里面规定了好多协议（如render等）</p>
 <pre><code>// Helper function to allow the creation of anonymous functions which do not
 // have .name set to the name of the variable being assigned to.
 function identity(fn) {
@@ -541,11 +510,11 @@ if (inst.shouldComponentUpdate) {
 
 
         
-        <a href="/2017/09/12/React生命周期/" target="_blank" rel="external">https://misssweety.github.io/2017/09/12/React生命周期/</a>
+        <a href="/2017/09/12/React生命周期/" target="_blank" rel="external">https://akijiangrou.github.io/2017/09/12/React生命周期/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -567,7 +536,7 @@ if (inst.shouldComponentUpdate) {
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/09/12/React生命周期/&title=《React生命周期》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/09/12/React生命周期/&title=《React生命周期》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -577,22 +546,22 @@ if (inst.shouldComponentUpdate) {
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/09/12/React生命周期/&title=《React生命周期》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/09/12/React生命周期/&title=《React生命周期》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/09/12/React生命周期/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/09/12/React生命周期/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《React生命周期》 — MissSweety's Blog&url=https://misssweety.github.io/2017/09/12/React生命周期/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《React生命周期》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/09/12/React生命周期/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/09/12/React生命周期/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/09/12/React生命周期/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -685,7 +654,7 @@ if (inst.shouldComponentUpdate) {
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/09/12/React生命周期/&title=《React生命周期》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/09/12/React生命周期/&title=《React生命周期》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -695,22 +664,22 @@ if (inst.shouldComponentUpdate) {
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/09/12/React生命周期/&title=《React生命周期》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/09/12/React生命周期/&title=《React生命周期》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/09/12/React生命周期/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/09/12/React生命周期/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《React生命周期》 — MissSweety's Blog&url=https://misssweety.github.io/2017/09/12/React生命周期/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《React生命周期》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/09/12/React生命周期/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/09/12/React生命周期/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/09/12/React生命周期/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -721,7 +690,7 @@ if (inst.shouldComponentUpdate) {
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3aSW7DMAwF0Nz/0u4B2rifpNNC0tMqCDzoeUFw0OsVr+vbql5fvev1iYWBgbEs47pd94x8c/fX5+99S8XAwDiAMXl9EjTzDfXei4GBgXEfWJ8KxPlzMDAwMO4ZV7DuecmTMTAwMHpFbJ4a5sniP9TiGBgYCzLyrvvf//7IfAMDA2MpxlVceUNtXtwWdoWBgbE146lHT0rf+WEODAyMvRmTow/VUFsdDxRKZQwMjMMY1dZY797qsOGXPWBgYBzAqA4d81QvD7W9Qx7l6hkDA2NZRnVbeUJZHVImBe0PO8HAwDiSMW+0TQaleXLZzFsxMDCWYjyVDhYGjS1AFPoxMDA2ZeRpXF5YTtLKZrGNgYFxACN5WY7MMck/5dMiGBgY2zHyNv189JiPAUblMQYGxnaM/IZe0z85apYfIyufGcHAwNiIUR035i37amnaGyRgYGDszegdpMgTvjyM5iH47ZMxMDAOYOQtszkmL2gLzTgMDIxjGJOx5SQF7B0IextwMTAwNmX00sHqP/Pg/kvAxcDAOIAxOe5QHR7kAT0K3xgYGJsyruLKS9NJslimYmBgbM2oDgtz6iTIJp+mOf7EwMBYllFtt/VI+Wizeg0GBsY5jDzw9ULz556PgYGBEY0PW0H52YNoGBgYGKPh4iSM3n6yUcDFwMBYkNEbBlQb+nlLLi+kMTAwTmDkAbGXFFYL14TaDO4YGBjrMb4AgC1gvq/r8R4AAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aSw7CMAxF0e5/0zBGiHKfHZDi3I6QqNocBsa/68LXo33dP/n9LdcvLhkyZGzLIK/nB3q/hzyzc48MGTLOYZBQeH9ocj8Pu/xsMmTIkJEy0gCavleGDBkyeBBMS01y/30QlyFDhgwSKGvhmJe+f6rFZciQsSEjDZf//PyT+YYMGTK2YnTGkDxA1wrX4FQyZMgYzeiUl/wQpAxOA64MGTLOYfCikeRjBMZ/gqBVJ0OGjAMYPCDWml/pQeOQLUOGjAMY6aiyNjAg6xr825dnypAhYzQjTfhqQTM9RNrmkyFDxmxGfyTAS2JyUFLotkaYMmTI2JbBQ2S61NUP0Cj1lCFDxmhGZ92BhNpaI6/W85chQ8ZURjpoTNNBPhzlofbLtogMGTKGMnjI40lhOtRctjMiQ4aMcYx0FYzzOiljseiVIUPGUAZv3LdSt3AVg/+IMmTIOIHRSdp4e67W+q+tYsiQIWM2gw8D+o3+WlMvCLUyZMgYx+gUsWvL3bSRt6wWlyFDxoaM/tCxU6DyoSbKGWXIkDGIwV/ZWRRbxfuYGsqQIWMc4xFe5KC1dJMvlhXrbxkyZGzL4FenGdcpevtPkyFDxgxG/3C1Q/NVD9TCkyFDxgGMVYsXaeMs/Qf4iJQhQ4YMHBb54gUvZePBgAwZMmS0x588JeVjBhkyZJzAIEVsbQwZl6Ol9FSGDBmzGbx0TAP0qkP0VzRkyJCxLeMJ23UZBtofLuIAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
@@ -771,7 +740,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

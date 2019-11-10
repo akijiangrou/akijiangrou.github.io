@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,36 +13,32 @@
     
     
     
-    <title>前端页面-网络性能 | MissSweety&#39;s Blog | never say never</title>
+    <title>前端页面-网络性能 | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="timing">
-    <meta name="description" content="前端页面-网络性能一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。  
-前一段时间，自己项目的网站在加载和渲染的时候表现很奇怪，遂仔细用起chrome的network以及timeline面板，期待找到问题的根源。用的时候发现很多自己缺失的知识，于是就有这篇文章记录查缺补漏的内容。
-这里先从网络性能角度来看，它将从初始阶段影响网站的性能。下面会以chrom">
+    <meta name="description" content="前端页面-网络性能一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。   前一段时间，自己项目的网站在加载和渲染的时候表现很奇怪，遂仔细用起chrome的network以及timeline面板，期待找到问题的根源。用的时候发现很多自己缺失的知识，于是就有这篇文章记录查缺补漏的内容。 这里先从网络性能角度来看，它将从初始阶段影响网站的性能。下面会以chrom">
+<meta name="keywords" content="timing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端页面-网络性能">
-<meta property="og:url" content="https://misssweety.github.io/2017/05/25/网络优化/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="前端页面-网络性能一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。  
-前一段时间，自己项目的网站在加载和渲染的时候表现很奇怪，遂仔细用起chrome的network以及timeline面板，期待找到问题的根源。用的时候发现很多自己缺失的知识，于是就有这篇文章记录查缺补漏的内容。
-这里先从网络性能角度来看，它将从初始阶段影响网站的性能。下面会以chrom">
-<meta property="og:image" content="https://misssweety.github.io/./屏幕快照 2017-05-23 下午8.33.48.png">
-<meta property="og:image" content="https://misssweety.github.io/./屏幕快照 2017-05-23 下午8.34.34.png">
-<meta property="og:image" content="https://misssweety.github.io/./resource-timing-overview-1.png">
-<meta property="og:image" content="https://misssweety.github.io/./屏幕快照 2017-05-24 上午11.56.02.png">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/05/25/网络优化/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="前端页面-网络性能一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。   前一段时间，自己项目的网站在加载和渲染的时候表现很奇怪，遂仔细用起chrome的network以及timeline面板，期待找到问题的根源。用的时候发现很多自己缺失的知识，于是就有这篇文章记录查缺补漏的内容。 这里先从网络性能角度来看，它将从初始阶段影响网站的性能。下面会以chrom">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/05/25/网络优化/屏幕快照%202017-05-23%20下午8.33.48.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/05/25/网络优化/屏幕快照%202017-05-23%20下午8.34.34.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/05/25/网络优化/resource-timing-overview-1.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/05/25/网络优化/屏幕快照%202017-05-24%20上午11.56.02.png">
 <meta property="og:updated_time" content="2017-05-25T03:02:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端页面-网络性能">
-<meta name="twitter:description" content="前端页面-网络性能一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。  
-前一段时间，自己项目的网站在加载和渲染的时候表现很奇怪，遂仔细用起chrome的network以及timeline面板，期待找到问题的根源。用的时候发现很多自己缺失的知识，于是就有这篇文章记录查缺补漏的内容。
-这里先从网络性能角度来看，它将从初始阶段影响网站的性能。下面会以chrom">
-<meta name="twitter:image" content="https://misssweety.github.io/./屏幕快照 2017-05-23 下午8.33.48.png">
+<meta name="twitter:description" content="前端页面-网络性能一个网站从开始访问，发送请求，页面渲染，异步请求，到最终呈现，每个阶段都有各自不同的优化点。   前一段时间，自己项目的网站在加载和渲染的时候表现很奇怪，遂仔细用起chrome的network以及timeline面板，期待找到问题的根源。用的时候发现很多自己缺失的知识，于是就有这篇文章记录查缺补漏的内容。 这里先从网络性能角度来看，它将从初始阶段影响网站的性能。下面会以chrom">
+<meta name="twitter:image" content="https://akijiangrou.github.io/2017/05/25/网络优化/屏幕快照%202017-05-23%20下午8.33.48.png">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -76,7 +72,7 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -104,7 +100,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -234,7 +230,7 @@
 <p>下面这张图定义了PerformanceResourceTiming 接口的各个时间属性：</p>
 <p><img src="./resource-timing-overview-1.png"></p>
 <p><strong>performance.timing()</strong> 获取页面整体的时间参数<br><img src="./屏幕快照 2017-05-24 上午11.56.02.png"></p>
-<p>这个api可以参考这个非正式的标准规范<a href="https://www.w3.org/TR/resource-timing/" target="_blank" rel="external">Resouce timing - w3c</a>   <a href="https://www.w3.org/TR/performance-timeline/#sec-PerformanceEntry-interface" target="_blank" rel="external">old one</a></p>
+<p>这个api可以参考这个非正式的标准规范<a href="https://www.w3.org/TR/resource-timing/" target="_blank" rel="noopener">Resouce timing - w3c</a>   <a href="https://www.w3.org/TR/performance-timeline/#sec-PerformanceEntry-interface" target="_blank" rel="noopener">old one</a></p>
 <p>该规范定义了一个用于Web应用程序的接口，这个接口可以访问文档需要的资源的完整时序信息。 接口的详细说明这里就不一一介绍了，细节了解需要自己去读标准。 下面只挑和我们相关的内容。 </p>
 <p>由上面这个图，我们可以获取到chrome网络面板中，timing的相关信息，举个例子：   </p>
 <p>页面整体的时间参数 （mta应该有用到以下参数） </p>
@@ -248,9 +244,9 @@ ttfb = t.responseStart - t.navigationStart;
     dns = r0.domainLookupEnd - r0.domainLookupStart,
     tcp = r0.connectEnd - r0.connectStart,
     ttfb = r0.responseStart - r0.startTime;
-</code></pre><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>还有一些其他的测量时间的问题，请参考<a href="http://mutongwu.iteye.com/blog/2164917?utm_source=tuicool" target="_blank" rel="external">performance的资源计时统计</a><br>其他方法使用，参考<a href="http://www.alloyteam.com/2015/09/explore-performance/" target="_blank" rel="external">初探performance-监控网页与程序性能</a>  </p>
+</code></pre><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p>还有一些其他的测量时间的问题，请参考<a href="http://mutongwu.iteye.com/blog/2164917?utm_source=tuicool" target="_blank" rel="noopener">performance的资源计时统计</a><br>其他方法使用，参考<a href="http://www.alloyteam.com/2015/09/explore-performance/" target="_blank" rel="noopener">初探performance-监控网页与程序性能</a>  </p>
 <h2 id="如何在chrome-devtool中查看网络性能"><a href="#如何在chrome-devtool中查看网络性能" class="headerlink" title="如何在chrome devtool中查看网络性能"></a>如何在chrome devtool中查看网络性能</h2><p>在chrome devtool中，我们可以模拟各种网络环境，可以过滤请求，查看http请求信息，了解dom加载时间，cookie信息，资源的上下游等等。</p>
-<p>内容略多，参考这里，chrome developers 官网<a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/" target="_blank" rel="external">测量网络性能</a><br>英文不好的可以看这个：<a href="http://www.jianshu.com/p/471950517b07" target="_blank" rel="external">Chrome DevTools 之 Network，网络加载分析利器</a></p>
+<p>内容略多，参考这里，chrome developers 官网<a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/" target="_blank" rel="noopener">测量网络性能</a><br>英文不好的可以看这个：<a href="http://www.jianshu.com/p/471950517b07" target="_blank" rel="noopener">Chrome DevTools 之 Network，网络加载分析利器</a></p>
 <h2 id="如何优化"><a href="#如何优化" class="headerlink" title="如何优化"></a>如何优化</h2><p>网站加载时间对用户的影响：<br>0.1秒：秒开<br>100-300 ：比较小的可察觉的延迟<br>300-1s：Machine is working<br>1秒：还能接受，但是已经不开心了<br>10秒：什么破玩意，不想看了<br>chrome developer里提到，目标是250ms</p>
 <p>优化主要从四个属性入手，以下基本翻译自chrome devtool </p>
 <h3 id="Queued-or-stalled-requests"><a href="#Queued-or-stalled-requests" class="headerlink" title="Queued or stalled requests"></a>Queued or stalled requests</h3><p>这两个指标如果时间很长，说明很多资源等待<br><strong>造成的原因</strong>：访问同一个域名的请求太多，对于http1.1来说，每个host最多同时支持6个tcp连接。</p>
@@ -258,7 +254,7 @@ ttfb = t.responseStart - t.navigationStart;
 <ul>
 <li>域名分片：将资源放在不同的域名中，用来克服浏览器对同一个域名访问的限制，但是不能过多因为dns解析也需要时间  </li>
 </ul>
-<p><strong>[备注]</strong>domain sharding (域名分片)（<a href="https://wp-rocket.me/blog/difference-cdn-and-domain-sharding/" target="_blank" rel="external">和cdn的不同</a>域名分片是一种分布方式，是将资源分布在不同的域名中达到克服浏览器访问限制的目的；cdn则是在不同的服务器上托管世界各地的网站资源。<br>）</p>
+<p><strong>[备注]</strong>domain sharding (域名分片)（<a href="https://wp-rocket.me/blog/difference-cdn-and-domain-sharding/" target="_blank" rel="noopener">和cdn的不同</a>域名分片是一种分布方式，是将资源分布在不同的域名中达到克服浏览器访问限制的目的；cdn则是在不同的服务器上托管世界各地的网站资源。<br>）</p>
 <ul>
 <li>使用http2.0<br>让重要的请求先发起，不重要的remove或者推迟。</li>
 </ul>
@@ -287,11 +283,11 @@ ttfb = t.responseStart - t.navigationStart;
 
 
         
-        <a href="/2017/05/25/网络优化/" target="_blank" rel="external">https://misssweety.github.io/2017/05/25/网络优化/</a>
+        <a href="/2017/05/25/网络优化/" target="_blank" rel="external">https://akijiangrou.github.io/2017/05/25/网络优化/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -313,7 +309,7 @@ ttfb = t.responseStart - t.navigationStart;
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/05/25/网络优化/&title=《前端页面-网络性能》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/05/25/网络优化/&title=《前端页面-网络性能》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -323,22 +319,22 @@ ttfb = t.responseStart - t.navigationStart;
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/05/25/网络优化/&title=《前端页面-网络性能》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/05/25/网络优化/&title=《前端页面-网络性能》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/05/25/网络优化/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/05/25/网络优化/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端页面-网络性能》 — MissSweety's Blog&url=https://misssweety.github.io/2017/05/25/网络优化/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端页面-网络性能》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/05/25/网络优化/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/05/25/网络优化/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/05/25/网络优化/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -431,7 +427,7 @@ ttfb = t.responseStart - t.navigationStart;
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/05/25/网络优化/&title=《前端页面-网络性能》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/05/25/网络优化/&title=《前端页面-网络性能》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -441,22 +437,22 @@ ttfb = t.responseStart - t.navigationStart;
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/05/25/网络优化/&title=《前端页面-网络性能》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/05/25/网络优化/&title=《前端页面-网络性能》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/05/25/网络优化/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/05/25/网络优化/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端页面-网络性能》 — MissSweety's Blog&url=https://misssweety.github.io/2017/05/25/网络优化/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前端页面-网络性能》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/05/25/网络优化/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/05/25/网络优化/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/05/25/网络优化/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -467,7 +463,7 @@ ttfb = t.responseStart - t.navigationStart;
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aQXbDIAwFwNz/0ummOz/TL0TaGoZVnuMYxgtFSLxe8XjfjOs91/uv346vXK8vGxgYGI9lvIdjvKyE13lCYRYMDIwDGHcT58Fx/LkKzteGgYGBUSV1ksgkocTAwMCYC7h5AB3P+Mf/GxgYGP+ekQe+fLM6F4g/vhfHwMB4ICOvuv/+54/0NzAwMB7FWBUc5zai/fV8PxkDA2NrRj5Npw2Ql9XytA8DAwMj31h2DnglTy4U7DAwMLZmjJOzZFtbTfv6L+uHFWJgYGzH6B//KrynBmyyIoiBgfFwxlxKlwTofFub33/7KwwMjAMYSdG/uuldFb6jBicGBsbWjOomdq6Un7+IPKH84X4MDIyNGJ3g2A+vy5oTGBgYWzOq7cbOlWqRrlyGw8DAOIAxThCTIv5cq2DusEW5PYCBgfFYxqogu2qh1ULebX8DAwNjI0a+Ec23oNVmZPV42e1rxcDA2Jox9+jxEYocUG2XRg0JDAyMrRn9sn6+6E80GDAwMHZlzE1TDaPVgxTVtBUDA+NkRpL29Q+QzTU1MTAwTmO8lo65zW21xIaBgXEC410c1YXmyLyQF1X+MDAwNmLMBdD82FZ+OCxviLbanxgYGI9lJEE2d1eDaeeoGQYGxmmMucCX37/qH+AWiYGBgRGng3nwXfxbDAwMjLipOTdj5xgrBgbGOYxkE1st91ePULQSSgwMjK0Zq0JkNX3Ml7WsqYmBgfE8xhds0VWDm5g2qwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACM0lEQVR42u3aO27DMBAFwNz/0krrFDLeW9oBRI4qI5EsDos19/PzE1/Xy5XfmTz1+t/8LcMLAwPjsYzr7XV3z91S8o1Ivj9ZGwYGxjmMJBTmpLtn8+/Pn8XAwMBY/9weBDEwMDA+G3Dzp/JnMTAwMFaS2PWCWrtBX8nFMTAwHsjIq+7///kr/Q0MDIxHMa7yWim9tQfKYlUYGBhbM2YNyHZ4Ij8CrjREMTAw9mbMbm2Xkjc7Z8McGBgYuzLa4dH8mDjLNN8H99t3YWBgHMNYSVCTkJqH0fyYiIGBcTIjX3rbCs2T27yEh4GBcQIjOaK1xbU2iLfjGtH+YWBgbMHIa1ZtWa0Nu7O/3M64YWBgbMRIlp4vq21ktonusGqIgYHxcMZnm5p5e7LdiHbgAwMDY1dGkoJ+itqmzcMkFgMDYyPGbMwiL9i1TYU8ff1zDwYGxgGM2fGujXvtMEexrRgYGJsy2oDYHhBnrYJ2pAMDA2NvxiyJnZXy27JacSjEwMA4gJGUvZICWTtUMRvUuN0mDAyMAxhtwyAJr3npPz9Q3q4KAwPjAEabXs4GuVYOkcXvBgYGxkaMq7ySduOnBl6jIJu8EgMD4+GMttA/G+daKcDNRjcwMDD2Y6wUudbLcCuNzOLXAwMDYwtGG/hWGgD5counMDAwMBZK9nlCm6fKw2kRDAyMwxiz4l17Z9EKxcDAOIDRvngloc0PiF8pt2FgYDyQsTSpMWpA5mnwLPRjYGBsxPgFSTyyUGWI0oUAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
@@ -517,7 +513,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

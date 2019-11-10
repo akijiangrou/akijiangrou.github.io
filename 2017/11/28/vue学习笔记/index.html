@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,28 +13,27 @@
     
     
     
-    <title>vue学习笔记 | MissSweety&#39;s Blog | never say never</title>
+    <title>vue学习笔记 | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="学习笔记,Vue.js">
-    <meta name="description" content="声明式渲染给vue一个div，将数据绑定在这个div范围内，然后就可以用vue操作和渲染了。
-  1234567891011&amp;lt;div id=&quot;app&quot; v-bind:style=&apos;style&apos;&amp;gt;  &amp;#123;&amp;#123; message &amp;#125;&amp;#125;&amp;lt;/div&amp;gt;var app = new Vue(&amp;#123;  el: &apos;#app&apos;,  data: &amp;#123">
+    <meta name="description" content="声明式渲染给vue一个div，将数据绑定在这个div范围内，然后就可以用vue操作和渲染了。   1234567891011&amp;lt;div id=&quot;app&quot; v-bind:style=&apos;style&apos;&amp;gt;  &amp;#123;&amp;#123; message &amp;#125;&amp;#125;&amp;lt;/div&amp;gt;var app = new Vue(&amp;#123;  el: &apos;#app&apos;,  data: &amp;#123">
+<meta name="keywords" content="学习笔记,Vue.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue学习笔记">
-<meta property="og:url" content="https://misssweety.github.io/2017/11/28/vue学习笔记/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="声明式渲染给vue一个div，将数据绑定在这个div范围内，然后就可以用vue操作和渲染了。
-  1234567891011&amp;lt;div id=&quot;app&quot; v-bind:style=&apos;style&apos;&amp;gt;  &amp;#123;&amp;#123; message &amp;#125;&amp;#125;&amp;lt;/div&amp;gt;var app = new Vue(&amp;#123;  el: &apos;#app&apos;,  data: &amp;#123">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/11/28/vue学习笔记/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="声明式渲染给vue一个div，将数据绑定在这个div范围内，然后就可以用vue操作和渲染了。   1234567891011&amp;lt;div id=&quot;app&quot; v-bind:style=&apos;style&apos;&amp;gt;  &amp;#123;&amp;#123; message &amp;#125;&amp;#125;&amp;lt;/div&amp;gt;var app = new Vue(&amp;#123;  el: &apos;#app&apos;,  data: &amp;#123">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2017-12-01T10:32:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue学习笔记">
-<meta name="twitter:description" content="声明式渲染给vue一个div，将数据绑定在这个div范围内，然后就可以用vue操作和渲染了。
-  1234567891011&amp;lt;div id=&quot;app&quot; v-bind:style=&apos;style&apos;&amp;gt;  &amp;#123;&amp;#123; message &amp;#125;&amp;#125;&amp;lt;/div&amp;gt;var app = new Vue(&amp;#123;  el: &apos;#app&apos;,  data: &amp;#123">
+<meta name="twitter:description" content="声明式渲染给vue一个div，将数据绑定在这个div范围内，然后就可以用vue操作和渲染了。   1234567891011&amp;lt;div id=&quot;app&quot; v-bind:style=&apos;style&apos;&amp;gt;  &amp;#123;&amp;#123; message &amp;#125;&amp;#125;&amp;lt;/div&amp;gt;var app = new Vue(&amp;#123;  el: &apos;#app&apos;,  data: &amp;#123">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -68,7 +67,7 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -96,7 +95,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -185,38 +184,38 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="声明式渲染"><a href="#声明式渲染" class="headerlink" title="声明式渲染"></a>声明式渲染</h2><p>给vue一个div，将数据绑定在这个div范围内，然后就可以用vue操作和渲染了。</p>
-  <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span> v-bind:<span class="built_in">style</span>='<span class="built_in">style</span>'&gt;</span><br><span class="line">  &#123;&#123; message &#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">var</span> app = <span class="built_in">new</span> Vue(&#123;</span><br><span class="line">  el: '#app',</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: 'my name <span class="built_in">is</span> zcx',</span><br><span class="line">    <span class="built_in">style</span>: '<span class="built_in">width</span>: 200px;<span class="built_in">background</span>: pink',</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keywords">div</span> <span class="symbol">id</span>=<span class="string">"app"</span> v-bind:style=<span class="string">'style'</span>&gt;</span><br><span class="line">  &#123;&#123; message &#125;&#125;</span><br><span class="line">&lt;/<span class="keywords">div</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="keywords">var</span> app = new Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'my name is zcx'</span>,</span><br><span class="line">    style: <span class="string">'width: 200px;background: pink'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>类似模板的方法: html 中嵌入数据，该数据存储在vue的data中。<br>数据还可以通过，v-bind的方法，传到dom节点中。bind后面接的是dom应有的属性，等号后面接data中的数据。  </p>
 <h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><p>以<code>v-</code> 开头的都是，vue整合了一些常用的便捷的写法，具体如下：<br><code>【v-bind】</code>绑定数据，还提供了简写：<code>v-bind:href=&#39;url&#39; ===&gt; :href=&#39;url&#39;</code><br><code>【v-if】</code>  条件判定，绑定dom结构到数据上。<br><code>【v-for】</code> 循环<br><code>【v-on】</code>  事件监听，简写：<code>v-on:click=&#39;...&#39;  ===&gt; @click=&#39;...&#39;</code>  </p>
 <p>实例代码：  </p>
-<p></p><p data-height="473" data-theme-id="0" data-slug-hash="Bwvrrb" data-default-tab="js,result" data-user="akixiao" data-embed-version="2" data-pen-title="Bwvrrb" class="codepen">See the Pen <a href="https://codepen.io/akixiao/pen/Bwvrrb/" target="_blank" rel="external">Bwvrrb</a> by akixiao (<a href="https://codepen.io/akixiao" target="_blank" rel="external">@akixiao</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<p></p><p data-height="473" data-theme-id="0" data-slug-hash="Bwvrrb" data-default-tab="js,result" data-user="akixiao" data-embed-version="2" data-pen-title="Bwvrrb" class="codepen">See the Pen <a href="https://codepen.io/akixiao/pen/Bwvrrb/" target="_blank" rel="noopener">Bwvrrb</a> by akixiao (<a href="https://codepen.io/akixiao" target="_blank" rel="noopener">@akixiao</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p><p></p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 <p><code>【v-model】</code> 实现表单信息与应用状态之间的双向绑定。对于input   v-model绑定的是input中value。<br>radio 对应的是value中的 ‘one’，’two’;</p>
 <figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="built_in">type</span>=<span class="string">"radio"</span> name=<span class="string">"pick"</span> <span class="built_in">value</span>=<span class="string">"one"</span> v-model=<span class="string">"pick"</span>/&gt;</span><br><span class="line">&lt;input <span class="built_in">type</span>=<span class="string">"radio"</span> name=<span class="string">"pick"</span> <span class="built_in">value</span>=<span class="string">"two"</span> v-model=<span class="string">"pick"</span>/&gt;</span><br><span class="line">&#123;&#123; pick &#125;&#125;</span><br><span class="line"></span><br><span class="line">// vue 部分</span><br><span class="line">da<span class="symbol">ta:</span> &#123;</span><br><span class="line">    <span class="built_in">pi</span><span class="symbol">ck:</span> <span class="string">"one"</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <p><code>【v-once】</code> 只执行一次插值，当数据改变时，插值处的内容不会更新</p>
 <h3 id="v-model实例"><a href="#v-model实例" class="headerlink" title="v-model实例"></a>v-model实例</h3><p>将input与v-model结合，如下：  </p>
-<p></p><p data-height="553" data-theme-id="0" data-slug-hash="EbeOXB" data-default-tab="html,result" data-user="akixiao" data-embed-version="2" data-pen-title="EbeOXB" class="codepen">See the Pen <a href="https://codepen.io/akixiao/pen/EbeOXB/" target="_blank" rel="external">EbeOXB</a> by akixiao (<a href="https://codepen.io/akixiao" target="_blank" rel="external">@akixiao</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<p></p><p data-height="553" data-theme-id="0" data-slug-hash="EbeOXB" data-default-tab="html,result" data-user="akixiao" data-embed-version="2" data-pen-title="EbeOXB" class="codepen">See the Pen <a href="https://codepen.io/akixiao/pen/EbeOXB/" target="_blank" rel="noopener">EbeOXB</a> by akixiao (<a href="https://codepen.io/akixiao" target="_blank" rel="noopener">@akixiao</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p><p></p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 <h2 id="实例属性获取"><a href="#实例属性获取" class="headerlink" title="实例属性获取"></a>实例属性获取</h2><p>可以通过四种方式，展示&amp;监听vue实例中的属性。  </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var <span class="keyword">vm</span> = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="keyword">e</span><span class="variable">l:</span> <span class="string">'#example'</span>,</span><br><span class="line">  dat<span class="variable">a:</span> &#123;</span><br><span class="line">     message: <span class="string">'Hello'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    // 计算属性的 getter</span><br><span class="line">    reversedMessage: <span class="function"><span class="keyword">function</span> <span class="params">()</span> &#123;</span></span><br><span class="line">      // `this` 指向 <span class="keyword">vm</span> 实例</span><br><span class="line">      <span class="keyword">return</span> this.message.<span class="keyword">split</span>(<span class="string">''</span>).<span class="built_in">reverse</span>().<span class="keyword">join</span>(<span class="string">''</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h3 id="模板表达式"><a href="#模板表达式" class="headerlink" title="模板表达式"></a>模板表达式</h3><p>这个是最基本的获取方法。获取message的信息</p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Original message: "</span><span class="template-variable">&#123;&#123; message &#125;&#125;</span><span class="xml">"<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Original message: "</span><span class="template-variable">&#123;&#123; message &#125;&#125;</span><span class="xml">"<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <h3 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h3><p>出现原因是在模板中放入太多的逻辑会让模板过重且难以维护,对于任何复杂逻辑，你都应当使用计算属性。<br>如上面的reversedMessage。  </p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Original message: "</span><span class="template-variable">&#123;&#123; reversedMessage &#125;&#125;</span><span class="xml">"<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Original message: "</span><span class="template-variable">&#123;&#123; reversedMessage &#125;&#125;</span><span class="xml">"<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>如果我修改了message，则对应的reversedMessage 也会跟着改变。<br>如果message不改变，re-render的时候，reversedMessage会立即展示之前的问题。</p>
 <h3 id="method"><a href="#method" class="headerlink" title="method"></a>method</h3><p>其实使用method也可以达到获取reversedMessage的目的。  与上面的差别的是，每当触发重新渲染时，<code>调用方法将总会再次执行函数</code>。</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var <span class="keyword">vm</span> = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="keyword">e</span><span class="variable">l:</span> <span class="string">'#example'</span>,</span><br><span class="line">  dat<span class="variable">a:</span> &#123;</span><br><span class="line">     message: <span class="string">'Hello'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  method<span class="variable">s:</span> &#123;</span><br><span class="line">    // 计算属性的 getter</span><br><span class="line">    reversedMessage: <span class="function"><span class="keyword">function</span> <span class="params">()</span> &#123;</span></span><br><span class="line">      // `this` 指向 <span class="keyword">vm</span> 实例</span><br><span class="line">      <span class="keyword">return</span> this.message.<span class="keyword">split</span>(<span class="string">''</span>).<span class="built_in">reverse</span>().<span class="keyword">join</span>(<span class="string">''</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"example"</span>&gt;</span><br><span class="line">  <span class="symbol">&lt;p&gt;</span>Original message: <span class="string">"&#123;&#123; reversedMessage() &#125;&#125;"</span>&lt;/<span class="keyword">p</span>&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="侦听属性"><a href="#侦听属性" class="headerlink" title="侦听属性"></a>侦听属性</h3><p>一种更通用的方式来观察和响应 Vue 实例上的数据变动。 当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。<br>在watch函数中监听某些属性，该属性一变化，就会执行对应的函数，函数内可能会对其他属性进行操作。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">'#example'</span>,</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">     <span class="attr">message</span>: <span class="string">'Hello'</span>,</span><br><span class="line">     <span class="attr">question</span>: <span class="string">''</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">watch</span>: &#123;</span><br><span class="line">    <span class="comment">// 计算属性的 getter</span></span><br><span class="line">    question: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// `this` 指向 vm 实例</span></span><br><span class="line">      <span class="keyword">this</span>.message = <span class="string">'...'</span>;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"example"</span>&gt;</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"question"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Original message: "&#123;&#123; message &#125;&#125;"<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">     message: <span class="string">'Hello'</span>,</span><br><span class="line">     question: <span class="string">''</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    <span class="comment">// 计算属性的 getter</span></span><br><span class="line">    question: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// `this` 指向 vm 实例</span></span><br><span class="line">      <span class="keyword">this</span>.message = <span class="string">'...'</span>;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&lt;div id=<span class="string">"example"</span>&gt;</span><br><span class="line">  &lt;input v-model=<span class="string">"question"</span>/&gt;</span><br><span class="line">  &lt;p&gt;Original message: <span class="string">"&#123;&#123; message &#125;&#125;"</span>&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><h3 id="class"><a href="#class" class="headerlink" title="class"></a>class</h3><p>【v-bind:class】 可以与<strong>原始的class </strong>混用  </p>
 <p>【<strong>计算属性</strong>】 返回一个classObject。  </p>
 <p>【v-bind:class=”[activeClass, errorClass]”&gt;】 数组形式，传给他一个class列表。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"&#123; active: isActive &#125;"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> v-bind:<span class="built_in">class</span>=<span class="string">"&#123; active: isActive &#125;"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>上面的语法表示 active 这个 class 存在与否将取决于数据属性 isActive 是否为真。</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"app"</span>&gt;</span><br><span class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"static"</span></span><br><span class="line">     v-bind:<span class="built_in">class</span>=<span class="string">"&#123; active: isActive, 'text-danger': hasError &#125;"</span>&gt;</span><br><span class="line">   helloworld</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">  &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"static"</span></span><br><span class="line">     v-bind:<span class="built_in">class</span>=<span class="string">"classObj"</span>&gt;</span><br><span class="line">    <span class="keyword">second</span> <span class="keyword">try</span>&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line"></span><br><span class="line">.active &#123;</span><br><span class="line">  <span class="built_in">text</span>-decoration: underline;</span><br><span class="line">&#125;</span><br><span class="line">.static &#123;</span><br><span class="line">  font-size: <span class="number">20</span>px;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="built_in">text</span>-danger &#123;</span><br><span class="line">  color: orange;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">  el: '<span class="comment">#app',</span></span><br><span class="line">   data: &#123;</span><br><span class="line">    isActive: <span class="literal">true</span>,</span><br><span class="line">    hasError: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  computed:&#123;</span><br><span class="line">    classObj: function() &#123;</span><br><span class="line"><span class="built_in">      return</span> &#123;</span><br><span class="line">        active: !this.isActive,</span><br><span class="line">        '<span class="built_in">text</span>-danger': this.isActive &amp;&amp; this.hasError,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>实例： </p><p data-height="348" data-theme-id="0" data-slug-hash="POdxyE" data-default-tab="js,result" data-user="akixiao" data-embed-version="2" data-pen-title="POdxyE" class="codepen">See the Pen <a href="https://codepen.io/akixiao/pen/POdxyE/" target="_blank" rel="external">POdxyE</a> by akixiao (<a href="https://codepen.io/akixiao" target="_blank" rel="external">@akixiao</a>) on <a href="https://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
+<p>实例： </p><p data-height="348" data-theme-id="0" data-slug-hash="POdxyE" data-default-tab="js,result" data-user="akixiao" data-embed-version="2" data-pen-title="POdxyE" class="codepen">See the Pen <a href="https://codepen.io/akixiao/pen/POdxyE/" target="_blank" rel="noopener">POdxyE</a> by akixiao (<a href="https://codepen.io/akixiao" target="_blank" rel="noopener">@akixiao</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.</p><p></p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 
@@ -234,11 +233,11 @@
 
 
         
-        <a href="/2017/11/28/vue学习笔记/" target="_blank" rel="external">https://misssweety.github.io/2017/11/28/vue学习笔记/</a>
+        <a href="/2017/11/28/vue学习笔记/" target="_blank" rel="external">https://akijiangrou.github.io/2017/11/28/vue学习笔记/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -260,7 +259,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/28/vue学习笔记/&title=《vue学习笔记》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/11/28/vue学习笔记/&title=《vue学习笔记》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -270,22 +269,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/28/vue学习笔记/&title=《vue学习笔记》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/11/28/vue学习笔记/&title=《vue学习笔记》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/28/vue学习笔记/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/11/28/vue学习笔记/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue学习笔记》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/28/vue学习笔记/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue学习笔记》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/11/28/vue学习笔记/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/28/vue学习笔记/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/11/28/vue学习笔记/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -378,7 +377,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/28/vue学习笔记/&title=《vue学习笔记》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/11/28/vue学习笔记/&title=《vue学习笔记》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -388,22 +387,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/28/vue学习笔记/&title=《vue学习笔记》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/11/28/vue学习笔记/&title=《vue学习笔记》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/28/vue学习笔记/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/11/28/vue学习笔记/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue学习笔记》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/28/vue学习笔记/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue学习笔记》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/11/28/vue学习笔记/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/28/vue学习笔记/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/11/28/vue学习笔记/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -414,7 +413,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACH0lEQVR42u3aQW7DMAwEwPz/0y7QaxpnV3QKRB6dArmVNT4QlMjHIx7H73g1//z0ef7V3ySrXTYwMDC+lnGcjnPG89MEdr7dV6u9+V8MDIwbMD6xubXfyefDwMDAOH9ZMpME6BaPgYGB0aZok9B5BAMDAwNj7RCbzOfr5IH74rM4BgbGFzLawsB//v5gfQMDA+NLGEc5Wl4SOi/YFQYGxtaM/Cotb7lIUre14+6bcIyBgbE1o23VOi9ntg1e7coRBgMDY1PGebj8XDvF+U7apxgYGHsz8kXbpooWMP8QGBgYOzHaLa61UEw2Gq2AgYGxNWPSSDG5PvvEezEwMO7GuLZroy2O5hdwGBgY92GsFSPnx9HJFRsGBsbdGGuFw6QNYh6+R5duGBgY2zHakkBb+GyLCvWnwcDAuA2jvo6PXzw6lLYBFwMDYyNGG0zzLV5bHqhDLQYGxkaMeSNF8iHaJDJZ+eU8BgbGbRhto1ge/eptxcdpDAyMXRmT0DlJ4Noja5ThYmBgbM1or8bacua1x9c/VsPAwNia0QbNSZFy7ZhaBGsMDIxNGUc5Jvi18mSUpGJgYGzNyMda2te2fK0dmDEwMO7AuLY8uVb+TC4BRwkiBgbGFow2XVtr/8rDbh6IMTAwMNZSvUkQTwoDGBgYGGvhsk3+8nQwusLDwMC4ASMJjvXBMi4kXFyJxcDA2I4xLwysBdkkrOdFAgwMjE0ZP2j5+ggwHYEBAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACH0lEQVR42u3aS27DMAwFwNz/0i7QrRH3kXSSRhqtDH9ijReMKPLxiMfxO66Pn91/Pn++epzG4xUDAwPjaxnH5Xg2reuXnZ/Nz1yff0rFwMDYgNELsr3Amky9HNAxMDAwBq+sLv4wMDAw5gG3GoKTq/mSFAMDY2dG8nN37e19OBfHwMD4QsZdhYFXHH+gvoGBgfHPGMdgJOBJYaAwEwwMjKUZ15v48yh31/1RIMbAwNiGkQTHapGyV/gsB3cMDIylGUmhMYHlhcxewlz4HQwMjOUYefPWZNN/cn8S3DEwMNZmJAF3nty+Z7GIgYGxHiPfss+v5kvM5KkohcbAwFiaMUkm5+Gy2o7W/EvAwMD4ckb1NdV2inn7RZToYmBgbMOYtF9UQ2peJIjehYGBsRmj1zxRLSr0gntUBsDAwFiO0dsmKyzabpp0M+fGwMBYlJEE5cki8t4mMwwMjB0Y863/POzmSW/5GAMDY2lGUm7Mk9LqFK8Xkfk9GBgYOzCqLQ7VqVSXpHlpIYr6GBgYizImG/351lsvuD/9EBgYGEszeqNXnqwG5UmqjIGBsQbjKI5qE0Y1vDbTYAwMjKUZvaJjtYRZvZqXATAwMPZhTAJidftsUuD84/NhYGBswOh1W72zpSyqwWJgYGBMXtNq7CisZDEwMDCCQmN1Ey1PXyMMBgbGBoy89WESiPNiJwYGBkavtaI6xerHumszDgMDYyHGDxB1S6kYYLhzAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -464,7 +463,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

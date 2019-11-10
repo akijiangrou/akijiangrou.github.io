@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,63 +13,38 @@
     
     
     
-    <title>WebGL学习系列-threejs-光源 | MissSweety&#39;s Blog | never say never</title>
+    <title>WebGL学习系列-threejs-光源 | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="学习笔记,webGL,Three.js">
-    <meta name="description" content="图像渲染要依赖光源，如果没有光，世界就是一片黑暗，即使物体存在，你也看不出来。为了让计算机模拟光照效果，提出了几种不同的光源模型。  
-
-环境光  
-平行光  
-点光源  
-聚光灯  
-
-Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真。  
-在解释光的问题外，还要先说明下Three.js 中，颜色都是16进制来表示的，白色：0xffffff。  
-环境光环境光是指场景整体的光照">
+    <meta name="keywords" content="webGL,学习笔记,Three.js">
+    <meta name="description" content="图像渲染要依赖光源，如果没有光，世界就是一片黑暗，即使物体存在，你也看不出来。为了让计算机模拟光照效果，提出了几种不同的光源模型。    环境光   平行光   点光源   聚光灯    Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真。   在解释光的问题外，还要先说明下Three.js 中，颜色都是16进制来表示的，白色：0xffffff。   环境光环境光是指场景整体的光照">
+<meta name="keywords" content="webGL,学习笔记,Three.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebGL学习系列-threejs-光源">
-<meta property="og:url" content="https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="图像渲染要依赖光源，如果没有光，世界就是一片黑暗，即使物体存在，你也看不出来。为了让计算机模拟光照效果，提出了几种不同的光源模型。  
-
-环境光  
-平行光  
-点光源  
-聚光灯  
-
-Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真。  
-在解释光的问题外，还要先说明下Three.js 中，颜色都是16进制来表示的，白色：0xffffff。  
-环境光环境光是指场景整体的光照">
-<meta property="og:image" content="https://misssweety.github.io/./light1.png">
-<meta property="og:image" content="https://misssweety.github.io/./light2.png">
-<meta property="og:image" content="https://misssweety.github.io/./light3.png">
-<meta property="og:image" content="https://misssweety.github.io/./light4.png">
-<meta property="og:image" content="https://misssweety.github.io/./light5.png">
-<meta property="og:image" content="https://misssweety.github.io/./light6.png">
-<meta property="og:image" content="https://misssweety.github.io/./light7.png">
-<meta property="og:image" content="https://misssweety.github.io/./light8.png">
-<meta property="og:image" content="https://misssweety.github.io/./light9.png">
-<meta property="og:image" content="https://misssweety.github.io/./light10.png">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="图像渲染要依赖光源，如果没有光，世界就是一片黑暗，即使物体存在，你也看不出来。为了让计算机模拟光照效果，提出了几种不同的光源模型。    环境光   平行光   点光源   聚光灯    Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真。   在解释光的问题外，还要先说明下Three.js 中，颜色都是16进制来表示的，白色：0xffffff。   环境光环境光是指场景整体的光照">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/light1.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/light2.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/light3.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/light4.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/light5.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/light6.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/light7.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/light8.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/light9.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/light10.png">
 <meta property="og:updated_time" content="2017-11-06T09:11:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebGL学习系列-threejs-光源">
-<meta name="twitter:description" content="图像渲染要依赖光源，如果没有光，世界就是一片黑暗，即使物体存在，你也看不出来。为了让计算机模拟光照效果，提出了几种不同的光源模型。  
-
-环境光  
-平行光  
-点光源  
-聚光灯  
-
-Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真。  
-在解释光的问题外，还要先说明下Three.js 中，颜色都是16进制来表示的，白色：0xffffff。  
-环境光环境光是指场景整体的光照">
-<meta name="twitter:image" content="https://misssweety.github.io/./light1.png">
+<meta name="twitter:description" content="图像渲染要依赖光源，如果没有光，世界就是一片黑暗，即使物体存在，你也看不出来。为了让计算机模拟光照效果，提出了几种不同的光源模型。    环境光   平行光   点光源   聚光灯    Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真。   在解释光的问题外，还要先说明下Three.js 中，颜色都是16进制来表示的，白色：0xffffff。   环境光环境光是指场景整体的光照">
+<meta name="twitter:image" content="https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/light1.png">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -103,7 +78,7 @@ Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真�
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -131,7 +106,7 @@ Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真�
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -246,16 +221,16 @@ Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真�
 <h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><p>也是两个小正方形，白色和绿色。与上面的不同，我们调整了照相机的位置：  </p>
 <pre><code><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function initCamera(<span class="built_in">width</span>, <span class="built_in">height</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="built_in">camera</span> = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">45</span>, <span class="built_in">width</span> / <span class="built_in">height</span>, <span class="number">1</span>, <span class="number">8000</span>);</span><br><span class="line">  <span class="comment">// camera 位于屏幕外侧1500px的地方，这样可以直接做平面图了。</span></span><br><span class="line">  <span class="built_in">camera</span>.position.x = <span class="number">500</span>;</span><br><span class="line">  <span class="built_in">camera</span>.position.y = <span class="number">500</span>;</span><br><span class="line">  <span class="built_in">camera</span>.position.z = <span class="number">1500</span>;</span><br><span class="line">  <span class="built_in">camera</span>.lookAt(<span class="number">100</span>, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">camera</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </code></pre><p>光源：  </p>
-<pre><code><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">light = new THREE.DirectionalLight(<span class="number">0xffffff</span>, <span class="number">1</span>);</span><br><span class="line">light.position.set(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>);</span><br><span class="line">scene.add(light);</span><br></pre></td></tr></table></figure>
+<pre><code><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">light = new THREE.DirectionalLight(<span class="number">0xffffff</span>, <span class="number">1</span>);</span><br><span class="line">light.position.<span class="keyword">set</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>);</span><br><span class="line">scene.add(light);</span><br></pre></td></tr></table></figure>
 </code></pre><p>说明，光是从z方向处200px的位置向着所有物体照射。  我们可以得到如下图像。<br><img src="./light5.png" width="60%"></p>
 <p>我们调整下光的照射方向：  </p>
-  <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">light.position.set(<span class="number">800</span>, <span class="number">0</span>, <span class="number">400</span>);</span><br></pre></td></tr></table></figure>
+  <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">light.position.<span class="keyword">set</span>(<span class="number">800</span>, <span class="number">0</span>, <span class="number">400</span>);</span><br></pre></td></tr></table></figure>
 <p>说明，光是在x方向800，y方向为0，z方向处400px，与原点连线形成的向量，这个方向形成的光线。 我们可以得到如下图像。<br><img src="./light6.png" width="60%"></p>
 <p>对比下，我们加上y方向的光，  light.position.set(800, 200, 400);<br><img src="./light7.png" width="60%"></p>
 <h2 id="点光源"><a href="#点光源" class="headerlink" title="点光源"></a>点光源</h2><p>点光源是不计光源大小，可以看作一个点发出的光源。点光源照到不同物体表面的亮度是线性递减的，因此，离点光源距离越远的物体会显得越暗。这里光在每个面上的亮度是不同的，对于每个三角面片，将根据三个顶点的亮度进行插值。</p>
 <h3 id="构造函数-2"><a href="#构造函数-2" class="headerlink" title="构造函数"></a>构造函数</h3><p><code>THREE.PointLight(hex, intensity, distance)</code>  </p>
 <p><strong>distance</strong>：光源最远照射的距离，缺省值是0。</p>
-<h3 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h3><pre><code><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">light = new THREE.PointLight(<span class="number">0xffffff</span>, <span class="number">2</span>, <span class="number">1000</span>);</span><br><span class="line">light.position.set(<span class="number">0</span>, <span class="number">200</span>, <span class="number">300</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="例子-2"><a href="#例子-2" class="headerlink" title="例子"></a>例子</h3><pre><code><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">light = new THREE.PointLight(<span class="number">0xffffff</span>, <span class="number">2</span>, <span class="number">1000</span>);</span><br><span class="line">light.position.<span class="keyword">set</span>(<span class="number">0</span>, <span class="number">200</span>, <span class="number">300</span>);</span><br></pre></td></tr></table></figure>
 </code></pre><p>一个点光源，在坐标(0, 200, 300)位置，进行照射，最远距离1000，结果如下：  </p>
 <p><img src="./light8.png" width="60%"><br>当最远距离缩小为500，结果：  </p>
 <p><img src="./light9.png" width="60%">  </p>
@@ -265,7 +240,7 @@ Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真�
 <p>使用聚光灯，一般还要设置target。  如果想让一个物体的运动有灯光跟随，可以将target设置为改对象。  </p>
 <h3 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h3><pre><code><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">light = new THREE.SpotLight(<span class="number">0xffff00</span>, <span class="number">2</span>, <span class="number">1000</span>, Math.<span class="literal">PI</span> /<span class="number">4</span> , <span class="number">25</span>);</span><br><span class="line">light.position.set(<span class="number">300</span>, <span class="number">500</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
 </code></pre><p><img src="./light10.png" width="60%">  </p>
-<p><a href="https://read.douban.com/ebook/7412854/" target="_blank" rel="external">参考</a></p>
+<p><a href="https://read.douban.com/ebook/7412854/" target="_blank" rel="noopener">参考</a></p>
 
         </div>
 
@@ -278,11 +253,11 @@ Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真�
 
 
         
-        <a href="/2017/11/06/WebGL学习系列-threejs-光源/" target="_blank" rel="external">https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/</a>
+        <a href="/2017/11/06/WebGL学习系列-threejs-光源/" target="_blank" rel="external">https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -304,7 +279,7 @@ Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真�
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/&title=《WebGL学习系列-threejs-光源》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/&title=《WebGL学习系列-threejs-光源》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -314,22 +289,22 @@ Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真�
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/&title=《WebGL学习系列-threejs-光源》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/&title=《WebGL学习系列-threejs-光源》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-threejs-光源》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-threejs-光源》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -422,7 +397,7 @@ Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真�
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/&title=《WebGL学习系列-threejs-光源》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/&title=《WebGL学习系列-threejs-光源》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -432,22 +407,22 @@ Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真�
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/&title=《WebGL学习系列-threejs-光源》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/&title=《WebGL学习系列-threejs-光源》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-threejs-光源》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-threejs-光源》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/06/WebGL学习系列-threejs-光源/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/11/06/WebGL学习系列-threejs-光源/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -458,7 +433,7 @@ Three.js中也定义了以上几种光型，有了他们会让3d效果更逼真�
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3aQW7DMAwEwPz/0y3QU4E29i4lJTmMT4GDWBoeTIbU4xFfXz/X789/7yTfPrvzbMW/1+PEhYeHhzfa+vXjEkzyhGvqLIg3IcDDw8M7xkuSwfWvhstf4vNk8/Q+Hh4e3lt5SapYL9nz8OHh4eF9Pu+aOgtBW5Tj4eHhfQ6vbSXkhXKbbPLAbe614OHh4XXdgHoA9t7Px+d7eHh4eKOpev7yzZNK8oRZa/if5+Ph4eEd4CXDp7zx2g6r2hbt8Pl4eHh4W3n5wiut3rxZsHKA4J/PeHh4eAd4KyVvXl4n384K9yg0eHh4eAd4Sf8zbzq0rYR23ZXCHQ8PD2+d1/6gLaCvnzNrFuf7x8PDwzvBW2mqztq+bfI4WFLj4eHhLTcjVkZiSUpIGrh5iOv/B3h4eHhbeXlLt916XhavlPJF0sLDw8Nb5rV//tux2Wzwn2w9anzg4eHhHeDlr+xdh6tW7ufPr1sSeHh4eDGv3VzSkF1pIqyX4Dd5Dw8PD2+Zt2uQnx/PmgUxz3J4eHh4r+e1BwjaYwdJidwG4iYceHh4eFt5+TBp1kRof7uShJ7+Y8DDw8N7IS9/Wc8OVw0PTsVsPDw8vHO8ZOt5abtrfJWnjafr4uHh4R3g5Qu0d2abmIWgCD0eHh7eVl77Op7dz4M7Oyhwc6YMDw8Pbyuvfbm3h6vyNJAnm7rQx8PDw9vES368PtBqN50khjoZ4OHh4W3lrY+vZi/0JD2sDMbw8PDw9vK+ymtWiLcv9zwoN4HGw8PDO8AbZpKg8J01dmcN3JXDDXh4eHgzXlvgnjsusN7aiLIWHh4e3iZe3npIqG0RvFIQ4+Hh4X0+Ly+jZ63hNkncWPDw8PDeymsbrOsjtLzJi4eHh/d6XtKM2LV8u8oseeDh4eGd4+0agLWjrzYEeYjx8PDwjvG+AeNrfYKjtvAJAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3a0W4bMQwEQP//T6evLVKcdymxcYG5p8CxfRoZEHkkX6/4+vrt+v769/ck1+wbXhsXHh4e3sHSnxfx/HqyEc9LzP9bbAEeHh7eGi/5uudPPZOeF5GHjXzNeHh4eJ/Ga5Pv2ZY9hx88PDy8/4WXpNrn3/xjgQEPDw8v5rXF1jyNvhUw1msteHh4eAtdpM/5e6W/h4eHh3fcVW8P3OT9J4GnXi0eHh7eAi8/cPOBgLwNNhsXqNeJh4eHt8DLm0/toXwycNBu0JuNwMPDw7vEa0u3J2WCtgjbjmoVxQg8PDy8S7zZw/+t8sQsTX9zFzw8PLwFXvEwn4w3jZpqedm3TcTx8PDwNnhtIrtx0M/uHqXdeHh4eMu8pBGVN7qS9LdtdOWtMjw8PLxtXv54n6fRd4u27SDXHw0wPDw8vKu8k2P31kLbNH0WVPDw8PBu8fIUOQ8P+cjU3SLFX9aAh4eHt8A7efhv0+gEMEvNhxEPDw8Pb4HXLvSklDBL7iMkHh4e3j/n5cNYUTl1BGvfGaXUeHh4eGu8PHnNj+xZWWE4EIaHh4d3lTcr3SaDUy2pDSpRzQEPDw9vmXfezm+bZPn25Y06PDw8vJ/iJZg2YMyO/nbgAA8PD2+b15ZQ86S5BecBJt8+PDw8vD3eOWxWksiLs+2mXP7d8PDw8GJeWwg4SabvDmzV/T08PDy8A975Is6LGvmYVz10hYeHh3fM+yqv/PbJZ29t7puhKzw8PLyrvNmBe2ukoC0B50GlvvDw8PBKXtueb4sFeWhJ1tAGGzw8PLw93q0C7i18G7RWxq3w8PDwLvHyQm2blM/u8uZTeHh4eB/JmyXlxeBUcJdrM2V4eHh4Ma8tBOTFgmfqeUHkzU+Fh4eHt8A7eeCvj+mynRZNjZ1feHh4eOn7fwHt63Oog4T9SQAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -508,7 +483,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

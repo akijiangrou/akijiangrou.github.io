@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,38 +13,31 @@
     
     
     
-    <title>WebGL学习系列-threejs-camera | MissSweety&#39;s Blog | never say never</title>
+    <title>WebGL学习系列-threejs-camera | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="学习笔记,three.js,webGL,camera">
-    <meta name="description" content="是什么？照相机定义了三维空间到二维屏幕的投影方式。因为投影的不同，照相机又分为正交投影相机和透视投影相机。  
-正交投影相机而使用正交投影照相机获得的结果就像我们在数学几何学课上老师教我们画的效果，对于在三维空间内平行的线，投影到二维空间中也一定是平行的。其特点是，远近高低比例都相同。如下：  
-
-具体方法OrthographicCamera( left, right, top, bottom,">
+    <meta name="keywords" content="three.js,webGL,学习笔记,camera">
+    <meta name="description" content="是什么？照相机定义了三维空间到二维屏幕的投影方式。因为投影的不同，照相机又分为正交投影相机和透视投影相机。   正交投影相机而使用正交投影照相机获得的结果就像我们在数学几何学课上老师教我们画的效果，对于在三维空间内平行的线，投影到二维空间中也一定是平行的。其特点是，远近高低比例都相同。如下：    具体方法OrthographicCamera( left, right, top, bottom,">
+<meta name="keywords" content="three.js,webGL,学习笔记,camera">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebGL学习系列-threejs-camera">
-<meta property="og:url" content="https://misssweety.github.io/2017/11/03/WebGL学习系列-threejs-camera/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="是什么？照相机定义了三维空间到二维屏幕的投影方式。因为投影的不同，照相机又分为正交投影相机和透视投影相机。  
-正交投影相机而使用正交投影照相机获得的结果就像我们在数学几何学课上老师教我们画的效果，对于在三维空间内平行的线，投影到二维空间中也一定是平行的。其特点是，远近高低比例都相同。如下：  
-
-具体方法OrthographicCamera( left, right, top, bottom,">
-<meta property="og:image" content="https://misssweety.github.io/./zhengjiao.png">
-<meta property="og:image" content="https://misssweety.github.io/./toushi.png">
-<meta property="og:image" content="https://misssweety.github.io/./toushi2.png">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="是什么？照相机定义了三维空间到二维屏幕的投影方式。因为投影的不同，照相机又分为正交投影相机和透视投影相机。   正交投影相机而使用正交投影照相机获得的结果就像我们在数学几何学课上老师教我们画的效果，对于在三维空间内平行的线，投影到二维空间中也一定是平行的。其特点是，远近高低比例都相同。如下：    具体方法OrthographicCamera( left, right, top, bottom,">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/zhengjiao.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/toushi.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/toushi2.png">
 <meta property="og:updated_time" content="2017-11-06T03:04:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebGL学习系列-threejs-camera">
-<meta name="twitter:description" content="是什么？照相机定义了三维空间到二维屏幕的投影方式。因为投影的不同，照相机又分为正交投影相机和透视投影相机。  
-正交投影相机而使用正交投影照相机获得的结果就像我们在数学几何学课上老师教我们画的效果，对于在三维空间内平行的线，投影到二维空间中也一定是平行的。其特点是，远近高低比例都相同。如下：  
-
-具体方法OrthographicCamera( left, right, top, bottom,">
-<meta name="twitter:image" content="https://misssweety.github.io/./zhengjiao.png">
+<meta name="twitter:description" content="是什么？照相机定义了三维空间到二维屏幕的投影方式。因为投影的不同，照相机又分为正交投影相机和透视投影相机。   正交投影相机而使用正交投影照相机获得的结果就像我们在数学几何学课上老师教我们画的效果，对于在三维空间内平行的线，投影到二维空间中也一定是平行的。其特点是，远近高低比例都相同。如下：    具体方法OrthographicCamera( left, right, top, bottom,">
+<meta name="twitter:image" content="https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/zhengjiao.png">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -78,7 +71,7 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -106,7 +99,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -205,7 +198,7 @@
 <h2 id="透视投影相机"><a href="#透视投影相机" class="headerlink" title="透视投影相机"></a>透视投影相机</h2><p>而使用透视投影照相机获得的结果是类似人眼在真实世界中看到的有“近大远小”的效果。透视投影是更符合我们视觉的投影。如下：  </p>
 <p><img src="./toushi.png" width="300px"></p>
 <h3 id="具体方法-1"><a href="#具体方法-1" class="headerlink" title="具体方法"></a>具体方法</h3><p><code>PerspectiveCamera( fov, aspect, near, far )</code><br><code>fov</code>: 眼睛睁开的角度,即,视角的大小,如果设置为0,相当你闭上眼睛了,所以什么也看不到,如果为180,那么可以认为你的视界很广阔。视角越大，中间的物体越小，这是因为，视角越大，看到的场景越大，那么中间的物体相对于整个场景来说，就越小了。角度制而非弧度制。0-180<br><code>aspect</code>: 纵横比，一般为canvas的width/height, 照相机水平方向和竖直方向长度的比值，通常设为Canvas的横纵比例。<br><code>near</code>: 照相机到视景体最近的距离。<br><code>far</code>: 照相机到视景体最远的距离。<br>相应的图像如下：<br><img src="./toushi2.png" width="500px">  </p>
-<p>不同fov的对比，请参考：<a href="http://www.hewebgl.com/article/getarticle/59" target="_blank" rel="external">《三维空间的观察》</a></p>
+<p>不同fov的对比，请参考：<a href="http://www.hewebgl.com/article/getarticle/59" target="_blank" rel="noopener">《三维空间的观察》</a></p>
 
         </div>
 
@@ -218,11 +211,11 @@
 
 
         
-        <a href="/2017/11/03/WebGL学习系列-threejs-camera/" target="_blank" rel="external">https://misssweety.github.io/2017/11/03/WebGL学习系列-threejs-camera/</a>
+        <a href="/2017/11/03/WebGL学习系列-threejs-camera/" target="_blank" rel="external">https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -244,7 +237,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/03/WebGL学习系列-threejs-camera/&title=《WebGL学习系列-threejs-camera》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/&title=《WebGL学习系列-threejs-camera》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -254,22 +247,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/03/WebGL学习系列-threejs-camera/&title=《WebGL学习系列-threejs-camera》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/&title=《WebGL学习系列-threejs-camera》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/03/WebGL学习系列-threejs-camera/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-threejs-camera》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/03/WebGL学习系列-threejs-camera/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-threejs-camera》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/03/WebGL学习系列-threejs-camera/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -362,7 +355,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/03/WebGL学习系列-threejs-camera/&title=《WebGL学习系列-threejs-camera》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/&title=《WebGL学习系列-threejs-camera》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -372,22 +365,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/03/WebGL学习系列-threejs-camera/&title=《WebGL学习系列-threejs-camera》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/&title=《WebGL学习系列-threejs-camera》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/03/WebGL学习系列-threejs-camera/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-threejs-camera》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/03/WebGL学习系列-threejs-camera/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-threejs-camera》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/03/WebGL学习系列-threejs-camera/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/11/03/WebGL学习系列-threejs-camera/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -398,7 +391,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACq0lEQVR42u3aS27jQAwFQN//0pkDBIoffxkHKK28kFqqDtBkSL5e8fX1cH2/5/v9T/ckTz39Xr7w8PDwlj49+dzJhybvTdZ/8yweHh7eGS9ZLj/cn7bv57f0vufNs3h4eHgfwOsFhmqC/nQnHh4e3l/nVZPm/KlqcMLDw8P7fd7WB/XS8Y+oteDh4eHVaqRRF+lzfp/09/Dw8PDGXfVesWDSPEtGEwpfi4eHh3fAq5Zoq0vPiwv5Bj3eiYeHh3fGmye7kwO9uomF4QM8PDy8A14v8a0WWCcbNBkmwMPDw9vlTYoI8+O+uk4ZiYeHh3fAmze98hfnYwTJKNVCrw8PDw+vxUvCQH74VmHJyklROGp94eHh4R3wkoM4Ly5Uix3VUYPkm/Hw8PAueHlIyHl5EaEaNpKtj/p7eHh4eGPepBnWCyqTo39UusXDw8NbHRqYlFaTUDFJnfOSxGPcw8PDw1vi9RLirVCRjw7kYwev/DV4eHh4LV7yL33e/h+9vjgoUP4D4OHh4Z3xeqXSOSN5Y86LYiAeHh5ei1euWywl4vk2VYcY3nT28PDw8Ma8vCA7P6zzNL2aRjeTaTw8PLwzXrXxn5QkquMF+aY/Rj88PDy8JV5eeK0WI6otq3zL8gQdDw8P74KXLJQz8gJrr7W2MMiFh4eHt8SbFxd6ZdZ8U3oFXzw8PLxr3uRAn6TLve+JEmg8PDy8Y17+gq0V8nQ8v6KUGg8PD2/A+ypeeQs/T6DzRLk8jIWHh4d3wOsduL0l5ltZLWTg4eHh3fG2gsGkoNALG0nRGQ8PD++ON2k+9YYGFuJVHhjw8PDw/isvL8JWCwfVZltUhsDDw8P7eN7WEGoTcx0Y8PDw8IrFiDl40r6qlnrx8PDw7niTf/irJYbqET8fCMPDw8Nb5f0DKeTkKeiZkwQAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqUlEQVR42u3aUY7CMAwFQO5/afYA7LbPdoxAO/1CUNpMkeLw4scjPp7B0Tv/9XV+l2MHHh4e3tGhX5/zep3X169XuB7D9TjzMePh4eFt85LL9abyXiHJx3BjwcPDw/sYXjL194pHUjbw8PDwvpE3iQ/y6f4L6h4eHt4/5uVh6yRKuH40eZCxkrXg4eHhLewifc7rlf09PDw8vEMNAdVJv7cNthEZ4+Hh4W3w8gm32lJwavlbLQx4eHh47+dVhzvZAKu+k48HDw8Pb4+XD7TXCnB9Zq+cFOJjPDw8vAVe9U9+tFUfLMTzMpA/1ub+Hh4eHl6R1wsFys9vjO8txPHw8PDew5sEAfkQq1tc1dYrPDw8vG1eMtAkdMi/W8iYi8v3R6924eHh4cW8yYbWqem+VxLy7+Lh4eGd5U3+6ldvmb9fbb266YnAw8PDO8rLg4NeDJFvsM1DiubyGg8PD6/F691sEvtWA44eEg8PD2+D1wtte9tdeTibx7U3SDw8PLwFXi+0rZ7Za+SanBkVCTw8PLwBb9IsNf+0GtGWwxE8PDy8BV4+oedNAHnkkV/5+ihsfeHh4eEd4k02/gsr92IBmIcjeHh4eHu8fME6CQiqU3+14QAPDw/vPbx8mVvddtq4cnk5joeHh7fGO7V9NWlEmIS/N00DeHh4eMu8XrSaD31SKsqPGA8PD2+Nly+Rq9/KZ+lR9oyHh4f3Ft6zePSChnyR3Ssef36Kh4eHt8DrTbi9AVUD37yBoIzBw8PDG/Oq2/N5YHGqUSB/lL+A8fDw8NZ4eXCQBKn5snteu6LCgIeHh/cBvEmAO79mYXmNh4eH9wG8XiNUvlzupQpR0xUeHh7eUV7v9vlyOW8UqAYiNz8VHh4e3gKv+oe/1y6QMwptVacOPDw8vPT8H16pQQU+rofUAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -448,7 +441,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

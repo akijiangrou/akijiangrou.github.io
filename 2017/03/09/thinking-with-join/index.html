@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,31 +13,27 @@
     
     
     
-    <title>thinking-with-join | MissSweety&#39;s Blog | never say never</title>
+    <title>thinking-with-join | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="d3,translate">
-    <meta name="description" content="下面这段代码是我们最常用的，为每个数据生成一个circle，调用数据里的x，y来定位。但是我们selectAll的元素，此时并不存在，那d3是如何工作的呢?
-
-svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr(“cx”, function(d) { return d.x; })    .attr(“cy">
+    <meta name="description" content="下面这段代码是我们最常用的，为每个数据生成一个circle，调用数据里的x，y来定位。但是我们selectAll的元素，此时并不存在，那d3是如何工作的呢?  svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr(“cx”, function(d) { return d.x; })    .attr(“cy">
+<meta name="keywords" content="d3,translate">
 <meta property="og:type" content="article">
 <meta property="og:title" content="thinking-with-join">
-<meta property="og:url" content="https://misssweety.github.io/2017/03/09/thinking-with-join/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="下面这段代码是我们最常用的，为每个数据生成一个circle，调用数据里的x，y来定位。但是我们selectAll的元素，此时并不存在，那d3是如何工作的呢?
-
-svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr(“cx”, function(d) { return d.x; })    .attr(“cy">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/03/09/thinking-with-join/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="下面这段代码是我们最常用的，为每个数据生成一个circle，调用数据里的x，y来定位。但是我们selectAll的元素，此时并不存在，那d3是如何工作的呢?  svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr(“cx”, function(d) { return d.x; })    .attr(“cy">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2017-04-26T04:21:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="thinking-with-join">
-<meta name="twitter:description" content="下面这段代码是我们最常用的，为每个数据生成一个circle，调用数据里的x，y来定位。但是我们selectAll的元素，此时并不存在，那d3是如何工作的呢?
-
-svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr(“cx”, function(d) { return d.x; })    .attr(“cy">
+<meta name="twitter:description" content="下面这段代码是我们最常用的，为每个数据生成一个circle，调用数据里的x，y来定位。但是我们selectAll的元素，此时并不存在，那d3是如何工作的呢?  svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr(“cx”, function(d) { return d.x; })    .attr(“cy">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -71,7 +67,7 @@ svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -99,7 +95,7 @@ svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -185,26 +181,26 @@ svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr
 <p>svg.selectAll(“circle”)<br>  .data(data)<br>  .enter().append(“circle”)<br>    .attr(“cx”, function(d) { return d.x; })<br>    .attr(“cy”, function(d) { return d.y; })<br>    .attr(“r”, 2.5);</p>
 </blockquote>
 <p>在d3中，告诉d3你想要什么，而不是告诉d3怎样做什么。对于上面这个需求，我们要做的就是，我想要circle对应于数据，每个circle对应于一个数据，而不是告诉d3，你应该给我创造一个circle，然后告诉d3选择的circle应该和数据对应好。<br>这个原则就叫做<strong>data join</strong></p>
-<svg width="720" height="240" version="1.1" xmlns="http://www.w3.org/2000/svg"><br/>  <g transform="translate(0,128)"><br/>    <g transform="translate(300)"><br/>      <circle r="110" style="fill: rgba(49, 130, 189,.2);" stroke="black"/><br/>      <text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Data</text><br/>      <text x="-50" dy=".35em" text-anchor="middle">Enter</text><br/>    </g><br/>    <text x="360" dy=".35em" text-anchor="middle">Update</text><br/>    <g transform="translate(420)"><br/>      <circle r="110" style="fill: rgba(230, 85, 13,.2);" stroke="black"/><br/>      <text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Elements</text><br/>      <text x="50" dy=".35em" text-anchor="middle">Exit</text><br/>    </g><br/>  </g><br/></svg>
+<svg width="720" height="240" version="1.1" xmlns="http://www.w3.org/2000/svg"><br/>  <g transform="translate(0,128)"><br/>    <g transform="translate(300)"><br/>      <circle r="110" style="fill: rgba(49, 130, 189,.2);" stroke="black"/><br/>      <text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Data</text><br/>      <text x="-50" dy=".35em" text-anchor="middle">Enter</text><br/>    </g><br/>    <text x="360" dy=".35em" text-anchor="middle">Update</text><br/>    <g transform="translate(420)"><br/>      &lt;circle r=”110” style=”fill: rgba(230, 85, 13,.2);”stroke=”black”&gt;<br/>      <text y="-120" dy=".35em" text-anchor="middle" style="font-weight: bold;">Elements</text><br/>      <text x="50" dy=".35em" text-anchor="middle">Exit</text><br/>    </g><br/>  </g><br/></svg>
 
 <p>连接到现有元素的数据点生成update（内部）选择。剩余未绑定数据生成enter选择（左），表示缺少的元素。同样，任何剩余的未绑定元素会生成exit选择（右），表示要删除的元素。</p>
 <p>现在，我们可以通过data join 来揭开enter-append序列的谜团了</p>
 <ol>
 <li><code>svg.selectAll(&quot;circle&quot;)</code> 返回一个新的空<code>selection</code>，因为SVG容器是空的，所以该<code>selection</code>的父节点是SVG容器</li>
 <li>然后此<code>selection</code>连接到数据数组，生成三个新<code>selection</code>分别表示三种可能的状态：<code>enter</code>，<code>update</code>和<code>exit</code>。由于<code>selection</code>为空，所以<code>update</code>和<code>exit</code>选择为空，而<code>enter selection</code>包含每个新数据的占位符。</li>
-<li><code>update selection</code>通过<a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_data" target="_blank" rel="external">selection.data</a>返回,而<code>enter</code>和<code>exit selection</code>挂起<code>update selection</code>; <a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_enter" target="_blank" rel="external">selection.enter</a>返回<code>enter selection</code>。</li>
-<li>通过在<code>enter selection</code>上调用<a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_append" target="_blank" rel="external">selection.append</a>，将缺少的元素添加到SVG容器。这会为每个数据点向SVG容器添加一个新圆。</li>
+<li><code>update selection</code>通过<a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_data" target="_blank" rel="noopener">selection.data</a>返回,而<code>enter</code>和<code>exit selection</code>挂起<code>update selection</code>; <a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_enter" target="_blank" rel="noopener">selection.enter</a>返回<code>enter selection</code>。</li>
+<li>通过在<code>enter selection</code>上调用<a href="https://github.com/d3/d3-selection/blob/master/README.md#selection_append" target="_blank" rel="noopener">selection.append</a>，将缺少的元素添加到SVG容器。这会为每个数据点向SVG容器添加一个新圆。</li>
 </ol>
 <p><em>Thinking with joins</em> 意味着在一个selection和数据集中声明一种关系，然后通过<code>enter</code>, <code>update</code>, <code>exit</code>实现这个关系.</p>
-<p>但是为什么会这么麻烦呢？为什么不一开始就创建多个元素呢？data join的美丽在于它的泛化。虽然上述代码只处理<code>enter selection</code>,这就可以处理静态可视化了，但是你可以将其扩展为支持动态可视化，只需对<code>update</code>和<code>exit</code>进行少量修改。这意味着您可以对<a href="https://bost.ocks.org/mike/path/" target="_blank" rel="external">实时数据</a>进行可视化，允许<a href="http://bl.ocks.org/mbostock/4063663" target="_blank" rel="external">交互式探索</a>，以及在数据集之间<a href="http://bl.ocks.org/mbostock/1256572" target="_blank" rel="external">平滑过渡</a>！</p>
+<p>但是为什么会这么麻烦呢？为什么不一开始就创建多个元素呢？data join的美丽在于它的泛化。虽然上述代码只处理<code>enter selection</code>,这就可以处理静态可视化了，但是你可以将其扩展为支持动态可视化，只需对<code>update</code>和<code>exit</code>进行少量修改。这意味着您可以对<a href="https://bost.ocks.org/mike/path/" target="_blank" rel="noopener">实时数据</a>进行可视化，允许<a href="http://bl.ocks.org/mbostock/4063663" target="_blank" rel="noopener">交互式探索</a>，以及在数据集之间<a href="http://bl.ocks.org/mbostock/1256572" target="_blank" rel="noopener">平滑过渡</a>！</p>
 <p>看下包含三个状态的例子：</p>
 <blockquote>
 <p>var circle = svg.selectAll(“circle”)<br>  .data(data);<br>circle.exit().remove();<br>circle.enter().append(“circle”)<br>  .attr(“r”, 2.5)<br>  .merge(circle)<br>  .attr(“cx”, function(d) { return d.x; })<br>  .attr(“cy”, function(d) { return d.y; });</p>
 </blockquote>
 <p>无论何时运行此代码，它都会重新计算数据连接并保持元素和数据之间的所需对应关系。如果新数据集小于旧数据集，则剩余元素将在退出选择中结束并被删除。如果新数据集较大，剩余数据将在输入选择中结束，并添加新节点。如果新数据集的大小完全相同，那么所有元素都将使用新位置进行更新，并且不会添加或删除任何元素。</p>
 <p><code>thinking with join</code>用连接来思考意味着你的代码更具声明性：你处理这三个状态没有任何分支（if）或迭代（for）。而是描述元素应如何对应数据。如果给定的<code>enter</code>，<code>update</code>或<code>exit selection</code>恰好是空的，则相应的代码是无操作</p>
-<p>连接还允许将操作定向到特定状态（如果需要）。例如，你可以在enter而不是update上设置常量属性（例如由“r”属性定义的圆的半径）。通过重新选择元素和最小化DOM更改，您大大提高了渲染性能！同样，您可以将动画过渡指定为特定状态。例如，在entering状态，加入动画<a href="https://jsbin.com/vubibuvaqo/1/edit?html,output" target="_blank" rel="external">圆圈展开</a></p>
-<p>大致翻译自：<a href="https://bost.ocks.org/mike/join/" target="_blank" rel="external">thinking with join</a></p>
+<p>连接还允许将操作定向到特定状态（如果需要）。例如，你可以在enter而不是update上设置常量属性（例如由“r”属性定义的圆的半径）。通过重新选择元素和最小化DOM更改，您大大提高了渲染性能！同样，您可以将动画过渡指定为特定状态。例如，在entering状态，加入动画<a href="https://jsbin.com/vubibuvaqo/1/edit?html,output" target="_blank" rel="noopener">圆圈展开</a></p>
+<p>大致翻译自：<a href="https://bost.ocks.org/mike/join/" target="_blank" rel="noopener">thinking with join</a></p>
 
         </div>
 
@@ -217,11 +213,11 @@ svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr
 
 
         
-        <a href="/2017/03/09/thinking-with-join/" target="_blank" rel="external">https://misssweety.github.io/2017/03/09/thinking-with-join/</a>
+        <a href="/2017/03/09/thinking-with-join/" target="_blank" rel="external">https://akijiangrou.github.io/2017/03/09/thinking-with-join/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -243,7 +239,7 @@ svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/03/09/thinking-with-join/&title=《thinking-with-join》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/03/09/thinking-with-join/&title=《thinking-with-join》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -253,22 +249,22 @@ svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/03/09/thinking-with-join/&title=《thinking-with-join》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/03/09/thinking-with-join/&title=《thinking-with-join》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/03/09/thinking-with-join/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/03/09/thinking-with-join/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《thinking-with-join》 — MissSweety's Blog&url=https://misssweety.github.io/2017/03/09/thinking-with-join/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《thinking-with-join》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/03/09/thinking-with-join/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/03/09/thinking-with-join/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/03/09/thinking-with-join/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -361,7 +357,7 @@ svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/03/09/thinking-with-join/&title=《thinking-with-join》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/03/09/thinking-with-join/&title=《thinking-with-join》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -371,22 +367,22 @@ svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/03/09/thinking-with-join/&title=《thinking-with-join》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/03/09/thinking-with-join/&title=《thinking-with-join》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/03/09/thinking-with-join/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/03/09/thinking-with-join/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《thinking-with-join》 — MissSweety's Blog&url=https://misssweety.github.io/2017/03/09/thinking-with-join/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《thinking-with-join》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/03/09/thinking-with-join/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/03/09/thinking-with-join/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/03/09/thinking-with-join/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -397,7 +393,7 @@ svg.selectAll(“circle”)  .data(data)  .enter().append(“circle”)    .attr
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3a0W7CMAwFUP7/p9nrpo1ybWdITU6eUFq1OSAZJ/bjEY/nt3E9k1y9nvk9v2xgYGDclvG8HNcv6N3Te++rezAwMM5hvIpgyeuT+/OQeh2mX85jYGBgxI9+ExbjtBIDAwNjwlgQHOPkEgMDA6O6mawetCVjvtHFwMA4gZGfun/+87/UNzAwMG7FmATH6nyeJpZXhYGBsTUjD3BJebKKnDRbYGBgnMNYdVjWW1CvpeOPGQwMjMMYSekxRyZPnh/DYWBgnMNIyopJiTEPo71k9JH/J2BgYGzE6JUGk6JmtfCZB+gfnzEwMA5g5Mf6kwJn7+uInomBgXEAI08Q8xcXFjFfCQYGxtaMagrYKxX0jv4Xb4wxMDBuzuglhdUt6IIU8Pp3wMDA2JSRFACqG9HqzDwcY2BgnMbIC5zzwuR8Mxw1sGJgYNyc8Zmwmy+uOjAwME5gVJu98oBb3cTmX8Efb8fAwNiaUV30dVBOrq4qcL7pHMHAwNiU0WvnysNu3k7RPEnDwMA4kpFvaPMQPNkAR+UBDAyMrRn5BrJ3SNc7wiv3jGBgYGzHeBZHNVj3igHlNjUMDIytGQui9dJiQBLW8/VgYGDsxMgTu5w3LxVUAz0GBsYJjN6h/Kp2ivwfoNBsgYGBcTBjkiBWi5ejwgAGBsbBjOrxWXXR1UQTAwPjHEa1YeJNk9Y4QaymnhgYGHszqoEyX+7apHBBURMDA+N+jC//lJ07X9wAxAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aQW7DMAwEwPz/0+m1QGpnl0oD2BqfitaVNToQFMnHI36eL8/r74/e/P3XozWPfvPhBwMD47KM5+lz/oHkk+dr5sf05mgwMDA2YBx9/uidc9j5/+bvJ3vDwMDAaINjnvbNjg8DAwPjUwG3TRxXqBgYGPswkkvsbLv5cXzpLo6BgXFBRl51//7P/9LfwMDAuBTjWT7tJTZvauZB9o91MDAwbs2YtSHPL5OzYtxKWxQDA+PejDaMrpTJ8mZnPdKBgYGxASMPfOdvrqd9w5CNgYGxAWMlyUsCZVs+yxsAGBgY+zBWGoRFOazM5ZKjwcDA2IGRX0fbduMMs1KAw8DAuDdjNmyRXzvblmd+kR6OZWBgYFyKUVwUy3ZmfmZ5yW9YNcTAwLg4o916Xoxrg297fHXOi4GBcXFG3lBsi2Vt6X84bIGBgbENI0/F1tsG7TtRaoiBgXFTxqxA1pbP2i3WV18MDIxbM9qw+KlLbN7+LJqjGBgYGzPaMDpLH9uWw7DchoGBcXFGMrA16znkh5KseRiyMTAwNmCsF9fyAbIkHaybExgYGBsz8iCYp5jt6FhUhsPAwLgp41k+s+ZBy8hXwMDA2IHRJnzt0rMg2150MTAwdmC0iV0egpMzWy/hYWBg7MNoA1+7xVkZrh62wMDAwFgYj1hf+Q0VAwMD43QreXsyTyjr4Q8MDIwNGLNmwMpI2XpoxsDA2IexMuy1XpKbfX3Y1MTAwLge4weVNBkG1ibCpAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -447,7 +443,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

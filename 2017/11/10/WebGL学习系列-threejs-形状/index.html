@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,33 +13,29 @@
     
     
     
-    <title>WebGL学习系列-threejs-形状 | MissSweety&#39;s Blog | never say never</title>
+    <title>WebGL学习系列-threejs-形状 | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="学习笔记,webGL,Three.js">
-    <meta name="description" content="three.js中创建物体，比如一条线，需要如下函数：new THREE.Line( geometry, material );geometry: 几何体material: 材质这是创建物体[mesh]必须的。Geometry主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。  
-常见几何体立方体，平面，球体，圆柱体，四面体，八面体，文字等。  
-立方">
+    <meta name="keywords" content="webGL,学习笔记,Three.js">
+    <meta name="description" content="three.js中创建物体，比如一条线，需要如下函数：new THREE.Line( geometry, material );geometry: 几何体material: 材质这是创建物体[mesh]必须的。Geometry主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。   常见几何体立方体，平面，球体，圆柱体，四面体，八面体，文字等。   立方">
+<meta name="keywords" content="webGL,学习笔记,Three.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebGL学习系列-threejs-形状">
-<meta property="og:url" content="https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="three.js中创建物体，比如一条线，需要如下函数：new THREE.Line( geometry, material );geometry: 几何体material: 材质这是创建物体[mesh]必须的。Geometry主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。  
-常见几何体立方体，平面，球体，圆柱体，四面体，八面体，文字等。  
-立方">
-<meta property="og:image" content="https://misssweety.github.io/pic1.png">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="three.js中创建物体，比如一条线，需要如下函数：new THREE.Line( geometry, material );geometry: 几何体material: 材质这是创建物体[mesh]必须的。Geometry主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。   常见几何体立方体，平面，球体，圆柱体，四面体，八面体，文字等。   立方">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/pic1.png">
 <meta property="og:updated_time" content="2017-11-15T06:00:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebGL学习系列-threejs-形状">
-<meta name="twitter:description" content="three.js中创建物体，比如一条线，需要如下函数：new THREE.Line( geometry, material );geometry: 几何体material: 材质这是创建物体[mesh]必须的。Geometry主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。  
-常见几何体立方体，平面，球体，圆柱体，四面体，八面体，文字等。  
-立方">
-<meta name="twitter:image" content="https://misssweety.github.io/pic1.png">
+<meta name="twitter:description" content="three.js中创建物体，比如一条线，需要如下函数：new THREE.Line( geometry, material );geometry: 几何体material: 材质这是创建物体[mesh]必须的。Geometry主要是存储物体的顶点信息，threejs中提供了一些固定的形状，省去我们一个个固定顶点的工作量。   常见几何体立方体，平面，球体，圆柱体，四面体，八面体，文字等。   立方">
+<meta name="twitter:image" content="https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/pic1.png">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -73,7 +69,7 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -101,7 +97,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -199,17 +195,17 @@
 <h3 id="圆形"><a href="#圆形" class="headerlink" title="圆形"></a>圆形</h3><p><code>THREE.CircleGeometry(radius, segments, thetaStart, thetaLength)</code><br>同理，segments越大，越接近于圆。  </p>
 <h3 id="圆台"><a href="#圆台" class="headerlink" title="圆台"></a>圆台</h3><p><code>THREE.CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded)</code><br>openEnded表示是否没有顶面和底面。默认为false(有顶面和底面)。  </p>
 <h3 id="正四面体"><a href="#正四面体" class="headerlink" title="正四面体"></a>正四面体</h3><p>多面体的参数，都是半径 &amp; detail。半径是外接球半径，detail是细节层次，一般可以省略。  </p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tri = <span class="keyword">new</span> THREE.TetrahedronGeometry(<span class="number">150</span>);</span><br><span class="line">  <span class="keyword">const</span> triObj= <span class="keyword">new</span> THREE.Mesh(tri, material(<span class="number">0x333333</span>));</span><br><span class="line">  triObj.<span class="built_in">position</span>.y = <span class="number">-300</span>;</span><br><span class="line">  triObj.<span class="built_in">position</span>.x = <span class="number">300</span>;</span><br><span class="line">  scene.add(triObj);</span><br></pre></td></tr></table></figure>
-<h3 id="正八面体"><a href="#正八面体" class="headerlink" title="正八面体"></a>正八面体</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正八面体</span></span><br><span class="line">  <span class="keyword">const</span> octo = <span class="keyword">new</span> THREE.OctahedronGeometry(<span class="number">150</span>);</span><br><span class="line">  <span class="keyword">const</span> octoObj= <span class="keyword">new</span> THREE.Mesh(octo, material(<span class="number">0x33ff33</span>));</span><br><span class="line">  octoObj.<span class="built_in">position</span>.y = <span class="number">-300</span>;</span><br><span class="line">  octoObj.<span class="built_in">position</span>.x = <span class="number">-300</span>;</span><br><span class="line">  scene.add(octoObj);</span><br></pre></td></tr></table></figure>
-<h3 id="正20面体"><a href="#正20面体" class="headerlink" title="正20面体"></a>正20面体</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正二十面体</span></span><br><span class="line">  <span class="keyword">const</span> icos = <span class="keyword">new</span> THREE.IcosahedronGeometry(<span class="number">150</span>);</span><br><span class="line">  <span class="keyword">const</span> icosObj= <span class="keyword">new</span> THREE.Mesh(icos, material(<span class="number">0xff3333</span>));</span><br><span class="line">  icosObj.<span class="built_in">position</span>.y = <span class="number">-300</span>;</span><br><span class="line">  icosObj.<span class="built_in">position</span>.x = <span class="number">0</span>;</span><br><span class="line">  scene.add(icosObj);</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tri = new THREE.TetrahedronGeometry(<span class="number">150</span>);</span><br><span class="line">  <span class="keyword">const</span> triObj= new THREE.Mesh(tri, material(<span class="number">0x333333</span>));</span><br><span class="line">  triObj.position.y = <span class="number">-300</span>;</span><br><span class="line">  triObj.position.x = <span class="number">300</span>;</span><br><span class="line">  scene.add(triObj);</span><br></pre></td></tr></table></figure>
+<h3 id="正八面体"><a href="#正八面体" class="headerlink" title="正八面体"></a>正八面体</h3><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正八面体</span></span><br><span class="line">  <span class="keyword">const</span> octo = new THREE.OctahedronGeometry(<span class="number">150</span>);</span><br><span class="line">  <span class="keyword">const</span> octoObj= new THREE.Mesh(octo, material(<span class="number">0x33ff33</span>));</span><br><span class="line">  octoObj.position.y = <span class="number">-300</span>;</span><br><span class="line">  octoObj.position.x = <span class="number">-300</span>;</span><br><span class="line">  scene.add(octoObj);</span><br></pre></td></tr></table></figure>
+<h3 id="正20面体"><a href="#正20面体" class="headerlink" title="正20面体"></a>正20面体</h3><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正二十面体</span></span><br><span class="line">  <span class="keyword">const</span> icos = new THREE.IcosahedronGeometry(<span class="number">150</span>);</span><br><span class="line">  <span class="keyword">const</span> icosObj= new THREE.Mesh(icos, material(<span class="number">0xff3333</span>));</span><br><span class="line">  icosObj.position.y = <span class="number">-300</span>;</span><br><span class="line">  icosObj.position.x = <span class="number">0</span>;</span><br><span class="line">  scene.add(icosObj);</span><br></pre></td></tr></table></figure>
 <h3 id="甜甜圈"><a href="#甜甜圈" class="headerlink" title="甜甜圈"></a>甜甜圈</h3><p><code>THREE.TorusGeometry(150, 50, 10, 20)</code><br>第一个甜甜圈整个半径，第二个参数:管道半径，后面分别对应两者的半径。需要把两个半径调大，甜甜圈看着就光滑了。  </p>
 <h3 id="打结版的甜甜圈"><a href="#打结版的甜甜圈" class="headerlink" title="打结版的甜甜圈"></a>打结版的甜甜圈</h3><p><code>THREE.TorusKnotGeometry(radius, tube, radialSegments, tubularSegments, p, q, heightScale)</code><br>p和q是控制其样式的参数，一般可以缺省， heightScale: z轴上的缩放。  </p>
 <h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><h4 id="boxHelper"><a href="#boxHelper" class="headerlink" title="boxHelper"></a>boxHelper</h4><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> <span class="built_in">mesh</span> = <span class="built_in">new</span> THREE.Mesh(geom,material);</span><br><span class="line"><span class="built_in">scene</span>.add(<span class="built_in">mesh</span>);</span><br><span class="line"><span class="built_in">border</span> = <span class="built_in">new</span> THREE.BoxHelper( <span class="built_in">mesh</span>,<span class="number">0x0dc3b4</span> );//设置边框，这个边框不会旋转</span><br><span class="line"><span class="built_in">scene</span>.add( <span class="built_in">border</span> );</span><br></pre></td></tr></table></figure>
 <p>边框不跟随物体旋转</p>
 <h4 id="edgesHelper"><a href="#edgesHelper" class="headerlink" title="edgesHelper"></a>edgesHelper</h4><p>边框跟随</p>
 <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> <span class="built_in">mesh</span> = <span class="built_in">new</span> THREE.Mesh(geom,material);</span><br><span class="line"><span class="built_in">scene</span>.add(<span class="built_in">mesh</span>);</span><br><span class="line"><span class="built_in">border</span> = <span class="built_in">new</span> THREE.edgesHelper( <span class="built_in">mesh</span>,<span class="number">0x0dc3b4</span> );//设置边框，这个边框不会旋转</span><br><span class="line"><span class="built_in">scene</span>.add( <span class="built_in">border</span> );</span><br></pre></td></tr></table></figure>
-<p>各种形状的展示：<br><img src="pic1.png"><br>代码参考：  <a href="https://github.com/MissSweety/threejs/blob/master/js/geometry.js" target="_blank" rel="external">https://github.com/MissSweety/threejs/blob/master/js/geometry.js</a>  </p>
-<h2 id="外部模型-3ds-max"><a href="#外部模型-3ds-max" class="headerlink" title="外部模型[3ds max]"></a>外部模型[3ds max]</h2><p><a href="https://read.douban.com/reader/ebook/7412854/" target="_blank" rel="external">参考文献-几何形状</a><br><a href="https://www.august.com.au/blog/animating-scenes-with-webgl-three-js/" target="_blank" rel="external">形状实战</a><br><a href="http://learningthreejs.com/" target="_blank" rel="external">视频教程</a></p>
+<p>各种形状的展示：<br><img src="pic1.png"><br>代码参考：  <a href="https://github.com/MissSweety/threejs/blob/master/js/geometry.js" target="_blank" rel="noopener">https://github.com/MissSweety/threejs/blob/master/js/geometry.js</a>  </p>
+<h2 id="外部模型-3ds-max"><a href="#外部模型-3ds-max" class="headerlink" title="外部模型[3ds max]"></a>外部模型[3ds max]</h2><p><a href="https://read.douban.com/reader/ebook/7412854/" target="_blank" rel="noopener">参考文献-几何形状</a><br><a href="https://www.august.com.au/blog/animating-scenes-with-webgl-three-js/" target="_blank" rel="noopener">形状实战</a><br><a href="http://learningthreejs.com/" target="_blank" rel="noopener">视频教程</a></p>
 
         </div>
 
@@ -222,11 +218,11 @@
 
 
         
-        <a href="/2017/11/10/WebGL学习系列-threejs-形状/" target="_blank" rel="external">https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/</a>
+        <a href="/2017/11/10/WebGL学习系列-threejs-形状/" target="_blank" rel="external">https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -248,7 +244,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/&title=《WebGL学习系列-threejs-形状》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/&title=《WebGL学习系列-threejs-形状》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -258,22 +254,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/&title=《WebGL学习系列-threejs-形状》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/&title=《WebGL学习系列-threejs-形状》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-threejs-形状》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-threejs-形状》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -366,7 +362,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/&title=《WebGL学习系列-threejs-形状》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/&title=《WebGL学习系列-threejs-形状》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -376,22 +372,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/&title=《WebGL学习系列-threejs-形状》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/&title=《WebGL学习系列-threejs-形状》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-threejs-形状》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《WebGL学习系列-threejs-形状》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/10/WebGL学习系列-threejs-形状/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/11/10/WebGL学习系列-threejs-形状/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -402,7 +398,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtUlEQVR42u3awU7DMBAEUP7/p0HiipLMeG2aw8sJQev6Gcl2Z/frK36+f5+/v/n7XL3marTkvVev2fbg4eHhLU39frh8ivcjJONcvb79RDw8PLzTvPvD4P41Cel+c2//mswZDw8P7w28czf3+wOjXW48PDy89/DaDX0tzkiu9Xh4eHhv4LWX43xDzwPc9nM3Zy14eHh4Ma+98r7h54P1PTw8PLxBVb0taOUb97zJIBofDw8P7wCvDRTyolQbHOQHQF4Mw8PDwzvHW4sb2hAhWcRJA8EDGA8PD28rry1f5QWqpOh1vxzJex+WBg8PD28rL9my202/jSdafHGxxsPDwzvAaxut1rb1ZJwcnzci4OHh4Z3gzbf79lLeRhgbrtR4eHh4x8KIPGydRBgn/rrYeoWHh4c34LWF+RPTWhszGQ0PDw9vLy8PQyeFq7bw387koWkADw8Pbysv+TKfT3pyIuUHRruIeHh4eOd4u4r3kxAhL3q1l2w8PDy8vby84NReiNvmgLzcVXwlwMPDw9vKS96cTLfd1ncFHA/LgYeHh3eAl19Sd8Ws7XU5mU997uHh4eENeG1024a5bYvAWg/V5Zzx8PDwDvAmjU2Tj08OobYU9/BvwMPDwzvMm0QJk0Vpo9sisMDDw8P7F95a08DadXytHaE4PPDw8PD+kbc2lbZ96vQlGw8PD28vLy/hJ8fA2ghr5a4iwMXDw8M7wFvbrCeHRNvCtRYf4+Hh4e3lfZdPHqomccZknGQ0PDw8vBO8ve1N8xautQC3KIPh4eHhbeK1F9z7FZqEuZPYt8ha8PDw8DbxksOgvcKuTag9u/Dw8PDez1tr0ppf1teOEzw8PLzP8tr4YLJkebMCHh4e3qd4SRgxaYHKC2Ptbx6OHzw8PLwDvF0FsHmpLFnuvBUMDw8P7wDvB0g35CkiRtj3AAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtUlEQVR42u3aQU7EMBAEwP3/p0HixIFkuz12AKlyQiEbu3KwR+15veLr4+u6uvPx7bq/c//+ZJTXiQsPDw9vaepX12SY+zdcYfI53D+Ph4eHd5qXT67dKtqJ3oPzOePh4eH9BV6+hSTTbTcPPDw8vP/Iyxf9N2VuvPTj4eHh/WVePunJEp9HEmufGA8PD+8Z3jyQff7vg+d7eHh4eINT9bXSeW2BzmPiYp54eHh4B3j3pe2urSIvpk+0c+Hh4eHt5SULevK65M7aiGsB8Zt9Dw8PD28Tr90G8shg/uGSI7Qf3oCHh4d3jDfBRMMEd/JCvIh08fDw8A7w8iV479KfjLW3lMfDw8PbxWsL1kmR3bZY5exLCx4eHt4xXhuSTtj5M21sUSQoeHh4eAd49+CkFJ4cd7UB8eUc8PDw8B7krS3ou97QBrtv8hU8PDy8rbwWnMe4bYCbT71t1cLDw8Pby2t/nB9T7Qpk2xjiTdMVHh4e3piX9ynlxW4+3TbaaFsc8PDw8M7x8kOv5OgrH35DuJCMjoeHh7eVV7cxLcUH7fFVu/1czgEPDw/vAG8SHyQlcv7f+Qe6/C0eHh7eVl4Oa6ebHJithSB1So2Hh4d3jJcHsknL1H2JnDPyOUQpCx4eHt6Y10YAyfOTTSJpEag/Ch4eHt4BXtsIlQw/aeHKG7CKbgg8PDy8rbz8iCsvjvO4Ni/o24gZDw8P7xne/AiqDYLXGryKX+Hh4eFt5c0bAiaTzreKxYADDw8P7wBvbSd5JoqdR8Z4eHh453j5orzWepUHDffffu2j4OHh4Z3j5ZvBJFBox2pj3PoADA8PD+9xXnsM1oa2bSvDZUmNh4eH90u8tvWqbZZq31yEEXh4eHgHeLsOnyZF+doRV1RS4+Hh4W3l1V1aMSY/0Fpb+rch8fDw8FLeJym0QQU+yHNPAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -452,7 +448,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

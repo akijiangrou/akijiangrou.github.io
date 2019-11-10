@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,40 +13,27 @@
     
     
     
-    <title>child_process | MissSweety&#39;s Blog | never say never</title>
+    <title>child_process | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="nodejs,js,shell">
-    <meta name="description" content="子进程child_process，使node可以在进程中执行操作，应用系统命令等。nodejs创建子进程有四种方法,分别是
-
-spawnforkexecexecFile。
-
-后两个函数有回调函数。前两个没有。其中spawn 是最基本的函数，剩下三个其实都是不同程度的封装。
-功能child_process 会在父进程和衍生的子进程中建立stdin、stdout和stderr的管道。数据能以非阻塞的方">
+    <meta name="keywords" content="js,nodejs,shell">
+    <meta name="description" content="子进程child_process，使node可以在进程中执行操作，应用系统命令等。nodejs创建子进程有四种方法,分别是  spawnforkexecexecFile。  后两个函数有回调函数。前两个没有。其中spawn 是最基本的函数，剩下三个其实都是不同程度的封装。 功能child_process 会在父进程和衍生的子进程中建立stdin、stdout和stderr的管道。数据能以非阻塞的方">
+<meta name="keywords" content="js,nodejs,shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="child_process">
-<meta property="og:url" content="https://misssweety.github.io/2017/10/25/child-process/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="子进程child_process，使node可以在进程中执行操作，应用系统命令等。nodejs创建子进程有四种方法,分别是
-
-spawnforkexecexecFile。
-
-后两个函数有回调函数。前两个没有。其中spawn 是最基本的函数，剩下三个其实都是不同程度的封装。
-功能child_process 会在父进程和衍生的子进程中建立stdin、stdout和stderr的管道。数据能以非阻塞的方">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/10/25/child-process/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="子进程child_process，使node可以在进程中执行操作，应用系统命令等。nodejs创建子进程有四种方法,分别是  spawnforkexecexecFile。  后两个函数有回调函数。前两个没有。其中spawn 是最基本的函数，剩下三个其实都是不同程度的封装。 功能child_process 会在父进程和衍生的子进程中建立stdin、stdout和stderr的管道。数据能以非阻塞的方">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2017-10-26T10:31:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="child_process">
-<meta name="twitter:description" content="子进程child_process，使node可以在进程中执行操作，应用系统命令等。nodejs创建子进程有四种方法,分别是
-
-spawnforkexecexecFile。
-
-后两个函数有回调函数。前两个没有。其中spawn 是最基本的函数，剩下三个其实都是不同程度的封装。
-功能child_process 会在父进程和衍生的子进程中建立stdin、stdout和stderr的管道。数据能以非阻塞的方">
+<meta name="twitter:description" content="子进程child_process，使node可以在进程中执行操作，应用系统命令等。nodejs创建子进程有四种方法,分别是  spawnforkexecexecFile。  后两个函数有回调函数。前两个没有。其中spawn 是最基本的函数，剩下三个其实都是不同程度的封装。 功能child_process 会在父进程和衍生的子进程中建立stdin、stdout和stderr的管道。数据能以非阻塞的方">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -80,7 +67,7 @@ spawnforkexecexecFile。
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -108,7 +95,7 @@ spawnforkexecexecFile。
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -214,7 +201,7 @@ spawnforkexecexecFile。
 <li>总结：如果只是想看运行结果，用exec；需要执行结果的数据，最好用spawn。  </li>
 </ul>
 <h3 id="spawn"><a href="#spawn" class="headerlink" title="spawn"></a>spawn</h3><p><code>child_process.spawn(command, [args], [options])</code>  </p>
-<p>command : 主命令<br>args : 其他参数，以及副命令<br>options: 见<a href="http://nodejs.cn/api/child_process.html#child_process_child_process_spawn_command_args_options" target="_blank" rel="external">文档</a>中的定义  </p>
+<p>command : 主命令<br>args : 其他参数，以及副命令<br>options: 见<a href="http://nodejs.cn/api/child_process.html#child_process_child_process_spawn_command_args_options" target="_blank" rel="noopener">文档</a>中的定义  </p>
 <p>// hellow.js</p>
 <pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">const</span> &#123; spawn &#125; = <span class="built_in">require</span>(<span class="string">'child_process'</span>);</span><br><span class="line"> <span class="comment">// 主命令ls为第一个参数，辅助命令以及路径等参数，都放在参数数组里。</span></span><br><span class="line"><span class="keyword">const</span> ls = spawn(<span class="string">'ls'</span>, [<span class="string">'-lh'</span>, <span class="string">'/usr'</span>]);</span><br><span class="line"></span><br><span class="line">ls.stdout.on(<span class="string">'data'</span>, (data) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`stdout: <span class="subst">$&#123;data&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ls.stderr.on(<span class="string">'data'</span>, (data) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`stderr: <span class="subst">$&#123;data&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ls.on(<span class="string">'close'</span>, (code) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`child process exited with code <span class="subst">$&#123;code&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </code></pre><p>运行：<br>node hellow.js </p>
@@ -238,7 +225,7 @@ spawnforkexecexecFile。
 <p>exec中写复杂的shell语句比较方便。与上面的 spawn进行ps方法的比较：  </p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exec(<span class="string">'ps ax | grep ssh'</span>, (<span class="built_in">error</span>, <span class="built_in">stdout</span>, <span class="built_in">stderr</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">error</span>) &#123;</span><br><span class="line">    console.<span class="built_in">error</span>(<span class="string">'exec error'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  console.<span class="built_in">log</span>(`<span class="built_in">stdout</span>: $&#123;<span class="built_in">stdout</span>&#125;`);</span><br><span class="line">  console.<span class="built_in">log</span>(`<span class="built_in">stderr</span>: $&#123;<span class="built_in">stderr</span>&#125;`);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>但是输出结果会多一条：<br>应该是exec又新开了一个shell导致的。</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stdou<span class="variable">t:</span>  <span class="number">1915</span>   ??  S      <span class="number">0</span>:<span class="number">00.03</span> /usr/bin/ssh-agent -<span class="keyword">l</span></span><br><span class="line"><span class="number">69597</span> s008  S+     <span class="number">0</span>:<span class="number">00.00</span> /bin/<span class="keyword">sh</span> -<span class="keyword">c</span> <span class="keyword">ps</span> ax | <span class="keyword">grep</span> ssh</span><br><span class="line"><span class="number">69599</span> s008  S+     <span class="number">0</span>:<span class="number">00.00</span> <span class="keyword">grep</span> ssh</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stdout:  <span class="number">1915</span>   ??  S      <span class="number">0</span>:<span class="number">00.03</span> /usr/bin/ssh-agent -l</span><br><span class="line"><span class="number">69597</span> s008  S+     <span class="number">0</span>:<span class="number">00.00</span> /bin/sh -c ps ax | grep ssh</span><br><span class="line"><span class="number">69599</span> s008  S+     <span class="number">0</span>:<span class="number">00.00</span> grep ssh</span><br></pre></td></tr></table></figure>
 <h3 id="execFile"><a href="#execFile" class="headerlink" title="execFile"></a>execFile</h3><p><code>child_process.execFile(file[, args][, options][, callback])</code></p>
 <p>options，callback与exec一样，但是输入参数，比较费劲。和spawn一样麻烦了。回调函数都是当子进程停止的时候执行。</p>
 <p>execFile是对spawn的封装，多了回调函数。而exec又是对execFile的封装，可以更便利的输入shell指令。</p>
@@ -248,13 +235,13 @@ spawnforkexecexecFile。
 <p>fork中的options有一些不一样的地方：<br><code>silent</code>：<boolean> 默认是false，即子进程的stdio从父进程继承。如果是true，则直接pipe向子进程的child.stdin、child.stdout等。  </boolean></p>
 <p><code>stdio</code>：<array> 如果声明了stdio，则会覆盖silent选项的设置。默认继承父进程的stdio，其实就是父进程所在终端。  </array></p>
 <p>其中 stdio可以设置为文件，<br>例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// parent.js</span></span><br><span class="line"><span class="keyword">const</span> child_process = <span class="built_in">require</span>(<span class="string">'child_process'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> out = fs.openSync(<span class="string">'./out.log'</span>, <span class="string">'a'</span>); <span class="comment">// out.log 中可以显示child.js 的输出。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> err = fs.openSync(<span class="string">'./err.log'</span>, <span class="string">'a'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> child = child_process.spawn(<span class="string">'node'</span>, [<span class="string">'child.js'</span>], &#123;</span><br><span class="line">    <span class="attr">detached</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">stdio</span>: [<span class="string">'ignore'</span>, out, err]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// child.js</span></span><br><span class="line"><span class="keyword">var</span> times = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(++times * <span class="number">4</span>);</span><br><span class="line">  <span class="keyword">if</span> (times &gt;<span class="number">1000</span>)</span><br><span class="line">    &#123;clearInterval(timer)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-<p>如果子进程还在进行，父进程也会一直hold着，这个时候，可以调用子进程的unref()，释放出父进程（parent.js 最后加上 <code>child.unref();</code>注意stdio中参数第一个要设置为ignore, 如上child.js）。但是子进程仍在执行。验证可以在终端执行：<code>ps aux | grep node</code>, 发现会有子进程在进行：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">zzz</span>             70478   0<span class="selector-class">.3</span>  0<span class="selector-class">.1</span>  3094324  24244   ??  <span class="selector-tag">Ss</span>    5<span class="selector-pseudo">:28</span>下午   0<span class="selector-pseudo">:00.08</span> <span class="selector-tag">node</span> <span class="selector-tag">child</span><span class="selector-class">.js</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// parent.js</span></span><br><span class="line"><span class="keyword">const</span> child_process = <span class="built_in">require</span>(<span class="string">'child_process'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> out = fs.openSync(<span class="string">'./out.log'</span>, <span class="string">'a'</span>); <span class="comment">// out.log 中可以显示child.js 的输出。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> err = fs.openSync(<span class="string">'./err.log'</span>, <span class="string">'a'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> child = child_process.spawn(<span class="string">'node'</span>, [<span class="string">'child.js'</span>], &#123;</span><br><span class="line">    detached: <span class="literal">true</span>,</span><br><span class="line">    stdio: [<span class="string">'ignore'</span>, out, err]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// child.js</span></span><br><span class="line"><span class="keyword">var</span> times = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(++times * <span class="number">4</span>);</span><br><span class="line">  <span class="keyword">if</span> (times &gt;<span class="number">1000</span>)</span><br><span class="line">    &#123;clearInterval(timer)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<p>如果子进程还在进行，父进程也会一直hold着，这个时候，可以调用子进程的unref()，释放出父进程（parent.js 最后加上 <code>child.unref();</code>注意stdio中参数第一个要设置为ignore, 如上child.js）。但是子进程仍在执行。验证可以在终端执行：<code>ps aux | grep node</code>, 发现会有子进程在进行：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zzz             <span class="number">70478</span>   <span class="number">0.3</span>  <span class="number">0.1</span>  <span class="number">3094324</span>  <span class="number">24244</span>   ??  Ss    <span class="number">5</span>:<span class="number">28</span>下午   <span class="number">0</span>:<span class="number">00.08</span> node child.js</span><br></pre></td></tr></table></figure></p>
 <h4 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h4><p><code>send</code>：<br>关于父子进程沟通，父进程中，可以调用子进程的send()方法，向子进程发送数据，对应的子进程程序中，调用process.send()方法向父进程发送数据。</p>
 <p>code：</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// parent.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cp = <span class="built_in">require</span>(<span class="string">'child_process'</span>);</span><br><span class="line"><span class="keyword">const</span> n = cp.fork(<span class="string">`<span class="subst">$&#123;__dirname&#125;</span>/child.js`</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'1'</span>);</span><br><span class="line"></span><br><span class="line">n.on(<span class="string">'message'</span>, <span class="function">(<span class="params">m</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'PARENT got message:'</span>, m);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'2'</span>);</span><br><span class="line"></span><br><span class="line">n.send(&#123; hello: <span class="string">'world'</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'3'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// child.js</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'4'</span>);</span><br><span class="line">process.on(<span class="string">'message'</span>, <span class="function">(<span class="params">m</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'CHILD got message:'</span>, m);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">process.send(&#123; foo: <span class="string">'bar'</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'5'</span>);</span><br></pre></td></tr></table></figure>
 <p>child先发送，parent收到结果，然后parent发送，child收到结果。结果如下： </p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">node p.js       </span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line">PARENT got message: &#123; foo: <span class="string">'bar'</span> &#125;</span><br><span class="line">CHILD got message: &#123; hello: <span class="string">'world'</span> &#125;</span><br><span class="line"></span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">`disconnect`：</span><br><span class="line">在父进程中调用 subprocess.disconnect() 或在子进程中调用 process.disconnect() 后会触发 <span class="string">'disconnect'</span> 事件。 断开后就不能再发送或接收信息，且 subprocess.connected 属性会被设为 false。  </span><br><span class="line"></span><br><span class="line"><span class="keyword">code</span>：</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">node</span> <span class="string">p.js</span>       </span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="attr">PARENT got message:</span> <span class="string">&#123;</span> <span class="attr">foo:</span> <span class="string">'bar'</span> <span class="string">&#125;</span></span><br><span class="line"><span class="attr">CHILD got message:</span> <span class="string">&#123;</span> <span class="attr">hello:</span> <span class="string">'world'</span> <span class="string">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="string">```</span>   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">`disconnect`：</span></span><br><span class="line"><span class="string">在父进程中调用</span> <span class="string">subprocess.disconnect()</span> <span class="string">或在子进程中调用</span> <span class="string">process.disconnect()</span> <span class="string">后会触发</span> <span class="string">'disconnect'</span> <span class="string">事件。</span> <span class="string">断开后就不能再发送或接收信息，且</span> <span class="string">subprocess.connected</span> <span class="string">属性会被设为</span> <span class="literal">false</span><span class="string">。</span>  </span><br><span class="line"></span><br><span class="line"><span class="string">code：</span></span><br></pre></td></tr></table></figure>
 <p>// parent.js<br>const cp = require(‘child_process’);<br>const n = cp.fork(<code>${__dirname}/child.js</code>);</p>
 <p>console.log(‘1’);</p>
 <p>n.on(‘message’, (m) =&gt; {<br>    console.log(‘in Parent child is connect’, n.connected);<br>  console.log(‘PARENT got message:’, m);<br>});</p>
@@ -265,7 +252,7 @@ spawnforkexecexecFile。
 <p>});</p>
 <p>process.send({ foo: ‘bar’ });<br>console.log(‘5’);</p>
 <p>process.disconnect();</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输出的是：</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输出的是：</span><br></pre></td></tr></table></figure>
 <p>1<br>2<br>3<br>4<br>5<br>in Parent child is connect true<br>PARENT got message: { foo: ‘bar’ }<br>in parent, child send disconnect signal false</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">如果把注释打开，最后的disconnect去掉，则会在parent接收到message后，先输出child这边的 `<span class="keyword">in</span> child, child send disconnect`,在输出`<span class="keyword">in</span> parent, child send disconnect signal false` ...</span><br><span class="line"></span><br><span class="line">注意如果child是一个会执行很久的函数，此时他依然是可以在执行的，只是父进程监控不到他了~~~，要注意！如果不想让子进程也执行了，调用kill既可。</span><br><span class="line"></span><br><span class="line">`kill`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 事件：</span></span><br><span class="line">- message</span><br><span class="line">`on(<span class="string">'message'</span>, <span class="keyword">func</span>)` 分别用on方法来监听，对方发送的数据。</span><br><span class="line">- close</span><br><span class="line">- <span class="keyword">exit</span></span><br><span class="line">- disconnect  </span><br><span class="line"></span><br><span class="line">close 和<span class="keyword">exit</span> 当子进程退出的时候都会监控到，两者的结果基本相似。close，是当stdio流关闭时触发。 一般子进程退出了，stdio一定退出了。  </span><br><span class="line"> </span><br><span class="line">对于<span class="keyword">exit</span>，如果子进程是自己退出的，那么code就是退出码，否则为null；如果子进程是通过信号结束的，那么，signal就是结束进程的信号，否则为null。这两者中，一者肯定不为null。</span><br><span class="line"></span><br><span class="line">例子：</span><br></pre></td></tr></table></figure>
 <p>// parent.js</p>
@@ -276,19 +263,19 @@ spawnforkexecexecFile。
 <p>n.send({ hello: ‘world’ });<br>n.on(‘exit’, (cc, signal) =&gt; {<br>    console.log(‘in parent, child send exit signal’,cc, signal);<br>})</p>
 <p>n.on(‘close’, (cc, signal) =&gt; {<br>    console.log(‘in parent, child send close signal’, cc, signal);<br>})</p>
 <p>console.log(‘3’);</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>// child.js</p>
 <p>console.log(‘4’);<br>process.on(‘message’, (m) =&gt; {<br>  console.log(‘CHILD got message:’, m);</p>
 <p>});</p>
 <p>process.send({ foo: ‘bar’ });<br>console.log(‘5’);</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">终端运行：` <span class="keyword">node</span> <span class="title">parent</span>.js`</span><br><span class="line">输出：</span><br></pre></td></tr></table></figure>
-<p>1<br>2<br>3<br>4<br>5<br>in Parent child is connect true<br>PARENT got message: { foo: ‘bar’ }<br>CHILD got message: { hello: ‘world’ }<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="autohotkey">此时，再开一个终端，使用`ps ax | grep node` 找到child.js 的进程，执行`kill -<span class="number">9</span> pid` </span><br><span class="line"></span><br><span class="line">原来终端会显示</span></span><br></pre></td></tr></table></figure></p>
+<p>1<br>2<br>3<br>4<br>5<br>in Parent child is connect true<br>PARENT got message: { foo: ‘bar’ }<br>CHILD got message: { hello: ‘world’ }<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">此时，再开一个终端，使用`ps ax | grep node` 找到child.js 的进程，执行`kill -9 pid` </span><br><span class="line"></span><br><span class="line">原来终端会显示</span><br></pre></td></tr></table></figure></p>
 <p>in parent, child send exit signal null SIGKILL<br>in parent, child send close signal null SIGKILL</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">如果是在child<span class="selector-class">.js</span> 中故意写一些错误，会监控到<span class="selector-tag">code</span> 为<span class="number">1</span> ，输出：</span><br></pre></td></tr></table></figure>
 <p>in parent, child send exit signal 1 null<br>in parent, child send close signal 1 null</p>
-<p>```</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://nodejs.org/api/child_process.html#child_process_event_close" target="_blank" rel="external">官方文档</a>  </p>
-<p><a href="https://segmentfault.com/a/1190000007735211#articleHeader18" target="_blank" rel="external">参考</a></p>
+<p><code>`</code></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://nodejs.org/api/child_process.html#child_process_event_close" target="_blank" rel="noopener">官方文档</a>  </p>
+<p><a href="https://segmentfault.com/a/1190000007735211#articleHeader18" target="_blank" rel="noopener">参考</a></p>
 
         </div>
 
@@ -301,11 +288,11 @@ spawnforkexecexecFile。
 
 
         
-        <a href="/2017/10/25/child-process/" target="_blank" rel="external">https://misssweety.github.io/2017/10/25/child-process/</a>
+        <a href="/2017/10/25/child-process/" target="_blank" rel="external">https://akijiangrou.github.io/2017/10/25/child-process/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -327,7 +314,7 @@ spawnforkexecexecFile。
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/10/25/child-process/&title=《child_process》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/10/25/child-process/&title=《child_process》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -337,22 +324,22 @@ spawnforkexecexecFile。
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/10/25/child-process/&title=《child_process》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/10/25/child-process/&title=《child_process》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/10/25/child-process/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/10/25/child-process/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《child_process》 — MissSweety's Blog&url=https://misssweety.github.io/2017/10/25/child-process/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《child_process》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/10/25/child-process/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/10/25/child-process/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/10/25/child-process/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -445,7 +432,7 @@ spawnforkexecexecFile。
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/10/25/child-process/&title=《child_process》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/10/25/child-process/&title=《child_process》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -455,22 +442,22 @@ spawnforkexecexecFile。
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/10/25/child-process/&title=《child_process》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/10/25/child-process/&title=《child_process》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/10/25/child-process/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/10/25/child-process/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《child_process》 — MissSweety's Blog&url=https://misssweety.github.io/2017/10/25/child-process/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《child_process》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/10/25/child-process/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/10/25/child-process/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/10/25/child-process/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -481,7 +468,7 @@ spawnforkexecexecFile。
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3awXaFIAxFUf//p+20E/TcBLsKHEZdfSpuBjGQXBce968x+nV0/fO9fJYJQ4YMGcsy7scxuqY28fNCkHmHM8qQIeMAxvOUhDSCkQUi8768swwZMmSAycj0PMjKkCFDxiwGwTyTasshQ4aMMxmdBC49eiOp54d7cRkyZCzISI/J/vLvT+obMmTIWIpxh6O2HSXB+m4MGTJk7M2YdTTWSfJqzRYyZMg4h9HfvpKX5iuaBuhpu3AZMmT8ewY/oOcpHYr0pTLDMODKkCFja0YaUmsH/ekhWnCXDBkyjmGkm8z0yKxTtnxZYhkyZBzA4Mlf2nhRK5TyD8DFo7sMGTKWZcx9LRI0a1tcRJIhQ8amjFqTVtoGwRnFEoIMGTIOYJBHzy1PdlLAYbeIDBkyNmXwKdMNJ083a80WxZWTIUPGgow0pXu+krPTe4NmCxkyZGzH4FvW9HV5vO8UFWTIkHECg6diPIzyVlR+qPcSuGXIkLE1g7w6D8GdwmS/4UOGDBl7MziAFzWDENkubcqQIeM0Bi89pilg2gIbN23IkCHjAEYQ2kr/Ic0W6Ulh0DkiQ4aMZRl3OGrrlDZP8DB98W+CDBkylmWkYS7l8QaOdDmKIVuGDBnLMvgGtbbJ7Dw5KDnIkCHjAEYt1eOvXqys4sRRhgwZMtLDuE5BtEiVIUOGjJDEW2M7AXrad0OGDBmLMPqNFLUD/dpzZMiQcRqj1akRhk6eUH5S1JQhQ8Z6jB/QqgPxaXFjTgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACH0lEQVR42u3awW7EIAxF0fz/T6fbkdpE99lMJfBlVTUpcLJwsfF14XF/DPKb36M25+IhQ4aMbRlkeb6h902kMwSfRoYMGQMY70u+T83f52GX702GDBkynt658SDb5evKkCFDRjodeZquIkOGDBmdJJZvkc/Dw/SyXFyGDBkbMnjV/f9//sr9hgwZMrZi3OEgQZOX58gBEe1KhgwZRzPSFJSU+9NDXiclliFDxgRGp0zP09paqA1gMmTIGMNIJ6plzGR+3szxR8CVIUPGcYxvV7FqB8G1V6cyZMjYnVELr6uaM9I0+PGpDBkyBjBq4TU95PESXvz/QYYMGWMY/GlaFOOHyOLBUYYMGUczaq0SJDWtFdfSawkZMmRMYKRFtE66W/sEKLmVIUPG0Yz0GoC3X9TKbcVmCxkyZBzN4M0W/J1aewQpvS3oGZEhQ8aGDB7+CLg2D9k0+pQyZMg4msEvOC88+qT0mkGGDBkTGPxIx1PcdPQvEmTIkHEqg5f7+eVBrVTXKfDJkCFjMmNVO0Ut+AYpqwwZMoYxasuQ9LVPDQKuDBkyjmDc4eBLpn9V+xDo3CpDhozNGZ1Cf9qEuqoFNr7ClCFDxhGMtWWy9GuR0h7KWGXIkDGAUWu2ICGYINMk9jHgypAhQwYOlLVzaIsqQ4YMGXjT/aJe7ZPJkCFjAoO3fHEGT4nTpg0ZMmRMY7Q6NXDRP71USK8KZMiQcSjjBy1BvCpZw+W4AAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -531,7 +518,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

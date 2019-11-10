@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,46 +13,27 @@
     
     
     
-    <title>基础知识查缺补漏-数据类型 | MissSweety&#39;s Blog | never say never</title>
+    <title>基础知识查缺补漏-数据类型 | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="javascript,基础类型">
-    <meta name="description" content="数组
-数组delete元素后，length不变。  
-
-1234var a = [1,2,3,4];delete a[1] a; // [1, empty, 3, 4, 5]a.length;  // 5
-
-数组也可以加入键值，不过不计入长度，如果键值能够强制转化成十进制数字，则会当做数字索引来用。
-
-12345678const b = [];b[0] = 1;b[&apos;foo&apos;] = 2;b.len">
+    <meta name="description" content="数组 数组delete元素后，length不变。    1234var a = [1,2,3,4];delete a[1] a; // [1, empty, 3, 4, 5]a.length;  // 5  数组也可以加入键值，不过不计入长度，如果键值能够强制转化成十进制数字，则会当做数字索引来用。  12345678const b = [];b[0] = 1;b[&apos;foo&apos;] = 2;b.len">
+<meta name="keywords" content="javascript,基础类型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基础知识查缺补漏-数据类型">
-<meta property="og:url" content="https://misssweety.github.io/2018/01/04/查缺补漏/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="数组
-数组delete元素后，length不变。  
-
-1234var a = [1,2,3,4];delete a[1] a; // [1, empty, 3, 4, 5]a.length;  // 5
-
-数组也可以加入键值，不过不计入长度，如果键值能够强制转化成十进制数字，则会当做数字索引来用。
-
-12345678const b = [];b[0] = 1;b[&apos;foo&apos;] = 2;b.len">
+<meta property="og:url" content="https://akijiangrou.github.io/2018/01/04/查缺补漏/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="数组 数组delete元素后，length不变。    1234var a = [1,2,3,4];delete a[1] a; // [1, empty, 3, 4, 5]a.length;  // 5  数组也可以加入键值，不过不计入长度，如果键值能够强制转化成十进制数字，则会当做数字索引来用。  12345678const b = [];b[0] = 1;b[&apos;foo&apos;] = 2;b.len">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2018-01-04T08:04:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基础知识查缺补漏-数据类型">
-<meta name="twitter:description" content="数组
-数组delete元素后，length不变。  
-
-1234var a = [1,2,3,4];delete a[1] a; // [1, empty, 3, 4, 5]a.length;  // 5
-
-数组也可以加入键值，不过不计入长度，如果键值能够强制转化成十进制数字，则会当做数字索引来用。
-
-12345678const b = [];b[0] = 1;b[&apos;foo&apos;] = 2;b.len">
+<meta name="twitter:description" content="数组 数组delete元素后，length不变。    1234var a = [1,2,3,4];delete a[1] a; // [1, empty, 3, 4, 5]a.length;  // 5  数组也可以加入键值，不过不计入长度，如果键值能够强制转化成十进制数字，则会当做数字索引来用。  12345678const b = [];b[0] = 1;b[&apos;foo&apos;] = 2;b.len">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -86,7 +67,7 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -114,7 +95,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -205,11 +186,11 @@
             <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><ul>
 <li>数组delete元素后，length不变。  </li>
 </ul>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">delete a[<span class="number">1</span>] </span><br><span class="line">a; <span class="comment">// [1, empty, 3, 4, 5]</span></span><br><span class="line">a.length;  <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">delete a[<span class="number">1</span>] </span><br><span class="line">a; <span class="comment">// [1, empty, 3, 4, 5]</span></span><br><span class="line">a.length;  <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>数组也可以加入键值，不过不计入长度，如果键值能够强制转化成十进制数字，则会当做数字索引来用。</li>
 </ul>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const b = [];</span><br><span class="line">b[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">b['foo'] = <span class="number">2</span>;</span><br><span class="line">b.length;  <span class="comment">// 1</span></span><br><span class="line">b.foo;     <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">b['<span class="number">5</span>'] = <span class="number">5</span>;</span><br><span class="line">b.length;   <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> b = [];</span><br><span class="line">b[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">b[<span class="string">'foo'</span>] = <span class="number">2</span>;</span><br><span class="line">b.length;  <span class="comment">// 1</span></span><br><span class="line">b.foo;     <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">b[<span class="string">'5'</span>] = <span class="number">5</span>;</span><br><span class="line">b.length;   <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
 <h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p>字符串和字符数组很像 ~~<br>差别：字符串不可变，字符数组是可变的。  </p>
 <ul>
 <li>可以用数组方法来处理字符串  </li>
@@ -224,7 +205,7 @@
 <h1 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h1><ul>
 <li>指定有效数位显示位数 toPrecision(..)   都转化成相应位数的字符串  </li>
 </ul>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = <span class="number">43.68</span>;</span><br><span class="line">a.toPrecision(<span class="number">1</span>)   <span class="comment">// "4e+1"</span></span><br><span class="line">a.toPrecision(<span class="number">2</span>)   <span class="comment">// "43"</span></span><br><span class="line">a.toPrecision(<span class="number">3</span>)   <span class="comment">// "43.7"</span></span><br><span class="line">a.toPrecision(<span class="number">5</span>)   <span class="comment">// "43.680"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = <span class="number">43.68</span>;</span><br><span class="line">a.<span class="keyword">to</span><span class="constructor">Precision(1)</span>   <span class="comment">// "4e+1"</span></span><br><span class="line">a.<span class="keyword">to</span><span class="constructor">Precision(2)</span>   <span class="comment">// "43"</span></span><br><span class="line">a.<span class="keyword">to</span><span class="constructor">Precision(3)</span>   <span class="comment">// "43.7"</span></span><br><span class="line">a.<span class="keyword">to</span><span class="constructor">Precision(5)</span>   <span class="comment">// "43.680"</span></span><br></pre></td></tr></table></figure>
 <p>注意：如果用数字直接调用toFixed，toPrecision 等都要用（）抱起来，因为<code>.</code>会被认为是数字的一部分。</p>
 <ul>
 <li>二进制八进制表示法<br>0b11110011   //243<br>0o363        // 243</li>
@@ -242,8 +223,8 @@
 <p>检测整数：  </p>
 </li>
 </ul>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>.isInteger(<span class="number">43</span>)  // <span class="literal">true</span></span><br><span class="line"><span class="built_in">Number</span>.isInteger(<span class="number">43.0</span>)  // <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>  检测是否是安全的整数<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">Number</span>.isSafeInteger( <span class="keyword">Number</span>.MAX_SAFE_INTEGER );  // <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="module-access"><span class="module"><span class="identifier">Number</span>.</span></span>is<span class="constructor">Integer(43)</span>  <span class="comment">// true</span></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Number</span>.</span></span>is<span class="constructor">Integer(43.0)</span>  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>  检测是否是安全的整数<br><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="module-access"><span class="module"><span class="identifier">Number</span>.</span></span>is<span class="constructor">SafeInteger( Number.MAX_SAFE_INTEGER )</span>;  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>特殊数值<br>NaN 是唯一一个不等于自身的值。  </li>
 </ul>
@@ -252,11 +233,11 @@
 <ul>
 <li>0 &amp; -0<br>有些奇怪：<br>[1] 这两个值相等<br>[2] 没有大小之分<br>[3] 数字转换成string的时候，只会是’0’，但是parse回数字的时候，可以转换成 -0 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="number">-0</span>;</span><br><span class="line"></span><br><span class="line">a === b;  <span class="comment">// true</span></span><br><span class="line">a &gt; b;    <span class="comment">// false</span></span><br><span class="line"><span class="built_in">JSON</span>.stringify(b)   <span class="comment">// "0"</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(<span class="string">'-0'</span>)    <span class="comment">// -0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="number">-0</span>;</span><br><span class="line"></span><br><span class="line">a === b;  <span class="comment">// true</span></span><br><span class="line">a &gt; b;    <span class="comment">// false</span></span><br><span class="line">JSON.<span class="built_in">string</span>ify(b)   <span class="comment">// "0"</span></span><br><span class="line">JSON.parse(<span class="string">'-0'</span>)    <span class="comment">// -0</span></span><br></pre></td></tr></table></figure>
 <p> 如果判断 -0 怎么弄呢？通过 1/-0 等于 -Inifinity 来实现。  </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNegZero</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> n = <span class="built_in">Number</span>(num);</span><br><span class="line">  <span class="keyword">return</span> n=== <span class="number">0</span> &amp;&amp; <span class="number">1</span>/n === -<span class="literal">Infinity</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>ES6 中用<code>Object.is()</code> 可以实现 负零判断，NaN判断    </p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span> / <span class="string">"foo"</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="number">-0</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.<span class="keyword">is</span>(a, NaN);   <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Object</span>.<span class="keyword">is</span>(b, <span class="number">-0</span>);    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.<span class="keyword">is</span>(b, <span class="number">0</span>);     <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span> / <span class="string">"foo"</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="number">-0</span>;</span><br><span class="line"></span><br><span class="line">Object.<span class="keyword">is</span>(a, NaN);   <span class="comment">// true</span></span><br><span class="line">Object.<span class="keyword">is</span>(b, <span class="number">-0</span>);    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">Object.<span class="keyword">is</span>(b, <span class="number">0</span>);     <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 <p>能用 <code>==</code> &amp; <code>===</code> 就不要用Object.is() 效率比较低，有特殊的相等比较的时候再用。</p>
 
         </div>
@@ -270,11 +251,11 @@
 
 
         
-        <a href="/2018/01/04/查缺补漏/" target="_blank" rel="external">https://misssweety.github.io/2018/01/04/查缺补漏/</a>
+        <a href="/2018/01/04/查缺补漏/" target="_blank" rel="external">https://akijiangrou.github.io/2018/01/04/查缺补漏/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -296,7 +277,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2018/01/04/查缺补漏/&title=《基础知识查缺补漏-数据类型》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2018/01/04/查缺补漏/&title=《基础知识查缺补漏-数据类型》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -306,22 +287,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2018/01/04/查缺补漏/&title=《基础知识查缺补漏-数据类型》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2018/01/04/查缺补漏/&title=《基础知识查缺补漏-数据类型》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2018/01/04/查缺补漏/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2018/01/04/查缺补漏/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基础知识查缺补漏-数据类型》 — MissSweety's Blog&url=https://misssweety.github.io/2018/01/04/查缺补漏/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基础知识查缺补漏-数据类型》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2018/01/04/查缺补漏/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2018/01/04/查缺补漏/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2018/01/04/查缺补漏/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -414,7 +395,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2018/01/04/查缺补漏/&title=《基础知识查缺补漏-数据类型》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2018/01/04/查缺补漏/&title=《基础知识查缺补漏-数据类型》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -424,22 +405,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2018/01/04/查缺补漏/&title=《基础知识查缺补漏-数据类型》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2018/01/04/查缺补漏/&title=《基础知识查缺补漏-数据类型》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2018/01/04/查缺补漏/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2018/01/04/查缺补漏/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基础知识查缺补漏-数据类型》 — MissSweety's Blog&url=https://misssweety.github.io/2018/01/04/查缺补漏/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基础知识查缺补漏-数据类型》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2018/01/04/查缺补漏/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2018/01/04/查缺补漏/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2018/01/04/查缺补漏/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -450,7 +431,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3aQZKDMAwF0dz/0swmO4LpLzFU2W5WKUJiPxYqydLng6/j4jo/c37+/O34zvn+Y5cMGTKmZRzDa7wA4ZEtknVvVpEhQ8YGjKu/fuoz39A4TF/elyFDhoxG8E2flCFDhow+o5YUkhVfDbgyZMiYkMEDH/82DaYv1eIyZMiYkMFP3d///C/9DRkyZEzFOMKLNCx5Idrfz/efZciQsTSDL0PSQdKM5Clguh8ZMmTsxuBLdga80pGO+NRQhgwZizLSkFerNHlCGbRRZciQsTQjDYLp8kF6h9NEGTJk7MbgxSRfMm1DpnsIUkMZMmRMzhiHs9qhf22cghexqAqXIUPGQgzSREwTO1LukteXjnrIkCFjVQYPjp3tkveXlqw/ZkZkyJCxKCMNnekWa8MWRbAMGTIWZfCjeX4Ml45Q1IYtih0GGTJkTMvoFJPPIknZfJPhypAhYwNGmt7xFDDoqYbpqQwZMnZg8LBbKzX7z9z8SoYMGUszOpUgD5pkwOKp1ydDhoxVGfyIn4yIpeOqtcT0xx0ZMmRsw0hJfPl0XCNdRYYMGTswWgdeOB1MR80IVYYMGWszjvBKBzVS/PhA7ab+liFDxqKMNMyRVmWaIHaapjFMhgwZ0zLSA7JOq+DZ1qYMGTJ2Y/CqtzVs2i5oL38lQ4YMGeEy/YI2LmJlyJAhI2xqds7BaoNiMmTI2IHBR75Ia4EHzVrAlSFDxm6M2lAFb3OmhTFZq9jUlCFDxnyMP3a4A/GTDJAXAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3aQY6EMAwFUe5/aWY7EkNU34aRcCqrVouGPBZux/Zx4HVeVv/K39dff3u8sWTIkPFZxrlc62uuWyFPWQPIc/94ogwZMjZgkFC4/rze7t2V6f1vv5chQ4YMvF1yz3XolCFDhoynAi5JEwmevxoZMmTISDfHD7FpUvj6WVyGDBkfZPCq+/9/fqW/IUOGjE8xznB1Sm88KYx3JUOGjNGMWgOSJ4K15LLWEJUhQ8ZUBh/wqg1PkKNs2uxEp2QZMmSMY/Bhr7QMx0M2HxG7DbgyZMjYgNFpEvBDLAnocRoqQ4aM0Yxae4CX1dLkMsXLkCFjBwY/QPISGB+24O8STYvIkCFjKKMTWMk36+SSl+R4CU+GDBnzGLwxUCvM8fZDep9iC1OGDBkfZKSlKwJIAzFPNNFvZciQMY7BN9QvyZENPTAzIkOGjKGMpx6cjmL0083bmREZMmQMZaSJYG0Mgo9/8dcqQ4aM2QxSXKsdcdNWAc/xUFdWhgwZGzA4r3YwTkt4QTiWIUPGUEaanKXl/rSQlx6MZciQsQ+jMwyRjpGlz0L3kSFDxgaM2gGyM8iVJpHB/4YMGTIGMc5w8Q09BUZUGTJkjGY8NexVA/PiWlw7lCFDxjgGD7JpgpgecdNGZvDvIUOGjBGMfjPyvbYoQsqQIUNGI9Pkhba4GdAJuDJkyNiMwYt3aUoajIPIkCFjAwZvBtQK+umdXyy3yZAh44OMzqRGCuabTkO/DBkyhjJ+ALJ00T+Ers2bAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
@@ -500,7 +481,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

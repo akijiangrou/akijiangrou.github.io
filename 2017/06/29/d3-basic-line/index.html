@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,66 +13,29 @@
     
     
     
-    <title>d3-basic-line | MissSweety&#39;s Blog | never say never</title>
+    <title>d3-basic-line | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="d3,line,可视化">
-    <meta name="description" content="d3-折线图从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识
-需要的知识
-scale
-extent
-transition
-line
-curve
-axis
-
-步骤
-获取svg容器
-&amp;lt;svg width=&amp;quot;500&amp;quot; height=&amp;quot;270&amp;quot; class=&amp;quot;testline&amp;quot;&amp;gt;&amp;lt;/svg&amp;gt;
-
-const">
+    <meta name="description" content="d3-折线图从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识 需要的知识 scale extent transition line curve axis  步骤 获取svg容器 &amp;lt;svg width=&amp;quot;500&amp;quot; height=&amp;quot;270&amp;quot; class=&amp;quot;testline&amp;quot;&amp;gt;&amp;lt;/svg&amp;gt;  const">
+<meta name="keywords" content="d3,line,可视化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="d3-basic-line">
-<meta property="og:url" content="https://misssweety.github.io/2017/06/29/d3-basic-line/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="d3-折线图从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识
-需要的知识
-scale
-extent
-transition
-line
-curve
-axis
-
-步骤
-获取svg容器
-&amp;lt;svg width=&amp;quot;500&amp;quot; height=&amp;quot;270&amp;quot; class=&amp;quot;testline&amp;quot;&amp;gt;&amp;lt;/svg&amp;gt;
-
-const">
-<meta property="og:image" content="https://misssweety.github.io/./line.png">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/06/29/d3-basic-line/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="d3-折线图从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识 需要的知识 scale extent transition line curve axis  步骤 获取svg容器 &amp;lt;svg width=&amp;quot;500&amp;quot; height=&amp;quot;270&amp;quot; class=&amp;quot;testline&amp;quot;&amp;gt;&amp;lt;/svg&amp;gt;  const">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/06/29/d3-basic-line/line.png">
 <meta property="og:updated_time" content="2017-06-29T04:27:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="d3-basic-line">
-<meta name="twitter:description" content="d3-折线图从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识
-需要的知识
-scale
-extent
-transition
-line
-curve
-axis
-
-步骤
-获取svg容器
-&amp;lt;svg width=&amp;quot;500&amp;quot; height=&amp;quot;270&amp;quot; class=&amp;quot;testline&amp;quot;&amp;gt;&amp;lt;/svg&amp;gt;
-
-const">
-<meta name="twitter:image" content="https://misssweety.github.io/./line.png">
+<meta name="twitter:description" content="d3-折线图从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识 需要的知识 scale extent transition line curve axis  步骤 获取svg容器 &amp;lt;svg width=&amp;quot;500&amp;quot; height=&amp;quot;270&amp;quot; class=&amp;quot;testline&amp;quot;&amp;gt;&amp;lt;/svg&amp;gt;  const">
+<meta name="twitter:image" content="https://akijiangrou.github.io/2017/06/29/d3-basic-line/line.png">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -106,7 +69,7 @@ const">
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -134,7 +97,7 @@ const">
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -224,12 +187,12 @@ const">
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="d3-折线图"><a href="#d3-折线图" class="headerlink" title="d3-折线图"></a>d3-折线图</h1><p>从一个最基本的折线图开始，看看d3是怎么实现的，以及用到哪些知识</p>
 <h2 id="需要的知识"><a href="#需要的知识" class="headerlink" title="需要的知识"></a>需要的知识</h2><ul>
-<li><a href="https://github.com/d3/d3-scale" target="_blank" rel="external">scale</a></li>
-<li><a href="https://github.com/d3/d3-array/blob/master/README.md#extent" target="_blank" rel="external">extent</a></li>
-<li><a href="https://github.com/d3/d3/blob/master/API.md#transitions-d3-transition" target="_blank" rel="external">transition</a></li>
-<li><a href="https://github.com/d3/d3-shape/blob/master/README.md#lines" target="_blank" rel="external">line</a></li>
-<li><a href="https://github.com/d3/d3-shape/blob/master/README.md#curves" target="_blank" rel="external">curve</a></li>
-<li><a href="https://github.com/d3/d3-axis" target="_blank" rel="external">axis</a></li>
+<li><a href="https://github.com/d3/d3-scale" target="_blank" rel="noopener">scale</a></li>
+<li><a href="https://github.com/d3/d3-array/blob/master/README.md#extent" target="_blank" rel="noopener">extent</a></li>
+<li><a href="https://github.com/d3/d3/blob/master/API.md#transitions-d3-transition" target="_blank" rel="noopener">transition</a></li>
+<li><a href="https://github.com/d3/d3-shape/blob/master/README.md#lines" target="_blank" rel="noopener">line</a></li>
+<li><a href="https://github.com/d3/d3-shape/blob/master/README.md#curves" target="_blank" rel="noopener">curve</a></li>
+<li><a href="https://github.com/d3/d3-axis" target="_blank" rel="noopener">axis</a></li>
 </ul>
 <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
 <li><p>获取svg容器</p>
@@ -242,7 +205,7 @@ const height = +svg.attr(&quot;height&quot;) - margin.top - margin.bottom;
 const g = svg.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(${margin.left},${margin.top})`);
 </code></pre></li>
 </ol>
-<ol>
+<ol start="2">
 <li><p>x，y轴缩放<br>这里，如果x轴是与时间有关的，可以直接使用d3提供的scaleTime()来实现时间的转换。关于scale还有好多内容，待总结。这里需要确定两个轴，缩放的类型，以及xy轴图像在屏幕中的实际宽高值。<br>这里的<code>x</code>, <code>y</code> 其实是函数（根据给出的数据，得出该数据的x，y坐标值）。</p>
 <pre><code>const x = d3.scaleTime().range([0, width]);
 const y = d3.scaleLinear().range([height, 0]);
@@ -259,7 +222,7 @@ g.append(&apos;path&apos;)
       .transition(500)
       .attr(&apos;stroke-width&apos;, 3);
 </code></pre></li>
-<li><p>x坐标轴，y坐标轴<br>domain是将坐标轴对应的真实数据连接起来，一般就是将坐标轴要展示的数据的最大最小值放进来。<code>d3.extent</code>可以自动的算出数组内的最小，最大值，很方便。如下x轴的计算。<br>v4支持axisBottom，axisTop，axisRight，axisLeft等快捷操作，就是说明坐标轴的展现方式。<br>规定好domain后，可以将轴展示在图像中了。给出selector然后调用call(如果是x轴，记得把上面x轴函数传进来，y轴同理)，同时，这里可以规定轴线样式和<a href="https://github.com/d3/d3-axis" target="_blank" rel="external">刻度</a>的相关内容。下面的例子是规定了，最大最小值中间还可以有多少个刻度。</p>
+<li><p>x坐标轴，y坐标轴<br>domain是将坐标轴对应的真实数据连接起来，一般就是将坐标轴要展示的数据的最大最小值放进来。<code>d3.extent</code>可以自动的算出数组内的最小，最大值，很方便。如下x轴的计算。<br>v4支持axisBottom，axisTop，axisRight，axisLeft等快捷操作，就是说明坐标轴的展现方式。<br>规定好domain后，可以将轴展示在图像中了。给出selector然后调用call(如果是x轴，记得把上面x轴函数传进来，y轴同理)，同时，这里可以规定轴线样式和<a href="https://github.com/d3/d3-axis" target="_blank" rel="noopener">刻度</a>的相关内容。下面的例子是规定了，最大最小值中间还可以有多少个刻度。</p>
 <pre><code>x.domain(d3.extent(data, d =&gt; d.ts * 1000));
 y.domain([0, d3.max(data, d =&gt; d.y * 1.1 )]);
 // Add the X Axis
@@ -277,7 +240,7 @@ g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
 .attr(&quot;r&quot;, 3.5).attr(&apos;fill&apos;, &apos;white&apos;).attr(&apos;stroke&apos;, &apos;#f33155&apos;);
 </code></pre></li>
 </ol>
-<ol>
+<ol start="6">
 <li><p>数据label<br>类似的，label也是根据line函数获取位置，然后将要现实的值，用text属性显示出来。</p>
 <pre><code>g.selectAll(&quot;.text&quot;)
     .data(this.data).enter().append(&quot;text&quot;)
@@ -290,7 +253,7 @@ g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
 </code></pre></li>
 </ol>
 <p>当绑定了data数据后，x函数，y函数，会自动按顺序获取数据。</p>
-<p>最后结果：<br><a href="https://codepen.io/akixiao/pen/eRyBdY" target="_blank" rel="external">参考</a><br><img src="./line.png"></p>
+<p>最后结果：<br><a href="https://codepen.io/akixiao/pen/eRyBdY" target="_blank" rel="noopener">参考</a><br><img src="./line.png"></p>
 
         </div>
 
@@ -303,11 +266,11 @@ g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
 
 
         
-        <a href="/2017/06/29/d3-basic-line/" target="_blank" rel="external">https://misssweety.github.io/2017/06/29/d3-basic-line/</a>
+        <a href="/2017/06/29/d3-basic-line/" target="_blank" rel="external">https://akijiangrou.github.io/2017/06/29/d3-basic-line/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -329,7 +292,7 @@ g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/06/29/d3-basic-line/&title=《d3-basic-line》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/06/29/d3-basic-line/&title=《d3-basic-line》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -339,22 +302,22 @@ g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/06/29/d3-basic-line/&title=《d3-basic-line》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/06/29/d3-basic-line/&title=《d3-basic-line》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/06/29/d3-basic-line/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/06/29/d3-basic-line/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《d3-basic-line》 — MissSweety's Blog&url=https://misssweety.github.io/2017/06/29/d3-basic-line/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《d3-basic-line》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/06/29/d3-basic-line/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/06/29/d3-basic-line/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/06/29/d3-basic-line/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -447,7 +410,7 @@ g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/06/29/d3-basic-line/&title=《d3-basic-line》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/06/29/d3-basic-line/&title=《d3-basic-line》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -457,22 +420,22 @@ g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/06/29/d3-basic-line/&title=《d3-basic-line》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/06/29/d3-basic-line/&title=《d3-basic-line》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/06/29/d3-basic-line/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/06/29/d3-basic-line/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《d3-basic-line》 — MissSweety's Blog&url=https://misssweety.github.io/2017/06/29/d3-basic-line/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《d3-basic-line》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/06/29/d3-basic-line/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/06/29/d3-basic-line/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/06/29/d3-basic-line/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -483,7 +446,7 @@ g.append(&quot;g&quot;).attr(&quot;transform&quot;, `translate(0,0)`)
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3aQW7EMAgF0Nz/0ukBRvF8IFMpzvNqpFqxXxcIMMcRr/Njff51vf9zz/qU4xcLAwPjsYxzuZI964OTf0HvXAwMjLcxro6/+p1cqxd8r879cmcMDAyMi2tVj19TMTAwMO5irPck4B4PAwMDIykmk9I0L1PzgHtzLY6BgfFARh4K///3T943MDAwHsU4i6va+u8Fx/KtMDAwtmbkAS4ftqgmfMn3o7EMDAyMFzDyonTyeFBt2K0L4yhOY2BgPJyRp3S9oa7eEEY5ZGNgYGzNSMJZNb2bBN8vyV8euTEwMDZiJE+Pd7XJ8ofPcsGMgYHxAkaS0k149xaxURWOgYGxEWOexk0Cay8RvPwaBgbGpox1+2yS8FUL2kmrDgMD4w2M3ghFPih2bwoYjVlgYGBsxMiDbP656sBEb9jiqEZlDAyMhzPy9C5vyc3L3WY/DQMDYztGrxythtTjZwsDA+MNjPz1YJII5gOy1dQTAwMDY3KJamOud4ej+lEMDIzHMvIhiV4QXKebk6eCaGYEAwNja0Zv/CIviXvPFeWAi4GBsR1j0uqajGtUeV8CLgYGxkaMs7h6yOqDwTp8FwYsMDAwtmBUr1UdyEjSu2qYzht5GBgYOzHyKyaBdV7KJjsxMDDeyeild8kxvaeCMhIDAwOj1Q7Lwb1BjcKHMDAwXsZIys6kQJ0H6FHAxcDAeCDjrlZadUii98yJgYHxNsb8SbLaLOsBbnjUxMDAeB7jD5BtA/G+S/cMAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIElEQVR42u3aQW7jMAwF0Nz/0um6aKt8inYBU88rYyA4eirAIUW+XvHzXj7rNcmXf37hdceDgYHxWMbeFtdfWP9K/2h++RUMDIwDGEko7L/nvHxvGBgYGNX3fuKIgYGB0WdcWzevi1gMDAyMajGZbGVd1iYrb6/FMTAwHsjYC4v/835LfwMDA+NRjHfxSQrXanG7t5Nv38HAwBjNyANctbzMYVGBGuwHAwNjNqPfHqheolVXFpJFDAyM0YxquOzXmOtQ3gnZGBgYkxjVJKxfvnau9v5ciYGBcQCjOtzQWZMni/nFHAYGxpmM6uDFfddq0UoMDIwDGHsDFp1WQVLKFo4MAwNjNCNpT0bJWaPx2T9KDAyM2YzC0FVxDKJ6lnmo/fB3wMDAGMqokqrvrf8NqkUsBgbGUMYdQxV5kE0CfSE1xMDAGMrIf+baf8+v1T4cGQYGxjGM+0JnTsrBGBgY5zA6V/lJY2BvkCJpW7bKWgwMjAcyOmlZ/nTaBoVhCwwMjAMY+cBWfpVfHR1bH1a5y4GBgTGOsZfA5ZduUejcGubAwMCYythL7/rtzKsOYjNXxcDAeBSjs608rcy/cFWhi4GBMY/Rvyarlr75keXDGRgYGCcwClVvYzwiTxzLSAwMDIxg5GK9pp/8bTYGMDAwjmdU25z52Gs1ZGNgYJzASIrYHJZf8SeAi6/bMDAwHshoTWpstQ2qm6gOmWFgYAxifAEUXNsZ9gu3wgAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
@@ -533,7 +496,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,31 +13,27 @@
     
     
     
-    <title>post-message | MissSweety&#39;s Blog | never say never</title>
+    <title>post-message | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="DOM,iframe">
-    <meta name="description" content="用postmessage 进行iframe与parent的交流。需求描述：父页面包含iframe  
-  12345&amp;lt;html http://a.b.com&amp;gt;  &amp;lt;iframe http://c.b.com&amp;gt;  sjdkfjaksjfakfjs  &amp;lt;/iframe&amp;gt;&amp;lt;/html&amp;gt;
-在http://c.b.com中有个button，点击后让父页面也就是">
+    <meta name="description" content="用postmessage 进行iframe与parent的交流。需求描述：父页面包含iframe     12345&amp;lt;html http://a.b.com&amp;gt;  &amp;lt;iframe http://c.b.com&amp;gt;  sjdkfjaksjfakfjs  &amp;lt;/iframe&amp;gt;&amp;lt;/html&amp;gt; 在http://c.b.com中有个button，点击后让父页面也就是">
+<meta name="keywords" content="DOM,iframe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="post-message">
-<meta property="og:url" content="https://misssweety.github.io/2017/11/17/post-message/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="用postmessage 进行iframe与parent的交流。需求描述：父页面包含iframe  
-  12345&amp;lt;html http://a.b.com&amp;gt;  &amp;lt;iframe http://c.b.com&amp;gt;  sjdkfjaksjfakfjs  &amp;lt;/iframe&amp;gt;&amp;lt;/html&amp;gt;
-在http://c.b.com中有个button，点击后让父页面也就是">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/11/17/post-message/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="用postmessage 进行iframe与parent的交流。需求描述：父页面包含iframe     12345&amp;lt;html http://a.b.com&amp;gt;  &amp;lt;iframe http://c.b.com&amp;gt;  sjdkfjaksjfakfjs  &amp;lt;/iframe&amp;gt;&amp;lt;/html&amp;gt; 在http://c.b.com中有个button，点击后让父页面也就是">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-05-09T13:00:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="post-message">
-<meta name="twitter:description" content="用postmessage 进行iframe与parent的交流。需求描述：父页面包含iframe  
-  12345&amp;lt;html http://a.b.com&amp;gt;  &amp;lt;iframe http://c.b.com&amp;gt;  sjdkfjaksjfakfjs  &amp;lt;/iframe&amp;gt;&amp;lt;/html&amp;gt;
-在http://c.b.com中有个button，点击后让父页面也就是">
+<meta name="twitter:description" content="用postmessage 进行iframe与parent的交流。需求描述：父页面包含iframe     12345&amp;lt;html http://a.b.com&amp;gt;  &amp;lt;iframe http://c.b.com&amp;gt;  sjdkfjaksjfakfjs  &amp;lt;/iframe&amp;gt;&amp;lt;/html&amp;gt; 在http://c.b.com中有个button，点击后让父页面也就是">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -71,7 +67,7 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -99,7 +95,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -189,14 +185,14 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="用postmessage-进行iframe与parent的交流。"><a href="#用postmessage-进行iframe与parent的交流。" class="headerlink" title="用postmessage 进行iframe与parent的交流。"></a>用postmessage 进行iframe与parent的交流。</h2><p>需求描述：<br>父页面包含iframe  </p>
   <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">html</span> http:<span class="comment">//a.b.com&gt;</span></span><br><span class="line">  &lt;<span class="selector-tag">iframe</span> http:<span class="comment">//c.b.com&gt;</span></span><br><span class="line">  sjdkfjaksjfakfjs</span><br><span class="line">  &lt;/iframe&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>在<a href="http://c.b.com中有个button，点击后让父页面也就是a.b.com进行一些操作。那么怎么写呢？" target="_blank" rel="external">http://c.b.com中有个button，点击后让父页面也就是a.b.com进行一些操作。那么怎么写呢？</a>  </p>
+<p>在<a href="http://c.b.com中有个button，点击后让父页面也就是a.b.com进行一些操作。那么怎么写呢？" target="_blank" rel="noopener">http://c.b.com中有个button，点击后让父页面也就是a.b.com进行一些操作。那么怎么写呢？</a>  </p>
 <p>首先在a.b.com 重要监听message事件，如下：  </p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"message"</span>, handleIframe);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> handleIframe = <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">data</span>:&#123; pathStr &#125;&#125; = event;</span><br><span class="line"><span class="comment">// 发送message的源</span></span><br><span class="line">  <span class="keyword">const</span> origin = event.origin || event.originalEvent.origin;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="built_in">window</span>.top.location.origin;</span><br><span class="line"><span class="comment">// 防止监听多个源头的message</span></span><br><span class="line">  <span class="keyword">if</span> (test(<span class="regexp">/c.b.com/</span>, origin) &amp;&amp; pathStr) &#123;</span><br><span class="line">    <span class="built_in">window</span>.alert(pathStr);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>在c.b.com 中，点击button，触发click事件  </p>
-  <figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">handleClick() &#123;</span><br><span class="line">  <span class="keyword">const</span> msg = &#123; pathStr: <span class="string">'/shop/page/tagSetting?dim=poi&amp;tab=1'</span> &#125;;</span><br><span class="line">  <span class="built_in">window</span>.top.postMessage(msg, ’http:<span class="comment">//a.b.com');</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">handle<span class="constructor">Click()</span> &#123;</span><br><span class="line">  const msg = &#123; pathStr: '/shop/page/tagSetting?dim=poi&amp;tab=<span class="number">1</span>' &#125;;</span><br><span class="line">  window.top.post<span class="constructor">Message(<span class="params">msg</span>, ’<span class="params">http</span>:<span class="operator">/</span><span class="operator">/</span><span class="params">a</span>.<span class="params">b</span>.<span class="params">com</span>')</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注意postMessage的<code>发送方，必须是发送目的地的window对象</code>，第一个参数是data信息，第二个参数是接收这个message的url。  </p>
 <p>也就是说，我虽然在iframe中控制parent，但是实现时，是<strong>期望收到信息的window</strong>发出的message事件，这样该window才能监听到这个message。这样就好理解了。  </p>
-<p><a href="http://blog.csdn.net/monkindey/article/details/23659387" target="_blank" rel="external">参考</a>  </p>
+<p><a href="http://blog.csdn.net/monkindey/article/details/23659387" target="_blank" rel="noopener">参考</a>  </p>
 
         </div>
 
@@ -209,11 +205,11 @@
 
 
         
-        <a href="/2017/11/17/post-message/" target="_blank" rel="external">https://misssweety.github.io/2017/11/17/post-message/</a>
+        <a href="/2017/11/17/post-message/" target="_blank" rel="external">https://akijiangrou.github.io/2017/11/17/post-message/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -235,7 +231,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/17/post-message/&title=《post-message》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/11/17/post-message/&title=《post-message》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -245,22 +241,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/17/post-message/&title=《post-message》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/11/17/post-message/&title=《post-message》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/17/post-message/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/11/17/post-message/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《post-message》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/17/post-message/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《post-message》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/11/17/post-message/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/17/post-message/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/11/17/post-message/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -353,7 +349,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/11/17/post-message/&title=《post-message》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/11/17/post-message/&title=《post-message》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -363,22 +359,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/11/17/post-message/&title=《post-message》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/11/17/post-message/&title=《post-message》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/11/17/post-message/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/11/17/post-message/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《post-message》 — MissSweety's Blog&url=https://misssweety.github.io/2017/11/17/post-message/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《post-message》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/11/17/post-message/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/11/17/post-message/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/11/17/post-message/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -389,7 +385,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aS27jMBAFwNz/0p5tBgMp7zU1AUSWVoYhiSwv2uzP11d8fb5d37/5957Z/VdPPXxhYGC8lvG5ve4XuH8q32Ky7g+rYGBgHMC4enUeHO8/J9Rk3cvvMTAwMMqD3f2m258AAwMD41lGsmSbDGNgYGDkSewsHc3fmR8rMTAwTmPkVfff//xf+hsYGBivYnzKK2lY5oF1ZSd/rYKBgbE1Iw9wSXNx1oy8fyrfDwYGxsmMPOC2A17tSMewaoiBgfFyxmz5WarZDo0VJT8MDIwjGXnAzYPmepmvuAkDA2M7xiyZnLU82xQ3OpJiYGAcwJiNO7QNzrw52ibMGBgYezNmCWf76raFmZz6IhIGBsYWjHyEot3uswntD6kyBgbG1oxZeM2Rs2GLWWjGwMA4gZEX1JImQd4qmA1bFD0EDAyMlzNmQXa9lL8yRhadcDEwMDZi5C2B9cGLp8YvLn9oDAyMTRmzV7epZp4AD38yDAyMrRmzgJsE2Vl7IC+x1ZMjGBgYGzHW09fkaoct6hMuBgbGYYxZu7EdgZ2NemBgYJzGaJsEs8PcegHuEoaBgbEpY+VI91QzMi/VXT6FgYGxNaMNc+0CK6X/thSIgYGxNyMJsnlJblZWe+A9GBgYBzDyrHelkVC0JFskBgYGRnyAm41ZDAcs2oogBgbGMYxkOGy2Vj5y8fD/BgYGxksYSRLbbiIvqLWJNAYGxmmMdsQhH5546kD5WFMTAwPjfYw//3edO7VQKhkAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aS47CMBAFQO5/aeYACHjPHUaKXV4hlJCUF43783jE6/my8iuT61/vffxiYWBg3Jbx/LiSB7Sw/Jrk3TAwMM5hJKHw8+d34ByQ/P7b7zEwMDDKIJgH1s9gDAwMjHnAze9aS2IxMDAw1gJoXkprj5L/lItjYGDckJFX3f//80/6GxgYGLdiPMvVHtfWQmT9VhgYGFsz2lQzIbVFuknqi4GBcQ5jPh6RJ6trzc7LBsUwMDBuyGiLWUl4bQe/8nLe22dhYGAcw2h/Lj8mrpXyk7swMDBOYNQDDWVx7XN4bduZX7YGAwNjU0Z7Q3RQi7djNATWnjoxMDBuy5iko3kKOtmIvPGAgYGxKyNPQdcOcMnrzhuiGBgYezMmrc21Y19egLu2eIeBgbEHYzKk1e5W0nK4LInFwMC4OeOqAYj2F9ZCeTEzgoGBsRHj2kC8NlhW/zNgYGAcxmjHI9b6hvlT2tCMgYFxAmM+EtEW+temI4pDIQYGxqaMSbI6b2fm4xpftgkDA+MYxiS9bMc18m+i1ikGBsYxjDaB/N1AWFv+w8DA2JXxLFeeM06GwJJDYbS7GBgYWzDWWob5A9ZepU10MTAwTmAkITIZrZgE3AuGNjAwMA5gTAbCouGtPKteQ2JgYGAMTpf59XUzYB5wMTAwtmbMD4hrpb0vSSwGBsbWjPaR+aEtb15OGqIYGBh7MyaTGjl4XoCbpL4YGBi3ZfwBpi1Lqelpg8wAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
@@ -439,7 +435,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

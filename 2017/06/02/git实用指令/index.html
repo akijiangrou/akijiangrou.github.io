@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -13,58 +13,36 @@
     
     
     
-    <title>git实用指令 | MissSweety&#39;s Blog | never say never</title>
+    <title>git实用指令 | Aki酱肉&#39;s Blog | never say never</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="git">
-    <meta name="description" content="实用指令回滚相关最近又好好复习了下reset指令。一般这些回滚的操作最好不要用，尤其是在多人开发的时候，但是偶尔想用，还有点模糊了，这次在记录一下。
-git reset步骤：readme中分别添加  
-test1tess2test3  
-每一句添加一个commit先看下log
-git log
-
-暂存区有其他修改，但没有add。
-此时，我改错了，想回退到test1的状态。用
-git reset --">
+    <meta name="description" content="实用指令回滚相关最近又好好复习了下reset指令。一般这些回滚的操作最好不要用，尤其是在多人开发的时候，但是偶尔想用，还有点模糊了，这次在记录一下。 git reset步骤：readme中分别添加   test1tess2test3   每一句添加一个commit先看下log git log  暂存区有其他修改，但没有add。 此时，我改错了，想回退到test1的状态。用 git reset --">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git实用指令">
-<meta property="og:url" content="https://misssweety.github.io/2017/06/02/git实用指令/index.html">
-<meta property="og:site_name" content="MissSweety's Blog">
-<meta property="og:description" content="实用指令回滚相关最近又好好复习了下reset指令。一般这些回滚的操作最好不要用，尤其是在多人开发的时候，但是偶尔想用，还有点模糊了，这次在记录一下。
-git reset步骤：readme中分别添加  
-test1tess2test3  
-每一句添加一个commit先看下log
-git log
-
-暂存区有其他修改，但没有add。
-此时，我改错了，想回退到test1的状态。用
-git reset --">
-<meta property="og:image" content="https://misssweety.github.io/./reset-1.png">
-<meta property="og:image" content="https://misssweety.github.io/./reset-2.png">
-<meta property="og:image" content="https://misssweety.github.io/./reset-3.png">
-<meta property="og:image" content="https://misssweety.github.io/./rebase-1.png">
-<meta property="og:image" content="https://misssweety.github.io/./rebase-2.png">
-<meta property="og:image" content="https://misssweety.github.io/./rebase-3.png">
-<meta property="og:image" content="https://misssweety.github.io/./rebase-4.png">
-<meta property="og:image" content="https://misssweety.github.io/./rebase-5.png">
+<meta property="og:url" content="https://akijiangrou.github.io/2017/06/02/git实用指令/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="实用指令回滚相关最近又好好复习了下reset指令。一般这些回滚的操作最好不要用，尤其是在多人开发的时候，但是偶尔想用，还有点模糊了，这次在记录一下。 git reset步骤：readme中分别添加   test1tess2test3   每一句添加一个commit先看下log git log  暂存区有其他修改，但没有add。 此时，我改错了，想回退到test1的状态。用 git reset --">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/06/02/git实用指令/reset-1.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/06/02/git实用指令/reset-2.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/06/02/git实用指令/reset-3.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/06/02/git实用指令/rebase-1.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/06/02/git实用指令/rebase-2.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/06/02/git实用指令/rebase-3.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/06/02/git实用指令/rebase-4.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2017/06/02/git实用指令/rebase-5.png">
 <meta property="og:updated_time" content="2017-06-02T03:23:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git实用指令">
-<meta name="twitter:description" content="实用指令回滚相关最近又好好复习了下reset指令。一般这些回滚的操作最好不要用，尤其是在多人开发的时候，但是偶尔想用，还有点模糊了，这次在记录一下。
-git reset步骤：readme中分别添加  
-test1tess2test3  
-每一句添加一个commit先看下log
-git log
-
-暂存区有其他修改，但没有add。
-此时，我改错了，想回退到test1的状态。用
-git reset --">
-<meta name="twitter:image" content="https://misssweety.github.io/./reset-1.png">
+<meta name="twitter:description" content="实用指令回滚相关最近又好好复习了下reset指令。一般这些回滚的操作最好不要用，尤其是在多人开发的时候，但是偶尔想用，还有点模糊了，这次在记录一下。 git reset步骤：readme中分别添加   test1tess2test3   每一句添加一个commit先看下log git log  暂存区有其他修改，但没有add。 此时，我改错了，想回退到test1的状态。用 git reset --">
+<meta name="twitter:image" content="https://akijiangrou.github.io/2017/06/02/git实用指令/reset-1.png">
     
-        <link rel="alternate" type="application/atom+xml" title="MissSweety&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -98,7 +76,7 @@ git reset --">
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="https://misssweety.github.io/"  >
+              <a href="https://akijiangrou.github.io/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
@@ -126,7 +104,7 @@ git reset --">
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/MissSweety" target="_blank" >
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
@@ -258,11 +236,11 @@ git reset --">
 
 
         
-        <a href="/2017/06/02/git实用指令/" target="_blank" rel="external">https://misssweety.github.io/2017/06/02/git实用指令/</a>
+        <a href="/2017/06/02/git实用指令/" target="_blank" rel="external">https://akijiangrou.github.io/2017/06/02/git实用指令/</a>
         
     </div>
     <footer>
-        <a href="https://misssweety.github.io">
+        <a href="https://akijiangrou.github.io">
             <img src="/img/avatar.png" alt="Jessica">
             Jessica
         </a>
@@ -284,7 +262,7 @@ git reset --">
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/06/02/git实用指令/&title=《git实用指令》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/06/02/git实用指令/&title=《git实用指令》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -294,22 +272,22 @@ git reset --">
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/06/02/git实用指令/&title=《git实用指令》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/06/02/git实用指令/&title=《git实用指令》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/06/02/git实用指令/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/06/02/git实用指令/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git实用指令》 — MissSweety's Blog&url=https://misssweety.github.io/2017/06/02/git实用指令/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git实用指令》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/06/02/git实用指令/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/06/02/git实用指令/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/06/02/git实用指令/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -402,7 +380,7 @@ git reset --">
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://misssweety.github.io/2017/06/02/git实用指令/&title=《git实用指令》 — MissSweety's Blog&pic=https://misssweety.github.io/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2017/06/02/git实用指令/&title=《git实用指令》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -412,22 +390,22 @@ git reset --">
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://misssweety.github.io/2017/06/02/git实用指令/&title=《git实用指令》 — MissSweety's Blog&source=程序媛" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2017/06/02/git实用指令/&title=《git实用指令》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://misssweety.github.io/2017/06/02/git实用指令/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2017/06/02/git实用指令/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git实用指令》 — MissSweety's Blog&url=https://misssweety.github.io/2017/06/02/git实用指令/&via=https://misssweety.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git实用指令》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2017/06/02/git实用指令/&via=https://akijiangrou.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://misssweety.github.io/2017/06/02/git实用指令/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2017/06/02/git实用指令/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -438,7 +416,7 @@ git reset --">
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNUlEQVR42u3aQW7DMAwFUd//0i7QXdFamU+6BkSPVkESyHpZMKTI48Dr/F5X7//+9LxY6z2vvnnbkiFDxraMc7nWj7x6nbLXO5MfRYYMGW9g8O14YCWv10hyNhkyZMggh+CPJz+QDBkyZPQDLg+vaWB99H9DhgwZGzLIEdMEMS2GH6rFZciQsSEjbQw8+fof+xsyZMjYhHGGi+zDS1OSOKJTyZAhYzSDp2v8Qr/TpEw/PXiOKUOGjG0ZtVEtMuZ1V5hG55QhQ8ZrGLVkjheltXBM8DJkyJjNSK/ma4/sfD84jwwZMoYyOkdMm5d8qILs8OO1DBkyRjPuCpokxey8j4pbGTJkvIyRtgp42cmHz+LnypAhYzSDJ2d8kCsd+eLjFzJkyHgno9aSrLU/0xU0KmTIkDGU0bkU6wTK9DoP5bYyZMgYykhTt871XFq+FhuZMmTIGMqoPT4dI0sDd40qQ4aMqYw0BUwx6x1qBfNlC1OGDBlDGXz0oX+3lxa9KUyGDBnzGOkAVq2FwJNRPt4RTHPIkCFjBCMtI2upHt9hfZI/dpMhQ8ZoRtomTNsGnJ2OX8QtARkyZGzLOMOVXuWnY2e1NFSGDBmzGWmYq4Xa9B+g3zCQIUPGPMa9gxSdYpUE3GKCKEOGjBEMEkzTQrQ4MFHbTYYMGTJA4EuLYR5qUYtUhgwZMkBg5eG4NszxYX8ZMmS8gNEZd6iVnbVG5oeAK0OGjKGMTgHZYaQXef2fQIYMGRsyvgA9w9E/LRaE/AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOUlEQVR42u3a0W6DMAxGYd7/pZm0W0Y4v5Oqwzm5qrpS8zHJjWMfB17n7xq/vvv89f3rX8/LOj6xZMiQ8VrGOVwkzPja9HGM495+vwwZMjZgpCFJSuWLxH24ZxkyZMgAKfjuM+OtIYkiQ4YMGTUGKVB5UcofhAwZMnZm8NQ5s03k73+wFpchQ8YLGasaA594/YX+hgwZMv4Z45xYvPW4thnwR0QZMmS0ZpCvqLUKahtBXgw/1OIyZMhoxEiP8klIPiI2jhj/H2TIkNGUwQ/IyK3zQ7qZZkOxrJUhQ8bLGemxPt/Gpc3ImZJYhgwZvRm1NMfxHEM2psFviAwZMhox+IgDL0rTI7Z01EyGDBm7MUgAfgyXNg8WNC9lyJCxAYNvyPjIBQmc7l6DYQsZMmQ0YvAyNR28qBWoxVgyZMhozSBH8+koRnqgv2zYQoYMGU0ZaQnKN4LzBTAfLJMhQ8Y+DD4wwdNl7dguTfEyZMjozUiHHmolKx/LSDNq3MiUIUPGCxlpgiNFJk/E/JE9fJsMGTJaM0jyPfCqHbrVUrMMGTL2YdSai+QqPrrBG6i3bBkyZLRmrDomI1vJGiYuj2XIkNGOcYarVrjWxi94XBkyZPRmpAVqWnzyrR5vPEwtGTJkvJYxk2RXNSn5VcVfDxkyZLRg1JJsrRkwk/QfRsFkyJAhA49czKTvWkksQ4YMGfxoLKUuS80yZMjYgMFTJB/OqDUA0vuUIUPGDoyZpJxuEwm+9rBkyJDRlPED49484lQ6ABIAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
@@ -488,7 +466,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
             document.title = '';
             clearTimeout(titleTime);
         } else {
-            document.title = 'MissSweety';
+            document.title = 'aki酱肉';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);
