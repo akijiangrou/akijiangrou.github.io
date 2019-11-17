@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>curl-学习记录 | Aki酱肉&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="curl,http,command line">
+    <meta name="description" content="简介cURL是一个利用URL语法在命令行下工作的文件传输工具，1997年首次发行。它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具。 功能支持多种协议，下面主要介绍几个网站开发常用的命令。 1 查看网页源码直接在curl命令后加上网址，就可以看到网页源码。       1curl www.sina.com    2 保存网页1curl -o output.txt www">
+<meta name="keywords" content="curl,http,command line">
+<meta property="og:type" content="article">
+<meta property="og:title" content="curl-学习记录">
+<meta property="og:url" content="https://akijiangrou.github.io/2019/11/13/curl-学习记录/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="简介cURL是一个利用URL语法在命令行下工作的文件传输工具，1997年首次发行。它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具。 功能支持多种协议，下面主要介绍几个网站开发常用的命令。 1 查看网页源码直接在curl命令后加上网址，就可以看到网页源码。       1curl www.sina.com    2 保存网页1curl -o output.txt www">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://akijiangrou.github.io/2019/11/13/curl-学习记录/1.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2019/11/13/curl-学习记录/2.png">
+<meta property="og:image" content="https://akijiangrou.github.io/2019/11/13/curl-学习记录/3.png">
+<meta property="og:updated_time" content="2019-11-13T09:12:23.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="curl-学习记录">
+<meta name="twitter:description" content="简介cURL是一个利用URL语法在命令行下工作的文件传输工具，1997年首次发行。它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具。 功能支持多种协议，下面主要介绍几个网站开发常用的命令。 1 查看网页源码直接在curl命令后加上网址，就可以看到网页源码。       1curl www.sina.com    2 保存网页1curl -o output.txt www">
+<meta name="twitter:image" content="https://akijiangrou.github.io/2019/11/13/curl-学习记录/1.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:chunxiao5316@126.com" title="chunxiao5316@126.com" class="mail">chunxiao5316@126.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="https://akijiangrou.github.io/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">curl-学习记录</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">curl-学习记录</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-11-13T07:51:28.000Z" itemprop="datePublished" class="page-time">
+  2019-11-13
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#功能"><span class="post-toc-number">2.</span> <span class="post-toc-text">功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-查看网页源码"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1 查看网页源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-保存网页"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2 保存网页</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-自动跳转"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3 自动跳转</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-显示header信息"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">4 显示header信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-显示通信过程"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">5 显示通信过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-请求添加信息"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">6 请求添加信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#增加header信息"><span class="post-toc-number">2.6.1.</span> <span class="post-toc-text">增加header信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#增加cookie"><span class="post-toc-number">2.6.2.</span> <span class="post-toc-text">增加cookie</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#增加user-agent信息"><span class="post-toc-number">2.6.3.</span> <span class="post-toc-text">增加user-agent信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发送get请求"><span class="post-toc-number">2.6.4.</span> <span class="post-toc-text">发送get请求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发送post请求的数据体"><span class="post-toc-number">2.6.5.</span> <span class="post-toc-text">发送post请求的数据体</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#上传二进制文件"><span class="post-toc-number">2.6.6.</span> <span class="post-toc-text">上传二进制文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#限制http请求与响应的带宽，模拟慢网。"><span class="post-toc-number">2.6.7.</span> <span class="post-toc-text">限制http请求与响应的带宽，模拟慢网。</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-curl-学习记录"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">curl-学习记录</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-11-13 15:51:28" datetime="2019-11-13T07:51:28.000Z"  itemprop="datePublished">2019-11-13</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>cURL是一个利用URL语法在命令行下工作的文件传输工具，1997年首次发行。它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具。</p>
+<h1 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h1><p>支持多种协议，下面主要介绍几个网站开发常用的命令。</p>
+<h2 id="1-查看网页源码"><a href="#1-查看网页源码" class="headerlink" title="1 查看网页源码"></a>1 查看网页源码</h2><p>直接在curl命令后加上网址，就可以看到网页源码。    </p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">curl</span> <span class="selector-tag">www</span><span class="selector-class">.sina</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
+<p><img src="./1.png" width="70%" alt="curl www.sina.com">  </p>
+<h2 id="2-保存网页"><a href="#2-保存网页" class="headerlink" title="2 保存网页"></a>2 保存网页</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">curl</span> <span class="selector-tag">-o</span> <span class="selector-tag">output</span><span class="selector-class">.txt</span> <span class="selector-tag">www</span><span class="selector-class">.sina</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
+<p>会将页面内容存储在<code>output.txt</code>中。</p>
+<h2 id="3-自动跳转"><a href="#3-自动跳转" class="headerlink" title="3 自动跳转"></a>3 自动跳转</h2><p>对于一些301的网站，可以使用 <code>-L</code> 进行跳转，找到最终页面。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">curl</span> <span class="selector-tag">-L</span> <span class="selector-tag">-o</span> <span class="selector-tag">output</span><span class="selector-class">.html</span> <span class="selector-tag">www</span><span class="selector-class">.sina</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure></p>
+<p>结果会自动跳转到<a href="http://www.sina.com.cn" target="_blank" rel="noopener">www.sina.com.cn</a></p>
+<p>验证可通过输出到 <code>output.txt</code> 中查看</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">curl</span> <span class="selector-tag">-o</span> <span class="selector-tag">output</span><span class="selector-class">.txt</span> <span class="selector-tag">-L</span> <span class="selector-tag">www</span><span class="selector-class">.sina</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-显示header信息"><a href="#4-显示header信息" class="headerlink" title="4 显示header信息"></a>4 显示header信息</h2><p><code>-i</code> 可以显示<code>http response</code>的 header信息，以及结果。示例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">curl</span> <span class="selector-tag">-i</span> <span class="selector-tag">www</span><span class="selector-class">.sina</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
+<p>结果如下：<br><img src="./2.png" width="80%"></p>
+<h2 id="5-显示通信过程"><a href="#5-显示通信过程" class="headerlink" title="5 显示通信过程"></a>5 显示通信过程</h2><p><code>-v</code> 可以显示http通信的整个过程，包括请求头，响应头与结果。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">curl</span> <span class="selector-tag">-v</span> <span class="selector-tag">www</span><span class="selector-class">.sina</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
+<p>结果如下：<br><img src="./3.png" width="80%"></p>
+<p>如果想查看更细节通信过程，包括字节包，可以使用：  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">curl</span> <span class="selector-tag">--trace</span> <span class="selector-tag">output</span><span class="selector-class">.txt</span> <span class="selector-tag">www</span><span class="selector-class">.sina</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
+<p>查看output.txt即可。  </p>
+<h2 id="6-请求添加信息"><a href="#6-请求添加信息" class="headerlink" title="6 请求添加信息"></a>6 请求添加信息</h2><h3 id="增加header信息"><a href="#增加header信息" class="headerlink" title="增加header信息"></a>增加header信息</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --header <span class="string">"Content-Type:application/json"</span> <span class="string">http:</span><span class="comment">//example.com</span></span><br></pre></td></tr></table></figure>
+<p><code>--header</code> 或者 <code>-H</code></p>
+<h3 id="增加cookie"><a href="#增加cookie" class="headerlink" title="增加cookie"></a>增加cookie</h3><p>–cookie 或者 -b 都可以，也可以发送一个文件里的内容。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl --cookie <span class="string">"name=xxx"</span> -<span class="selector-tag">b</span> <span class="string">"foo=bar"</span> www<span class="selector-class">.example</span>.com</span><br></pre></td></tr></table></figure></p>
+<p>读取cookie写入文件</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -c cookies.txt <span class="string">https:</span><span class="comment">//www.google.com</span></span><br></pre></td></tr></table></figure>
+<p>在cookies.txt中就可以看到cookie。</p>
+<h3 id="增加user-agent信息"><a href="#增加user-agent信息" class="headerlink" title="增加user-agent信息"></a>增加user-agent信息</h3><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -A <span class="string">"Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7"</span> www.sina.com</span><br></pre></td></tr></table></figure>
+<h3 id="发送get请求"><a href="#发送get请求" class="headerlink" title="发送get请求"></a>发送get请求</h3><p><code>-G</code>参数用来构造 URL 的查询字符串。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -G -d <span class="string">'q=kitties'</span> -d <span class="string">'count=20'</span> http<span class="variable">s:</span>//google.<span class="keyword">com</span>/<span class="built_in">search</span></span><br></pre></td></tr></table></figure>
+<p>上面命令会发出一个 <code>GET</code> 请求，实际请求的 <code>URL</code> 为<a href="https://google.com/search?q=kitties&amp;count=20。" target="_blank" rel="noopener">https://google.com/search?q=kitties&amp;count=20。</a> 如果不加<code>-G</code>则会发出post请求。如果数据需要<code>URL</code>编码，可以结合<code>--data--urlencode</code>参数。</p>
+<h3 id="发送post请求的数据体"><a href="#发送post请求的数据体" class="headerlink" title="发送post请求的数据体"></a>发送post请求的数据体</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -d<span class="string">'login=emma＆password=123'</span>-X POST <span class="string">https:</span><span class="comment">//google.com/login</span></span><br></pre></td></tr></table></figure>
+<p>使用<code>-d</code>参数以后，HTTP 请求会自动加上标头 <code>Content-Type : application/x-www-form-urlencoded</code></p>
+<h3 id="上传二进制文件"><a href="#上传二进制文件" class="headerlink" title="上传二进制文件"></a>上传二进制文件</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">curl</span> -F <span class="string">'file=<span class="variable">@photo</span>.png;type=image/png'</span> www.sina.com</span><br></pre></td></tr></table></figure>
+<p>上传的<code>photo.png</code> 文件， 上面命令会给 <code>HTTP</code> 请求加上标头<code>Content-Type: multipart/form-data</code></p>
+<h3 id="限制http请求与响应的带宽，模拟慢网。"><a href="#限制http请求与响应的带宽，模拟慢网。" class="headerlink" title="限制http请求与响应的带宽，模拟慢网。"></a>限制http请求与响应的带宽，模拟慢网。</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">curl</span> <span class="selector-tag">--limit-rate</span> 200<span class="selector-tag">k</span> <span class="selector-tag">www</span><span class="selector-class">.baidu</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
+<p>上面命令将带宽限制在每秒 200K 字节。</p>
+<p>其实有了这个，完全就可以在命令行模拟请求发送了，不需要postman了。~~~</p>
+<p>更多参考：<br><a href="https://catonmat.net/cookbooks/curl" target="_blank" rel="noopener">curl cookbook</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-11-13T09:12:23.053Z" itemprop="dateUpdated">2019-11-13 17:12:23</time>
+</span><br>
+
+
+        
+        <a href="/2019/11/13/curl-学习记录/" target="_blank" rel="external">https://akijiangrou.github.io/2019/11/13/curl-学习记录/</a>
+        
+    </div>
+    <footer>
+        <a href="https://akijiangrou.github.io">
+            <img src="/img/avatar.png" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/command-line/">command line</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/curl/">curl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2019/11/13/curl-学习记录/&title=《curl-学习记录》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2019/11/13/curl-学习记录/&title=《curl-学习记录》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2019/11/13/curl-学习记录/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《curl-学习记录》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2019/11/13/curl-学习记录/&via=https://akijiangrou.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2019/11/13/curl-学习记录/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/11/14/weex学习/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">weex学习</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/11/10/vue-cli3之部分配置/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">vue-cli3之部分配置</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2019/11/13/curl-学习记录/&title=《curl-学习记录》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2019/11/13/curl-学习记录/&title=《curl-学习记录》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2019/11/13/curl-学习记录/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《curl-学习记录》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2019/11/13/curl-学习记录/&via=https://akijiangrou.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2019/11/13/curl-学习记录/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aS3LCMBAFwNz/0uQAAfOeBlJlqb2iXFhWsxg0n5+f+HoMrmTNV3c+fGFgYNyWkWwi2eL1/b+fr/eQ7w0DA+McxqulX33n1Suv18zDbr43DAwMjDZQ5kF5HqAxMDAw8iA4yZ6vk1gMDAyMNolNUtbrpLTd+ldycQwMjBsy1sLi/3z+Sn8DAwPjVoxJMzJPPietzWhXGBgYWzPyAJe3LdeaoG3AxcDAOJmRDGnNw3HyE9TlPAwMjK0Z+VFvUvxaK8C1PzEGBsZ+jLVAmQfHJFltD6NPVsDAwNiaMXlx25hsU+L8OxgYGHszWnF76sxLb3lwfzMtgoGBsSkjD5FJCM4HyOaFticnXAwMjO0YbWksp86D8lrTAgMDYz9G65sPWyRHzORdb7JwDAyM7Rj5wNbasMX836D+f8DAwNiIkYTOteblZM1J0ouBgbErox16aJPYNtFdi6sYGBi7MtpD26TQ394p2pkYGBhbMyZJZp7otmF3dLbFwMA4krE2fzVvJ+QNBgwMjNMYydItaS1ZXZwQwcDAOJKxNirRPtXy3hwNMTAwNmI8yitPZScDGXmqjIGBcQJj0vlcA7dJ79phFAMDYz9GW+RKDn9586BoUl4/i4GBcQBjUiZbC6ntU/WwBQYGxvGMPBx/avCiaAxgYGBgjBPOvLSXj2tgYGCcwFhrBrRJaRuUv1Juw8DAuCEjTx2/EWQ/9XYMDIxNGb9qRiLgHEbAtwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'aki酱肉';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

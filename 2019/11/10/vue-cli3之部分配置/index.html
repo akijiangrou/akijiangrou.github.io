@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="Aki酱肉&#39;s Blog">
 <meta property="og:description" content="最近开始弄vue了，通过vue-cli3 我们可以快速生成使用 vue的单页应用。但是vue-cli3将babel，webpack等配置信息都封装起来了，很多配置不知道怎么改了。 下面写一些有用的配置。  vue.config.js  123456789101112131415161718192021222324252627282930313233343536373839404142434445">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-10T14:24:43.946Z">
+<meta property="og:updated_time" content="2019-11-15T12:06:14.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-cli3之部分配置">
 <meta name="twitter:description" content="最近开始弄vue了，通过vue-cli3 我们可以快速生成使用 vue的单页应用。但是vue-cli3将babel，webpack等配置信息都封装起来了，很多配置不知道怎么改了。 下面写一些有用的配置。  vue.config.js  123456789101112131415161718192021222324252627282930313233343536373839404142434445">
@@ -198,6 +198,16 @@
 <h3 id="关于babel-配置。"><a href="#关于babel-配置。" class="headerlink" title="关于babel 配置。"></a>关于babel 配置。</h3><p>如果有一些自己写的组件，或者没有转为es5 的组件，需要babel-loader进行转换。可以在webpack中加入：</p>
   <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">transpileDependencies</span>: ["cccc"],  // 通过 Babel 显式转译一个依赖，可以在这个选项中列出来。</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">// 或者：</span><br><span class="line">const path = require('path');</span><br><span class="line"></span><br><span class="line">function resolve(dir) &#123;</span><br><span class="line">  return path.join(__dirname, '.', dir);</span><br><span class="line">&#125;</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  ... // 其他配置</span><br><span class="line">  chainWebpack: config =&gt; &#123;</span><br><span class="line">    config.module.rule('compile')</span><br><span class="line">      .test(/\.js$/)</span><br><span class="line">      .include</span><br><span class="line">      .add(resolve('src'))</span><br><span class="line">      .add(resolve('node_modules/webpack-dev-server/client'))</span><br><span class="line">      .add(resolve('node_modules/cccc'))</span><br><span class="line">      .end()</span><br><span class="line">      .use('babel')</span><br><span class="line">      .loader('babel-loader')</span><br><span class="line">      .options(&#123;</span><br><span class="line">        presets: [</span><br><span class="line">          ['@babel/preset-env', &#123;</span><br><span class="line">            modules: false</span><br><span class="line">          &#125;]</span><br><span class="line">        ]</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 如上配置，会在整个loader后面加一个叫compile的loader</span><br></pre></td></tr></table></figure>
 <p>关于babel 配置，vue-cli3 已经进行了很多封装。</p>
+<p>写一些总结性的内容：<br>vue-cli3 封装的babel，其中</p>
+<p>关于封装的@babel/preset-env，配置如下：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">useBuiltIns:</span> <span class="string">'usage'</span>;</span><br><span class="line"><span class="string">corejs:</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>@babel/preset-env 中依赖的core-js的版本为： <code>&quot;core-js&quot;: &quot;^2.6.5&quot;</code>，我查看了下我们的工程，core-js版本是2.6.9。来个题外话：</p>
+<p>查看npm 库中，当前插件的版本：  </p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">view</span> core-js <span class="keyword">version</span>  <span class="comment">// 只看版本</span></span><br><span class="line">npm info core-js  <span class="comment">// 查看更多详细信息</span></span><br></pre></td></tr></table></figure>
+<p>但是想查看本地安装的core-js版本，使用：</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> ls core-js</span><br></pre></td></tr></table></figure>
+<p>那么对于2.6.9都支持了哪些语法呢？也就是我们可以在vue-cli3工程中使用哪些es6，7的语法呢？参考2.6.9的<a href="https://github.com/zloirock/core-js/tree/v2.6.9" target="_blank" rel="noopener">readme</a>。</p>
+<p>简单说一下：async，await，Object.assign，Set，Map，reflaction等等。</p>
 <p>关于解释vue-cli3中的babel配置，以及相对于es678兼容性的问题，查看：<a href="https://segmentfault.com/a/1190000020392040?utm_source=tag-newest" target="_blank" rel="noopener">链接</a><br>这里写的很明白</p>
 
         </div>
@@ -206,7 +216,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-11-10T14:24:43.946Z" itemprop="dateUpdated">2019-11-10 22:24:43</time>
+    Last updated: <time datetime="2019-11-15T12:06:14.670Z" itemprop="dateUpdated">2019-11-15 20:06:14</time>
 </span><br>
 
 
@@ -282,7 +292,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/11/13/curl-学习记录/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">curl-学习记录</h4>
+      </a>
+    </div>
   
 
   

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>animation笔记 | Aki酱肉&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="animation,css3">
+    <meta name="description" content="通过css3为dom元素添加动效  属性列表   值 说明     animation-name 指定要绑定到选择器的关键帧的名称   animation-duration 动画指定需要多少秒或毫秒完成   animation-timing-function 设置动画将如何完成一个周期   animation-delay 设置动画在启动前的延迟间隔。   animation-iteration-">
+<meta name="keywords" content="animation,css3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="animation笔记">
+<meta property="og:url" content="https://akijiangrou.github.io/2019/11/14/animation笔记/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="通过css3为dom元素添加动效  属性列表   值 说明     animation-name 指定要绑定到选择器的关键帧的名称   animation-duration 动画指定需要多少秒或毫秒完成   animation-timing-function 设置动画将如何完成一个周期   animation-delay 设置动画在启动前的延迟间隔。   animation-iteration-">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-15T12:05:58.848Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="animation笔记">
+<meta name="twitter:description" content="通过css3为dom元素添加动效  属性列表   值 说明     animation-name 指定要绑定到选择器的关键帧的名称   animation-duration 动画指定需要多少秒或毫秒完成   animation-timing-function 设置动画将如何完成一个周期   animation-delay 设置动画在启动前的延迟间隔。   animation-iteration-">
+    
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:chunxiao5316@126.com" title="chunxiao5316@126.com" class="mail">chunxiao5316@126.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="https://akijiangrou.github.io/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">animation笔记</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">animation笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-11-14T11:16:25.000Z" itemprop="datePublished" class="page-time">
+  2019-11-14
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#属性列表"><span class="post-toc-number">1.</span> <span class="post-toc-text">属性列表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#animation-name"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">animation-name</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#animation-duration"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">animation-duration</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#animation-timing-function"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">animation-timing-function</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#animation-delay"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">animation-delay</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#animation-iteration-count"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">animation-iteration-count</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#animation-direction"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">animation-direction</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#animation-fill-mode"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">animation-fill-mode</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#animation-play-state"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">animation-play-state</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-animation笔记"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">animation笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-11-14 19:16:25" datetime="2019-11-14T11:16:25.000Z"  itemprop="datePublished">2019-11-14</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>通过<code>css3</code>为dom元素添加动效</p>
+</blockquote>
+<h1 id="属性列表"><a href="#属性列表" class="headerlink" title="属性列表"></a>属性列表</h1><table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>animation-name</td>
+<td>指定要绑定到选择器的关键帧的名称</td>
+</tr>
+<tr>
+<td>animation-duration</td>
+<td>动画指定需要多少秒或毫秒完成</td>
+</tr>
+<tr>
+<td>animation-timing-function</td>
+<td>设置动画将如何完成一个周期</td>
+</tr>
+<tr>
+<td>animation-delay</td>
+<td>设置动画在启动前的延迟间隔。</td>
+</tr>
+<tr>
+<td>animation-iteration-count</td>
+<td>定义动画的播放次数。</td>
+</tr>
+<tr>
+<td>animation-direction</td>
+<td>指定是否应该轮流反向播放动画。</td>
+</tr>
+<tr>
+<td>animation-fill-mode</td>
+<td>规定当动画完成时，或当动画有一个延迟未开始播放前，要应用到元素的样式。</td>
+</tr>
+<tr>
+<td>animation-play-state</td>
+<td>指定动画是否正在运行或已暂停。</td>
+</tr>
+<tr>
+<td>initial</td>
+<td>设置属性为其默认值。</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>从父元素继承属性。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="animation-name"><a href="#animation-name" class="headerlink" title="animation-name"></a>animation-name</h2><p>指定<code>keyframes</code>的名字，用<code>,</code>分隔多个动画。写错了，则不应用。<br><code>keyframes</code>的用法如下：  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">keyframes</span> bounce &#123;</span><br><span class="line">  <span class="selector-tag">from</span> &#123;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">100px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  25% &#123;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  50% &#123;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">150px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  75% &#123;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">75px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">to</span> &#123;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">100px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.ball</span> &#123;</span><br><span class="line">  <span class="attribute">animation-name</span>: bounce, ab;</span><br><span class="line">  <span class="attribute">animation-duration</span>: <span class="number">2s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如此，就将<code>bounce</code>与<code>ab</code>动画绑到了<code>ball</code>这个<code>class</code>上了。</p>
+<h2 id="animation-duration"><a href="#animation-duration" class="headerlink" title="animation-duration"></a>animation-duration</h2><p>单位为秒，或者毫秒。</p>
+<h2 id="animation-timing-function"><a href="#animation-timing-function" class="headerlink" title="animation-timing-function"></a>animation-timing-function</h2><p>速度曲线定义动画从一套 CSS 样式变为另一套所用的时间，使变化更为平滑。<br>也可以为多个，用 <code>,</code>分隔</p>
+<ul>
+<li>ease，默认。动画以低速开始，然后加快，在结束前变慢。</li>
+<li>linear，动画从头到尾的速度是相同的</li>
+<li>ease-in， 动画以低速开始。</li>
+<li>ease-out，动画以低速结束。</li>
+<li>ease-in-out，动画以低速开始和结束。</li>
+<li>cubic-bezier(n,n,n,n)，在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。</li>
+</ul>
+<h2 id="animation-delay"><a href="#animation-delay" class="headerlink" title="animation-delay"></a>animation-delay</h2><p>秒或毫秒计。0s是该属性的默认值，代表动画在应用到元素上后立即开始执行。否则，该属性的值代表动画样式应用到元素上后到开始执行前的时间长度；</p>
+<h2 id="animation-iteration-count"><a href="#animation-iteration-count" class="headerlink" title="animation-iteration-count"></a>animation-iteration-count</h2><p>动画播放的次数，默认值为1。如果指定了多个值，每次播放动画时，将使用列表中的下一个值，在使用最后一个值后循环回第一个值。可以写<code>infinite</code></p>
+<h2 id="animation-direction"><a href="#animation-direction" class="headerlink" title="animation-direction"></a>animation-direction</h2><p>指示动画是否反向播放</p>
+<ul>
+<li>normal，默认值，每个动画循环结束，动画重置到起点重新开始。</li>
+<li>alternate，动画交替反向运行，反向运行时，动画按步后退，同时，带时间功能的函数也反向，比如，ease-in 在反向时成为ease-out。计数取决于开始时是奇数迭代还是偶数迭代</li>
+<li>reverse，反向运行动画，每周期结束动画由尾到头运行。</li>
+<li>alternate-reverse，反向开始运行，开始交替。动画第一次运行时是反向的，然后下一次是正向，后面依次循环。决定奇数次或偶数次的计数从1开始。</li>
+</ul>
+<h2 id="animation-fill-mode"><a href="#animation-fill-mode" class="headerlink" title="animation-fill-mode"></a>animation-fill-mode</h2><p>当动画完成时，或当动画有一个延迟未开始播放时，要应用到元素的样式。</p>
+<p>默认情况下，CSS 动画在第一个关键帧播放完之前不会影响元素的样式，在最后一个关键帧完成后停止影响元素样式。animation-fill-mode 属性可重写该行为。</p>
+<p>可选参数如下：</p>
+<ul>
+<li>none： 默认值。动画在动画执行之前和之后不会应用任何样式到目标元素</li>
+<li>forwards：在动画结束后，动画将应用该属性值</li>
+<li>backwards：动画将应用在 <code>animation-delay</code> 定义期间启动动画的第一次迭代的关键帧中定义的属性值。当<code>animation-direction</code> 为<code>normal</code> 或者 <code>alternate</code> 时的from值；和<code>animation-direction</code>为 <code>reverse</code>或 <code>alternate-reverse</code>。</li>
+<li>both：包含<code>forwards</code>与<code>backwards</code></li>
+<li>initial，inherit</li>
+</ul>
+<h2 id="animation-play-state"><a href="#animation-play-state" class="headerlink" title="animation-play-state"></a>animation-play-state</h2><p>可选参数：<code>paused</code>, <code>running</code><br>可以在其他样式中，加上这个参数后，比如点击按钮，那么就可以暂停当前的动画样式，如果点击取消后，则动画可以继续进行。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-11-15T12:05:58.848Z" itemprop="dateUpdated">2019-11-15 20:05:58</time>
+</span><br>
+
+
+        
+        <a href="/2019/11/14/animation笔记/" target="_blank" rel="external">https://akijiangrou.github.io/2019/11/14/animation笔记/</a>
+        
+    </div>
+    <footer>
+        <a href="https://akijiangrou.github.io">
+            <img src="/img/avatar.png" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/animation/">animation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css3/">css3</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2019/11/14/animation笔记/&title=《animation笔记》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2019/11/14/animation笔记/&title=《animation笔记》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2019/11/14/animation笔记/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《animation笔记》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2019/11/14/animation笔记/&via=https://akijiangrou.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2019/11/14/animation笔记/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/11/14/weex学习/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">weex学习</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2019/11/14/animation笔记/&title=《animation笔记》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2019/11/14/animation笔记/&title=《animation笔记》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2019/11/14/animation笔记/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《animation笔记》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2019/11/14/animation笔记/&via=https://akijiangrou.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2019/11/14/animation笔记/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3a0WrEMAwEwP7/T1+fS8ndrpwWYo+fSsg5HheEZPnrKx6vi5G88/vN3+9fPbl5YGBgPJaRfP7qyftlXc2frKHeGgwMjAMYV1PP3mmDZjsPBgYGRj51EhzzkI2BgYFxb8Cdhdf3mBkVAwPjHEYSLpNlJYXrLEzfVotjYGA8kHFXkfkXf/9JfwMDA+NRjFc5VqhJY2C4KgwMjK0ZeYBbWURSrCZF9Yf1YGBgHMbIw2W+lHYLWhgGBsaujDwRvDdlzJ9EIRsDA+MAxnrsWm9ttsnoj/kxMDC2ZuTpV9uqnM2WJ6Mf+rEYGBgbMf6nGTkL1sP/AAYGxnaMWbux/cBKElmkhhgYGJsyVg7X2nfaKxpFKMfAwDiGkUzXVsYJu22sXl6zwMDAOICRpHRJ2bkSZG+4bIGBgbEpoy1H81I2TxPbLfvQGMDAwNiOkZegsytcbYDOQzYGBsY5jFmKlh/S3dVIGF62wMDAeDijPZpfGUkIbo/thh0GDAyMxzLaxC5P3dp0MElYL++MYGBgHMDIG42zD7cNy6JhgIGBcQyjbSXmZXBbEtdtVwwMjE0Zr3KsNAxmWxBRMTAwtma0h2V5C3P9YtnsAhkGBsaujFkh2ha361v24esYGBgHMNbbAPmvVtK+6LIFBgbG8Yz2MG5lCwoqBgYGRly4rhTASxuEgYFxAKNtBqz/Nj+wu/m4DQMD44GMvHTMj9XeJ3btItoiGQMDYyPGN4Gg2xkvHT+9AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'aki酱肉';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
