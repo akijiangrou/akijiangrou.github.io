@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>ES2015-2020 | Aki酱肉&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="javascript">
+    <meta name="description" content="ES6 是ECMA 为 Javascript制定的第6个标准版本。每年六月正式发布，并作为当年的而正式版本。从2015年开始，每年都发一个新的版本。到2020年已经发行了6个了。ES7 (ES2016)。。。。依次类推。所以有人把ES6(ECMA2015)之后的统称为ES6，按这种方法ES6目前涵盖了：ES2015、ES2016、ES2017、ES2018、ES2019、ES2020。   ES2">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES2015-2020">
+<meta property="og:url" content="https://akijiangrou.github.io/2020/03/24/ES2015-2020/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="ES6 是ECMA 为 Javascript制定的第6个标准版本。每年六月正式发布，并作为当年的而正式版本。从2015年开始，每年都发一个新的版本。到2020年已经发行了6个了。ES7 (ES2016)。。。。依次类推。所以有人把ES6(ECMA2015)之后的统称为ES6，按这种方法ES6目前涵盖了：ES2015、ES2016、ES2017、ES2018、ES2019、ES2020。   ES2">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://akijiangrou.github.io/2020/03/24/ES2015-2020/es2015.jpg">
+<meta property="og:image" content="https://akijiangrou.github.io/2020/03/24/ES2015-2020/es2017.jpg">
+<meta property="og:image" content="https://akijiangrou.github.io/2020/03/24/ES2015-2020/es2019.png">
+<meta property="og:updated_time" content="2020-03-24T04:00:50.876Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES2015-2020">
+<meta name="twitter:description" content="ES6 是ECMA 为 Javascript制定的第6个标准版本。每年六月正式发布，并作为当年的而正式版本。从2015年开始，每年都发一个新的版本。到2020年已经发行了6个了。ES7 (ES2016)。。。。依次类推。所以有人把ES6(ECMA2015)之后的统称为ES6，按这种方法ES6目前涵盖了：ES2015、ES2016、ES2017、ES2018、ES2019、ES2020。   ES2">
+<meta name="twitter:image" content="https://akijiangrou.github.io/2020/03/24/ES2015-2020/es2015.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:chunxiao5316@126.com" title="chunxiao5316@126.com" class="mail">chunxiao5316@126.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="https://akijiangrou.github.io/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ES2015-2020</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ES2015-2020</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-03-24T02:33:00.000Z" itemprop="datePublished" class="page-time">
+  2020-03-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES2015"><span class="post-toc-number">1.</span> <span class="post-toc-text">ES2015</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES2016"><span class="post-toc-number">2.</span> <span class="post-toc-text">ES2016</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES2017"><span class="post-toc-number">3.</span> <span class="post-toc-text">ES2017</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES2018"><span class="post-toc-number">4.</span> <span class="post-toc-text">ES2018</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES2019"><span class="post-toc-number">5.</span> <span class="post-toc-text">ES2019</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ES2020"><span class="post-toc-number">6.</span> <span class="post-toc-text">ES2020</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-ES2015-2020"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ES2015-2020</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-03-24 10:33:00" datetime="2020-03-24T02:33:00.000Z"  itemprop="datePublished">2020-03-24</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>ES6 是ECMA 为 Javascript制定的第6个标准版本。每年六月正式发布，并作为当年的而正式版本。从2015年开始，每年都发一个新的版本。到2020年已经发行了6个了。ES7 (ES2016)。。。。依次类推。所以有人把ES6(ECMA2015)之后的统称为ES6，按这种方法ES6目前涵盖了：ES2015、ES2016、ES2017、ES2018、ES2019、ES2020。  </p>
+<h2 id="ES2015"><a href="#ES2015" class="headerlink" title="ES2015"></a>ES2015</h2><p>这个版本更新的内容特别多，超级大版本。如下图，本文中所有图片都摘自<a href="https://zhuanlan.zhihu.com/p/87699079" target="_blank" rel="noopener">知乎</a><br><img src="./es2015.jpg"></p>
+<p>重点：</p>
+<ul>
+<li>let， const</li>
+<li>箭头函数</li>
+<li>解构赋值</li>
+<li>作用域</li>
+<li>Symbol</li>
+<li>Set，Map</li>
+<li>Proxy， Reflect</li>
+<li>Class</li>
+<li>Module</li>
+<li>promise</li>
+<li>generator<br>还有每个类型的功能拓展。属于一个超级大的变更。</li>
+</ul>
+<h2 id="ES2016"><a href="#ES2016" class="headerlink" title="ES2016"></a>ES2016</h2><p>这次就多了两个功能：  </p>
+<ul>
+<li>数值扩展： 添加了 ** 求幂</li>
+<li>数组扩展：arr.includes()，可以判断arr.includes([NaN]) </li>
+</ul>
+<h2 id="ES2017"><a href="#ES2017" class="headerlink" title="ES2017"></a>ES2017</h2><p>摘自知乎：<br><img src="./es2017.jpg"></p>
+<ul>
+<li>String.prototype.padStart/String.prototype.padEnd</li>
+</ul>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">'es8</span><span class="symbol">'.padStart</span>(<span class="name">2</span>)<span class="comment">;          // 'es8'，如果长度小于原字符串，返回原字符串</span></span><br><span class="line"><span class="symbol">'es8</span><span class="symbol">'.padStart</span>(<span class="name">5</span>)<span class="comment">;          // '  es8'</span></span><br><span class="line"><span class="symbol">'es8</span><span class="symbol">'.padStart</span>(<span class="name">7</span>, <span class="symbol">'0</span>')<span class="comment">;     // '0000es8'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Object.values / Object.entries</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 示例</span><br><span class="line">const obj = &#123; x: <span class="string">'xxx'</span>, y: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="symbol">Object</span>.entries(obj); // [[<span class="string">'x'</span>, <span class="string">'xxx'</span>], [<span class="string">'y'</span>, <span class="number">1</span>]]</span><br><span class="line">const obj = [<span class="string">'e'</span>, <span class="string">'s'</span>, <span class="string">'8'</span>];</span><br><span class="line"><span class="symbol">Object</span>.entries(obj); // [[<span class="string">'0'</span>, <span class="string">'e'</span>], [<span class="string">'1'</span>, <span class="string">'s'</span>], [<span class="string">'2'</span>, <span class="string">'8'</span>]]</span><br><span class="line">const obj = &#123; <span class="number">10</span>: <span class="string">'xxx'</span>, <span class="number">1</span>: <span class="string">'yyy'</span>, <span class="number">3</span>: <span class="string">'zzz'</span> &#125;;</span><br><span class="line"><span class="symbol">Object</span>.entries(obj); // [[<span class="string">'1'</span>, <span class="string">'yyy'</span>], [<span class="string">'3'</span>, <span class="string">'zzz'</span>], [<span class="string">'10'</span>: <span class="string">'xxx'</span>]]</span><br><span class="line"><span class="symbol">Object</span>.entries(<span class="string">'es8'</span>); // [[<span class="string">'0'</span>, <span class="string">'e'</span>], [<span class="string">'1'</span>, <span class="string">'s'</span>], [<span class="string">'2'</span>, <span class="string">'8'</span>]]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 示例</span><br><span class="line">const obj = &#123; x: <span class="string">'xxx'</span>, y: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="symbol">Object</span>.values(obj); // [<span class="string">'xxx'</span>, <span class="number">1</span>]</span><br><span class="line">const obj = [<span class="string">'e'</span>, <span class="string">'s'</span>, <span class="string">'8'</span>]; // same as &#123; <span class="number">0</span>: <span class="string">'e'</span>, <span class="number">1</span>: <span class="string">'s'</span>, <span class="number">2</span>: <span class="string">'8'</span> &#125;;</span><br><span class="line"><span class="symbol">Object</span>.values(obj); // [<span class="string">'e'</span>, <span class="string">'s'</span>, <span class="string">'8'</span>]</span><br><span class="line">// when we use numeric keys, the values returned in a numerical </span><br><span class="line">// order according to the keys</span><br><span class="line">const obj = &#123; <span class="number">10</span>: <span class="string">'xxx'</span>, <span class="number">1</span>: <span class="string">'yyy'</span>, <span class="number">3</span>: <span class="string">'zzz'</span> &#125;;</span><br><span class="line"><span class="symbol">Object</span>.values(obj); // [<span class="string">'yyy'</span>, <span class="string">'zzz'</span>, <span class="string">'xxx'</span>]</span><br><span class="line"><span class="symbol">Object</span>.values(<span class="string">'es8'</span>); // [<span class="string">'e'</span>, <span class="string">'s'</span>, <span class="string">'8'</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Object.getOwnPropertyDescriptors<br>该函数返回指定对象（参数）的所有自身属性描述符。所谓自身属性描述符就是在对象自身内定义，不是通过原型链继承来的属性。</p>
+</li>
+<li><p>函数参数列表和调用中的尾逗号<br>ES8 允许在函数定义或者函数调用时，最后一个参数之后存在一个结尾逗号而不报 SyntaxError 的错误。</p>
+</li>
+<li><p>Async/Await<br>封装的generator，promise的终极用法。  </p>
+</li>
+<li><p>共享内存和原子操作<br>由全局对象SharedArrayBuffer和Atomics实现，将数据存储在一块共享内存空间中，这些数据可在JS主线程和web-worker线程之间共享</p>
+</li>
+</ul>
+<h2 id="ES2018"><a href="#ES2018" class="headerlink" title="ES2018"></a>ES2018</h2><ul>
+<li>字符串扩展：遇到不合法的字符串转义返回undefined。可从raw上获取原字符串。</li>
+<li>对象扩展…  </li>
+</ul>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; __proto__: Object.getPrototypeOf(obj1), ...obj1 &#125;  <span class="comment">// 克隆对象</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123; ...obj1, ...obj2 &#125;  <span class="comment">// 合并对象</span></span><br><span class="line">&#123; ...<span class="string">"hello"</span> &#125; <span class="comment">// 转换字符串为对象</span></span><br><span class="line">&#123; ...[<span class="number">1</span>, <span class="number">2</span>] &#125; <span class="comment">// 转换数组为对象</span></span><br><span class="line"><span class="keyword">const</span> &#123; x, ...rest/spread &#125; = &#123; x: <span class="number">1</span>, y: <span class="number">2</span>, z: <span class="number">3</span> &#125; <span class="comment">// 与对象解构赋值结合,(不能复制继承自原型对象的属性)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123; x: <span class="number">1</span>, ...&#123; x: <span class="number">2</span> &#125; &#125; <span class="comment">// 修改现有对象部分属性</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>正则扩展</p>
+<ul>
+<li>dotAll：是否设置s修饰符  </li>
+<li>后行断言：x只有在y后才匹配  </li>
+<li>后行否定断言：x只有不在y后才匹配  </li>
+<li>Unicode属性转义：匹配符合Unicode某种属性的所有字符  </li>
+<li>正向匹配：\p{PropRule}  </li>
+<li>反向匹配：\P{PropRule}  </li>
+<li>限制：\p{…}和\P{…}只对Unicode字符有效，使用时需加上u修饰符  </li>
+<li>具名组匹配：为每组匹配指定名字(?<groupname>)<br>形式：str.exec().groups.GroupName<br>解构赋值替换<br>声明：const time = “2017-09-11”、const regexp = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u</day></month></year></groupname></li>
+</ul>
+</li>
+<li><p>Async 优化</p>
+</li>
+</ul>
+<h2 id="ES2019"><a href="#ES2019" class="headerlink" title="ES2019"></a>ES2019</h2><p><img src="./es2019.png" width="600px"></p>
+<ul>
+<li>String.trimStart() &amp; String.trimEnd()</li>
+</ul>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">string</span> = <span class="string">' ES2019! Yay! '</span><span class="comment">;</span></span><br><span class="line"><span class="built_in">string</span>.trimStart()<span class="comment">;</span></span><br><span class="line">// <span class="string">"ES2019! Yay! "</span></span><br><span class="line"><span class="built_in">string</span>.trimEnd()<span class="comment">;</span></span><br><span class="line">// <span class="string">" ES2019! Yay!"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Object.fromEntries();<br>把数组形式的key-value转成object。</li>
+</ul>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> entries = [ [‘foo’, ‘bar’] ];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">object</span> = <span class="keyword">Object</span>.fromEntries(entries);</span><br><span class="line"><span class="comment">// &#123; foo: ‘bar’ &#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Array.flat() Array.flatMap()<br>flat(level)，这里的level可以指定展平到哪个层级。  </li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[1,</span> <span class="number">2</span><span class="string">,</span> <span class="string">[3,</span> <span class="number">4</span><span class="string">,</span> <span class="string">[5,</span> <span class="number">6</span><span class="string">]]].flat(2);</span></span><br><span class="line"><span class="string">//</span> <span class="string">[</span> <span class="number">1</span><span class="string">,</span> <span class="number">2</span><span class="string">,</span> <span class="number">3</span><span class="string">,</span> <span class="number">4</span><span class="string">,</span> <span class="number">5</span><span class="string">,</span> <span class="number">6</span> <span class="string">]</span></span><br><span class="line"><span class="string">[1,</span> <span class="number">2</span><span class="string">,</span> <span class="string">[3,</span> <span class="number">4</span><span class="string">,</span> <span class="string">[5,</span> <span class="number">6</span><span class="string">]]].flat(1);</span></span><br><span class="line"><span class="string">//</span> <span class="string">[</span> <span class="number">1</span><span class="string">,</span> <span class="number">2</span><span class="string">,</span> <span class="number">3</span><span class="string">,</span> <span class="number">4</span><span class="string">,</span> <span class="string">[5,</span> <span class="number">6</span><span class="string">]</span> <span class="string">]</span></span><br></pre></td></tr></table></figure>
+<p>flatMap，就是先flat再map</p>
+<ul>
+<li>try，catch 。catch参数可选了。如下也是可以的。 </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isValidJSON = <span class="function"><span class="params">json</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="built_in">JSON</span>.parse(json);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Symbol.description<br>给symbol加个描述的属性。</p>
+</li>
+<li><p>JSON superset<br>部分JSON.parse 不在报错了。之前如果JSON字符串中包含有行分隔符(\u2028) 和段落分隔符(\u2029)，那么在解析过程中会报错。  </p>
+</li>
+<li><p>sort 更加稳定</p>
+</li>
+<li><p>Function.prototype.toString()<br>将返回更完整的内容了。</p>
+</li>
+</ul>
+<h2 id="ES2020"><a href="#ES2020" class="headerlink" title="ES2020"></a>ES2020</h2><ul>
+<li>Promise.allSettled<br>都知道 Promise.all 具有并发执行异步任务的能力。但它的最大问题就是如果其中某个任务出现异常(reject)，所有任务都会挂掉，Promise直接进入 reject 状态。<br>我们需要一种机制，如果并发任务中，无论一个任务正常或者异常，都会返回对应的的状态（fulfilled 或者 rejected）与结果（业务value 或者 拒因 reason），在 then 里面通过 filter 来过滤出想要的业务逻辑结果，这就能最大限度的保障业务当前状态的可访问性，而 Promise.allSettled 就是解决这问题的。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.allSettled([</span><br><span class="line">    <span class="built_in">Promise</span>.reject(&#123;<span class="attr">code</span>: <span class="number">500</span>, <span class="attr">msg</span>: <span class="string">'服务异常'</span>&#125;),</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(&#123; <span class="attr">code</span>: <span class="number">200</span>, <span class="attr">list</span>: []&#125;),</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(&#123;<span class="attr">code</span>: <span class="number">200</span>, <span class="attr">list</span>: []&#125;)</span><br><span class="line">])</span><br><span class="line">.then(<span class="function">(<span class="params">ret</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        0: &#123;status: "rejected", reason: &#123;…&#125;&#125;</span></span><br><span class="line"><span class="comment">        1: &#123;status: "fulfilled", value: &#123;…&#125;&#125;</span></span><br><span class="line"><span class="comment">        2: &#123;status: "fulfilled", value: &#123;…&#125;&#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">// 过滤掉 rejected 状态，尽可能多的保证页面区域数据渲染</span></span><br><span class="line">    RenderContent(ret.filter(<span class="function">(<span class="params">el</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> el.status !== <span class="string">'rejected'</span>;</span><br><span class="line">    &#125;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可选链<br>可让我们在查询具有多层级的对象时，不再需要进行冗余的各种前置校验。</li>
+</ul>
+<p>日常开发中，我们经常会遇到这种查询 </p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var name =<span class="built_in"> user </span>&amp;&amp; user.<span class="builtin-name">info</span> &amp;&amp; user.info.name;</span><br></pre></td></tr></table></figure>
+<p>用可选链：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">var name</span> = user<span class="meta">?.info?</span>.name;</span><br><span class="line"><span class="attribute">var age</span> = user<span class="meta">?.info?.getAge?</span>.();</span><br></pre></td></tr></table></figure>
+<p>可选链中的 ? 表示如果问号左边表达式有值, 就会继续查询问号后面的字段。根据上面可以看出，用可选链可以大量简化类似繁琐的前置校验操作，而且更安全。</p>
+<ul>
+<li>空值合并运算符  </li>
+</ul>
+<p>原来的写法：<br><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var <span class="keyword">level</span> =  <span class="keyword">user</span>.data.<span class="keyword">level</span> || <span class="string">'暂无等级'</span>; // 如果levle是<span class="number">0</span>，也显示暂无等级，是不对的。</span><br><span class="line"></span><br><span class="line">// 完整的写法</span><br><span class="line">var <span class="keyword">level</span> = <span class="keyword">user</span>.<span class="keyword">level</span> !== undefined &amp;&amp; <span class="keyword">user</span>.<span class="keyword">level</span> !== <span class="keyword">null</span></span><br><span class="line">  ? <span class="keyword">user</span>.<span class="keyword">level</span></span><br><span class="line">  : <span class="string">'暂无等级'</span>;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">//</span> &#123;</span><br><span class="line"><span class="regexp">//</span>   <span class="string">"level"</span>: <span class="number">0</span>   </span><br><span class="line"><span class="regexp">//</span> &#125;</span><br><span class="line">var level = user.level ?? <span class="string">'暂无等级'</span>; <span class="regexp">//</span> level -&gt; <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> &#123;</span><br><span class="line"><span class="regexp">//</span>   <span class="string">"an_other_field"</span>: <span class="number">0</span>   </span><br><span class="line"><span class="regexp">//</span> &#125;</span><br><span class="line">var level = user.level ?? <span class="string">'暂无等级'</span>; <span class="regexp">//</span> level -&gt; <span class="string">'暂无等级'</span></span><br></pre></td></tr></table></figure>
+<p>空值合并运算符 与 可选链 相结合，可以很轻松处理多级查询并赋予默认值问题。  </p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">var level</span> = user.data<span class="meta">?.level ??</span> <span class="string">'暂无等级'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>按需引用 </li>
+</ul>
+<p>webpack已经支持了。  </p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">el.onclick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">import</span>(`/path/current-logic.js`)</span><br><span class="line">    .<span class="keyword">then</span>(<span class="function"><span class="params">(<span class="built_in">module</span>)</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">module</span>.doSomthing();</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">(err)</span> =&gt;</span> &#123;</span><br><span class="line">        // <span class="built_in">load</span> <span class="built_in">error</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>globalThis<br>过去获取全局对象，可通过一个全局函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> getGlobal = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; </span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> self !== <span class="string">'undefined'</span>) &#123; <span class="keyword">return</span> self; &#125; </span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span>) &#123; <span class="keyword">return</span> <span class="built_in">window</span>; &#125; </span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> global !== <span class="string">'undefined'</span>) &#123; <span class="keyword">return</span> global; &#125; </span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'unable to locate global object'</span>); </span><br><span class="line">&#125;; </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> globals = getGlobal(); </span><br><span class="line"></span><br><span class="line"><span class="comment">// https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/globalThis</span></span><br></pre></td></tr></table></figure>
+<p>而 globalThis 目的就是提供一种标准化方式访问全局对象，有了 globalThis 后，你可以在任意上下文，任意时刻都能获取到全局对象。</p>
+<ul>
+<li>bigInt<br>Js 中 Number类型只能安全的表示-(2^53-1)至 2^53-1 范的值，即Number.MIN_SAFE_INTEGER 至Number.MAX_SAFE_INTEGER，超出这ES2020提供一种新的数据类型：BigInt。 使用 BigInt 有两种方式：  </li>
+</ul>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在整数字面量后面加n。</span></span><br><span class="line"><span class="keyword">var</span> bigIntNum = <span class="number">9007199254740993</span>n;</span><br><span class="line"><span class="comment">// 使用 BigInt 函数。</span></span><br><span class="line"><span class="keyword">var</span> bigIntNum = BigInt(<span class="number">9007199254740</span>);</span><br><span class="line"><span class="keyword">var</span> anOtherBigIntNum = BigInt(<span class="string">'9007199254740993'</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>String.prototype.matchAll<br>合并了遍历与match  </li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-03-24T04:00:50.876Z" itemprop="dateUpdated">2020-03-24 12:00:50</time>
+</span><br>
+
+
+        
+        <a href="/2020/03/24/ES2015-2020/" target="_blank" rel="external">https://akijiangrou.github.io/2020/03/24/ES2015-2020/</a>
+        
+    </div>
+    <footer>
+        <a href="https://akijiangrou.github.io">
+            <img src="/img/avatar.png" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2020/03/24/ES2015-2020/&title=《ES2015-2020》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2020/03/24/ES2015-2020/&title=《ES2015-2020》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2020/03/24/ES2015-2020/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES2015-2020》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2020/03/24/ES2015-2020/&via=https://akijiangrou.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2020/03/24/ES2015-2020/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/01/08/flutter学习记录一/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">flutter学习记录一</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2020/03/24/ES2015-2020/&title=《ES2015-2020》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2020/03/24/ES2015-2020/&title=《ES2015-2020》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2020/03/24/ES2015-2020/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ES2015-2020》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2020/03/24/ES2015-2020/&via=https://akijiangrou.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2020/03/24/ES2015-2020/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aQU7DQAwF0N7/0mGLhBK+7QSRmZcVgpbM68KNv/35xNdxcl3/9ftrrv/zz//zeeLCwMB4LSM5xPXhkqPn721+QBgYGBswklKYvyYvo2dHz++LgYGBkR+xV7ivwRgYGBgTRnKzpHGdF3oMDIx9GEkpTJrS67a2WmQf6cUxMDBeyKiWyL/8+ZH5BgYGxqsYR/FKIv68aN52KgwMjKUZeYGrYnpB2+Q8GBgYqzLy9jIPyPLf5MPOX2AYGBjbMKpR/qRE9j6+03dhYGAszegNFO99yHt8EouBgfFyxnO3rLa7eTB3mhpiYGBsw8hD/N4iRbKoEWWEk+8EDAyMVzHy4lgN/fORZG8sGj0gYmBgLMHIH9cmMdwkqmumhhgYGEszemPIKin5sPI1DgwMjD0Z+UCxOiqYBHPlZQsMDIyFGL12tHesangXPXRiYGAszajG8b3j5mOG/IgYGBi7MaoDxcmzWT7yrA4nMDAw9mHkDWRvYaIawxXKMQYGxgaMScTfW6roLaWdNroYGBgbMKoR26T1rS55RF8GGBgYmzF6j4N5qa0uhzULLgYGxhKMo3jlsLtWLiIqBgbG0oxe9J/wJusRvaEpBgbG2ow8JktGj/OxaHU5AwMDYx9Goettveb68bEX5/0y38DAwNiY0WtHe7Wx0MRiYGBgDGKvo3Ul4d3NBRcDA+PfM6rrXNWb9fK/R+I2DAyMFzKqKw6TIeWkcZ2XfgwMjBcyvgB/SmqYUgLo9gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'aki酱肉';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
