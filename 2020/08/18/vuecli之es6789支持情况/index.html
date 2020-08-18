@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>vuecli3之ES版本支持情况 | Aki酱肉&#39;s Blog | never say never</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="vue-cli3.0,babel,兼容性">
+    <meta name="description" content="vue-cli3中能不能随便用新的ES版本语法？这么问，肯定是不行，那为什么不行，我们今天就来仔细研究下。 从vue-cli3配置入手vue-cli3中的babel配置如下： 123module.exports = &amp;#123;  presets: [&quot;@vue/app&quot;]&amp;#125;; 可以看到 vue-cli3 用的是自己封装的@vue/app,我们在 node_modules 找到@vue/">
+<meta name="keywords" content="vue-cli3.0,babel,兼容性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vuecli3之ES版本支持情况">
+<meta property="og:url" content="https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/index.html">
+<meta property="og:site_name" content="Aki酱肉&#39;s Blog">
+<meta property="og:description" content="vue-cli3中能不能随便用新的ES版本语法？这么问，肯定是不行，那为什么不行，我们今天就来仔细研究下。 从vue-cli3配置入手vue-cli3中的babel配置如下： 123module.exports = &amp;#123;  presets: [&quot;@vue/app&quot;]&amp;#125;; 可以看到 vue-cli3 用的是自己封装的@vue/app,我们在 node_modules 找到@vue/">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/pic1.png">
+<meta property="og:updated_time" content="2020-08-18T08:15:06.781Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vuecli3之ES版本支持情况">
+<meta name="twitter:description" content="vue-cli3中能不能随便用新的ES版本语法？这么问，肯定是不行，那为什么不行，我们今天就来仔细研究下。 从vue-cli3配置入手vue-cli3中的babel配置如下： 123module.exports = &amp;#123;  presets: [&quot;@vue/app&quot;]&amp;#125;; 可以看到 vue-cli3 用的是自己封装的@vue/app,我们在 node_modules 找到@vue/">
+<meta name="twitter:image" content="https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/pic1.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Aki酱肉&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Jessica</h5>
+          <a href="mailto:chunxiao5316@126.com" title="chunxiao5316@126.com" class="mail">chunxiao5316@126.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="https://akijiangrou.github.io/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives/"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">vuecli3之ES版本支持情况</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">vuecli3之ES版本支持情况</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-08-18T02:56:19.000Z" itemprop="datePublished" class="page-time">
+  2020-08-18
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vue-cli3中能不能随便用新的ES版本语法？"><span class="post-toc-number">1.</span> <span class="post-toc-text">vue-cli3中能不能随便用新的ES版本语法？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从vue-cli3配置入手"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">从vue-cli3配置入手</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#babel-preset-env"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">@babel/preset-env</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作用"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">作用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#历史"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">历史</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置方法"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">配置方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vue-cli3中的配置情况"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">vue-cli3中的配置情况</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#core-js"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">core-js</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-vuecli之es6789支持情况"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vuecli3之ES版本支持情况</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-08-18 10:56:19" datetime="2020-08-18T02:56:19.000Z"  itemprop="datePublished">2020-08-18</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="vue-cli3中能不能随便用新的ES版本语法？"><a href="#vue-cli3中能不能随便用新的ES版本语法？" class="headerlink" title="vue-cli3中能不能随便用新的ES版本语法？"></a>vue-cli3中能不能随便用新的ES版本语法？</h1><p>这么问，肯定是不行，那为什么不行，我们今天就来仔细研究下。</p>
+<h2 id="从vue-cli3配置入手"><a href="#从vue-cli3配置入手" class="headerlink" title="从vue-cli3配置入手"></a>从vue-cli3配置入手</h2><p>vue-cli3中的babel配置如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = &#123;</span><br><span class="line">  presets: [<span class="string">"@vue/app"</span>]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>可以看到 vue-cli3 用的是自己封装的@vue/app,我们在 node_modules 找到@vue/app 的 package.json <code>[@vue/babel-preset-app]</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="./pic1.png" alt="截图" title>
+                </div>
+                <div class="image-caption">截图</div>
+            </figure>
+<p>上面两个比较重要的：<strong>@babel/preset-env</strong> 和 <strong>core-js</strong></p>
+<h2 id="babel-preset-env"><a href="#babel-preset-env" class="headerlink" title="@babel/preset-env"></a>@babel/preset-env</h2><blockquote>
+<p>@babel/preset-env is a smart preset that allows you to use the latest JavaScript without needing to micromanage which syntax transforms (and optionally, browser polyfills) are needed by your target environment(s). This both makes your life easier and JavaScript bundles smaller!</p>
+</blockquote>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a><strong>作用</strong></h3><p>根据你支持的环境自动决定适合你的Babel插件</p>
+<h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a><strong>历史</strong></h3><p>最初，为了让开发者能够尽早用上新的JS特性，babel团队开发了<code>babel-preset-latest</code>。这个preset比较特殊，它是多个preset的集合(es2015+)，并且随着ECMA规范的更新更增加它的内容。比如，当前(2018.06.02)，它包含的preset包括：es2017、es1016、es2015。到了明年，可能它包含的preset就包括：es2018、es2017、es2016、es2015。随着时间的推移，<code>babel-preset-latest</code> 包含的插件越来越多，这带来了如下问题：  </p>
+<ul>
+<li>加载的插件越来越多，编译速度会越来越慢；</li>
+<li>随着用户浏览器的升级，ECMA规范的支持逐步完善，编译至低版本规范的必要性在减少（比如ES6 -&gt; ES5），多余的转换不单降低执行效率，还浪费带宽。  </li>
+</ul>
+<p>因为上述问题的存在，babel官方推出了<code>babel-preset-env</code>插件。它可以根据开发者的配置，按需加载插件。配置项大致包括：  </p>
+<ul>
+<li>需要支持的平台：比如node、浏览器等。</li>
+<li>需要支持的平台的版本：比如支持<a href="mailto:node@6.1" target="_blank" rel="noopener">node@6.1</a>等。<br>默认配置的情况下，它跟 <code>babel-preset-latest</code> 是等同的，会加载从<code>es2015</code>开始的所有<code>preset</code>。</li>
+</ul>
+<h3 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a><strong>配置方法</strong></h3><ul>
+<li>.babelrc 配个默认值</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;  <span class="attr">"presets"</span>: [ <span class="string">"env"</span> ]&#125;</span><br></pre></td></tr></table></figure>
+<p>假设在如上配置下，有个文件：<code>index.js</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>采用 babel-preset-env，默认配置下，输出的转换结果如下:  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;<span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _ref = _asyncToGenerator( <span class="comment">/*#__PURE__*/</span>regeneratorRuntime.mark(<span class="function"><span class="keyword">function</span> <span class="title">_callee</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> regeneratorRuntime.wrap(<span class="function"><span class="keyword">function</span> <span class="title">_callee$</span>(<span class="params">_context</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">while</span> (<span class="number">1</span>) &#123;        <span class="keyword">switch</span> (_context.prev = _context.next) &#123;          <span class="keyword">case</span> <span class="number">0</span>:          <span class="keyword">case</span> <span class="string">"end"</span>:            <span class="keyword">return</span> _context.stop();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, _callee, <span class="keyword">this</span>);</span><br><span class="line">  &#125;));  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> _ref.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;();<span class="function"><span class="keyword">function</span> <span class="title">_asyncToGenerator</span>(<span class="params">fn</span>) </span>&#123; <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">var</span> gen = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>); <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123; <span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params">key, arg</span>) </span>&#123; <span class="keyword">try</span> &#123; <span class="keyword">var</span> info = gen[key](arg); <span class="keyword">var</span> value = info.value; &#125; <span class="keyword">catch</span> (error) &#123; reject(error); <span class="keyword">return</span>; &#125; <span class="keyword">if</span> (info.done) &#123; resolve(value); &#125; <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(value).then(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123; step(<span class="string">"next"</span>, value); &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123; step(<span class="string">"throw"</span>, err); &#125;); &#125; &#125; <span class="keyword">return</span> step(<span class="string">"next"</span>); &#125;); &#125;; &#125;</span><br></pre></td></tr></table></figure>
+<p>如果我们的代码是打算跑在<a href="mailto:node@8.9.3" target="_blank" rel="noopener">node@8.9.3</a>版本上，那上面的兼容代码就有点多余了，因为<a href="mailto:node@8.9.3" target="_blank" rel="noopener">node@8.9.3</a>已经支持了async/await。那我们可以修改<code>.babelrc</code>:  </p>
+<ul>
+<li>支持node版本的配置  </li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  <span class="attr">"presets"</span>: [</span><br><span class="line">    [ <span class="string">"env"</span>, &#123;<span class="attr">"targets"</span>: &#123;<span class="attr">"node"</span>: <span class="string">"8.9.3"</span>&#125; &#125;]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果执行 <code>npm bin/babel index.js</code>，则转换结果如下，几乎没有变化，因为node最新版本支持 async/await，因此不需要额外的兼容代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>支持浏览器相关的配置<br>比如，我们需要支持 IE8+、chrome62+，那么可以这样配置：</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  <span class="attr">"presets"</span>: [</span><br><span class="line">    [<span class="string">"env"</span>, &#123; <span class="attr">"targets"</span>: &#123;<span class="attr">"browsers"</span>: [ <span class="string">"ie &gt;= 8"</span>, <span class="string">"chrome &gt;= 62"</span> ]&#125; &#125;]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对浏览器版本范围的配置，<code>babel-preset-env</code> 借助了 <code>browserslist</code> 这个库，更多的配置可以自行探究。</p>
+<ul>
+<li><p>配置项： <strong>useBuiltIns</strong><br>提供”usage” | “entry” | false 三个配置项,默认值为 false；这个配置项用来决定<code>@babel/preset-env</code>如何处理 <code>polyfills</code>；当使用 usage 或 entry 配置项时,<code>@babel-preset-env</code> 将直接(entry)引用(或按需(usage)引入)<code>core-js</code> 模块,这意味着 <code>core-js</code> 将对文件本身进行解析。</p>
+</li>
+<li><p>配置项： <strong>corejs</strong><br>2, 3 or { version: 2 | 3, proposals: boolean }, defaults to 2.可选2，3，默认为2。</p>
+</li>
+</ul>
+<h3 id="vue-cli3中的配置情况"><a href="#vue-cli3中的配置情况" class="headerlink" title="vue-cli3中的配置情况"></a>vue-cli3中的配置情况</h3><p>再看<code>@vue/babel-preset-app</code>，重要部分：<br>可知，vue-cli 使用的 vue-preset-app 封装了@babel/preset-env`, corejs没做配置,所以为默认值 2</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">useBuiltIns:</span> <span class="string">'usage'</span>;</span><br><span class="line"><span class="string">corejs:</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="core-js"><a href="#core-js" class="headerlink" title="core-js"></a>core-js</h2><p>core-js 是 babel 转码的核心包,它使用 es5 API实现了一些 ECMAScript 到 2019 年的 polyfills,并且提供按需加载,且使用它不污染全局名称空间。</p>
+<p>再来看core-js。vue-cli3安装的是2.6.9 （从node_modules里看到的具体安装版本 <code>npm ls | grep core-js</code>）。</p>
+<p>再来<code>github</code> 查看<a href="https://github.com/zloirock/core-js/tree/v2.6.9" target="_blank" rel="noopener"><code>core-js</code></a>的内容，切到相应版本后，es5，es6都支持了；es7部分支持了。</p>
+<p>async， await，flatten等等都支持了。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-08-18T08:15:06.781Z" itemprop="dateUpdated">2020-08-18 16:15:06</time>
+</span><br>
+
+
+        
+        <a href="/2020/08/18/vuecli之es6789支持情况/" target="_blank" rel="external">https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/</a>
+        
+    </div>
+    <footer>
+        <a href="https://akijiangrou.github.io">
+            <img src="/img/avatar.png" alt="Jessica">
+            Jessica
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/babel/">babel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-cli3-0/">vue-cli3.0</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/兼容性/">兼容性</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/&title=《vuecli3之ES版本支持情况》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/&title=《vuecli3之ES版本支持情况》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vuecli3之ES版本支持情况》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/&via=https://akijiangrou.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/03/24/ES2015-2020/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ES2015-2020</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Jessica &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/&title=《vuecli3之ES版本支持情况》 — Aki酱肉's Blog&pic=https://akijiangrou.github.io/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/&title=《vuecli3之ES版本支持情况》 — Aki酱肉's Blog&source=程序媛" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vuecli3之ES版本支持情况》 — Aki酱肉's Blog&url=https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/&via=https://akijiangrou.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://akijiangrou.github.io/2020/08/18/vuecli之es6789支持情况/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACo0lEQVR42u3aQW7jMBAEQP//09lrACfe7hly7QVKJ8GxJJYMcJgePh7x8fXt+P7J8/lv1ybffH7W8/G4ceDh4eEthv7b7fKHJd/MB9qO54c74+Hh4V3jnZ3Qf/ukvUM7Hjw8PLzP5L2e7ltMDsPDw8P733n5HV5/P78zHh4e3qfxkjBiFu/mRWW2WD+WteDh4eFd6CJ9zvmV/h4eHh7euqueF4lZeZgt64vR4uHh4V3gbZpb+/g1WQTvm3B4eHh4Z3nJ1qg2Ws03Y+WBxfAcDw8P7wJv3/RqF+ItY/YDrDIVPDw8vEVXqI0D2qvy19TmtHh4eHj3ePnitY0JZrFs8qyiGYaHh4d3gddGDG0ZaGGbRXm0swwPDw/vEG8f4M5i3Flzq/4rHh4e3lHe7B/+2SaDdgvCLFDGw8PDexevLQmz8LdtjA03CuDh4eH9c14y0edT9mzrwDD4wMPDw3sTL19kJ69gX5Dyp+Dh4eHd4CWPn8Wym7CjRRadPTw8PLzLvFncMGtZtS+oiInx8PDwjvLaST+flDdX7eNgPDw8vHu8TdMrGeLmdTzK4y9X4eHh4R3lzcKIdotVPsUnJaGIPPDw8PCO8k41wGZlY9Ngi34APDw8vAu8fWFIFt/7gKPdQBCl1Hh4eHhrXlIe8jKwD2pnS/NV9cPDw8MreclE3w40B7S7pIplOh4eHt5lXtuCyvGzlzVrhuHh4eHd432Vx+vHt5HBptEVlQo8PDy8C7xTc2zbNtsHGSsMHh4e3pq3uXVeKtoF+rGygYeHh3eNt9kQsGHvQ4c6pcbDw8N7Ey+ZsmdNsnyBHm0gwMPDw/sYXrto3heDYRSCh4eHd42XXDwLWHNM0nirXzceHh7eBd5sWm8HNGMkReXKvjM8PDy8n6/9A8ogP6R31LRiAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'aki酱肉';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
